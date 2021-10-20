@@ -14,19 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use crate::api::{StationMetadata, SwStation};
-use crate::app::{Action, SwApplication};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
 use glib::Sender;
-use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 use gtk::{gio, glib};
 use once_cell::unsync::OnceCell;
 use url::Url;
 use uuid::Uuid;
+
+use crate::api::{StationMetadata, SwStation};
+use crate::app::{Action, SwApplication};
+use crate::ui::{FaviconSize, StationFavicon};
 
 mod imp {
     use super::*;
@@ -38,17 +39,15 @@ mod imp {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub selection_page: TemplateChild<gtk::Box>,
+        pub create_online_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub create_online_row: TemplateChild<adw::ActionRow>,
-        #[template_child]
-        pub create_local_row: TemplateChild<adw::ActionRow>,
-        #[template_child]
-        pub editor_page: TemplateChild<gtk::Box>,
+        pub create_local_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub back_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub add_button: TemplateChild<gtk::Button>,
+        pub create_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub favicon_box: TemplateChild<gtk::Box>,
         #[template_child]
         pub name_entry: TemplateChild<gtk::Entry>,
         #[template_child]
@@ -101,29 +100,37 @@ impl SwNewStationDialog {
         let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();
         dialog.set_transient_for(Some(&window));
 
+        dialog.setup_widgets();
         dialog.setup_signals();
         dialog
+    }
+
+    fn setup_widgets(&self) {
+        let imp = imp::SwNewStationDialog::from_instance(self);
+
+        let station_favicon = StationFavicon::new(FaviconSize::Big);
+        imp.favicon_box.append(&station_favicon.widget);
     }
 
     fn setup_signals(&self) {
         let imp = imp::SwNewStationDialog::from_instance(self);
 
-        imp.create_online_row.connect_activated(clone!(@weak self as this => move |_| {
+        imp.create_online_button.connect_clicked(clone!(@weak self as this => move |_| {
             open::that("https://www.radio-browser.info/#/add").expect("Could not open webpage.");
             this.close();
         }));
 
-        imp.create_local_row.connect_activated(clone!(@weak self as this => move |_| {
+        imp.create_local_button.connect_clicked(clone!(@weak self as this => move |_| {
             let imp = imp::SwNewStationDialog::from_instance(&this);
-            imp.stack.set_visible_child(&imp.editor_page.get());
+            imp.stack.set_visible_child_name("local-station");
         }));
 
         imp.back_button.connect_clicked(clone!(@weak self as this => move |_| {
             let imp = imp::SwNewStationDialog::from_instance(&this);
-            imp.stack.set_visible_child(&imp.selection_page.get());
+            imp.stack.set_visible_child_name("start");
         }));
 
-        imp.add_button.connect_clicked(clone!(@weak self as this => move |_| {
+        imp.create_button.connect_clicked(clone!(@weak self as this => move |_| {
             let imp = imp::SwNewStationDialog::from_instance(&this);
 
             let uuid = Uuid::new_v4().to_string();
@@ -153,11 +160,11 @@ impl SwNewStationDialog {
         match Url::parse(&url) {
             Ok(_) => {
                 imp.url_entry.remove_css_class("error");
-                imp.add_button.set_sensitive(have_name);
+                imp.create_button.set_sensitive(have_name);
             }
             Err(_) => {
                 imp.url_entry.add_css_class("error");
-                imp.add_button.set_sensitive(false);
+                imp.create_button.set_sensitive(false);
             }
         }
     }

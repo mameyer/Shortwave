@@ -2,139 +2,212 @@
 <interface>
   <template class="SwNewStationDialog" parent="AdwWindow">
     <property name="width_request">325</property>
-    <property name="default_width">425</property>
-    <property name="default_height">300</property>
-    <property name="title" translatable="yes">New station</property>
+    <property name="height_request">500</property>
+    <property name="default_width">500</property>
+    <property name="default_height">575</property>
+    <property name="title" translatable="yes">Create new station</property>
     <property name="modal">True</property>
     <child>
       <object class="GtkStack" id="stack">
-        <property name="transition-type">over-left-right</property>
+        <property name="transition_type">crossfade</property>
         <child>
-          <object class="GtkBox" id="selection_page">
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkHeaderBar">
-                <property name="title-widget">
-                  <object class="AdwWindowTitle">
-                    <property name="title" translatable="yes">New station</property>
+          <object class="GtkStackPage">
+            <property name="name">start</property>
+            <property name="child">
+              <object class="GtkOverlay">
+                <child type="overlay">
+                  <object class="GtkHeaderBar">
+                    <property name="valign">start</property>
+                    <property name="title-widget">
+                      <object class="GtkBox"/>
+                    </property>
+                    <style>
+                      <class name="flat"/>
+                    </style>
                   </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow">
-                <property name="vexpand">True</property>
+                </child>
                 <child>
-                  <object class="AdwClamp">
-                    <child>
-                      <object class="AdwPreferencesGroup">
-                        <property name="title" translatable="yes">Location</property>
-                        <property name="margin_top">12</property>
-                        <property name="margin_bottom">18</property>
-                        <property name="margin_start">12</property>
-                        <property name="margin_end">12</property>
+                  <object class="AdwStatusPage">
+                    <property name="icon-name">list-add-symbolic</property>
+                    <property name="title" translatable="yes">Create new station</property>
+                    <property name="description" translatable="yes">You can decide if you want the new station to be visible for all users worldwide or if you want to create a local private station.</property>
+                    <property name="height-request">400</property>
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="homogeneous">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
                         <child>
-                          <object class="AdwActionRow" id="create_online_row">
-                            <property name="title" translatable="yes">_Publish station for everybody (Recommended)</property>
-                            <property name="icon-name">folder-publicshare-symbolic</property>
+                          <object class="GtkButton" id="create_online_button">
+                            <property name="label" translatable="yes">Create _public station</property>
                             <property name="use_underline">True</property>
-                            <property name="activatable">True</property>
-                            <child type="suffix">
-                              <object class="GtkImage">
-                                <property name="icon-name">go-next-symbolic</property>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="pill"/>
+                              <class name="suggested-action"/>
+                            </style>
                           </object>
                         </child>
                         <child>
-                          <object class="AdwActionRow" id="create_local_row">
-                            <property name="title" translatable="yes">_Keep station private</property>
-                            <property name="icon-name">user-home-symbolic</property>
+                          <object class="GtkButton" id="create_local_button">
+                            <property name="label" translatable="yes">Create _local private station</property>
                             <property name="use_underline">True</property>
-                            <property name="activatable">True</property>
-                            <child type="suffix">
-                              <object class="GtkImage">
-                                <property name="icon-name">go-next-symbolic</property>
-                              </object>
-                            </child>
                             <style>
-                              <class name="dim-label"/>
+                              <class name="pill"/>
                             </style>
                           </object>
                         </child>
                       </object>
-                    </child>
+                    </property>
                   </object>
                 </child>
               </object>
-            </child>
+            </property>
           </object>
         </child>
         <child>
-          <object class="GtkBox" id="editor_page">
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkHeaderBar">
-                <property name="show-title-buttons">false</property>
-                <property name="title-widget">
-                  <object class="AdwWindowTitle">
-                    <property name="title" translatable="yes">New private station</property>
-                  </object>
-                </property>
+          <object class="GtkStackPage">
+            <property name="name">local-station</property>
+            <property name="child">
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkButton" id="back_button">
-                    <property name="icon-name">go-previous-symbolic</property>
-                  </object>
-                </child>
-                <child type="end">
-                  <object class="GtkButton" id="add_button">
-                    <property name="label" translatable="yes">Add</property>
-                    <property name="sensitive">false</property>
-                    <style>
-                      <class name="suggested-action"/>
-                    </style>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow">
-                <property name="vexpand">True</property>
-                <child>
-                  <object class="AdwClamp">
+                  <object class="GtkHeaderBar">
+                    <property name="title-widget">
+                      <object class="AdwWindowTitle">
+                        <property name="title" translatable="yes">Create local private station</property>
+                      </object>
+                    </property>
                     <child>
-                      <object class="AdwPreferencesGroup">
-                        <property name="title" translatable="yes">Metadata</property>
-                        <property name="margin_top">12</property>
-                        <property name="margin_bottom">18</property>
-                        <property name="margin_start">12</property>
-                        <property name="margin_end">12</property>
+                      <object class="GtkButton" id="back_button">
+                        <property name="icon-name">go-previous-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="AdwClamp">
                         <child>
-                          <object class="AdwActionRow">
-                            <property name="activatable">True</property>
-                            <property name="use_underline">True</property>
-                            <property name="title" translatable="yes">Name</property>
-                            <property name="activatable-widget">name_entry</property>
-                            <property name="focusable">false</property>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">18</property>
+                            <property name="margin_start">12</property>
+                            <property name="margin_end">12</property>
+                            <property name="margin_bottom">30</property>
+                            <property name="margin_top">30</property>
                             <child>
-                              <object class="GtkEntry" id="name_entry">
+                              <object class="GtkOverlay">
+                                <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="hexpand">True</property>
+                                <property name="margin_bottom">12</property>
+                                <child type="overlay">
+                                  <object class="GtkButton">
+                                    <property name="icon_name">document-edit-symbolic</property>
+                                    <property name="halign">center</property>
+                                    <property name="valign">center</property>
+                                    <property name="tooltip_text" translatable="yes">Change station image</property>
+                                    <style>
+                                      <class name="osd"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkBox" id="favicon_box">
+                                    <property name="halign">center</property>
+                                    <property name="overflow">hidden</property>
+                                    <style>
+                                      <class name="favicon-big"/>
+                                      <class name="dim-label"/>
+                                    </style>
+                                  </object>
+                                </child>
                               </object>
                             </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="AdwActionRow">
-                            <property name="activatable">True</property>
-                            <property name="use_underline">True</property>
-                            <property name="title" translatable="yes">Stream URL</property>
-                            <property name="activatable-widget">url_entry</property>
-                            <property name="focusable">false</property>
                             <child>
-                              <object class="GtkEntry" id="url_entry">
-                                <property name="valign">center</property>
-                                <property name="hexpand">True</property>
+                              <object class="AdwPreferencesGroup">
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="activatable">True</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="title" translatable="yes">Name</property>
+                                    <property name="activatable-widget">name_entry</property>
+                                    <child>
+                                      <object class="GtkEntry" id="name_entry">
+                                        <property name="valign">center</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="activatable">True</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="title" translatable="yes">Stream URL</property>
+                                    <property name="activatable-widget">url_entry</property>
+                                    <child>
+                                      <object class="GtkEntry" id="url_entry">
+                                        <property name="valign">center</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwPreferencesGroup">
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="activatable">True</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="title" translatable="yes">Country</property>
+                                    <property name="activatable-widget">country_entry</property>
+                                    <child>
+                                      <object class="GtkEntry" id="country_entry">
+                                        <property name="valign">center</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="activatable">True</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="title" translatable="yes">State</property>
+                                    <property name="activatable-widget">state_entry</property>
+                                    <child>
+                                      <object class="GtkEntry" id="state_entry">
+                                        <property name="valign">center</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="activatable">True</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="title" translatable="yes">Language</property>
+                                    <property name="activatable-widget">language_entry</property>
+                                    <child>
+                                      <object class="GtkEntry" id="language_entry">
+                                        <property name="valign">center</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="create_button">
+                                <property name="label" translatable="yes">Create station</property>
+                                <property name="halign">center</property>
+                                <property name="margin_top">12</property>
+                                <style>
+                                  <class name="pill"/>
+                                  <class name="suggested-action"/>
+                                </style>
                               </object>
                             </child>
                           </object>
@@ -144,21 +217,22 @@
                   </object>
                 </child>
               </object>
-            </child>
+            </property>
           </object>
         </child>
       </object>
     </child>
     <child>
-      <object class='GtkShortcutController'>
-        <property name='scope'>local</property>
+      <object class="GtkShortcutController">
+        <property name="scope">local</property>
         <child>
-          <object class='GtkShortcut'>
-            <property name='trigger'>Escape</property>
-            <property name='action'>action(dialog.close)</property>
+          <object class="GtkShortcut">
+            <property name="trigger">Escape</property>
+            <property name="action">action(dialog.close)</property>
           </object>
         </child>
       </object>
     </child>
   </template>
 </interface>
+

@@ -73,6 +73,7 @@ sources = files(
   'ui/about_dialog.rs',
   'ui/featured_carousel.rs',
   'ui/mod.rs',
+  'ui/new_station_dialog.rs',
   'ui/notification.rs',
   'ui/song_listbox.rs',
   'ui/song_row.rs',
