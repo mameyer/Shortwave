@@ -33,7 +33,7 @@ use crate::config;
 use crate::model::SwSorting;
 use crate::settings::{settings_manager, Key};
 use crate::ui::pages::*;
-use crate::ui::{Notification, SwNewStationDialog};
+use crate::ui::{Notification, SwCreateStationDialog};
 
 #[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
@@ -257,7 +257,7 @@ impl SwApplicationWindow {
             self,
             "create-new-station",
             clone!(@strong sender => move |_, _| {
-                let dialog = SwNewStationDialog::new(sender.clone());
+                let dialog = SwCreateStationDialog::new(sender.clone());
                 dialog.show();
             })
         );

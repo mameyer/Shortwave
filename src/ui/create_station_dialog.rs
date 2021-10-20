@@ -34,8 +34,8 @@ mod imp {
     use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/de/haeckerfelix/Shortwave/gtk/new_station_dialog.ui")]
-    pub struct SwNewStationDialog {
+    #[template(resource = "/de/haeckerfelix/Shortwave/gtk/create_station_dialog.ui")]
+    pub struct SwCreateStationDialog {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -57,10 +57,10 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for SwNewStationDialog {
-        const NAME: &'static str = "SwNewStationDialog";
+    impl ObjectSubclass for SwCreateStationDialog {
+        const NAME: &'static str = "SwCreateStationDialog";
         type ParentType = adw::Window;
-        type Type = super::SwNewStationDialog;
+        type Type = super::SwCreateStationDialog;
 
         fn class_init(klass: &mut Self::Class) {
             klass.install_action("dialog.close", None, |this, _, _| {
@@ -76,25 +76,25 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for SwNewStationDialog {}
+    impl ObjectImpl for SwCreateStationDialog {}
 
-    impl WidgetImpl for SwNewStationDialog {}
+    impl WidgetImpl for SwCreateStationDialog {}
 
-    impl WindowImpl for SwNewStationDialog {}
+    impl WindowImpl for SwCreateStationDialog {}
 
-    impl AdwWindowImpl for SwNewStationDialog {}
+    impl AdwWindowImpl for SwCreateStationDialog {}
 }
 
 glib::wrapper! {
-    pub struct SwNewStationDialog(ObjectSubclass<imp::SwNewStationDialog>)
+    pub struct SwCreateStationDialog(ObjectSubclass<imp::SwCreateStationDialog>)
         @extends gtk::Widget, gtk::Window, adw::Window;
 }
 
-impl SwNewStationDialog {
+impl SwCreateStationDialog {
     pub fn new(sender: Sender<Action>) -> Self {
         let dialog = glib::Object::new(&[]).unwrap();
 
-        let imp = imp::SwNewStationDialog::from_instance(&dialog);
+        let imp = imp::SwCreateStationDialog::from_instance(&dialog);
         imp.sender.set(sender).unwrap();
 
         let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();
@@ -106,14 +106,14 @@ impl SwNewStationDialog {
     }
 
     fn setup_widgets(&self) {
-        let imp = imp::SwNewStationDialog::from_instance(self);
+        let imp = imp::SwCreateStationDialog::from_instance(self);
 
         let station_favicon = StationFavicon::new(FaviconSize::Big);
         imp.favicon_box.append(&station_favicon.widget);
     }
 
     fn setup_signals(&self) {
-        let imp = imp::SwNewStationDialog::from_instance(self);
+        let imp = imp::SwCreateStationDialog::from_instance(self);
 
         imp.create_online_button.connect_clicked(clone!(@weak self as this => move |_| {
             open::that("https://www.radio-browser.info/#/add").expect("Could not open webpage.");
@@ -121,17 +121,17 @@ impl SwNewStationDialog {
         }));
 
         imp.create_local_button.connect_clicked(clone!(@weak self as this => move |_| {
-            let imp = imp::SwNewStationDialog::from_instance(&this);
+            let imp = imp::SwCreateStationDialog::from_instance(&this);
             imp.stack.set_visible_child_name("local-station");
         }));
 
         imp.back_button.connect_clicked(clone!(@weak self as this => move |_| {
-            let imp = imp::SwNewStationDialog::from_instance(&this);
+            let imp = imp::SwCreateStationDialog::from_instance(&this);
             imp.stack.set_visible_child_name("start");
         }));
 
         imp.create_button.connect_clicked(clone!(@weak self as this => move |_| {
-            let imp = imp::SwNewStationDialog::from_instance(&this);
+            let imp = imp::SwCreateStationDialog::from_instance(&this);
 
             let uuid = Uuid::new_v4().to_string();
             let name = imp.name_entry.text().to_string();
@@ -152,7 +152,7 @@ impl SwNewStationDialog {
     }
 
     fn validate(&self) {
-        let imp = imp::SwNewStationDialog::from_instance(self);
+        let imp = imp::SwCreateStationDialog::from_instance(self);
 
         let have_name = !imp.name_entry.text().is_empty();
         let url = imp.url_entry.text().to_string();
