@@ -25,9 +25,9 @@ use crate::settings::{settings_manager, Key};
 use crate::ui::Notification;
 use futures::future::join_all;
 use glib::{clone, Enum, ObjectExt, ParamFlags, ParamSpec, ParamSpecEnum, ParamSpecObject, Sender, ToValue};
-use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
+use gtk::{gdk_pixbuf, glib};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 use std::cell::RefCell;
@@ -189,10 +189,22 @@ impl SwLibrary {
     async fn load_station(&self, entry: StationEntry) {
         let imp = imp::SwLibrary::from_instance(&self);
 
+        let favicon = if let Some(data) = entry.favicon {
+            let loader = gdk_pixbuf::PixbufLoader::new();
+
+            if loader.write(&data).is_ok() && loader.close().is_ok() {
+                loader.pixbuf()
+            } else {
+                None
+            }
+        } else {
+            None
+        };
+
         if entry.is_local {
             if let Some(data) = &entry.data {
                 match self.load_station_metadata(&entry.uuid, data) {
-                    Ok(metadata) => imp.model.add_station(&SwStation::new(entry.uuid.clone(), true, metadata)),
+                    Ok(metadata) => imp.model.add_station(&SwStation::new(entry.uuid.clone(), true, metadata, favicon)),
                     Err(_) => self.delete_unknown_station(&entry.uuid),
                 }
             } else {
@@ -201,7 +213,7 @@ impl SwLibrary {
         } else {
             match imp.client.clone().station_metadata_by_uuid(&entry.uuid).await {
                 Ok(metadata) => {
-                    let station = SwStation::new(entry.uuid.clone(), false, metadata);
+                    let station = SwStation::new(entry.uuid.clone(), false, metadata, favicon);
 
                     // Cache data for future use
                     let entry = StationEntry::for_station(&station);
@@ -220,7 +232,7 @@ impl SwLibrary {
                     if let Some(data) = &entry.data {
                         match self.load_station_metadata(&entry.uuid, data) {
                             Ok(metadata) => {
-                                let station = SwStation::new(entry.uuid.clone(), false, metadata);
+                                let station = SwStation::new(entry.uuid.clone(), false, metadata, favicon);
                                 imp.model.add_station(&station);
                             }
                             Err(_) => {

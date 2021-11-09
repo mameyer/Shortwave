@@ -68,7 +68,7 @@ impl Client {
         let url = self.build_url(STATION_SEARCH, Some(&request.url_encode())).await?;
         debug!("Station request URL: {}", url);
         let stations_md: Vec<StationMetadata> = HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
-        let stations: Vec<SwStation> = stations_md.into_iter().map(|metadata| SwStation::new(metadata.stationuuid.clone(), false, metadata)).collect();
+        let stations: Vec<SwStation> = stations_md.into_iter().map(|metadata| SwStation::new(metadata.stationuuid.clone(), false, metadata, None)).collect();
 
         debug!("Found {} station(s)!", stations.len());
         self.model.clear();

@@ -104,7 +104,7 @@
                                 <property name="valign">center</property>
                                 <property name="margin_bottom">12</property>
                                 <child type="overlay">
-                                  <object class="GtkButton">
+                                  <object class="GtkButton" id="favicon_button">
                                     <property name="icon_name">document-edit-symbolic</property>
                                     <property name="halign">center</property>
                                     <property name="valign">center</property>

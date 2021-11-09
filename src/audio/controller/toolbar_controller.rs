@@ -117,11 +117,15 @@ impl Controller for ToolbarController {
         *self.station.borrow_mut() = Some(station.clone());
 
         // Download & set icon
+
         let station_favicon = self.station_favicon.clone();
-        if let Some(favicon) = station.metadata().favicon {
+
+        if let Some(pixbuf) = station.favicon() {
+            station_favicon.set_pixbuf(&pixbuf);
+        } else if let Some(favicon) = station.metadata().favicon {
             let fut = FaviconDownloader::download(favicon, FaviconSize::Mini as i32).map(move |pixbuf| {
                 if let Ok(pixbuf) = pixbuf {
-                    station_favicon.set_pixbuf(pixbuf)
+                    station_favicon.set_pixbuf(&pixbuf)
                 }
             });
             spawn!(fut);
