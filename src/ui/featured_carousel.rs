@@ -24,7 +24,6 @@ use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
 use std::cell::RefCell;
-use std::rc::Rc;
 use std::str::FromStr;
 
 #[derive(Debug)]
@@ -48,7 +47,7 @@ mod imp {
         pub previous_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub next_button: TemplateChild<gtk::Button>,
-        pub pages: Rc<RefCell<Vec<Page>>>,
+        pub pages: RefCell<Vec<Page>>,
         pub css_provider: gtk::CssProvider,
     }
 
@@ -59,7 +58,7 @@ mod imp {
         type Type = super::SwFeaturedCarousel;
 
         fn new() -> Self {
-            let pages = Rc::new(RefCell::new(Vec::new()));
+            let pages = RefCell::new(Vec::new());
             let css_provider = gtk::CssProvider::new();
 
             Self {
