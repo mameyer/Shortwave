@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use glib::{GEnum, ParamSpec, ToValue};
+use glib::{Enum, ParamSpec, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use once_cell::sync::Lazy;
@@ -45,8 +45,8 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpec::new_boolean("descending", "Descending", "Descending", false, glib::ParamFlags::READWRITE),
-                    ParamSpec::new_enum("sorting", "Sorting", "Sorting", SwSorting::static_type(), SwSorting::default() as i32, glib::ParamFlags::READWRITE),
+                    glib::ParamSpecBoolean::new("descending", "Descending", "Descending", false, glib::ParamFlags::READWRITE),
+                    glib::ParamSpecEnum::new("sorting", "Sorting", "Sorting", SwSorting::static_type(), SwSorting::default() as i32, glib::ParamFlags::READWRITE),
                 ]
             });
 
@@ -99,11 +99,11 @@ impl SwStationSorter {
     }
 
     pub fn set_sorting(&self, sorting: SwSorting) {
-        self.set_property("sorting", &sorting).unwrap()
+        self.set_property("sorting", &sorting)
     }
 
     pub fn set_descending(&self, descending: bool) {
-        self.set_property("descending", &descending).unwrap()
+        self.set_property("descending", &descending)
     }
 
     fn station_cmp(a: &SwStation, b: &SwStation, sorting: SwSorting, descending: bool) -> std::cmp::Ordering {
@@ -127,9 +127,9 @@ impl SwStationSorter {
     }
 }
 
-#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, GEnum)]
+#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
-#[genum(type_name = "SwSorting")]
+#[enum_type(name = "SwSorting")]
 pub enum SwSorting {
     Default,
     Name,

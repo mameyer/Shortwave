@@ -279,7 +279,7 @@ impl SwApplication {
     }
 
     fn update_color_scheme(&self) {
-        let manager = adw::StyleManager::default().unwrap();
+        let manager = adw::StyleManager::default();
         if !manager.system_supports_color_schemes() {
             let color_scheme = if settings_manager::boolean(Key::DarkMode) {
                 adw::ColorScheme::PreferDark

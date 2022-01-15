@@ -24,7 +24,7 @@ use crate::model::SwStationModel;
 use crate::settings::{settings_manager, Key};
 use crate::ui::Notification;
 use futures::future::join_all;
-use glib::{clone, GEnum, ObjectExt, ParamSpec, Sender, ToValue};
+use glib::{clone, Enum, ObjectExt, ParamSpec, Sender, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -32,9 +32,9 @@ use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 use std::cell::RefCell;
 
-#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, GEnum)]
+#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
-#[genum(type_name = "SwLibraryStatus")]
+#[enum_type(name = "SwLibraryStatus")]
 pub enum SwLibraryStatus {
     Loading,
     Content,
@@ -80,8 +80,8 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpec::new_object("model", "Model", "Model", SwStationModel::static_type(), glib::ParamFlags::READABLE),
-                    ParamSpec::new_enum(
+                    glib::ParamSpecObject::new("model", "Model", "Model", SwStationModel::static_type(), glib::ParamFlags::READABLE),
+                    glib::ParamSpecEnum::new(
                         "status",
                         "Status",
                         "Status",
@@ -121,11 +121,11 @@ impl SwLibrary {
     }
 
     pub fn model(&self) -> SwStationModel {
-        self.property("model").unwrap().get().unwrap()
+        self.property("model")
     }
 
     pub fn status(&self) -> SwLibraryStatus {
-        self.property("status").unwrap().get().unwrap()
+        self.property("status")
     }
 
     pub fn add_stations(&self, stations: Vec<SwStation>) {

@@ -45,7 +45,9 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Dgir=false",
-                "-Dvapi=false"
+                "-Dvapi=false",
+                "-Dgtk_docs=false",
+                "-Dlibsoup3=true"
             ],
             "sources": [
                 {

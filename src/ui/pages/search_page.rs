@@ -231,7 +231,7 @@ impl SwSearchPage {
         // Reset previous timeout
         let id: Option<glib::source::SourceId> = imp.timeout_id.borrow_mut().take();
         if let Some(id) = id {
-            glib::source::source_remove(id)
+            id.remove()
         }
 
         // Don't search if search entry is empty

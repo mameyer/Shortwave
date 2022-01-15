@@ -71,7 +71,7 @@ mod imp {
 
     impl ObjectImpl for SwStationFlowBox {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| vec![ParamSpec::new_object("model", "Model", "Model", gtk::SortListModel::static_type(), glib::ParamFlags::READABLE)]);
+            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| vec![glib::ParamSpecObject::new("model", "Model", "Model", gtk::SortListModel::static_type(), glib::ParamFlags::READABLE)]);
 
             PROPERTIES.as_ref()
         }

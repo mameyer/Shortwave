@@ -44,9 +44,9 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpec::new_string("uuid", "UUID", "UUID", None, glib::ParamFlags::READABLE),
-                    ParamSpec::new_boolean("is-local", "Is a local station", "Is a local station", false, glib::ParamFlags::READABLE),
-                    ParamSpec::new_boxed("metadata", "Metadata", "Metadata", StationMetadata::static_type(), glib::ParamFlags::READABLE),
+                    glib::ParamSpecString::new("uuid", "UUID", "UUID", None, glib::ParamFlags::READABLE),
+                    glib::ParamSpecBoolean::new("is-local", "Is a local station", "Is a local station", false, glib::ParamFlags::READABLE),
+                    glib::ParamSpecBoxed::new("metadata", "Metadata", "Metadata", StationMetadata::static_type(), glib::ParamFlags::READABLE),
                 ]
             });
             PROPERTIES.as_ref()
@@ -80,14 +80,14 @@ impl SwStation {
     }
 
     pub fn uuid(&self) -> String {
-        self.property("uuid").unwrap().get::<String>().unwrap()
+        self.property("uuid")
     }
 
     pub fn is_local(&self) -> bool {
-        self.property("is-local").unwrap().get::<bool>().unwrap()
+        self.property("is-local")
     }
 
     pub fn metadata(&self) -> StationMetadata {
-        self.property("metadata").unwrap().get::<&StationMetadata>().unwrap().clone()
+        self.property("metadata")
     }
 }

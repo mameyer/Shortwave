@@ -17,7 +17,7 @@
 use adw::subclass::prelude::*;
 use glib::clone;
 use glib::Sender;
-use glib::{GEnum, ParamSpec, ToValue};
+use glib::{Enum, ParamSpec, ToValue};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
@@ -35,9 +35,9 @@ use crate::settings::{settings_manager, Key};
 use crate::ui::pages::*;
 use crate::ui::Notification;
 
-#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, GEnum)]
+#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
-#[genum(type_name = "SwSwView")]
+#[enum_type(name = "SwView")]
 pub enum SwView {
     Library,
     Discover,
@@ -115,7 +115,7 @@ mod imp {
     impl ObjectImpl for SwApplicationWindow {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![ParamSpec::new_enum(
+                vec![glib::ParamSpecEnum::new(
                     "view",
                     "View",
                     "View",
@@ -379,7 +379,7 @@ impl SwApplicationWindow {
     }
 
     pub fn set_view(&self, view: SwView) {
-        self.set_property("view", &view).unwrap()
+        self.set_property("view", &view)
     }
 
     pub fn enable_mini_player(&self, enable: bool) {
