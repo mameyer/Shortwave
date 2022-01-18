@@ -46,14 +46,14 @@
             "config-opts": [
                 "-Dgir=false",
                 "-Dvapi=false",
-                "-Dgtk_docs=false",
+                "-Dgtk_doc=false",
                 "-Dlibsoup3=true"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libshumate/",
-                    "commit": "a6b1e3c7d0a28dda5fb57d4eec8e2dfdfb5b309c"
+                    "branch": "1.0.0.alpha.1"
                 }
             ]
         },

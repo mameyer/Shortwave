@@ -37,10 +37,10 @@ Inflector = "0.11.4"
 
 gstreamer-audio = { version = "0.18", features = ["v1_10"]}
 gstreamer = { version = "0.18"}
-shumate = { version = "0.1.0-alpha", package = "libshumate"}
+shumate = { version = "0.1.0-alpha.4", package = "libshumate"}
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 adw = { version = "0.1.0-alpha", package = "libadwaita" }
-gtk = { version = "0.4.0", package = "gtk4" }
+gtk = { version = "0.4.4", package = "gtk4" }
 gtk-macros = "0.3.0"
 
 [target.'cfg(unix)'.dependencies]
