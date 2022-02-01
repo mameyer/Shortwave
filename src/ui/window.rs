@@ -17,7 +17,7 @@
 use adw::subclass::prelude::*;
 use glib::clone;
 use glib::Sender;
-use glib::{Enum, ParamSpec, ToValue};
+use glib::{Enum, ParamFlags, ParamSpec, ParamSpecEnum, ToValue};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
@@ -114,16 +114,7 @@ mod imp {
 
     impl ObjectImpl for SwApplicationWindow {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecEnum::new(
-                    "view",
-                    "View",
-                    "View",
-                    SwView::static_type(),
-                    SwView::default() as i32,
-                    glib::ParamFlags::READWRITE,
-                )]
-            });
+            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| vec![ParamSpecEnum::new("view", "View", "View", SwView::static_type(), SwView::default() as i32, ParamFlags::READWRITE)]);
 
             PROPERTIES.as_ref()
         }

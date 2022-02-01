@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use glib::{ObjectExt, ParamSpec, ToValue};
+use glib::{ObjectExt, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecString, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -44,9 +44,9 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecString::new("uuid", "UUID", "UUID", None, glib::ParamFlags::READABLE),
-                    glib::ParamSpecBoolean::new("is-local", "Is a local station", "Is a local station", false, glib::ParamFlags::READABLE),
-                    glib::ParamSpecBoxed::new("metadata", "Metadata", "Metadata", StationMetadata::static_type(), glib::ParamFlags::READABLE),
+                    ParamSpecString::new("uuid", "UUID", "UUID", None, ParamFlags::READABLE),
+                    ParamSpecBoolean::new("is-local", "Is a local station", "Is a local station", false, ParamFlags::READABLE),
+                    ParamSpecBoxed::new("metadata", "Metadata", "Metadata", StationMetadata::static_type(), ParamFlags::READABLE),
                 ]
             });
             PROPERTIES.as_ref()

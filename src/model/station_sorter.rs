@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use glib::{Enum, ParamSpec, ToValue};
+use glib::{Enum, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecEnum, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use once_cell::sync::Lazy;
@@ -45,8 +45,8 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecBoolean::new("descending", "Descending", "Descending", false, glib::ParamFlags::READWRITE),
-                    glib::ParamSpecEnum::new("sorting", "Sorting", "Sorting", SwSorting::static_type(), SwSorting::default() as i32, glib::ParamFlags::READWRITE),
+                    ParamSpecBoolean::new("descending", "Descending", "Descending", false, ParamFlags::READWRITE),
+                    ParamSpecEnum::new("sorting", "Sorting", "Sorting", SwSorting::static_type(), SwSorting::default() as i32, ParamFlags::READWRITE),
                 ]
             });
 

@@ -24,7 +24,7 @@ use crate::model::SwStationModel;
 use crate::settings::{settings_manager, Key};
 use crate::ui::Notification;
 use futures::future::join_all;
-use glib::{clone, Enum, ObjectExt, ParamSpec, Sender, ToValue};
+use glib::{clone, Enum, ObjectExt, ParamFlags, ParamSpec, ParamSpecEnum, ParamSpecObject, Sender, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -80,15 +80,8 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecObject::new("model", "Model", "Model", SwStationModel::static_type(), glib::ParamFlags::READABLE),
-                    glib::ParamSpecEnum::new(
-                        "status",
-                        "Status",
-                        "Status",
-                        SwLibraryStatus::static_type(),
-                        SwLibraryStatus::default() as i32,
-                        glib::ParamFlags::READABLE,
-                    ),
+                    ParamSpecObject::new("model", "Model", "Model", SwStationModel::static_type(), glib::ParamFlags::READABLE),
+                    ParamSpecEnum::new("status", "Status", "Status", SwLibraryStatus::static_type(), SwLibraryStatus::default() as i32, ParamFlags::READABLE),
                 ]
             });
 
