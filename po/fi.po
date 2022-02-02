@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2021-10-17 18:03+0000\n"
-"PO-Revision-Date: 2021-10-18 20:11+0300\n"
+"POT-Creation-Date: 2021-11-04 09:51+0000\n"
+"PO-Revision-Date: 2022-02-02 20:47+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/gtk/discover_page.ui:28
 msgid "Most voted stations"
@@ -136,7 +136,8 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Toisto päällä/pois"
 
-#: data/gtk/search_page.ui:31 src/ui/pages/search_page.rs:178
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:172
+#: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Äänet"
 
@@ -238,44 +239,68 @@ msgstr "Tallenna nauhoitettu kappale"
 msgid "Station details"
 msgstr "Aseman tiedot"
 
-#: data/gtk/station_dialog.ui:83
+#: data/gtk/station_dialog.ui:87
 msgid "_Play this station"
 msgstr "_Toista tämä asema"
 
-#: data/gtk/station_dialog.ui:96
+#: data/gtk/station_dialog.ui:100
 msgid "_Add to library"
 msgstr "_Lisää kirjastoon"
 
-#: data/gtk/station_dialog.ui:110
+#: data/gtk/station_dialog.ui:114
 msgid "_Remove from library"
 msgstr "_Poista kirjastosta"
 
-#: data/gtk/station_dialog.ui:124
+#: data/gtk/station_dialog.ui:128
 msgid "Information"
 msgstr "Tiedot"
 
-#: data/gtk/station_dialog.ui:127 src/ui/pages/search_page.rs:175
+#: data/gtk/station_dialog.ui:131
+msgid "This is a local private station."
+msgstr "Tämä on paikallinen, yksityinen asema."
+
+#: data/gtk/station_dialog.ui:132
+msgid ""
+"This station is visible only to you. If you remove this station from your "
+"library, you have to create it again."
+msgstr ""
+"Tämä asema on näkyvissä vain sinulle. Jos poistat tämän aseman "
+"kirjastosta, sinun tulee luoda se uudelleen."
+
+#: data/gtk/station_dialog.ui:138 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Kieli"
 
-#: data/gtk/station_dialog.ui:141
+#: data/gtk/station_dialog.ui:152
 msgid "Tags"
 msgstr "Tunnisteet"
 
-#: data/gtk/station_dialog.ui:155
-msgid "Codec"
-msgstr "Koodekki"
+#: data/gtk/station_dialog.ui:187
+msgid "Location"
+msgstr "Sijainti"
 
-#: data/gtk/station_dialog.ui:169 src/ui/pages/search_page.rs:179
+#: data/gtk/station_dialog.ui:192 src/ui/pages/search_page.rs:181
+msgid "Country"
+msgstr "Maa"
+
+#: data/gtk/station_dialog.ui:206 src/ui/pages/search_page.rs:182
+msgid "State"
+msgstr "Tila"
+
+#: data/gtk/station_dialog.ui:244
+msgid "Audio"
+msgstr "Ääni"
+
+#: data/gtk/station_dialog.ui:248 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Bittinopeus"
 
-#: data/gtk/station_dialog.ui:183
-msgid "Homepage"
-msgstr "Verkkosivusto"
+#: data/gtk/station_dialog.ui:262
+msgid "Codec"
+msgstr "Koodekki"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:201
+#: data/gtk/station_dialog.ui:276
 msgid "Stream"
 msgstr "Suoratoisto"
 
@@ -381,7 +406,7 @@ msgstr "Avaa verkkosivu"
 msgid "Powered by radio-browser.info"
 msgstr "Taustavoimana radio-browser.info"
 
-#: src/ui/pages/discover_page.rs:137 src/ui/pages/search_page.rs:264
+#: src/ui/pages/discover_page.rs:137 src/ui/pages/search_page.rs:269
 msgid "Station data could not be received."
 msgstr "Aseman tietoja ei voitu vastaanottaa."
 
@@ -390,36 +415,25 @@ msgstr "Aseman tietoja ei voitu vastaanottaa."
 msgid "Welcome to {}"
 msgstr "Tervetuloa, käytössäsi on {}"
 
-#: src/ui/pages/search_page.rs:105
+#: src/ui/pages/search_page.rs:106
 msgid ""
+"The number of results is limited to {} item. Try using a more specific "
+"search term."
+msgid_plural ""
 "The number of results is limited to {} items. Try using a more specific "
 "search term."
-msgstr ""
+msgstr[0] ""
+"Hakutulokset rajataan {} kohteeseen. Yritä määrittää tarkempi hakuehto."
+msgstr[1] ""
 "Hakutulokset rajataan {} kohteeseen. Yritä määrittää tarkempi hakuehto."
 
-#: src/ui/pages/search_page.rs:174
+#: src/ui/pages/search_page.rs:179
 msgid "Name"
 msgstr "Nimi"
 
-#: src/ui/pages/search_page.rs:176
-msgid "Country"
-msgstr "Maa"
-
-#: src/ui/pages/search_page.rs:177
-msgid "State"
-msgstr "Tila"
-
-#: src/utils.rs:28
-msgid "{} Vote"
-msgid_plural "{} Votes"
-msgstr[0] "{} ääni"
-msgstr[1] "{} ääntä"
-
-#: src/utils.rs:30
-msgid "{} · {} Vote"
-msgid_plural "{} · {} Votes"
-msgstr[0] "{} · {} ääni"
-msgstr[1] "{} · {} ääntä"
+#: src/ui/station_dialog.rs:276
+msgid "{} kbit/s"
+msgstr "{} kbit/s"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
@@ -477,8 +491,18 @@ msgstr "Saumaton integraatio Gnome-työpöytäympäristöön"
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;suoratoisto;nettiradio;"
 
-#~ msgid "Actions"
-#~ msgstr "Toiminnot"
+#~ msgid "Homepage"
+#~ msgstr "Verkkosivusto"
+
+#~ msgid "{} Vote"
+#~ msgid_plural "{} Votes"
+#~ msgstr[0] "{} ääni"
+#~ msgstr[1] "{} ääntä"
+
+#~ msgid "{} · {} Vote"
+#~ msgid_plural "{} · {} Votes"
+#~ msgstr[0] "{} · {} ääni"
+#~ msgstr[1] "{} · {} ääntä"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Search for stations"
