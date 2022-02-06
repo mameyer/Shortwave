@@ -5,21 +5,22 @@
 # Dingzhong Chen <wsxy162@gmail.com>, 2020.
 # Junping Sun <junping@nfschina.com>, 2021.
 # Liu Tao <lyuutau@outlook.com>, 2021.
+# lumingzh <lumingzh@qq.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2021-12-09 11:26+0000\n"
-"PO-Revision-Date: 2022-01-30 23:29-0500\n"
-"Last-Translator: Liu Tao <lyuutau@outlook.com>\n"
+"POT-Creation-Date: 2022-01-31 04:30+0000\n"
+"PO-Revision-Date: 2022-02-01 13:23+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.4.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 41.0\n"
 "X-DL-Team: zh_CN\n"
 "X-DL-Module: shortwave\n"
 "X-DL-Branch: master\n"
@@ -151,7 +152,7 @@ msgstr "票数"
 
 #: data/gtk/search_page.ui:36
 msgid "Change the sorting of the search results"
-msgstr ""
+msgstr "更改搜索结果的排序"
 
 #: data/gtk/search_page.ui:63
 msgid "No results"
@@ -175,7 +176,7 @@ msgstr "国家(_C)"
 
 #: data/gtk/search_page.ui:163 data/gtk/window.ui:124
 msgid "S_tate"
-msgstr ""
+msgstr "州省(_T)"
 
 #: data/gtk/search_page.ui:168 data/gtk/window.ui:129
 msgid "_Votes"
@@ -267,7 +268,7 @@ msgstr "这是本地私人电台。"
 msgid ""
 "This station is visible only to you. If you remove this station from your "
 "library, you have to create it again."
-msgstr ""
+msgstr "该电台仅对您可见。如果您从库中移除该电台，之后只能再次创建。"
 
 #: data/gtk/station_dialog.ui:143
 msgid "Information"
@@ -291,7 +292,7 @@ msgstr "国家"
 
 #: data/gtk/station_dialog.ui:214 src/ui/pages/search_page.rs:182
 msgid "State"
-msgstr ""
+msgstr "州省"
 
 #: data/gtk/station_dialog.ui:252
 msgid "Audio"
@@ -387,7 +388,8 @@ msgstr "收听互联网广播"
 msgid "translator-credits"
 msgstr ""
 "Damned <damnedlies@163.com>, 2020.\n"
-"Dingzhong Chen <wsxy162@gmail.com>, 2020."
+"Dingzhong Chen <wsxy162@gmail.com>, 2020.\n"
+"lumingzh <lumingzh@qq.com>, 2022."
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:91
@@ -430,7 +432,7 @@ msgid ""
 msgid_plural ""
 "The number of results is limited to {} items. Try using a more specific "
 "search term."
-msgstr[0] ""
+msgstr[0] "结果数量已限制为 {} 项。请尝试使用更明确的搜索词语。"
 
 #: src/ui/pages/search_page.rs:179
 msgid "Name"
@@ -438,7 +440,7 @@ msgstr "名称"
 
 #: src/ui/station_dialog.rs:278
 msgid "{} kbit/s"
-msgstr ""
+msgstr "{} kbit/s"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
