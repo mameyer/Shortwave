@@ -154,7 +154,7 @@ mod imp {
             marker_layer.add_marker(&self.marker);
             self.map.add_layer(&marker_layer);
 
-            let marker_img = gtk::Image::from_icon_name(Some("mark-location-symbolic"));
+            let marker_img = gtk::Image::from_icon_name("mark-location-symbolic");
             marker_img.add_css_class("map-pin");
             marker_img.set_icon_size(gtk::IconSize::Large);
             self.marker.set_child(Some(&marker_img));
@@ -292,7 +292,7 @@ impl SwStationDialog {
     fn setup_signals(&self) {
         let imp = imp::SwStationDialog::from_instance(self);
 
-        imp.scrolled_window.vadjustment().unwrap().connect_value_notify(clone!(@weak self as this => move |adj|{
+        imp.scrolled_window.vadjustment().connect_value_notify(clone!(@weak self as this => move |adj|{
             let imp = imp::SwStationDialog::from_instance(&this);
             if adj.value() < 210.0 {
                 imp.headerbar.add_css_class("hidden");

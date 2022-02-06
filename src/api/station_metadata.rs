@@ -20,8 +20,8 @@ use serde::{Deserialize, Deserializer, Serializer};
 use std::str::FromStr;
 use url::Url;
 
-#[derive(glib::GBoxed, Default, Debug, Clone, Serialize, Deserialize)]
-#[gboxed(type_name = "SwStationMetadata")]
+#[derive(glib::Boxed, Default, Debug, Clone, Serialize, Deserialize)]
+#[boxed_type(name = "SwStationMetadata")]
 pub struct StationMetadata {
     pub changeuuid: String,
     pub stationuuid: String,

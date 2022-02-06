@@ -17,7 +17,7 @@
 use adw::subclass::prelude::*;
 use glib::clone;
 use glib::Sender;
-use glib::{ParamSpec, ToValue};
+use glib::{ParamFlags, ParamSpec, ParamSpecObject, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -71,7 +71,7 @@ mod imp {
 
     impl ObjectImpl for SwStationFlowBox {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| vec![ParamSpec::new_object("model", "Model", "Model", gtk::SortListModel::static_type(), glib::ParamFlags::READABLE)]);
+            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| vec![ParamSpecObject::new("model", "Model", "Model", gtk::SortListModel::static_type(), ParamFlags::READABLE)]);
 
             PROPERTIES.as_ref()
         }

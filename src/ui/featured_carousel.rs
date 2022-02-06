@@ -147,9 +147,9 @@ impl SwFeaturedCarousel {
             let position = imp.carousel.position().round() as usize;
 
             if position > 0 {
-                imp.carousel.scroll_to(&imp.pages.borrow()[position - 1].page);
+                imp.carousel.scroll_to(&imp.pages.borrow()[position - 1].page, true);
             }else{
-                imp.carousel.scroll_to(&imp.pages.borrow()[0].page);
+                imp.carousel.scroll_to(&imp.pages.borrow()[0].page, true);
             }
         }));
 
@@ -158,9 +158,9 @@ impl SwFeaturedCarousel {
             let position = imp.carousel.position().round() as usize;
 
             if position < imp.pages.borrow().len() - 1 {
-                imp.carousel.scroll_to(&imp.pages.borrow()[position + 1].page);
+                imp.carousel.scroll_to(&imp.pages.borrow()[position + 1].page, true);
             }else{
-                imp.carousel.scroll_to(&imp.pages.borrow()[(imp.pages.borrow().len() - 1)].page);
+                imp.carousel.scroll_to(&imp.pages.borrow()[(imp.pages.borrow().len() - 1)].page, true);
             }
         }));
 
@@ -206,12 +206,12 @@ impl SwFeaturedCarousel {
         let color2 = imp.pages.borrow()[upper].color;
         let progress = (position - lower as f64) as f32;
 
-        let color = gdk::RGBA {
-            red: color1.red * (1.0 - progress) + color2.red * progress,
-            green: color1.green * (1.0 - progress) + color2.green * progress,
-            blue: color1.blue * (1.0 - progress) + color2.blue * progress,
-            alpha: 1.0,
-        };
+        let color = gdk::RGBA::new(
+            color1.red() * (1.0 - progress) + color2.red() * progress,
+            color1.green() * (1.0 - progress) + color2.green() * progress,
+            color1.blue() * (1.0 - progress) + color2.blue() * progress,
+            1.0,
+        );
 
         self.set_color(&color);
     }
@@ -230,7 +230,7 @@ impl SwFeaturedCarousel {
         );
 
         // Copied from gtk/gtkcolorswatch.c, INTENSITY() macro
-        let intensity = color.red * 0.30 + color.green * 0.59 + color.blue * 0.11;
+        let intensity = color.red() * 0.30 + color.green() * 0.59 + color.blue() * 0.11;
         if intensity > 0.5 {
             imp.overlay.add_css_class("dark-foreground");
         } else {

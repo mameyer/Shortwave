@@ -49,11 +49,11 @@ impl FaviconDownloader {
         HTTP_CLIENT.get_async(url.as_str()).await?.into_body().read_to_end(&mut bytes).await?;
 
         let input_stream = gio::MemoryInputStream::from_bytes(&glib::Bytes::from(&bytes));
-        let pixbuf = Pixbuf::from_stream_at_scale_async_future(&input_stream, size, size, true).await?;
+        let pixbuf = Pixbuf::from_stream_at_scale_future(&input_stream, size, size, true).await?;
 
         // Write downloaded bytes into file
         let file = Self::file(&url)?;
-        file.replace_contents_async_future(bytes, None, false, gio::FileCreateFlags::NONE)
+        file.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
             .await
             .expect("Could not write favicon data");
 
@@ -63,10 +63,10 @@ impl FaviconDownloader {
     async fn cached_pixbuf(url: &Url, size: i32) -> Result<Pixbuf, Error> {
         let file = Self::file(&url)?;
         if Self::exists(&file) {
-            let ios = file.open_readwrite_async_future(glib::PRIORITY_DEFAULT).await.expect("Could not open file");
+            let ios = file.open_readwrite_future(glib::PRIORITY_DEFAULT).await.expect("Could not open file");
             let data_input_stream = DataInputStream::new(&ios.input_stream());
 
-            Ok(Pixbuf::from_stream_at_scale_async_future(&data_input_stream, size, size, true).await?)
+            Ok(Pixbuf::from_stream_at_scale_future(&data_input_stream, size, size, true).await?)
         } else {
             Err(Error::CacheError)
         }

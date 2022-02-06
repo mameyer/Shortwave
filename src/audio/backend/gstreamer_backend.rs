@@ -141,7 +141,7 @@ impl GstreamerBackend {
             self.volume_signal_id = Some(pulsesink.connect_notify(
                 Some("volume"),
                 clone!(@weak self.volume as old_volume, @strong volume_sender => move |element, _| {
-                    let pa_volume: f64 = element.property("volume").unwrap().get().unwrap();
+                    let pa_volume: f64 = element.property("volume");
                     let new_volume = StreamVolume::convert_volume(StreamVolumeFormat::Linear, StreamVolumeFormat::Cubic, pa_volume);
 
                     // We have to check if the values are the same. For some reason gstreamer sends us
@@ -163,7 +163,7 @@ impl GstreamerBackend {
             pulsesink.connect_notify(
                 Some("mute"),
                 clone!(@weak self.volume as old_volume, @strong volume_sender => move |element, _| {
-                    let mute: bool = element.property("mute").unwrap().get().unwrap();
+                    let mute: bool = element.property("mute");
                     let mut old_volume_locked = old_volume.lock().unwrap();
                     if mute && *old_volume_locked != 0.0 {
                         send!(volume_sender, 0.0);
@@ -246,11 +246,11 @@ impl GstreamerBackend {
             glib::signal::signal_handler_block(&pulsesink, &self.volume_signal_id.as_ref().unwrap());
 
             if volume != 0.0 {
-                pulsesink.set_property("mute", &false).unwrap();
+                pulsesink.set_property("mute", &false);
             }
 
             let pa_volume = StreamVolume::convert_volume(StreamVolumeFormat::Cubic, StreamVolumeFormat::Linear, volume);
-            pulsesink.set_property("volume", &pa_volume).unwrap();
+            pulsesink.set_property("volume", &pa_volume);
 
             *self.volume.lock().unwrap() = volume;
 
@@ -267,7 +267,7 @@ impl GstreamerBackend {
 
         debug!("Set new source URI...");
         let uridecodebin = self.pipeline.by_name("uridecodebin").unwrap();
-        uridecodebin.set_property("uri", &source).unwrap();
+        uridecodebin.set_property("uri", &source);
 
         debug!("Start pipeline...");
         let mut buffering_state = self.buffering_state.lock().unwrap();
@@ -299,7 +299,7 @@ impl GstreamerBackend {
         // Create actual recorderbin
         let description = "queue name=queue ! vorbisenc ! oggmux  ! filesink name=filesink async=false";
         let recorderbin = gstreamer::parse_bin_from_description(description, true).expect("Unable to create recorderbin");
-        recorderbin.set_property("message-forward", &true).unwrap();
+        recorderbin.set_property("message-forward", &true);
 
         // We need to set an offset, otherwise the length of the recorded song would be wrong.
         // Get current clock time and calculate offset
@@ -309,7 +309,7 @@ impl GstreamerBackend {
 
         // Set recording path
         let filesink = recorderbin.by_name("filesink").unwrap();
-        filesink.set_property("location", &(path.to_str().unwrap())).unwrap();
+        filesink.set_property("location", &(path.to_str().unwrap()));
 
         // First try setting the recording bin to playing: if this fails we know this before it
         // potentially interferred with the other part of the pipeline

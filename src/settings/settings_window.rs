@@ -44,7 +44,7 @@ impl SettingsWindow {
     }
 
     fn setup_widgets(&self) {
-        let manager = adw::StyleManager::default().unwrap();
+        let manager = adw::StyleManager::default();
         get_widget!(self.builder, gtk::Widget, appearance_group);
         appearance_group.set_visible(!manager.system_supports_color_schemes())
     }
