@@ -2,14 +2,14 @@
 # Copyright (C) 2020 shortwave's COPYRIGHT HOLDER
 # This file is distributed under the same license as the shortwave package.
 #
-# Matej Urbančič <mateju@svn.gnome.org>, 2020–2021.
+# Matej Urbančič <mateju@svn.gnome.org>, 2020–2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2021-10-31 11:43+0000\n"
-"PO-Revision-Date: 2021-11-02 20:54+0100\n"
+"POT-Creation-Date: 2022-02-06 20:00+0000\n"
+"PO-Revision-Date: 2022-02-07 18:52+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -139,8 +139,8 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Preklopi predvajanje"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:172
-#: src/ui/pages/search_page.rs:178
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:180
+#: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Glasovi"
 
@@ -156,35 +156,35 @@ msgstr "Ni najdenih zadetkov"
 msgid "Try using a different search term"
 msgstr "Poskusite z drugačnim iskalnim nizom"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:106
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:109
 msgid "_Name"
 msgstr "_Ime"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:111
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:114
 msgid "_Language"
 msgstr "_Jezik"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:116
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:119
 msgid "_Country"
 msgstr "_Država"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:121
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:124
 msgid "S_tate"
 msgstr "_Stanje"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:126
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:129
 msgid "_Votes"
 msgstr "_Glasovi"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:131
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:134
 msgid "_Bitrate"
 msgstr "_Bitna hitrost"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:138
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:141
 msgid "_Ascending"
 msgstr "_Naraščajoče"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:143
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:146
 msgid "_Descending"
 msgstr "_Padajoče"
 
@@ -254,10 +254,6 @@ msgstr "_Dodaj v zbirko"
 msgid "_Remove from library"
 msgstr "_Odstrani iz zbirke"
 
-#: data/gtk/station_dialog.ui:128
-msgid "Information"
-msgstr "Podrobnosti"
-
 #: data/gtk/station_dialog.ui:131
 msgid "This is a local private station."
 msgstr "TO je zasebna krajevna postaja."
@@ -270,92 +266,96 @@ msgstr ""
 "Ta postaja je vidna le vam in če jo odstranite iz zbirke, jo bo treba "
 "ponovno ustvariti."
 
-#: data/gtk/station_dialog.ui:138 src/ui/pages/search_page.rs:175
+#: data/gtk/station_dialog.ui:143
+msgid "Information"
+msgstr "Podrobnosti"
+
+#: data/gtk/station_dialog.ui:146 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Jezik"
 
-#: data/gtk/station_dialog.ui:152
+#: data/gtk/station_dialog.ui:160
 msgid "Tags"
 msgstr "Oznake"
 
-#: data/gtk/station_dialog.ui:187
+#: data/gtk/station_dialog.ui:195
 msgid "Location"
 msgstr "Mesto"
 
-#: data/gtk/station_dialog.ui:192 src/ui/pages/search_page.rs:176
+#: data/gtk/station_dialog.ui:200 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "Država"
 
-#: data/gtk/station_dialog.ui:206 src/ui/pages/search_page.rs:177
+#: data/gtk/station_dialog.ui:214 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "Okraj"
 
-#: data/gtk/station_dialog.ui:244
+#: data/gtk/station_dialog.ui:252
 msgid "Audio"
 msgstr "Zvok"
 
-#: data/gtk/station_dialog.ui:248 src/ui/pages/search_page.rs:179
+#: data/gtk/station_dialog.ui:256 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Bitna hitrost"
 
-#: data/gtk/station_dialog.ui:262
+#: data/gtk/station_dialog.ui:270
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:276
+#: data/gtk/station_dialog.ui:284
 msgid "Stream"
 msgstr "Pretakanje"
 
-#: data/gtk/streaming_dialog.ui:47
+#: data/gtk/streaming_dialog.ui:43
 msgid "Stream to a device"
 msgstr "Pošlji pretok na napravo"
 
-#: data/gtk/streaming_dialog.ui:52
+#: data/gtk/streaming_dialog.ui:48
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: data/gtk/streaming_dialog.ui:58
+#: data/gtk/streaming_dialog.ui:54
 msgid "_Connect"
 msgstr "_Vzpostavi povezavo"
 
-#: data/gtk/streaming_dialog.ui:90
+#: data/gtk/streaming_dialog.ui:86
 msgid "Devices which implement the Google Cast protocol are supported."
 msgstr "Podprte so naprave, ki podpirajo protokol Goggle Cast."
 
-#: data/gtk/streaming_dialog.ui:122
+#: data/gtk/streaming_dialog.ui:118
 msgid "No devices found"
 msgstr "Ni najdenih naprav"
 
-#: data/gtk/streaming_dialog.ui:132
+#: data/gtk/streaming_dialog.ui:128
 msgid "_Retry search"
 msgstr "_Ponovi iskanje"
 
-#: data/gtk/streaming_dialog.ui:180 data/gtk/streaming_dialog.ui:211
+#: data/gtk/streaming_dialog.ui:176 data/gtk/streaming_dialog.ui:207
 msgid "Searching for devices…"
 msgstr "Poteka iskanje naprav …"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:106
 msgid "_Sorting"
 msgstr "_Razvrščanje"
 
-#: data/gtk/window.ui:152 data/gtk/window.ui:180
+#: data/gtk/window.ui:155 data/gtk/window.ui:183
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "_Odpri spletišče radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:157 data/gtk/window.ui:185
+#: data/gtk/window.ui:160 data/gtk/window.ui:188
 msgid "_Create new station <sup>↗</sup>"
 msgstr "_Ustvari novo postajo <sup>↗</sup>"
 
-#: data/gtk/window.ui:164 data/gtk/window.ui:192
+#: data/gtk/window.ui:167 data/gtk/window.ui:195
 msgid "_Preferences"
 msgstr "_Možnosti"
 
-#: data/gtk/window.ui:168 data/gtk/window.ui:196
+#: data/gtk/window.ui:171 data/gtk/window.ui:199
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
-#: data/gtk/window.ui:172 data/gtk/window.ui:200
+#: data/gtk/window.ui:175 data/gtk/window.ui:203
 msgid "_About Shortwave"
 msgstr "_O programu"
 
@@ -371,7 +371,7 @@ msgstr "Postaje ni mogoče pretakati."
 msgid "URL is not valid."
 msgstr "Podan naslov URL ni veljaven."
 
-#: src/database/library.rs:271
+#: src/database/library.rs:264
 msgid "An invalid station was removed from the library."
 msgstr "Neveljavna postaja je odstranjena iz zbirke."
 
@@ -409,7 +409,7 @@ msgstr "Odpri spletišče"
 msgid "Powered by radio-browser.info"
 msgstr "Storitev omogoča radio-browser.info"
 
-#: src/ui/pages/discover_page.rs:137 src/ui/pages/search_page.rs:264
+#: src/ui/pages/discover_page.rs:137 src/ui/pages/search_page.rs:269
 msgid "Station data could not be received."
 msgstr "Podatkov postaje ni mogoče prejeti."
 
@@ -418,19 +418,31 @@ msgstr "Podatkov postaje ni mogoče prejeti."
 msgid "Welcome to {}"
 msgstr "Dobrodošli v {}"
 
-#: src/ui/pages/search_page.rs:105
+#: src/ui/pages/search_page.rs:106
 msgid ""
+"The number of results is limited to {} item. Try using a more specific "
+"search term."
+msgid_plural ""
 "The number of results is limited to {} items. Try using a more specific "
 "search term."
-msgstr ""
-"Število zadetkov iskanja je omejeno na {}. Poskusite uporabiti bolj odpirni "
-"iskalni niz."
+msgstr[0] ""
+"Iskanje je omejeno na {} zadetkov. Poskusite uporabiti bolj natančen iskalni "
+"niz."
+msgstr[1] ""
+"Iskanje je omejeno na {} zadetek. Poskusite uporabiti bolj natančen iskalni "
+"niz."
+msgstr[2] ""
+"Iskanje je omejeno na {} zadetka. Poskusite uporabiti bolj natančen iskalni "
+"niz."
+msgstr[3] ""
+"Iskanje je omejeno na {} zadetke. Poskusite uporabiti bolj natančen iskalni "
+"niz."
 
-#: src/ui/pages/search_page.rs:174
+#: src/ui/pages/search_page.rs:179
 msgid "Name"
 msgstr "Naziv"
 
-#: src/ui/station_dialog.rs:276
+#: src/ui/station_dialog.rs:278
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
