@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
 "POT-Creation-Date: 2022-02-07 18:19+0000\n"
-"PO-Revision-Date: 2022-02-08 00:13+0200\n"
+"PO-Revision-Date: 2022-02-09 22:21+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -41,7 +41,7 @@ msgstr "_גילוי תחנות חדשות"
 
 #: data/gtk/mini_controller.ui:87
 msgid "SHORTWAVE INTERNET RADIO"
-msgstr ""
+msgstr "אינטרנט רדיו SHORTWAVE"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
@@ -338,11 +338,11 @@ msgstr "_מיון"
 
 #: data/gtk/window.ui:155 data/gtk/window.ui:183
 msgid "_Open radio-browser.info <sup>↗</sup>"
-msgstr ""
+msgstr "_פתיחת radio-browser.info ‏<sup>↖</sup>"
 
 #: data/gtk/window.ui:160 data/gtk/window.ui:188
 msgid "_Create new station <sup>↗</sup>"
-msgstr ""
+msgstr "_יצירת תחנה חדשה ‏<sup>↖</sup>"
 
 #: data/gtk/window.ui:167 data/gtk/window.ui:195
 msgid "_Preferences"
@@ -370,7 +370,7 @@ msgstr "כתובת URL אינו תקף."
 
 #: src/database/library.rs:264
 msgid "An invalid station was removed from the library."
-msgstr ""
+msgstr "תחנה שאינה ברת תוקף הוסרה מהספרייה."
 
 #: src/ui/about_dialog.rs:32
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
@@ -425,8 +425,10 @@ msgid ""
 msgid_plural ""
 "The number of results is limited to {} items. Try using a more specific "
 "search term."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "מספר התוצאות מוגבל לפרטי יחיד. יש לנסות מינוח מסוים יותר."
+msgstr[1] "מספר התוצאות מוגבל ל־{} פריטים. יש לנסות מינוח מסוים יותר."
+msgstr[2] "מספר התוצאות מוגבל לשני פריטים. יש לנסות מינוח מסוים יותר."
+msgstr[3] "מספר התוצאות מוגבל ל־{} פריטים. יש לנסות מינוח מסוים יותר."
 
 #: src/ui/pages/search_page.rs:179
 msgid "Name"
@@ -450,6 +452,8 @@ msgid ""
 "Shortwave is an internet radio player that provides access to a station "
 "database with over 25,000 stations."
 msgstr ""
+"‏Shortwave הוא נגן רדיו אינטרנט המספק גישה למסד נתונים עם למעלה מ־25,000 "
+"תחנות."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
@@ -457,31 +461,31 @@ msgstr "תכונות:"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:21
 msgid "Create your own library where you can add your favorite stations"
-msgstr ""
+msgstr "יצירת ספרייה אישית בה ניתן להוסיף את התחנות המועדפות עליך."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:22
 msgid "Easily search and discover new radio stations"
-msgstr ""
+msgstr "חיפוש קל לגילוי תחנות רדיו חדשות"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:23
 msgid ""
 "Automatic recognition of songs, with the possibility to save them "
 "individually"
-msgstr ""
+msgstr "זיהוי אוטומטי של שירים, עם אפשרות לשמור אותם בנפרד"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:24
 msgid "Responsive application layout, compatible for small and large screens"
-msgstr ""
+msgstr "פריסת היישום משתנה ומגיבה, מתאימה למסכים קטנים וגדולים כאחד"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:25
 msgid "Play audio on supported network devices (e.g. Google Chromecasts)"
-msgstr ""
+msgstr "ניגון שמע בהתקני רשת נתמכים (למשל Google Chromecasts)"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:26
 msgid "Seamless integration into the GNOME desktop environment"
-msgstr ""
+msgstr "שילוב חלק בסביבת שולחן העבודה GNOME"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
-msgstr ""
+msgstr "רדיו;תחנות;תחנה;מוזיקה;הזרמה;גל;תדר;חדשות;"
