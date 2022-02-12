@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use async_std_resolver::resolver_from_system_conf;
+use async_std_resolver::{config as rconfig, resolver, resolver_from_system_conf};
 use isahc::config::RedirectPolicy;
 use isahc::prelude::*;
 use once_cell::sync::Lazy;
@@ -107,7 +107,14 @@ impl Client {
     }
 
     async fn api_server(lookup_domain: String) -> Option<Url> {
-        let resolver = resolver_from_system_conf().await.unwrap();
+        let resolver = if let Ok(resolver) = resolver_from_system_conf().await {
+            resolver
+        } else {
+            warn!("Unable to use dns resolver from system conf");
+            let config = rconfig::ResolverConfig::default();
+            let opts = rconfig::ResolverOpts::default();
+            resolver(config, opts).await.expect("failed to connect resolver")
+        };
 
         // Do forward lookup to receive a list with the api servers
         let response = resolver.lookup_ip(lookup_domain).await.ok()?;
