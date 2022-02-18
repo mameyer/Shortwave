@@ -17,8 +17,8 @@ configure_file(
 
 run_command(
   'cp',
-  join_paths(meson.build_root(), 'src', 'config.rs'),
-  join_paths(meson.source_root(), 'src', 'config.rs'),
+  join_paths(meson.project_build_root(), 'src', 'config.rs'),
+  join_paths(meson.project_source_root(), 'src', 'config.rs'),
   check: true
 )
 
@@ -94,7 +94,7 @@ if host_machine.system() == 'windows'
   outputname = '@0@.exe'.format(outputname)
 endif
 
-cargo_script = find_program(join_paths(meson.source_root(), 'build-aux/cargo.sh'))
+cargo_script = find_program(join_paths(meson.project_source_root(), 'build-aux/cargo.sh'))
 cargo_release = custom_target(
   'cargo-build',
   build_by_default: true,
@@ -105,8 +105,8 @@ cargo_release = custom_target(
   install_dir: get_option('bindir'),
   command: [
     cargo_script,
-    meson.build_root(),
-    meson.source_root(),
+    meson.project_build_root(),
+    meson.project_source_root(),
     '@OUTPUT@',
     localedir,
     profile
