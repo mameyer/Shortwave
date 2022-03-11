@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
 "POT-Creation-Date: 2021-11-04 09:51+0000\n"
-"PO-Revision-Date: 2022-03-11 21:44+0100\n"
+"PO-Revision-Date: 2022-03-11 21:47+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -446,7 +446,7 @@ msgstr[2] ""
 
 #: src/ui/pages/search_page.rs:179
 msgid "Name"
-msgstr "Naziv "
+msgstr "Naziv"
 
 #: src/ui/station_dialog.rs:276
 msgid "{} kbit/s"
