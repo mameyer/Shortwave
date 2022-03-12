@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
 "POT-Creation-Date: 2021-11-04 09:51+0000\n"
-"PO-Revision-Date: 2022-03-11 21:47+0100\n"
+"PO-Revision-Date: 2022-03-12 13:20+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -320,7 +320,7 @@ msgstr "_Poveži"
 
 #: data/gtk/streaming_dialog.ui:90
 msgid "Devices which implement the Google Cast protocol are supported."
-msgstr "Uređaji sa implementiranim Google Cast protokolom su podržani."
+msgstr "Uređaji s implementiranim Google Cast protokolom su podržani."
 
 #: data/gtk/streaming_dialog.ui:122
 msgid "No devices found"
