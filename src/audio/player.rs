@@ -163,13 +163,6 @@ impl Player {
         *self.current_station.borrow_mut() = Some(station.clone());
         self.set_playback(PlaybackState::Stopped);
 
-        // SwStation is broken, we refuse to play it
-        if station.metadata().lastcheckok != 1 {
-            let notification = Notification::new_info(&i18n("This station cannot be played because the stream is offline."));
-            send!(self.sender, Action::ViewShowNotification(notification));
-            return;
-        }
-
         for con in &*self.controller {
             con.set_station(station.clone());
         }
@@ -177,15 +170,23 @@ impl Player {
         // Reset song title
         self.song_title.borrow_mut().reset();
 
-        match station.metadata().url_resolved {
-            Some(url) => {
-                debug!("Start playing new URI: {}", url.to_string());
-                self.backend.lock().unwrap().gstreamer.new_source_uri(&url.to_string());
-            }
-            None => {
-                let notification = Notification::new_error(&i18n("Station cannot be streamed."), &i18n("URL is not valid."));
-                send!(self.sender, Action::ViewShowNotification(notification));
-            }
+        let metadata = station.metadata();
+
+        // We try playing from `url_resolved` first, which is the pre-resolved
+        // URL from the API. However, for local stations, we don't do that, so
+        // `url_resolved` will be `None`. In that case we just use `url`, which
+        // can also be a potential fallback in case the API misses the resolved
+        // URL for some reason.
+
+        if let Some(url) = metadata.url_resolved {
+            debug!("Start playing new URI: {}", url.to_string());
+            self.backend.lock().unwrap().gstreamer.new_source_uri(&url.to_string());
+        } else if let Some(url) = metadata.url {
+            debug!("Start playing new URI: {}", url.to_string());
+            self.backend.lock().unwrap().gstreamer.new_source_uri(&url.to_string());
+        } else {
+            let notification = Notification::new_error(&i18n("Station cannot be streamed."), &i18n("URL is not valid."));
+            send!(self.sender, Action::ViewShowNotification(notification));
         }
     }
 

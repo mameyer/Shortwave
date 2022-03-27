@@ -71,6 +71,7 @@ sources = files(
   'ui/pages/mod.rs',
   'ui/pages/search_page.rs',
   'ui/about_dialog.rs',
+  'ui/create_station_dialog.rs',
   'ui/featured_carousel.rs',
   'ui/mod.rs',
   'ui/notification.rs',

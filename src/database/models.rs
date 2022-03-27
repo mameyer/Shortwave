@@ -30,6 +30,9 @@ pub struct StationEntry {
 
     /// Serialized station metadata. For local stations, this is mandatory.
     pub data: Option<String>,
+
+    /// Binary blob containing an optional local station favicon.
+    pub favicon: Option<Vec<u8>>,
 }
 
 impl StationEntry {
@@ -37,10 +40,21 @@ impl StationEntry {
     pub fn for_station(station: &SwStation) -> Self {
         let metadata = station.metadata();
 
+        let favicon = if let Some(pixbuf) = station.favicon() {
+            if let Ok(data) = pixbuf.save_to_bufferv("png", &vec![]) {
+                Some(data)
+            } else {
+                None
+            }
+        } else {
+            None
+        };
+
         Self {
             uuid: station.uuid(),
             is_local: station.is_local(),
             data: Some(serde_json::to_string(&metadata).unwrap()),
+            favicon,
         }
     }
 }

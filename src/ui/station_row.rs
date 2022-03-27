@@ -121,10 +121,13 @@ impl SwStationRow {
         // Download & set station favicon
         let station_favicon = StationFavicon::new(FaviconSize::Small);
         imp.favicon_box.append(&station_favicon.widget);
-        if let Some(favicon) = station.metadata().favicon.as_ref() {
+
+        if let Some(pixbuf) = station.favicon() {
+            station_favicon.set_pixbuf(&pixbuf);
+        } else if let Some(favicon) = station.metadata().favicon.as_ref() {
             let fut = FaviconDownloader::download(favicon.clone(), FaviconSize::Small as i32).map(move |pixbuf| {
                 if let Ok(pixbuf) = pixbuf {
-                    station_favicon.set_pixbuf(pixbuf)
+                    station_favicon.set_pixbuf(&pixbuf)
                 }
             });
             spawn!(fut);

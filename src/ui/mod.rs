@@ -17,6 +17,7 @@
 pub mod pages;
 
 pub mod about_dialog;
+mod create_station_dialog;
 pub mod featured_carousel;
 mod notification;
 mod song_listbox;
@@ -28,6 +29,7 @@ mod station_row;
 mod streaming_dialog;
 mod window;
 
+pub use create_station_dialog::SwCreateStationDialog;
 pub use featured_carousel::SwFeaturedCarousel;
 pub use notification::Notification;
 pub use song_listbox::SongListBox;

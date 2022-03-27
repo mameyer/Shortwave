@@ -19,6 +19,7 @@ table! {
         uuid -> Text,
         is_local -> Bool,
         data -> Nullable<Text>,
+        favicon -> Nullable<Binary>,
     }
 }
 
