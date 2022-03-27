@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use glib::{ObjectExt, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecString, ParamSpecObject, ToValue};
+use glib::{ObjectExt, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString, ToValue};
 use gtk::gdk_pixbuf;
 use gtk::glib;
 use gtk::prelude::*;
