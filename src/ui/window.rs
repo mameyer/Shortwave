@@ -14,15 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
 use glib::Sender;
 use glib::{Enum, ParamFlags, ParamSpec, ParamSpecEnum, ToValue};
-use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 use gtk::{gio, glib};
 use once_cell::sync::Lazy;
+use once_cell::unsync::OnceCell;
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -93,6 +94,8 @@ mod imp {
         #[template_child]
         pub library_menu: TemplateChild<gio::MenuModel>,
 
+        pub window_animation_x: OnceCell<adw::TimedAnimation>,
+        pub window_animation_y: OnceCell<adw::TimedAnimation>,
         pub current_notification: RefCell<Option<Rc<Notification>>>,
         pub view: RefCell<SwView>,
     }
@@ -192,6 +195,21 @@ impl SwApplicationWindow {
         imp.mini_controller_box.append(&player.mini_controller_widget);
         imp.toolbar_controller_box.append(&player.toolbar_controller_widget);
         imp.window_flap.set_flap(Some(&player.widget));
+
+        // Animations for smooth mini player transitions
+        let x_callback = adw::CallbackAnimationTarget::new(Some(Box::new(clone!(@weak self as this => move |val|{
+            this.set_default_width(val as i32);
+        }))));
+        let x_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &x_callback);
+        x_animation.set_easing(adw::Easing::EaseOutCubic);
+        imp.window_animation_x.set(x_animation).unwrap();
+
+        let y_callback = adw::CallbackAnimationTarget::new(Some(Box::new(clone!(@weak self as this => move |val|{
+            this.set_default_height(val as i32);
+        }))));
+        let y_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &y_callback);
+        y_animation.set_easing(adw::Easing::EaseOutCubic);
+        imp.window_animation_y.set(y_animation).unwrap();
 
         // Add devel style class for development or beta builds
         if config::PROFILE == "development" || config::PROFILE == "beta" {
@@ -380,30 +398,25 @@ impl SwApplicationWindow {
 
     pub fn enable_mini_player(&self, enable: bool) {
         debug!("Enable mini player: {:?}", enable);
+        let x_animation = self.imp().window_animation_x.get().unwrap();
+        let y_animation = self.imp().window_animation_y.get().unwrap();
 
-        // GTK sometimes refuses to set the proper size, so we have to apply a workaround here...
-        // For some reasons it works reliable this way.
-        let duration = std::time::Duration::from_millis(100);
-        self.set_default_size(0, 0);
+        x_animation.reset();
+        x_animation.set_value_from(self.width() as f64);
+
+        y_animation.reset();
+        y_animation.set_value_from(self.height() as f64);
 
         if enable {
-            glib::timeout_add_local(
-                duration,
-                clone!(@weak self as this => @default-return glib::Continue(false), move||{
-                    this.unmaximize();
-                    this.set_default_size(450, 105);
-                    glib::Continue(false)
-                }),
-            );
+            x_animation.set_value_to(450.0);
+            y_animation.set_value_to(105.0);
         } else {
-            glib::timeout_add_local(
-                duration,
-                clone!(@weak self as this => @default-return glib::Continue(false), move||{
-                    this.set_default_size(950, 650);
-                    glib::Continue(false)
-                }),
-            );
+            x_animation.set_value_to(950.0);
+            y_animation.set_value_to(650.0);
         }
+
+        x_animation.play();
+        y_animation.play();
     }
 
     pub fn go_back(&self) {
