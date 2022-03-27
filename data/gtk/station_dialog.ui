@@ -131,8 +131,8 @@
                         <property name="visible">False</property>
                         <child>
                           <object class="AdwActionRow">
-                            <property name="title" translatable="yes">This is a local private station.</property>
-                            <property name="subtitle" translatable="yes">This station is visible only to you. If you remove this station from your library, you have to create it again.</property>
+                            <property name="title" translatable="yes">Local station</property>
+                            <property name="subtitle" translatable="yes">This station exists only in your library, and is not part of the public online station database.</property>
                             <property name="icon_name">dialog-information-symbolic</property>
                           </object>
                         </child>
