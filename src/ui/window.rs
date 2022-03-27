@@ -398,6 +398,11 @@ impl SwApplicationWindow {
 
     pub fn enable_mini_player(&self, enable: bool) {
         debug!("Enable mini player: {:?}", enable);
+
+        if self.is_maximized() {
+            self.unmaximize();
+        }
+
         let x_animation = self.imp().window_animation_x.get().unwrap();
         let y_animation = self.imp().window_animation_y.get().unwrap();
 
