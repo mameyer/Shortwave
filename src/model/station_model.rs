@@ -17,6 +17,9 @@
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
+use indexmap::map::IndexMap;
+
+use std::convert::TryInto;
 
 use crate::api::SwStation;
 
@@ -26,7 +29,7 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct SwStationModel {
-        pub vec: RefCell<Vec<SwStation>>,
+        pub map: RefCell<IndexMap<String, SwStation>>,
     }
 
     #[glib::object_subclass]
@@ -43,11 +46,13 @@ mod imp {
         fn item_type(&self, _list_model: &Self::Type) -> glib::Type {
             SwStation::static_type()
         }
+
         fn n_items(&self, _list_model: &Self::Type) -> u32 {
-            self.vec.borrow().len() as u32
+            self.map.borrow().len() as u32
         }
+
         fn item(&self, _list_model: &Self::Type, position: u32) -> Option<glib::Object> {
-            self.vec.borrow().get(position as usize).map(|o| o.clone().upcast::<glib::Object>())
+            self.map.borrow().get_index(position.try_into().unwrap()).map(|(_, o)| o.clone().upcast::<glib::Object>())
         }
     }
 }
@@ -63,50 +68,36 @@ impl SwStationModel {
     }
 
     pub fn add_station(&self, station: &SwStation) {
-        let imp = imp::SwStationModel::from_instance(self);
-
-        if self.find(station).is_some() {
-            warn!("Station {:?} already exists in model", station.metadata().name);
-            return;
-        }
-
-        // Own scope to avoid "already mutably borrowed: BorrowError"
         let pos = {
-            let mut data = imp.vec.borrow_mut();
-            data.push(station.clone());
-            (data.len() - 1) as u32
+            let mut map = self.imp().map.borrow_mut();
+            if map.contains_key(&station.uuid()) {
+                warn!("Station {:?} already exists in model", station.metadata().name);
+                return;
+            }
+
+            map.insert(station.uuid(), station.clone());
+            (map.len() - 1) as u32
         };
 
         self.items_changed(pos, 0, 1);
     }
 
     pub fn remove_station(&self, station: &SwStation) {
-        let imp = imp::SwStationModel::from_instance(self);
+        let mut map = self.imp().map.borrow_mut();
 
-        match self.find(station) {
+        match map.get_index_of(&station.uuid()) {
             Some(pos) => {
-                imp.vec.borrow_mut().remove(pos as usize);
-                self.items_changed(pos, 1, 0);
+                map.remove(&station.uuid());
+                self.items_changed(pos.try_into().unwrap(), 1, 0);
             }
             None => warn!("Station {:?} not found in model", station.metadata().name),
         }
     }
 
-    pub fn find(&self, station: &SwStation) -> Option<u32> {
-        for pos in 0..self.n_items() {
-            let obj = self.item(pos)?;
-            let s = obj.downcast::<SwStation>().unwrap();
-            if station.uuid() == s.uuid() {
-                return Some(pos);
-            }
-        }
-        None
-    }
-
     pub fn clear(&self) {
         let imp = imp::SwStationModel::from_instance(self);
         let len = self.n_items();
-        imp.vec.borrow_mut().clear();
+        imp.map.borrow_mut().clear();
         self.items_changed(0, len, 0);
     }
 }
