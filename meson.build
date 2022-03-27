@@ -1,6 +1,6 @@
 project('shortwave', 'rust',
           version: '2.0.1',
-    meson_version: '>= 0.50.0',
+    meson_version: '>= 0.59.0',
           license: 'GPL-3.0-or-later',
 )
 
@@ -50,11 +50,14 @@ subdir('data')
 subdir('src')
 subdir('po')
 
-# Postinstall script (Update icon cache, gsettings, ...)
-meson.add_install_script('build-aux/meson/postinstall.py')
-
 meson.add_dist_script(
   'build-aux/dist-vendor.sh',
-  meson.source_root(),
-  join_paths(meson.build_root(), 'meson-dist', meson.project_name() + '-' + meson.project_version())
+  meson.project_source_root(),
+  join_paths(meson.project_build_root(), 'meson-dist', meson.project_name() + '-' + meson.project_version())
+)
+
+gnome.post_install(
+  gtk_update_icon_cache: true,
+  glib_compile_schemas: true,
+  update_desktop_database: true,
 )
