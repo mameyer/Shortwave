@@ -82,6 +82,7 @@
                         <property name="column-spacing">6</property>
                         <child>
                           <object class="GtkFlowBoxChild" id="start_playback_button_child">
+                            <property name="focusable">False</property>
                             <child>
                               <object class="GtkButton" id="start_playback_button">
                                 <property name="label" translatable="yes">_Play this station</property>
@@ -95,6 +96,7 @@
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild" id="library_add_child">
+                            <property name="focusable">False</property>
                             <child>
                               <object class="GtkButton" id="library_add_button">
                                 <property name="label" translatable="yes">_Add to library</property>
@@ -109,6 +111,7 @@
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild" id="library_remove_child">
+                            <property name="focusable">False</property>
                             <child>
                               <object class="GtkButton" id="library_remove_button">
                                 <property name="label" translatable="yes">_Remove from library</property>
@@ -128,8 +131,8 @@
                         <property name="visible">False</property>
                         <child>
                           <object class="AdwActionRow">
-                            <property name="title" translatable="yes">This is a local private station.</property>
-                            <property name="subtitle" translatable="yes">This station is visible only to you. If you remove this station from your library, you have to create it again.</property>
+                            <property name="title" translatable="yes">Local station</property>
+                            <property name="subtitle" translatable="yes">This station exists only in your library, and is not part of the public online station database.</property>
                             <property name="icon_name">dialog-information-symbolic</property>
                           </object>
                         </child>
@@ -144,6 +147,7 @@
                         <child>
                           <object class="AdwActionRow" id="language_row">
                             <property name="title" translatable="yes">Language</property>
+                            <property name="title_lines">1</property>
                             <property name="visible">False</property>
                             <child>
                               <object class="GtkLabel" id="language_label">
@@ -158,6 +162,7 @@
                         <child>
                           <object class="AdwActionRow" id="tags_row">
                             <property name="title" translatable="yes">Tags</property>
+                            <property name="title_lines">1</property>
                             <property name="visible">False</property>
                             <child>
                               <object class="GtkLabel" id="tags_label">
@@ -165,7 +170,6 @@
                                 <property name="margin_bottom">6</property>
                                 <property name="ellipsize">end</property>
                                 <property name="lines">5</property>
-                                <property name="wrap">True</property>
                                 <property name="justify">right</property>
                                 <property name="xalign">1</property>
                                 <style>
@@ -178,6 +182,7 @@
                         <child>
                           <object class="AdwActionRow" id="votes_row">
                             <property name="title" translatable="yes">Votes</property>
+                            <property name="title_lines">1</property>
                             <child>
                               <object class="GtkLabel" id="votes_label">
                                 <property name="ellipsize">end</property>
@@ -198,10 +203,16 @@
                         <child>
                           <object class="AdwActionRow" id="country_row">
                             <property name="title" translatable="yes">Country</property>
+                            <property name="title_lines">1</property>
                             <property name="visible">False</property>
                             <child>
                               <object class="GtkLabel" id="country_label">
+                                <property name="margin_top">6</property>
+                                <property name="margin_bottom">6</property>
                                 <property name="ellipsize">end</property>
+                                <property name="lines">5</property>
+                                <property name="justify">right</property>
+                                <property name="xalign">1</property>
                                 <style>
                                   <class name="dim-label"/>
                                 </style>
@@ -212,10 +223,16 @@
                         <child>
                           <object class="AdwActionRow" id="state_row">
                             <property name="title" translatable="yes">State</property>
+                            <property name="title_lines">1</property>
                             <property name="visible">False</property>
                             <child>
                               <object class="GtkLabel" id="state_label">
+                                <property name="margin_top">6</property>
+                                <property name="margin_bottom">6</property>
                                 <property name="ellipsize">end</property>
+                                <property name="lines">5</property>
+                                <property name="justify">right</property>
+                                <property name="xalign">1</property>
                                 <style>
                                   <class name="dim-label"/>
                                 </style>
@@ -254,6 +271,7 @@
                         <child>
                           <object class="AdwActionRow" id="bitrate_row">
                             <property name="title" translatable="yes">Bitrate</property>
+                            <property name="title_lines">1</property>
                             <property name="visible">False</property>
                             <child>
                               <object class="GtkLabel" id="bitrate_label">
@@ -268,6 +286,7 @@
                         <child>
                           <object class="AdwActionRow" id="codec_row">
                             <property name="title" translatable="yes">Codec</property>
+                            <property name="title_lines">1</property>
                             <property name="visible">False</property>
                             <child>
                               <object class="GtkLabel" id="codec_label">
@@ -282,6 +301,7 @@
                         <child>
                           <object class="AdwActionRow" id="stream_row">
                             <property name="title" translatable="yes" comments="This is a noun/label for the station stream url">Stream</property>
+                            <property name="title_lines">1</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="spacing">6</property>
@@ -290,7 +310,11 @@
                                     <property name="ellipsize">end</property>
                                   </object>
                                 </child>
-                                <child><object class="GtkButton" id="copy_stream_button"><property name="icon_name">edit-copy-symbolic</property><property name="valign">center</property></object>"&gt;
+                                <child>
+                                  <object class="GtkButton" id="copy_stream_button">
+                                    <property name="icon_name">edit-copy-symbolic</property>
+                                    <property name="valign">center</property>
+                                  </object>
                                 </child>
                               </object>
                             </child>
@@ -319,5 +343,4 @@
     </child>
   </template>
 </interface>
-
 

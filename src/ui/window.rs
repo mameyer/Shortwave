@@ -33,7 +33,7 @@ use crate::config;
 use crate::model::SwSorting;
 use crate::settings::{settings_manager, Key};
 use crate::ui::pages::*;
-use crate::ui::Notification;
+use crate::ui::{Notification, SwCreateStationDialog};
 
 #[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
@@ -253,9 +253,14 @@ impl SwApplicationWindow {
         });
 
         // win.create-new-station
-        action!(self, "create-new-station", |_, _| {
-            open::that("https://www.radio-browser.info/#!/add").expect("Could not open webpage.");
-        });
+        action!(
+            self,
+            "create-new-station",
+            clone!(@strong sender => move |_, _| {
+                let dialog = SwCreateStationDialog::new(sender.clone());
+                dialog.show();
+            })
+        );
 
         // win.go-back
         action!(

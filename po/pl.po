@@ -1,15 +1,15 @@
 # Polish translation for shortwave.
-# Copyright © 2020-2021 the shortwave authors.
+# Copyright © 2020-2022 the shortwave authors.
 # This file is distributed under the same license as the shortwave package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2020-2021.
-# Aviary.pl <community-poland@mozilla.org>, 2020-2021.
+# Piotr Drąg <piotrdrag@gmail.com>, 2020-2022.
+# Aviary.pl <community-poland@mozilla.org>, 2020-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2021-11-06 19:05+0000\n"
-"PO-Revision-Date: 2021-11-07 13:37+0100\n"
+"POT-Creation-Date: 2022-03-27 09:57+0000\n"
+"PO-Revision-Date: 2022-03-27 14:45+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -137,7 +137,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Przełączenie odtwarzania"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:172
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:184
 #: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Głosy"
@@ -154,35 +154,35 @@ msgstr "Brak wyników"
 msgid "Try using a different search term"
 msgstr "Proszę spróbować innych słów"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:106
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:109
 msgid "_Name"
 msgstr "_Nazwa"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:111
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:114
 msgid "_Language"
 msgstr "_Język"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:116
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:119
 msgid "_Country"
 msgstr "_Kraj"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:121
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:124
 msgid "S_tate"
 msgstr "St_an"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:126
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:129
 msgid "_Votes"
 msgstr "_Głosy"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:131
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:134
 msgid "_Bitrate"
 msgstr "Gęstość _bitowa"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:138
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:141
 msgid "_Ascending"
 msgstr "_Rosnąco"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:143
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:146
 msgid "_Descending"
 msgstr "_Malejąco"
 
@@ -233,7 +233,7 @@ msgstr "Zapisane utwory znajdują się w katalogu Muzyka."
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: data/gtk/song_row.ui:14
+#: data/gtk/song_row.ui:15
 msgid "Save recorded song"
 msgstr "Zapisuje nagrany utwór"
 
@@ -241,120 +241,120 @@ msgstr "Zapisuje nagrany utwór"
 msgid "Station details"
 msgstr "Informacje o stacji"
 
-#: data/gtk/station_dialog.ui:87
+#: data/gtk/station_dialog.ui:88
 msgid "_Play this station"
 msgstr "_Odtwórz tę stację"
 
-#: data/gtk/station_dialog.ui:100
+#: data/gtk/station_dialog.ui:102
 msgid "_Add to library"
 msgstr "_Dodaj do kolekcji"
 
-#: data/gtk/station_dialog.ui:114
+#: data/gtk/station_dialog.ui:117
 msgid "_Remove from library"
 msgstr "_Usuń z kolekcji"
 
-#: data/gtk/station_dialog.ui:128
+#: data/gtk/station_dialog.ui:134
+msgid "Local station"
+msgstr "Lokalna stacja"
+
+#: data/gtk/station_dialog.ui:135
+msgid ""
+"This station exists only in your library, and is not part of the public "
+"online station database."
+msgstr ""
+"Ta stacja istnieje tylko w kolekcji użytkownika i nie jest częścią "
+"publicznej bazy stacji online."
+
+#: data/gtk/station_dialog.ui:146
 msgid "Information"
 msgstr "Informacje"
 
-#: data/gtk/station_dialog.ui:131
-msgid "This is a local private station."
-msgstr "To lokalna, prywatna stacja."
-
-#: data/gtk/station_dialog.ui:132
-msgid ""
-"This station is visible only to you. If you remove this station from your "
-"library, you have to create it again."
-msgstr ""
-"Ta stacja jest widoczna tylko tutaj. Usunięcie jej z kolekcji usunie ją na "
-"stałe."
-
-#: data/gtk/station_dialog.ui:138 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:149 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Język"
 
-#: data/gtk/station_dialog.ui:152
+#: data/gtk/station_dialog.ui:164
 msgid "Tags"
 msgstr "Etykiety"
 
-#: data/gtk/station_dialog.ui:187
+#: data/gtk/station_dialog.ui:200
 msgid "Location"
 msgstr "Położenie"
 
-#: data/gtk/station_dialog.ui:192 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:205 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "Kraj"
 
-#: data/gtk/station_dialog.ui:206 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:225 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "Stan"
 
-#: data/gtk/station_dialog.ui:244
+#: data/gtk/station_dialog.ui:269
 msgid "Audio"
 msgstr "Dźwięk"
 
-#: data/gtk/station_dialog.ui:248 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:273 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Gęstość bitowa"
 
-#: data/gtk/station_dialog.ui:262
+#: data/gtk/station_dialog.ui:288
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:276
+#: data/gtk/station_dialog.ui:303
 msgid "Stream"
 msgstr "Strumień"
 
-#: data/gtk/streaming_dialog.ui:47
+#: data/gtk/streaming_dialog.ui:43
 msgid "Stream to a device"
 msgstr "Wysyłanie na urządzenie"
 
-#: data/gtk/streaming_dialog.ui:52
+#: data/gtk/streaming_dialog.ui:48
 msgid "_Cancel"
 msgstr "_Anuluj"
 
-#: data/gtk/streaming_dialog.ui:58
+#: data/gtk/streaming_dialog.ui:54
 msgid "_Connect"
 msgstr "_Połącz"
 
-#: data/gtk/streaming_dialog.ui:90
+#: data/gtk/streaming_dialog.ui:86
 msgid "Devices which implement the Google Cast protocol are supported."
 msgstr "Obsługiwane są urządzenia implementujące protokół Google Cast."
 
-#: data/gtk/streaming_dialog.ui:122
+#: data/gtk/streaming_dialog.ui:118
 msgid "No devices found"
 msgstr "Nie odnaleziono urządzeń"
 
-#: data/gtk/streaming_dialog.ui:132
+#: data/gtk/streaming_dialog.ui:128
 msgid "_Retry search"
 msgstr "_Ponów wyszukiwanie"
 
-#: data/gtk/streaming_dialog.ui:180 data/gtk/streaming_dialog.ui:211
+#: data/gtk/streaming_dialog.ui:176 data/gtk/streaming_dialog.ui:207
 msgid "Searching for devices…"
 msgstr "Wyszukiwanie urządzeń…"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:106
 msgid "_Sorting"
 msgstr "Porzą_dkowanie"
 
-#: data/gtk/window.ui:152 data/gtk/window.ui:180
+#: data/gtk/window.ui:155 data/gtk/window.ui:183
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "_Otwórz radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:157 data/gtk/window.ui:185
+#: data/gtk/window.ui:160 data/gtk/window.ui:188
 msgid "_Create new station <sup>↗</sup>"
 msgstr "_Utwórz nową stację <sup>↗</sup>"
 
-#: data/gtk/window.ui:164 data/gtk/window.ui:192
+#: data/gtk/window.ui:167 data/gtk/window.ui:195
 msgid "_Preferences"
 msgstr "_Preferencje"
 
-#: data/gtk/window.ui:168 data/gtk/window.ui:196
+#: data/gtk/window.ui:171 data/gtk/window.ui:199
 msgid "_Keyboard Shortcuts"
 msgstr "_Skróty klawiszowe"
 
-#: data/gtk/window.ui:172 data/gtk/window.ui:200
+#: data/gtk/window.ui:175 data/gtk/window.ui:203
 msgid "_About Shortwave"
 msgstr "_O programie"
 
@@ -370,7 +370,7 @@ msgstr "Nie można odtwarzać stacji."
 msgid "URL is not valid."
 msgstr "Adres URL jest nieprawidłowy."
 
-#: src/database/library.rs:271
+#: src/database/library.rs:264
 msgid "An invalid station was removed from the library."
 msgstr "Nieprawidłowa stacja została usunięta z kolekcji."
 
@@ -382,8 +382,8 @@ msgstr "Słuchanie radia internetowego"
 #: src/ui/about_dialog.rs:35
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2020-2021\n"
-"Aviary.pl <community-poland@mozilla.org>, 2020-2021"
+"Piotr Drąg <piotrdrag@gmail.com>, 2020-2022\n"
+"Aviary.pl <community-poland@mozilla.org>, 2020-2022"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:91
@@ -440,7 +440,7 @@ msgstr[2] ""
 msgid "Name"
 msgstr "Nazwa"
 
-#: src/ui/station_dialog.rs:276
+#: src/ui/station_dialog.rs:282
 msgid "{} kbit/s"
 msgstr "{} kb/s"
 

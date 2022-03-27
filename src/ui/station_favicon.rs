@@ -25,6 +25,7 @@ pub enum FaviconSize {
     Big = 192,
 }
 
+#[derive(Debug)]
 pub struct StationFavicon {
     pub widget: gtk::Box,
     image: gtk::Image,
@@ -49,8 +50,8 @@ impl StationFavicon {
         }
     }
 
-    pub fn set_pixbuf(&self, pixbuf: Pixbuf) {
-        self.image.set_from_pixbuf(Some(&pixbuf));
+    pub fn set_pixbuf(&self, pixbuf: &Pixbuf) {
+        self.image.set_from_pixbuf(Some(pixbuf));
         self.stack.set_visible_child_name("image");
     }
 

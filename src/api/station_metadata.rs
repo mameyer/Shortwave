@@ -77,6 +77,17 @@ impl StationMetadata {
     }
 }
 
+impl StationMetadata {
+    /// Create metadata for a new local station.
+    pub fn new(name: String, url: Url) -> Self {
+        Self {
+            name,
+            url: Some(url),
+            ..Default::default()
+        }
+    }
+}
+
 fn url_to_str<S>(url: &Option<Url>, serializer: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,

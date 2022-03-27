@@ -194,15 +194,19 @@ impl SwStationDialog {
 
     fn setup_widgets(&self) {
         let imp = imp::SwStationDialog::from_instance(self);
-        let metadata = imp.station.get().unwrap().metadata().clone();
+        let station = imp.station.get().unwrap();
+        let metadata = station.metadata();
 
         // Download & set station favicon
         let station_favicon = StationFavicon::new(FaviconSize::Big);
         imp.favicon_box.append(&station_favicon.widget);
-        if let Some(favicon) = metadata.favicon.as_ref() {
+
+        if let Some(pixbuf) = station.favicon() {
+            station_favicon.set_pixbuf(&pixbuf);
+        } else if let Some(favicon) = metadata.favicon.as_ref() {
             let fut = FaviconDownloader::download(favicon.clone(), FaviconSize::Big as i32).map(move |pixbuf| {
                 if let Ok(pixbuf) = pixbuf {
-                    station_favicon.set_pixbuf(pixbuf)
+                    station_favicon.set_pixbuf(&pixbuf)
                 }
             });
             spawn!(fut);
@@ -258,6 +262,9 @@ impl SwStationDialog {
             imp.state_label.set_text(&metadata.state);
         }
 
+        // TODO: Re-enable map widget as soon as we have a formal OSM approval
+        // https://operations.osmfoundation.org/policies/tiles/
+        /*
         let long: f64 = metadata.geo_long.unwrap_or(0.0).into();
         let lat: f64 = metadata.geo_lat.unwrap_or(0.0).into();
 
@@ -266,6 +273,7 @@ impl SwStationDialog {
             imp.marker.set_location(lat, long);
             imp.map.center_on(lat, long);
         }
+        */
 
         // Audio group
         if !metadata.codec.is_empty() {
