@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the shortwave package.
 # Enrico Nicoletto <liverig@gmail.com>, 2021.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2020-2021.
+# Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2021-11-04 09:51+0000\n"
-"PO-Revision-Date: 2021-11-05 19:24-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2022-03-27 09:57+0000\n"
+"PO-Revision-Date: 2022-03-27 13:10-0300\n"
+"Last-Translator: Matheus Barbosa <mdpb.matheus@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 40.0\n"
 
 #: data/gtk/discover_page.ui:28
 msgid "Most voted stations"
@@ -137,7 +138,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Alterna a reprodução"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:172
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:184
 #: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Votos"
@@ -154,35 +155,35 @@ msgstr "Sem resultados"
 msgid "Try using a different search term"
 msgstr "Tente usar um termo de pesquisa diferente"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:106
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:109
 msgid "_Name"
 msgstr "_Nome"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:111
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:114
 msgid "_Language"
 msgstr "_Idioma"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:116
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:119
 msgid "_Country"
 msgstr "_País"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:121
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:124
 msgid "S_tate"
 msgstr "Es_tado"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:126
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:129
 msgid "_Votes"
 msgstr "_Votos"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:131
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:134
 msgid "_Bitrate"
 msgstr "Taxa de _bits"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:138
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:141
 msgid "_Ascending"
 msgstr "_Crescente"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:143
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:146
 msgid "_Descending"
 msgstr "_Decrescente"
 
@@ -232,7 +233,7 @@ msgstr "As músicas salvas ficarão disponíveis na sua pasta Música."
 msgid "_Open"
 msgstr "_Abrir"
 
-#: data/gtk/song_row.ui:14
+#: data/gtk/song_row.ui:15
 msgid "Save recorded song"
 msgstr "Salvar gravação"
 
@@ -240,120 +241,121 @@ msgstr "Salvar gravação"
 msgid "Station details"
 msgstr "Detalhes da estação"
 
-#: data/gtk/station_dialog.ui:87
+#: data/gtk/station_dialog.ui:88
 msgid "_Play this station"
 msgstr "Re_produzir esta estação"
 
-#: data/gtk/station_dialog.ui:100
+#: data/gtk/station_dialog.ui:102
 msgid "_Add to library"
 msgstr "_Adicionar a biblioteca"
 
-#: data/gtk/station_dialog.ui:114
+#: data/gtk/station_dialog.ui:117
 msgid "_Remove from library"
 msgstr "Remover da biblioteca"
 
-#: data/gtk/station_dialog.ui:128
+#: data/gtk/station_dialog.ui:134
+#| msgid "Location"
+msgid "Local station"
+msgstr "Estação local"
+
+#: data/gtk/station_dialog.ui:135
+msgid ""
+"This station exists only in your library, and is not part of the public "
+"online station database."
+msgstr ""
+"Esta estação existe somente na sua biblioteca, e não é parte do banco de "
+"dados de estações público online."
+
+#: data/gtk/station_dialog.ui:146
 msgid "Information"
 msgstr "Informação"
 
-#: data/gtk/station_dialog.ui:131
-msgid "This is a local private station."
-msgstr "Esta é uma estação privada local"
-
-#: data/gtk/station_dialog.ui:132
-msgid ""
-"This station is visible only to you. If you remove this station from your "
-"library, you have to create it again."
-msgstr ""
-"Esta estação está visível apenas para você. Se você remover esta estação de "
-"sua biblioteca, você terá que cria-la novamente."
-
-#: data/gtk/station_dialog.ui:138 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:149 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Idioma"
 
-#: data/gtk/station_dialog.ui:152
+#: data/gtk/station_dialog.ui:164
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: data/gtk/station_dialog.ui:187
+#: data/gtk/station_dialog.ui:200
 msgid "Location"
 msgstr "Local"
 
-#: data/gtk/station_dialog.ui:192 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:205 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "País"
 
-#: data/gtk/station_dialog.ui:206 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:225 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "Estado"
 
-#: data/gtk/station_dialog.ui:244
+#: data/gtk/station_dialog.ui:269
 msgid "Audio"
 msgstr "Áudio"
 
-#: data/gtk/station_dialog.ui:248 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:273 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Taxa de bits"
 
-#: data/gtk/station_dialog.ui:262
+#: data/gtk/station_dialog.ui:288
 msgid "Codec"
 msgstr "Codec"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:276
+#: data/gtk/station_dialog.ui:303
 msgid "Stream"
 msgstr "Fluxo"
 
-#: data/gtk/streaming_dialog.ui:47
+#: data/gtk/streaming_dialog.ui:43
 msgid "Stream to a device"
 msgstr "Fazer stream para um dispositivo"
 
-#: data/gtk/streaming_dialog.ui:52
+#: data/gtk/streaming_dialog.ui:48
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: data/gtk/streaming_dialog.ui:58
+#: data/gtk/streaming_dialog.ui:54
 msgid "_Connect"
 msgstr "_Conectar"
 
-#: data/gtk/streaming_dialog.ui:90
+#: data/gtk/streaming_dialog.ui:86
 msgid "Devices which implement the Google Cast protocol are supported."
 msgstr "Há suporte a dispositivos que implementam o protocolo Google Cast."
 
-#: data/gtk/streaming_dialog.ui:122
+#: data/gtk/streaming_dialog.ui:118
 msgid "No devices found"
 msgstr "Nenhum dispositivo encontrado"
 
-#: data/gtk/streaming_dialog.ui:132
+#: data/gtk/streaming_dialog.ui:128
 msgid "_Retry search"
 msgstr "_Repetir pesquisar"
 
-#: data/gtk/streaming_dialog.ui:180 data/gtk/streaming_dialog.ui:211
+#: data/gtk/streaming_dialog.ui:176 data/gtk/streaming_dialog.ui:207
 msgid "Searching for devices…"
 msgstr "Pesquisando dispositivos…"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:106
 msgid "_Sorting"
 msgstr "_Classificação"
 
-#: data/gtk/window.ui:152 data/gtk/window.ui:180
+#: data/gtk/window.ui:155 data/gtk/window.ui:183
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "A_brir radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:157 data/gtk/window.ui:185
+#: data/gtk/window.ui:160 data/gtk/window.ui:188
 msgid "_Create new station <sup>↗</sup>"
 msgstr "_Criar nova estação <sup>↗</sup>"
 
-#: data/gtk/window.ui:164 data/gtk/window.ui:192
+#: data/gtk/window.ui:167 data/gtk/window.ui:195
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: data/gtk/window.ui:168 data/gtk/window.ui:196
+#: data/gtk/window.ui:171 data/gtk/window.ui:199
 msgid "_Keyboard Shortcuts"
 msgstr "A_talhos de teclado"
 
-#: data/gtk/window.ui:172 data/gtk/window.ui:200
+#: data/gtk/window.ui:175 data/gtk/window.ui:203
 msgid "_About Shortwave"
 msgstr "_Sobre o Shortwave"
 
@@ -370,7 +372,7 @@ msgstr "A estação não pode ser reproduzida."
 msgid "URL is not valid."
 msgstr "A URL não é válida."
 
-#: src/database/library.rs:271
+#: src/database/library.rs:264
 msgid "An invalid station was removed from the library."
 msgstr "Um estação inválida foi removida da biblioteca."
 
@@ -437,7 +439,7 @@ msgstr[1] ""
 msgid "Name"
 msgstr "Nome"
 
-#: src/ui/station_dialog.rs:276
+#: src/ui/station_dialog.rs:282
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
@@ -499,6 +501,16 @@ msgstr "Integração perfeita no ambiente GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Rádio;Radio;Stream;Fluxo;Wave;Onda;Sintonia;"
+
+#~ msgid "This is a local private station."
+#~ msgstr "Esta é uma estação privada local"
+
+#~ msgid ""
+#~ "This station is visible only to you. If you remove this station from your "
+#~ "library, you have to create it again."
+#~ msgstr ""
+#~ "Esta estação está visível apenas para você. Se você remover esta estação "
+#~ "de sua biblioteca, você terá que cria-la novamente."
 
 #~ msgid "{} Vote"
 #~ msgid_plural "{} Votes"
