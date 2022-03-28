@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-02-07 18:19+0000\n"
-"PO-Revision-Date: 2022-02-09 22:21+0200\n"
+"POT-Creation-Date: 2022-03-27 09:57+0000\n"
+"PO-Revision-Date: 2022-03-28 21:07+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
-"Language-Team: Hebrew <>\n"
+"Language-Team: Hebrew <GNOME Hebrew Translation Project>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -137,7 +137,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "שינוי מצב הניגון"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:180
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:184
 #: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "הצבעות"
@@ -232,7 +232,7 @@ msgstr "שירים שמורים נשמרים בתיקייה מוזיקה שלך.
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: data/gtk/song_row.ui:14
+#: data/gtk/song_row.ui:15
 msgid "Save recorded song"
 msgstr "שמירת שיר מוקלט"
 
@@ -240,67 +240,67 @@ msgstr "שמירת שיר מוקלט"
 msgid "Station details"
 msgstr "פרטי תחנה"
 
-#: data/gtk/station_dialog.ui:87
+#: data/gtk/station_dialog.ui:88
 msgid "_Play this station"
 msgstr "_ניגון תחנה זו"
 
-#: data/gtk/station_dialog.ui:100
+#: data/gtk/station_dialog.ui:102
 msgid "_Add to library"
 msgstr "הו_ספה לספרייה"
 
-#: data/gtk/station_dialog.ui:114
+#: data/gtk/station_dialog.ui:117
 msgid "_Remove from library"
 msgstr "ה_סרה מהספרייה"
 
-#: data/gtk/station_dialog.ui:131
-msgid "This is a local private station."
-msgstr "זוהי תחנה מקומית פרטית."
+#: data/gtk/station_dialog.ui:134
+#| msgid "Location"
+msgid "Local station"
+msgstr "תחנה מקומית"
 
-#: data/gtk/station_dialog.ui:132
+#: data/gtk/station_dialog.ui:135
 msgid ""
-"This station is visible only to you. If you remove this station from your "
-"library, you have to create it again."
-msgstr ""
-"תחנה זו חשופה רק לך. אם התחנה תוסר על ידך מהספרייה, עליך יהיה ליצור אותה שוב."
+"This station exists only in your library, and is not part of the public "
+"online station database."
+msgstr "תחנה זו קיימת רק בספרייה שלך, ואינה חלק ממסד הנתונים הציבורי של תחנות."
 
-#: data/gtk/station_dialog.ui:143
+#: data/gtk/station_dialog.ui:146
 msgid "Information"
 msgstr "מידע"
 
-#: data/gtk/station_dialog.ui:146 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:149 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "שפה"
 
-#: data/gtk/station_dialog.ui:160
+#: data/gtk/station_dialog.ui:164
 msgid "Tags"
 msgstr "תגיות"
 
-#: data/gtk/station_dialog.ui:195
+#: data/gtk/station_dialog.ui:200
 msgid "Location"
 msgstr "מיקום"
 
-#: data/gtk/station_dialog.ui:200 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:205 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "ארץ"
 
-#: data/gtk/station_dialog.ui:214 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:225 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "מדינה"
 
-#: data/gtk/station_dialog.ui:252
+#: data/gtk/station_dialog.ui:269
 msgid "Audio"
 msgstr "שמע"
 
-#: data/gtk/station_dialog.ui:256 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:273 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "קצב סיביות"
 
-#: data/gtk/station_dialog.ui:270
+#: data/gtk/station_dialog.ui:288
 msgid "Codec"
 msgstr "מקודד"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:303
 msgid "Stream"
 msgstr "הזרמה"
 
@@ -434,7 +434,7 @@ msgstr[3] "מספר התוצאות מוגבל ל־{} פריטים. יש לנסו
 msgid "Name"
 msgstr "שם"
 
-#: src/ui/station_dialog.rs:278
+#: src/ui/station_dialog.rs:282
 msgid "{} kbit/s"
 msgstr "{} ק״ב/שנייה"
 
@@ -489,3 +489,13 @@ msgstr "שילוב חלק בסביבת שולחן העבודה GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "רדיו;תחנות;תחנה;מוזיקה;הזרמה;גל;תדר;חדשות;"
+
+#~ msgid "This is a local private station."
+#~ msgstr "זוהי תחנה מקומית פרטית."
+
+#~ msgid ""
+#~ "This station is visible only to you. If you remove this station from your "
+#~ "library, you have to create it again."
+#~ msgstr ""
+#~ "תחנה זו חשופה רק לך. אם התחנה תוסר על ידך מהספרייה, עליך יהיה ליצור אותה "
+#~ "שוב."
