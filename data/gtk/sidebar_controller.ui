@@ -193,12 +193,6 @@
         <attribute name="action">player.stream-audio</attribute>
       </item>
     </section>
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">_Enable Mini Player</attribute>
-        <attribute name="action">win.enable-mini-player</attribute>
-      </item>
-    </section>
   </menu>
 </interface>
 

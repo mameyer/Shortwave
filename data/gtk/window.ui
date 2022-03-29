@@ -102,6 +102,10 @@
   </template>
   <menu id="library_menu">
     <section>
+      <item>
+        <attribute name="label" translatable="yes">_Enable Mini Player</attribute>
+        <attribute name="action">win.enable-mini-player</attribute>
+      </item>
       <submenu>
         <attribute name="label" translatable="yes">_Sorting</attribute>
         <section>
@@ -178,6 +182,12 @@
     </section>
   </menu>
   <menu id="default_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Enable Mini Player</attribute>
+        <attribute name="action">win.enable-mini-player</attribute>
+      </item>
+    </section>
     <section>
       <item>
         <attribute name="label" translatable="yes">_Open radio-browser.info &lt;sup&gt;↗&lt;/sup&gt;</attribute>
