@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-03-27 09:57+0000\n"
-"PO-Revision-Date: 2022-03-28 08:49+0300\n"
+"POT-Creation-Date: 2022-03-29 16:48+0000\n"
+"PO-Revision-Date: 2022-03-29 20:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -18,6 +18,51 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
+
+#: data/gtk/create_station_dialog.ui:8 data/gtk/create_station_dialog.ui:32
+#| msgid "Add new station"
+msgid "Create new station"
+msgstr "Створити станцію"
+
+#: data/gtk/create_station_dialog.ui:33
+msgid ""
+"You can decide if you want the new station to be visible for all users "
+"worldwide or if you want to create a local station."
+msgstr ""
+"Ви можете визначити, хочете ви, щоб нову станцію змогли побачити користувачі"
+" з усього світу, чи ви хочете створити локальну станцію."
+
+#: data/gtk/create_station_dialog.ui:43
+msgid "Create _public station"
+msgstr "Створити з_агальнодоступу станцію"
+
+#: data/gtk/create_station_dialog.ui:54
+#| msgid "Local station"
+msgid "Create _local station"
+msgstr "Створити _локальну станцію"
+
+#: data/gtk/create_station_dialog.ui:80
+#| msgid "Local station"
+msgid "Create local station"
+msgstr "Створити локальну станцію"
+
+#: data/gtk/create_station_dialog.ui:113
+msgid "Change station image"
+msgstr "Змінити зображення для станції"
+
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:179
+msgid "Name"
+msgstr "Назва"
+
+#: data/gtk/create_station_dialog.ui:151
+#| msgid "Stream"
+msgid "Stream URL"
+msgstr "Адреса трансляції"
+
+#: data/gtk/create_station_dialog.ui:165
+#| msgid "Local station"
+msgid "Create station"
+msgstr "Створити станцію"
 
 #: data/gtk/discover_page.ui:28
 msgid "Most voted stations"
@@ -254,7 +299,6 @@ msgid "_Remove from library"
 msgstr "Ви_лучити з бібліотеки"
 
 #: data/gtk/station_dialog.ui:134
-#| msgid "Location"
 msgid "Local station"
 msgstr "Локальна станція"
 
@@ -263,8 +307,8 @@ msgid ""
 "This station exists only in your library, and is not part of the public "
 "online station database."
 msgstr ""
-"Запис станції є лише у вашій бібліотеці — він не є частиною загальнодоступної"
-" бази даних станцій в інтернеті."
+"Запис станції є лише у вашій бібліотеці — він не є частиною "
+"загальнодоступної бази даних станцій в інтернеті."
 
 #: data/gtk/station_dialog.ui:146
 msgid "Information"
@@ -345,8 +389,9 @@ msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "В_ідкрити radio-browser.info <sup>↗</sup>"
 
 #: data/gtk/window.ui:160 data/gtk/window.ui:188
-msgid "_Create new station <sup>↗</sup>"
-msgstr "С_творити станцію <sup>↗</sup>"
+#| msgid "_Create new station <sup>↗</sup>"
+msgid "_Create new station"
+msgstr "С_творити станцію"
 
 #: data/gtk/window.ui:167 data/gtk/window.ui:195
 msgid "_Preferences"
@@ -360,21 +405,15 @@ msgstr "_Клавіатурні скорочення"
 msgid "_About Shortwave"
 msgstr "П_ро «Shortwave»"
 
-#: src/audio/player.rs:168
-msgid "This station cannot be played because the stream is offline."
-msgstr ""
-"Відтворення цієї станції неможливе, оскільки потік даних від неї не "
-"надходить."
-
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "Station cannot be streamed."
 msgstr "Станцію не можна транслювати."
 
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "URL is not valid."
 msgstr "Некоректна адреса."
 
-#: src/database/library.rs:264
+#: src/database/library.rs:276
 msgid "An invalid station was removed from the library."
 msgstr "З бібліотеки вилучено некоректний запис станції."
 
@@ -441,11 +480,7 @@ msgstr[3] ""
 "Кількість результатів обмежено {} записом. Спробуйте точніше визначити "
 "критерії пошуку."
 
-#: src/ui/pages/search_page.rs:179
-msgid "Name"
-msgstr "Назва"
-
-#: src/ui/station_dialog.rs:282
+#: src/ui/station_dialog.rs:286
 msgid "{} kbit/s"
 msgstr "{} кбіт/с"
 
@@ -504,6 +539,11 @@ msgstr "Безшовна інтеграція до стільничного се
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;градіо;жрадіо;радіо;потік;трансляція;хвиля;"
+
+#~ msgid "This station cannot be played because the stream is offline."
+#~ msgstr ""
+#~ "Відтворення цієї станції неможливе, оскільки потік даних від неї не "
+#~ "надходить."
 
 #~ msgid "This is a local private station."
 #~ msgstr "Це місцева приватна станція."
