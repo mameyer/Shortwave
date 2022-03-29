@@ -85,7 +85,7 @@
                             <property name="focusable">False</property>
                             <child>
                               <object class="GtkButton" id="start_playback_button">
-                                <property name="label" translatable="yes">_Play this station</property>
+                                <property name="label" translatable="yes">_Play Station</property>
                                 <property name="use_underline">True</property>
                                 <style>
                                   <class name="pill"/>
@@ -99,7 +99,7 @@
                             <property name="focusable">False</property>
                             <child>
                               <object class="GtkButton" id="library_add_button">
-                                <property name="label" translatable="yes">_Add to library</property>
+                                <property name="label" translatable="yes">_Add to Library</property>
                                 <property name="use_underline">True</property>
                                 <style>
                                   <class name="pill"/>
@@ -114,7 +114,7 @@
                             <property name="focusable">False</property>
                             <child>
                               <object class="GtkButton" id="library_remove_button">
-                                <property name="label" translatable="yes">_Remove from library</property>
+                                <property name="label" translatable="yes">_Remove From Library</property>
                                 <property name="use_underline">True</property>
                                 <style>
                                   <class name="pill"/>
@@ -131,7 +131,7 @@
                         <property name="visible">False</property>
                         <child>
                           <object class="AdwActionRow">
-                            <property name="title" translatable="yes">Local station</property>
+                            <property name="title" translatable="yes">Local Station</property>
                             <property name="subtitle" translatable="yes">This station exists only in your library, and is not part of the public online station database.</property>
                             <property name="icon_name">dialog-information-symbolic</property>
                           </object>

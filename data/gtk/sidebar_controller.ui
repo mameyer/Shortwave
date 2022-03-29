@@ -60,7 +60,7 @@
     <child>
       <object class="GtkLabel" id="title_label">
         <property name="margin_top">12</property>
-        <property name="label" translatable="yes">No playback</property>
+        <property name="label" translatable="yes">No Playback</property>
         <property name="justify">center</property>
         <property name="wrap">True</property>
         <property name="wrap_mode">word-char</property>
@@ -185,17 +185,17 @@
   <menu id="player_menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">_Show station details</attribute>
+        <attribute name="label" translatable="yes">_Show Station Details</attribute>
         <attribute name="action">player.show-details</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">Stream to a _device</attribute>
+        <attribute name="label" translatable="yes">Stream to a _Device</attribute>
         <attribute name="action">player.stream-audio</attribute>
       </item>
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">_Enable mini player</attribute>
+        <attribute name="label" translatable="yes">_Enable Mini Player</attribute>
         <attribute name="action">win.enable-mini-player</attribute>
       </item>
     </section>

@@ -60,7 +60,7 @@
                 <property name="name">no-results</property>
                 <property name="child">
                   <object class="AdwStatusPage">
-                    <property name="title" translatable="yes">No results</property>
+                    <property name="title" translatable="yes">No Results</property>
                     <property name="description" translatable="yes">Try using a different search term</property>
                   </object>
                 </property>

@@ -35,7 +35,7 @@
                 <child>
                   <object class="GtkLabel" id="title_label">
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">No playback</property>
+                    <property name="label" translatable="yes">No Playback</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
                     <property name="ellipsize">end</property>

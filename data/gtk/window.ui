@@ -157,7 +157,7 @@
         <attribute name="use-markup">True</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_Create new station</attribute>
+        <attribute name="label" translatable="yes">_Create New Station</attribute>
         <attribute name="action">win.create-new-station</attribute>
         <attribute name="use-markup">True</attribute>
       </item>
@@ -185,7 +185,7 @@
         <attribute name="use-markup">True</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_Create new station</attribute>
+        <attribute name="label" translatable="yes">_Create New Station</attribute>
         <attribute name="action">win.create-new-station</attribute>
         <attribute name="use-markup">True</attribute>
       </item>

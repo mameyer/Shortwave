@@ -63,7 +63,7 @@ If the station does not send any metadata, no songs can be recognized.</property
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="label" translatable="yes">No songs detected</property>
+                    <property name="label" translatable="yes">No Songs Detected</property>
                     <property name="wrap">True</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>

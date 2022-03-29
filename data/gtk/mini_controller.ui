@@ -106,7 +106,7 @@
                 <child>
                   <object class="GtkLabel" id="title_label">
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">No playback</property>
+                    <property name="label" translatable="yes">No Playback</property>
                     <property name="ellipsize">end</property>
                     <attributes>
                       <attribute name="font-desc" value="Nimbus Mono PS Bold 14"/>
