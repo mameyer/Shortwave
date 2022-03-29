@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-02-06 20:00+0000\n"
-"PO-Revision-Date: 2022-02-07 18:52+0100\n"
-"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"POT-Creation-Date: 2022-03-27 09:57+0000\n"
+"PO-Revision-Date: 2022-03-29 16:49+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/gtk/discover_page.ui:28
 msgid "Most voted stations"
@@ -139,7 +139,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Preklopi predvajanje"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:180
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:184
 #: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Glasovi"
@@ -234,7 +234,7 @@ msgstr "Shranjene skladbe so v mapi Glasba."
 msgid "_Open"
 msgstr "_Odpri "
 
-#: data/gtk/song_row.ui:14
+#: data/gtk/song_row.ui:15
 msgid "Save recorded song"
 msgstr "Shrani posneto skladbo"
 
@@ -242,68 +242,68 @@ msgstr "Shrani posneto skladbo"
 msgid "Station details"
 msgstr "Podrobnosti postaje"
 
-#: data/gtk/station_dialog.ui:87
+#: data/gtk/station_dialog.ui:88
 msgid "_Play this station"
 msgstr "_Predvajaj postajo"
 
-#: data/gtk/station_dialog.ui:100
+#: data/gtk/station_dialog.ui:102
 msgid "_Add to library"
 msgstr "_Dodaj v zbirko"
 
-#: data/gtk/station_dialog.ui:114
+#: data/gtk/station_dialog.ui:117
 msgid "_Remove from library"
 msgstr "_Odstrani iz zbirke"
 
-#: data/gtk/station_dialog.ui:131
-msgid "This is a local private station."
-msgstr "TO je zasebna krajevna postaja."
+#: data/gtk/station_dialog.ui:134
+msgid "Local station"
+msgstr "Krajevna postaja"
 
-#: data/gtk/station_dialog.ui:132
+#: data/gtk/station_dialog.ui:135
 msgid ""
-"This station is visible only to you. If you remove this station from your "
-"library, you have to create it again."
+"This station exists only in your library, and is not part of the public "
+"online station database."
 msgstr ""
-"Ta postaja je vidna le vam in če jo odstranite iz zbirke, jo bo treba "
-"ponovno ustvariti."
+"Ta postaja obstaja le v vaši knjižnici in ni del zbirke podatkov javnih "
+"spletnih postaj."
 
-#: data/gtk/station_dialog.ui:143
+#: data/gtk/station_dialog.ui:146
 msgid "Information"
 msgstr "Podrobnosti"
 
-#: data/gtk/station_dialog.ui:146 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:149 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Jezik"
 
-#: data/gtk/station_dialog.ui:160
+#: data/gtk/station_dialog.ui:164
 msgid "Tags"
 msgstr "Oznake"
 
-#: data/gtk/station_dialog.ui:195
+#: data/gtk/station_dialog.ui:200
 msgid "Location"
 msgstr "Mesto"
 
-#: data/gtk/station_dialog.ui:200 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:205 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "Država"
 
-#: data/gtk/station_dialog.ui:214 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:225 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "Okraj"
 
-#: data/gtk/station_dialog.ui:252
+#: data/gtk/station_dialog.ui:269
 msgid "Audio"
 msgstr "Zvok"
 
-#: data/gtk/station_dialog.ui:256 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:273 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Bitna hitrost"
 
-#: data/gtk/station_dialog.ui:270
+#: data/gtk/station_dialog.ui:288
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:303
 msgid "Stream"
 msgstr "Pretakanje"
 
@@ -442,7 +442,7 @@ msgstr[3] ""
 msgid "Name"
 msgstr "Naziv"
 
-#: src/ui/station_dialog.rs:278
+#: src/ui/station_dialog.rs:282
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
@@ -498,39 +498,3 @@ msgstr "Popolna povezava programa z namiznim okoljem GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;Pretok;glasba;"
-
-#~ msgid "Homepage"
-#~ msgstr "Spletna stran"
-
-#~ msgid "{} Vote"
-#~ msgid_plural "{} Votes"
-#~ msgstr[0] "{} glasov"
-#~ msgstr[1] "{} glas"
-#~ msgstr[2] "{} glasova"
-#~ msgstr[3] "{} glasovi"
-
-#~ msgid "{} · {} Vote"
-#~ msgid_plural "{} · {} Votes"
-#~ msgstr[0] "{} · {} glasov"
-#~ msgstr[1] "{} · {} glas"
-#~ msgstr[2] "{} · {} glasova"
-#~ msgstr[3] "{} · {} glasovi"
-
-#~ msgid "Enable dark mode"
-#~ msgstr "Omogoči temno temo"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Search for stations"
-#~ msgstr "Začne iskanje postajah"
-
-#~ msgid "Discover"
-#~ msgstr "Odkrivaj novo"
-
-#~ msgid "Search"
-#~ msgstr "Iskanje"
-
-#~ msgid "Languages"
-#~ msgstr "Jeziki"
-
-#~ msgid "Library"
-#~ msgstr "Zbirka"
