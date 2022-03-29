@@ -155,7 +155,7 @@
             <child>
               <object class="GtkButton" id="resize_button">
                 <property name="action_name">win.disable-mini-player</property>
-                <property name="icon_name">focus-windows-symbolic</property>
+                <property name="icon_name">restore-window-symbolic</property>
                 <style>
                   <class name="circular"/>
                   <class name="mini-controller-button"/>
