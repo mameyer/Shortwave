@@ -25,6 +25,8 @@ pub enum Key {
     Notifications,
     WindowWidth,
     WindowHeight,
+    WindowPreviousWidth,
+    WindowPreviousHeight,
     ViewSorting,
     ViewOrder,
 

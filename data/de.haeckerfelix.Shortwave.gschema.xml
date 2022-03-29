@@ -16,6 +16,12 @@
     <key name="window-height" type="i">
       <default>650</default>
     </key>
+    <key name="window-previous-width" type="i">
+      <default>950</default>
+    </key>
+    <key name="window-previous-height" type="i">
+      <default>650</default>
+    </key>
     <key name="view-sorting" type="s">
       <default>"Name"</default>
     </key>

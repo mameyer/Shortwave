@@ -399,25 +399,44 @@ impl SwApplicationWindow {
     pub fn enable_mini_player(&self, enable: bool) {
         debug!("Enable mini player: {:?}", enable);
 
-        if self.is_maximized() {
+        if self.is_maximized() && enable {
             self.unmaximize();
         }
+
+        let mut previous_width = settings_manager::integer(Key::WindowPreviousWidth) as f64;
+        let mut previous_height = settings_manager::integer(Key::WindowPreviousHeight) as f64;
+
+        // Save current window size as previous size, so you can restore it
+        // if you switch between mini player / normal window mode.
+        let current_width = self.default_size().0;
+        let current_height = self.default_size().1;
+        settings_manager::set_integer(Key::WindowPreviousWidth, current_width);
+        settings_manager::set_integer(Key::WindowPreviousHeight, current_height);
 
         let x_animation = self.imp().window_animation_x.get().unwrap();
         let y_animation = self.imp().window_animation_y.get().unwrap();
 
         x_animation.reset();
         x_animation.set_value_from(self.width() as f64);
-
         y_animation.reset();
         y_animation.set_value_from(self.height() as f64);
 
         if enable {
-            x_animation.set_value_to(450.0);
-            y_animation.set_value_to(105.0);
+            if previous_height > 175.0 {
+                previous_width = 450.0;
+                previous_height = 105.0;
+            }
+
+            x_animation.set_value_to(previous_width);
+            y_animation.set_value_to(previous_height);
         } else {
-            x_animation.set_value_to(950.0);
-            y_animation.set_value_to(650.0);
+            if previous_height < 175.0 {
+                previous_width = 950.0;
+                previous_height = 650.0;
+            }
+
+            x_animation.set_value_to(previous_width);
+            y_animation.set_value_to(previous_height);
         }
 
         x_animation.play();
