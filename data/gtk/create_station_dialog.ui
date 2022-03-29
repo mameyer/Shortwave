@@ -77,7 +77,7 @@
                   <object class="GtkHeaderBar">
                     <property name="title-widget">
                       <object class="AdwWindowTitle">
-                        <property name="title" translatable="yes">Create local private station</property>
+                        <property name="title" translatable="yes">Create local station</property>
                       </object>
                     </property>
                     <child>

@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
 
-date/gtk/create_station_dialog.ui
+data/gtk/create_station_dialog.ui
 data/gtk/discover_page.ui
 data/gtk/library_page.ui
 data/gtk/mini_controller.ui
