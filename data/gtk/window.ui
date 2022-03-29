@@ -57,6 +57,8 @@
                     <property name="reveal-flap">False</property>
                     <property name="locked">True</property>
                     <property name="flap-position">end</property>
+                    <property name="swipe-to-open">False</property>
+                    <property name="swipe-to-close">False</property>
                     <property name="vexpand">True</property>
                     <property name="separator">
                       <object class="GtkSeparator"/>
