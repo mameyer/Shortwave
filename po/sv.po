@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-03-27 09:57+0000\n"
-"PO-Revision-Date: 2022-03-27 12:56+0200\n"
+"POT-Creation-Date: 2022-03-29 17:19+0000\n"
+"PO-Revision-Date: 2022-03-29 21:34+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,8 +19,52 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
+#: data/gtk/create_station_dialog.ui:8
+msgid "Create new station"
+msgstr "Skapa ny station"
+
+#: data/gtk/create_station_dialog.ui:32
+msgid "Create New Station"
+msgstr "Skapa ny station"
+
+#: data/gtk/create_station_dialog.ui:33
+msgid ""
+"You can decide if you want the new station to be visible for all users "
+"worldwide or if you want to create a local station."
+msgstr ""
+"Du kan välja om du vill att den nya stationen ska vara synlig för alla "
+"användare i världen eller om du vill skapa en lokal station."
+
+#: data/gtk/create_station_dialog.ui:43
+msgid "Create _Public Station"
+msgstr "Skapa _offentlig station"
+
+#: data/gtk/create_station_dialog.ui:54
+msgid "Create _Local Station"
+msgstr "Skapa _lokal station"
+
+#: data/gtk/create_station_dialog.ui:80
+msgid "Create Local Station"
+msgstr "Skapa lokal station"
+
+#: data/gtk/create_station_dialog.ui:113
+msgid "Change station image"
+msgstr "Ändra bild för station"
+
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:179
+msgid "Name"
+msgstr "Namn"
+
+#: data/gtk/create_station_dialog.ui:151
+msgid "Stream URL"
+msgstr "Ström-URL"
+
+#: data/gtk/create_station_dialog.ui:165
+msgid "Create Station"
+msgstr "Skapa station"
+
 #: data/gtk/discover_page.ui:28
-msgid "Most voted stations"
+msgid "Most Voted Stations"
 msgstr "Stationer med flest röster"
 
 #: data/gtk/discover_page.ui:43
@@ -28,15 +72,15 @@ msgid "Trending"
 msgstr "Populärt just nu"
 
 #: data/gtk/discover_page.ui:58
-msgid "Other users are listening to…"
+msgid "Other Users Are Listening To…"
 msgstr "Andra användare lyssnar på…"
 
 #: data/gtk/library_page.ui:60
-msgid "Receiving station data…"
+msgid "Receiving Station Data…"
 msgstr "Erhåller stationsdata…"
 
 #: data/gtk/library_page.ui:87
-msgid "_Discover new stations"
+msgid "_Discover New Stations"
 msgstr "_Upptäck nya stationer"
 
 #: data/gtk/mini_controller.ui:87
@@ -45,7 +89,7 @@ msgstr "SHORTWAVE INTERNETRADIO"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
-msgid "No playback"
+msgid "No Playback"
 msgstr "Ingen uppspelning"
 
 #: data/gtk/notification.ui:58
@@ -147,7 +191,7 @@ msgid "Change the sorting of the search results"
 msgstr "Ändra sorteringen av sökresultaten"
 
 #: data/gtk/search_page.ui:63
-msgid "No results"
+msgid "No Results"
 msgstr "Inga resultat"
 
 #: data/gtk/search_page.ui:64
@@ -191,15 +235,15 @@ msgid "An error occurred"
 msgstr "Ett fel uppstod"
 
 #: data/gtk/sidebar_controller.ui:188
-msgid "_Show station details"
+msgid "_Show Station Details"
 msgstr "_Visa stationsdetaljer"
 
 #: data/gtk/sidebar_controller.ui:192
-msgid "Stream to a _device"
+msgid "Stream to a _Device"
 msgstr "Strömma till en _enhet"
 
 #: data/gtk/sidebar_controller.ui:198
-msgid "_Enable mini player"
+msgid "_Enable Mini Player"
 msgstr "_Aktivera minispelare"
 
 #: data/gtk/song_listbox.ui:23
@@ -213,7 +257,7 @@ msgstr ""
 "Om stationen inte sänder några metadata så kan inga låtar kännas igen."
 
 #: data/gtk/song_listbox.ui:66
-msgid "No songs detected"
+msgid "No Songs Detected"
 msgstr "Inga låtar upptäcktes"
 
 #: data/gtk/song_listbox.ui:76
@@ -241,19 +285,19 @@ msgid "Station details"
 msgstr "Stationsdetaljer"
 
 #: data/gtk/station_dialog.ui:88
-msgid "_Play this station"
-msgstr "_Spela upp denna station"
+msgid "_Play Station"
+msgstr "_Spela upp station"
 
 #: data/gtk/station_dialog.ui:102
-msgid "_Add to library"
+msgid "_Add to Library"
 msgstr "_Lägg till i bibliotek"
 
 #: data/gtk/station_dialog.ui:117
-msgid "_Remove from library"
+msgid "_Remove From Library"
 msgstr "_Ta bort från bibliotek"
 
 #: data/gtk/station_dialog.ui:134
-msgid "Local station"
+msgid "Local Station"
 msgstr "Lokal station"
 
 #: data/gtk/station_dialog.ui:135
@@ -306,7 +350,7 @@ msgid "Stream"
 msgstr "Ström"
 
 #: data/gtk/streaming_dialog.ui:43
-msgid "Stream to a device"
+msgid "Stream to a Device"
 msgstr "Strömma till en enhet"
 
 #: data/gtk/streaming_dialog.ui:48
@@ -330,7 +374,7 @@ msgid "_Retry search"
 msgstr "Sök _igen"
 
 #: data/gtk/streaming_dialog.ui:176 data/gtk/streaming_dialog.ui:207
-msgid "Searching for devices…"
+msgid "Searching for Devices…"
 msgstr "Söker efter enheter…"
 
 #: data/gtk/window.ui:106
@@ -342,8 +386,8 @@ msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "Ö_ppna radio-browser.info <sup>↗</sup>"
 
 #: data/gtk/window.ui:160 data/gtk/window.ui:188
-msgid "_Create new station <sup>↗</sup>"
-msgstr "S_kapa ny station <sup>↗</sup>"
+msgid "_Create New Station"
+msgstr "S_kapa ny station"
 
 #: data/gtk/window.ui:167 data/gtk/window.ui:195
 msgid "_Preferences"
@@ -357,19 +401,15 @@ msgstr "_Tangentbordsgenvägar"
 msgid "_About Shortwave"
 msgstr "_Om Shortwave"
 
-#: src/audio/player.rs:168
-msgid "This station cannot be played because the stream is offline."
-msgstr "Denna station kan inte spelas eftersom strömmen är frånkopplad."
-
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "Station cannot be streamed."
 msgstr "Stationen kan inte strömmas."
 
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "URL is not valid."
 msgstr "URL är inte giltig."
 
-#: src/database/library.rs:264
+#: src/database/library.rs:276
 msgid "An invalid station was removed from the library."
 msgstr "En ogiltig station togs bort från biblioteket."
 
@@ -393,8 +433,8 @@ msgid "Show statistics"
 msgstr "Visa statistik"
 
 #: src/ui/pages/discover_page.rs:92
-msgid "Browse over 25,500 stations"
-msgstr "Bläddra bland över 25500 stationer"
+msgid "Browse over 30,000 stations"
+msgstr "Bläddra bland över 30 000 stationer"
 
 #: src/ui/pages/discover_page.rs:94
 msgid "Add new station"
@@ -435,11 +475,7 @@ msgstr[1] ""
 "Antalet resultat är begränsat till {} objekt. Försök använda en mer specifik "
 "sökterm."
 
-#: src/ui/pages/search_page.rs:179
-msgid "Name"
-msgstr "Namn"
-
-#: src/ui/station_dialog.rs:282
+#: src/ui/station_dialog.rs:286
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
@@ -495,6 +531,9 @@ msgstr "Sömlös integration med skrivbordsmiljön GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Ström;Stream;Wave;"
+
+#~ msgid "This station cannot be played because the stream is offline."
+#~ msgstr "Denna station kan inte spelas eftersom strömmen är frånkopplad."
 
 #~ msgid "This is a local private station."
 #~ msgstr "Detta är en lokal privat station."
