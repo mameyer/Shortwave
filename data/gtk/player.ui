@@ -87,7 +87,6 @@
       </object>
     </child>
     <style>
-      <class name="sidebar"/>
       <class name="background"/>
     </style>
   </object>
