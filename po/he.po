@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-03-27 09:57+0000\n"
-"PO-Revision-Date: 2022-03-28 21:07+0300\n"
+"POT-Creation-Date: 2022-03-29 17:19+0000\n"
+"PO-Revision-Date: 2022-03-30 19:43+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <GNOME Hebrew Translation Project>\n"
 "Language: he\n"
@@ -19,8 +19,58 @@ msgstr ""
 "2 : 3)\n"
 "X-Generator: Gtranslator 40.0\n"
 
+#: data/gtk/create_station_dialog.ui:8
+#| msgid "Add new station"
+msgid "Create new station"
+msgstr "יצירת תחנה חדשה"
+
+#: data/gtk/create_station_dialog.ui:32
+#| msgid "_Create new station <sup>↗</sup>"
+msgid "Create New Station"
+msgstr "יצירת תחנה חדשה"
+
+#: data/gtk/create_station_dialog.ui:33
+msgid ""
+"You can decide if you want the new station to be visible for all users "
+"worldwide or if you want to create a local station."
+msgstr ""
+"באפשרותך להחליט אם לחשוף את התחנה החדשה לכל המשתמשים ברחבי העולם או ליצור "
+"אותה כתחנה מקומית."
+
+#: data/gtk/create_station_dialog.ui:43
+msgid "Create _Public Station"
+msgstr "יצירת תחנה _ציבורית"
+
+#: data/gtk/create_station_dialog.ui:54
+#| msgid "Local station"
+msgid "Create _Local Station"
+msgstr "יצירת תחנה _מקומית"
+
+#: data/gtk/create_station_dialog.ui:80
+#| msgid "Local station"
+msgid "Create Local Station"
+msgstr "יצירת תחנה מקומית"
+
+#: data/gtk/create_station_dialog.ui:113
+msgid "Change station image"
+msgstr "שינוי תמונת תחנה"
+
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:179
+msgid "Name"
+msgstr "שם"
+
+#: data/gtk/create_station_dialog.ui:151
+#| msgid "Stream"
+msgid "Stream URL"
+msgstr "כתובת URL להזרמה"
+
+#: data/gtk/create_station_dialog.ui:165
+msgid "Create Station"
+msgstr "יצירת תחנה"
+
 #: data/gtk/discover_page.ui:28
-msgid "Most voted stations"
+#| msgid "Most voted stations"
+msgid "Most Voted Stations"
 msgstr "התחנות עם ההצבעות הרבות ביותר"
 
 #: data/gtk/discover_page.ui:43
@@ -28,15 +78,18 @@ msgid "Trending"
 msgstr "אהוב"
 
 #: data/gtk/discover_page.ui:58
-msgid "Other users are listening to…"
+#| msgid "Other users are listening to…"
+msgid "Other Users Are Listening To…"
 msgstr "משתמשים אחרים מאזינים ל…"
 
 #: data/gtk/library_page.ui:60
-msgid "Receiving station data…"
+#| msgid "Receiving station data…"
+msgid "Receiving Station Data…"
 msgstr "מתקבל מידע על התחנה…"
 
 #: data/gtk/library_page.ui:87
-msgid "_Discover new stations"
+#| msgid "_Discover new stations"
+msgid "_Discover New Stations"
 msgstr "_גילוי תחנות חדשות"
 
 #: data/gtk/mini_controller.ui:87
@@ -45,7 +98,8 @@ msgstr "אינטרנט רדיו SHORTWAVE"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
-msgid "No playback"
+#| msgid "No playback"
+msgid "No Playback"
 msgstr "אין השמעה"
 
 #: data/gtk/notification.ui:58
@@ -147,7 +201,8 @@ msgid "Change the sorting of the search results"
 msgstr "שינוי המיון של תוצאות החיפוש"
 
 #: data/gtk/search_page.ui:63
-msgid "No results"
+#| msgid "No results"
+msgid "No Results"
 msgstr "אין תוצאות"
 
 #: data/gtk/search_page.ui:64
@@ -191,15 +246,18 @@ msgid "An error occurred"
 msgstr "אירעה שגיאה"
 
 #: data/gtk/sidebar_controller.ui:188
-msgid "_Show station details"
+#| msgid "_Show station details"
+msgid "_Show Station Details"
 msgstr "ה_צגת פרטי תחנה"
 
 #: data/gtk/sidebar_controller.ui:192
-msgid "Stream to a _device"
+#| msgid "Stream to a _device"
+msgid "Stream to a _Device"
 msgstr "הזרמה לה_תקן"
 
 #: data/gtk/sidebar_controller.ui:198
-msgid "_Enable mini player"
+#| msgid "_Enable mini player"
+msgid "_Enable Mini Player"
 msgstr "_אפשור נגן מוקטן"
 
 #: data/gtk/song_listbox.ui:23
@@ -213,7 +271,8 @@ msgstr ""
 "במידה והתחנה לא שולחת מידע על מידע, השירים לא יזוהו."
 
 #: data/gtk/song_listbox.ui:66
-msgid "No songs detected"
+#| msgid "No songs detected"
+msgid "No Songs Detected"
 msgstr "לא זוהו שירים"
 
 #: data/gtk/song_listbox.ui:76
@@ -241,20 +300,23 @@ msgid "Station details"
 msgstr "פרטי תחנה"
 
 #: data/gtk/station_dialog.ui:88
-msgid "_Play this station"
-msgstr "_ניגון תחנה זו"
+#| msgid "_Play this station"
+msgid "_Play Station"
+msgstr "_ניגון תחנה"
 
 #: data/gtk/station_dialog.ui:102
-msgid "_Add to library"
+#| msgid "_Add to library"
+msgid "_Add to Library"
 msgstr "הו_ספה לספרייה"
 
 #: data/gtk/station_dialog.ui:117
-msgid "_Remove from library"
+#| msgid "_Remove from library"
+msgid "_Remove From Library"
 msgstr "ה_סרה מהספרייה"
 
 #: data/gtk/station_dialog.ui:134
-#| msgid "Location"
-msgid "Local station"
+#| msgid "Local station"
+msgid "Local Station"
 msgstr "תחנה מקומית"
 
 #: data/gtk/station_dialog.ui:135
@@ -305,7 +367,8 @@ msgid "Stream"
 msgstr "הזרמה"
 
 #: data/gtk/streaming_dialog.ui:43
-msgid "Stream to a device"
+#| msgid "Stream to a device"
+msgid "Stream to a Device"
 msgstr "הזרמה להתקן"
 
 #: data/gtk/streaming_dialog.ui:48
@@ -329,7 +392,8 @@ msgid "_Retry search"
 msgstr "חיפוש _חוזר"
 
 #: data/gtk/streaming_dialog.ui:176 data/gtk/streaming_dialog.ui:207
-msgid "Searching for devices…"
+#| msgid "Searching for devices…"
+msgid "Searching for Devices…"
 msgstr "מחפש אחר התקנים…"
 
 #: data/gtk/window.ui:106
@@ -341,8 +405,9 @@ msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "_פתיחת radio-browser.info ‏<sup>↖</sup>"
 
 #: data/gtk/window.ui:160 data/gtk/window.ui:188
-msgid "_Create new station <sup>↗</sup>"
-msgstr "_יצירת תחנה חדשה ‏<sup>↖</sup>"
+#| msgid "_Create new station <sup>↗</sup>"
+msgid "_Create New Station"
+msgstr "_יצירת תחנה חדשה"
 
 #: data/gtk/window.ui:167 data/gtk/window.ui:195
 msgid "_Preferences"
@@ -356,19 +421,15 @@ msgstr "_צירופי מקשים"
 msgid "_About Shortwave"
 msgstr "_על אודות Shortwave"
 
-#: src/audio/player.rs:168
-msgid "This station cannot be played because the stream is offline."
-msgstr "תחנה זו לא ניתנת לניגון כיוון שהתזרים אינו מקוון."
-
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "Station cannot be streamed."
 msgstr "תחנה לא ניתנת לניגון."
 
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "URL is not valid."
 msgstr "כתובת URL אינו תקף."
 
-#: src/database/library.rs:264
+#: src/database/library.rs:276
 msgid "An invalid station was removed from the library."
 msgstr "תחנה שאינה ברת תוקף הוסרה מהספרייה."
 
@@ -390,8 +451,9 @@ msgid "Show statistics"
 msgstr "הצגת סטטיסטיקות"
 
 #: src/ui/pages/discover_page.rs:92
-msgid "Browse over 25,500 stations"
-msgstr "האזנה ללמעלה מ־25,500 תחנות"
+#| msgid "Browse over 25,500 stations"
+msgid "Browse over 30,000 stations"
+msgstr "האזנה ללמעלה מ־30,000 תחנות"
 
 #: src/ui/pages/discover_page.rs:94
 msgid "Add new station"
@@ -430,11 +492,7 @@ msgstr[1] "מספר התוצאות מוגבל ל־{} פריטים. יש לנסו
 msgstr[2] "מספר התוצאות מוגבל לשני פריטים. יש לנסות מינוח מסוים יותר."
 msgstr[3] "מספר התוצאות מוגבל ל־{} פריטים. יש לנסות מינוח מסוים יותר."
 
-#: src/ui/pages/search_page.rs:179
-msgid "Name"
-msgstr "שם"
-
-#: src/ui/station_dialog.rs:282
+#: src/ui/station_dialog.rs:286
 msgid "{} kbit/s"
 msgstr "{} ק״ב/שנייה"
 
@@ -489,6 +547,9 @@ msgstr "שילוב חלק בסביבת שולחן העבודה GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "רדיו;תחנות;תחנה;מוזיקה;הזרמה;גל;תדר;חדשות;"
+
+#~ msgid "This station cannot be played because the stream is offline."
+#~ msgstr "תחנה זו לא ניתנת לניגון כיוון שהתזרים אינו מקוון."
 
 #~ msgid "This is a local private station."
 #~ msgstr "זוהי תחנה מקומית פרטית."
