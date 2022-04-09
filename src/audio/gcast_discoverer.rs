@@ -121,9 +121,9 @@ impl GCastDiscoverer {
         }
 
         let device = GCastDevice {
-            id: values.get("id").unwrap().to_string(),
+            id: values.get("id").unwrap_or(&String::new()).to_string(),
             ip: addr.unwrap(),
-            name: values.get("fn").unwrap().to_string(),
+            name: values.get("fn").unwrap_or(&String::new()).to_string(),
         };
 
         Some(device)
