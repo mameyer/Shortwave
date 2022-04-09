@@ -1,5 +1,5 @@
-// Shortwave - streaming_dialog.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Shortwave - station_dialog.rs
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,10 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use adw::prelude::*;
 use glib::clone;
-use glib::Sender;
-use gtk::prelude::*;
+use glib::{Receiver, Sender};
+use gtk::subclass::prelude::*;
+use gtk::CompositeTemplate;
 use gtk::{gio, glib};
+use once_cell::unsync::OnceCell;
 
 use std::net::IpAddr;
 use std::rc::Rc;
@@ -27,68 +30,104 @@ use crate::app::{Action, SwApplication};
 use crate::audio::GCastDiscoverer;
 use crate::audio::GCastDiscovererMessage;
 
-pub struct StreamingDialog {
-    pub widget: gtk::Dialog,
-    gcd: Rc<GCastDiscoverer>,
+mod imp {
+    use super::*;
+    use glib::subclass;
 
-    builder: gtk::Builder,
-    sender: Sender<Action>,
+    #[derive(Debug, Default, CompositeTemplate)]
+    #[template(resource = "/de/haeckerfelix/Shortwave/gtk/streaming_dialog.ui")]
+    pub struct SwStreamingDialog {
+        #[template_child]
+        pub row_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub devices_listbox: TemplateChild<gtk::ListBox>,
+
+        pub gcd: OnceCell<Rc<GCastDiscoverer>>,
+        pub sender: OnceCell<Sender<Action>>,
+    }
+
+    #[glib::object_subclass]
+    impl ObjectSubclass for SwStreamingDialog {
+        const NAME: &'static str = "SwStreamingDialog";
+        type ParentType = gtk::Dialog;
+        type Type = super::SwStreamingDialog;
+
+        fn class_init(klass: &mut Self::Class) {
+            Self::bind_template(klass);
+            Self::Type::bind_template_callbacks(klass);
+        }
+
+        fn instance_init(obj: &subclass::InitializingObject<Self>) {
+            obj.init_template();
+        }
+    }
+
+    impl ObjectImpl for SwStreamingDialog {}
+
+    impl WidgetImpl for SwStreamingDialog {}
+
+    impl WindowImpl for SwStreamingDialog {}
+
+    impl DialogImpl for SwStreamingDialog {}
 }
 
-impl StreamingDialog {
+glib::wrapper! {
+    pub struct SwStreamingDialog(ObjectSubclass<imp::SwStreamingDialog>)
+        @extends gtk::Widget, gtk::Window, gtk::Dialog;
+}
+
+#[gtk::template_callbacks]
+impl SwStreamingDialog {
     pub fn new(sender: Sender<Action>) -> Self {
-        let builder = gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/streaming_dialog.ui");
-        get_widget!(builder, gtk::Dialog, streaming_dialog);
+        let dialog: Self = glib::Object::new(&[(&"use-header-bar", &1)]).unwrap();
 
         // Setup Google Cast discoverer
         let gcd_t = GCastDiscoverer::new();
         let gcd = Rc::new(gcd_t.0);
+        gcd.start_discover();
         let gcd_receiver = gcd_t.1;
 
-        let sd = Self {
-            widget: streaming_dialog,
-            gcd,
-            builder,
-            sender,
-        };
+        let imp = imp::SwStreamingDialog::from_instance(&dialog);
+        imp.sender.set(sender).unwrap();
+        imp.gcd.set(gcd).unwrap();
+
+        dialog.setup_signals(gcd_receiver);
+        dialog
+    }
+
+    fn setup_signals(&self, gcd_receiver: Receiver<GCastDiscovererMessage>) {
+        let imp = self.imp();
 
         gcd_receiver.attach(
             None,
-            clone!(@weak sd.builder as builder => @default-panic, move |message| {
-                get_widget!(builder, gtk::Stack, stream_stack);
-                get_widget!(builder, gtk::ListBox, devices_listbox);
-                get_widget!(builder, gtk::Button, connect_button);
-                get_widget!(builder, gtk::Revealer, loading_revealer);
+            clone!(@weak self as this => @default-panic, move |message| {
+                let imp = this.imp();
 
                 match message {
                     GCastDiscovererMessage::DiscoverStarted => {
-                        while let Some(child) = devices_listbox.first_child() {
-                            devices_listbox.remove(&child);
+                        while let Some(child) = imp.devices_listbox.first_child() {
+                            imp.devices_listbox.remove(&child);
                         }
-                        stream_stack.set_visible_child_name("loading");
-                        loading_revealer.set_reveal_child(true);
+                        imp.devices_listbox.set_visible(false);
+                        imp.row_stack.set_visible_child_name("loading");
                     }
                     GCastDiscovererMessage::DiscoverEnded => {
-                        if devices_listbox.last_child().is_none() {
-                            stream_stack.set_visible_child_name("no-devices");
+                        if imp.devices_listbox.last_child().is_none() {
+                            imp.row_stack.set_visible_child_name("no-devices");
                         } else {
-                            stream_stack.set_visible_child_name("results");
+                            imp.row_stack.set_visible_child_name("ready");
                         }
-                        loading_revealer.set_reveal_child(false);
                     }
                     GCastDiscovererMessage::FoundDevice(device) => {
-                        stream_stack.set_visible_child_name("results");
-                        connect_button.set_sensitive(true);
+                        imp.row_stack.set_visible_child_name("ready");
 
-                        let builder = gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/streaming_dialog.ui");
-                        get_widget!(builder, gtk::ListBoxRow, device_row);
-                        get_widget!(builder, gtk::Label, name_label);
-                        get_widget!(builder, gtk::Label, ip_label);
+                        let row = adw::ActionRow::new();
+                        row.set_title(&device.name);
+                        row.set_subtitle(&device.ip.to_string());
+                        row.set_activatable(true);
 
-                        name_label.set_text(&device.name);
-                        ip_label.set_text(&device.ip.to_string());
-
-                        devices_listbox.append(&device_row);
+                        imp.devices_listbox.append(&row);
+                        imp.devices_listbox.set_visible(true);
                     }
                 }
 
@@ -96,59 +135,26 @@ impl StreamingDialog {
             }),
         );
 
-        sd.setup_signals();
-        sd
+        imp.devices_listbox.connect_row_activated(clone!(@weak self as this => move |_, row|{
+            let imp = this.imp();
+            let row: adw::ActionRow = row.clone().downcast().unwrap();
+            let ip_addr: IpAddr = IpAddr::from_str(row.subtitle().unwrap().as_str()).unwrap();
+
+            // Get GCastDevice
+            let device = imp.gcd.get().unwrap().device_by_ip_addr(ip_addr).unwrap();
+            send!(imp.sender.get().unwrap(), Action::PlaybackConnectGCastDevice(device));
+            this.hide();
+        }));
+
+        self.connect_show(clone!(@weak self as this => move |_|{
+            let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();
+            this.set_transient_for(Some(&window));
+            this.set_modal(true);
+        }));
     }
 
-    pub fn show(&self) {
-        let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();
-        self.widget.set_transient_for(Some(&window));
-
-        self.widget.set_visible(true);
-        self.widget.show();
-
-        self.gcd.start_discover();
-    }
-
-    fn setup_signals(&self) {
-        // retry_button
-        get_widget!(self.builder, gtk::Button, retry_button);
-        retry_button.connect_clicked(clone!(@weak self.gcd as gcd => move |_| {
-            gcd.start_discover();
-        }));
-
-        // cancel_button
-        get_widget!(self.builder, gtk::Button, cancel_button);
-        cancel_button.connect_clicked(clone!(@weak self.widget as widget => move |_| {
-            widget.set_visible(false);
-            widget.hide();
-        }));
-
-        // connect_button
-        get_widget!(self.builder, gtk::Button, connect_button);
-        connect_button.connect_clicked(clone!(@weak self.builder as builder, @weak self.gcd as gcd, @strong self.sender as sender => move |_| {
-            get_widget!(builder, gtk::ListBox, devices_listbox);
-            get_widget!(builder, gtk::Dialog, streaming_dialog);
-
-            if let Some(active_row) = devices_listbox.selected_row() {
-                // Very hackish way to get the selected ip address
-                let box1: gtk::Box = active_row.first_child().unwrap().downcast().unwrap();
-                let box2: gtk::Box = box1.first_child().unwrap().downcast().unwrap();
-                let ip_label: gtk::Label = box2.last_child().unwrap().downcast().unwrap();
-                let ip_addr: IpAddr = IpAddr::from_str(ip_label.text().to_string().as_str()).unwrap();
-
-                // Get GCastDevice
-                let device = gcd.device_by_ip_addr(ip_addr).unwrap();
-                send!(sender, Action::PlaybackConnectGCastDevice(device));
-                streaming_dialog.set_visible(false);
-                streaming_dialog.hide();
-            }
-        }));
-
-        // hide on delete
-        self.widget.connect_close_request(|widget| {
-            widget.hide();
-            glib::signal::Inhibit(true)
-        });
+    #[template_callback]
+    fn search_again(&self) {
+        self.imp().gcd.get().unwrap().start_discover();
     }
 }

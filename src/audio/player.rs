@@ -1,5 +1,5 @@
 // Shortwave - player.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use adw::prelude::*;
 use glib::clone;
 use glib::Sender;
-use gtk::prelude::*;
 use gtk::{gio, glib};
 
 use std::cell::RefCell;
@@ -240,9 +240,10 @@ impl Player {
     }
 
     pub fn connect_to_gcast_device(&self, device: GCastDevice) {
-        get_widget!(self.builder, gtk::Label, device_name);
+        get_widget!(self.builder, adw::ActionRow, stream_row);
         get_widget!(self.builder, gtk::Revealer, stream_revealer);
-        device_name.set_text(&format!("\"{}\"", &device.name));
+
+        stream_row.set_title(&device.name);
         stream_revealer.set_reveal_child(true);
 
         self.gcast_controller.connect_to_device(device);

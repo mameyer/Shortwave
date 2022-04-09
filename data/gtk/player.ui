@@ -30,41 +30,21 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkButton" id="disconnect_button">
+                          <object class="AdwPreferencesGroup">
                             <child>
-                              <object class="GtkBox">
-                                <property name="orientation">vertical</property>
+                              <object class="AdwActionRow" id="stream_row">
+                                <property name="icon_name">network-wireless-symbolic</property>
+                                <property name="activatable_widget">disconnect_button</property>
                                 <child>
-                                  <object class="GtkImage">
-                                    <property name="icon_name">network-wireless-symbolic</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Connected with</property>
-                                    <property name="justify">center</property>
-                                    <property name="wrap">True</property>
-                                    <property name="wrap_mode">char</property>
-                                    <style>
-                                      <class name="dim-label"/>
-                                    </style>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="device_name">
-                                    <property name="label">label</property>
-                                    <property name="justify">center</property>
-                                    <property name="wrap">True</property>
-                                    <property name="wrap_mode">char</property>
-                                    <attributes>
-                                      <attribute name="weight" value="bold"/>
-                                    </attributes>
+                                  <object class="GtkButton" id="disconnect_button">
+                                    <property name="icon_name">window-close-symbolic</property>
+                                    <property name="valign">center</property>
                                   </object>
                                 </child>
                               </object>
                             </child>
                             <style>
-                              <class name="suggested-action"/>
+                              <class name="notice-row"/>
                             </style>
                           </object>
                         </child>
@@ -91,3 +71,4 @@
     </style>
   </object>
 </interface>
+

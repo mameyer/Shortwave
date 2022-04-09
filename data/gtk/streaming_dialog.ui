@@ -1,100 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkListBoxRow" id="device_row">
-    <child>
-      <object class="GtkBox">
-        <property name="spacing">6</property>
-        <child>
-          <object class="GtkBox">
-            <property name="valign">center</property>
-            <property name="margin_start">6</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkLabel" id="name_label">
-                <property name="label">label</property>
-                <property name="xalign">0</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="ip_label">
-                <property name="label">label</property>
-                <property name="xalign">0</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
-              </object>
-            </child>
-          </object>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkDialog" id="streaming_dialog">
+  <template class="SwStreamingDialog" parent="GtkDialog">
     <property name="width_request">325</property>
     <property name="height_request">400</property>
     <property name="default_width">500</property>
-    <property name="default_height">500</property>
+    <property name="default_height">400</property>
     <property name="destroy_with_parent">True</property>
-    <property name="deletable">False</property>
-    <property name="modal">True</property>
+    <property name="hide_on_close">True</property>
     <property name="title" translatable="yes">Stream to a Device</property>
-    <child type="titlebar">
-      <object class="GtkHeaderBar">
-        <child>
-          <object class="GtkButton" id="cancel_button">
-            <property name="label" translatable="yes">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child type="end">
-          <object class="GtkButton" id="connect_button">
-            <property name="label" translatable="yes">_Connect</property>
-            <property name="use_underline">True</property>
-            <property name="sensitive">False</property>
-            <style>
-              <class name="suggested-action"/>
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
     <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <property name="margin_end">12</property>
-        <property name="margin_start">12</property>
-        <property name="margin_bottom">12</property>
-        <property name="margin_top">12</property>
+      <object class="GtkScrolledWindow">
         <child>
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <property name="spacing">12</property>
+          <object class="GtkViewport">
+            <property name="vexpand">True</property>
+            <property name="scroll-to-focus">True</property>
             <child>
               <object class="GtkBox">
-                <property name="spacing">6</property>
+                <property name="orientation">vertical</property>
+                <property name="margin_end">12</property>
+                <property name="margin_start">12</property>
+                <property name="margin_bottom">12</property>
+                <property name="margin_top">12</property>
                 <child>
-                  <object class="GtkImage">
-                    <property name="valign">start</property>
-                    <property name="icon_name">network-wireless-symbolic</property>
+                  <object class="AdwPreferencesGroup">
+                    <property name="description" translatable="yes">Audio playback can be streamed to a network device (requires Google Cast support).</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkLabel">
-                    <property name="label" translatable="yes">Devices which implement the Google Cast protocol are supported.</property>
-                    <property name="wrap">True</property>
-                    <property name="xalign">0</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkFrame">
-                <property name="label_xalign">0</property>
-                <child>
-                  <object class="GtkStack" id="stream_stack">
+                  <object class="GtkStack" id="row_stack">
                     <property name="hhomogeneous">False</property>
                     <property name="vhomogeneous">False</property>
                     <property name="transition_type">crossfade</property>
@@ -102,83 +35,40 @@
                       <object class="GtkStackPage">
                         <property name="name">no-devices</property>
                         <property name="child">
-                          <object class="GtkBox" id="no_devices">
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="orientation">vertical</property>
+                          <object class="AdwPreferencesGroup">
                             <child>
-                              <object class="GtkImage">
-                                <property name="pixel_size">128</property>
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">No Devices Found</property>
                                 <property name="icon_name">network-wireless-offline-symbolic</property>
+                                <child>
+                                  <object class="GtkButton">
+                                    <property name="icon_name">view-refresh-symbolic</property>
+                                    <property name="valign">center</property>
+                                    <property name="tooltip_text" translatable="yes">Search again</property>
+                                    <signal name="clicked" handler="search_again" swapped="true"/>
+                                  </object>
+                                </child>
                               </object>
                             </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="margin_top">22</property>
-                                <property name="label" translatable="yes">No devices found</property>
-                                <property name="wrap">True</property>
-                                <attributes>
-                                  <attribute name="weight" value="bold"/>
-                                  <attribute name="scale" value="1.2"/>
-                                </attributes>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="retry_button">
-                                <property name="label" translatable="yes">_Retry search</property>
-                                <property name="use_underline">True</property>
-                                <property name="halign">center</property>
-                                <property name="margin_top">22</property>
-                                <property name="margin_bottom">22</property>
-                              </object>
-                            </child>
-                            <style>
-                              <class name="dim-label"/>
-                            </style>
                           </object>
                         </property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkStackPage">
-                        <property name="name">results</property>
+                        <property name="name">ready</property>
                         <property name="child">
-                          <object class="GtkBox" id="results">
-                            <property name="orientation">vertical</property>
+                          <object class="AdwPreferencesGroup">
                             <child>
-                              <object class="GtkScrolledWindow">
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Search Completed</property>
+                                <property name="icon_name">emblem-ok-symbolic</property>
                                 <child>
-                                  <object class="GtkViewport">
-                                    <property name="vexpand">True</property>
-                                    <property name="scroll-to-focus">True</property>
-                                    <child>
-                                      <object class="GtkListBox" id="devices_listbox">
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkRevealer" id="loading_revealer">
-                                <property name="transition_type">slide-up</property>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="orientation">vertical</property>
-                                    <child>
-                                      <object class="GtkSeparator">
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="margin_top">6</property>
-                                        <property name="margin_bottom">6</property>
-                                        <property name="label" translatable="yes">Searching for Devices…</property>
-                                        <style>
-                                          <class name="dim-label"/>
-                                        </style>
-                                      </object>
-                                    </child>
+                                  <object class="GtkButton">
+                                    <property name="icon_name">view-refresh-symbolic</property>
+                                    <property name="valign">center</property>
+                                    <property name="tooltip_text" translatable="yes">Search again</property>
+                                    <signal name="clicked" handler="search_again" swapped="true"/>
                                   </object>
                                 </child>
                               </object>
@@ -191,34 +81,30 @@
                       <object class="GtkStackPage">
                         <property name="name">loading</property>
                         <property name="child">
-                          <object class="GtkBox" id="loading">
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">22</property>
+                          <object class="AdwPreferencesGroup">
                             <child>
-                              <object class="GtkImage">
-                                <property name="pixel_size">128</property>
-                                <property name="icon_name">network-wireless-symbolic</property>
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Searching for Devices…</property>
+                                <child type="prefix">
+                                  <object class="GtkSpinner">
+                                    <property name="spinning">true</property>
+                                  </object>
+                                </child>
                               </object>
                             </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">Searching for Devices…</property>
-                                <property name="wrap">True</property>
-                                <attributes>
-                                  <attribute name="weight" value="bold"/>
-                                  <attribute name="scale" value="1.2"/>
-                                </attributes>
-                              </object>
-                            </child>
-                            <style>
-                              <class name="dim-label"/>
-                            </style>
                           </object>
                         </property>
                       </object>
                     </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBox" id="devices_listbox">
+                    <property name="valign">start</property>
+                    <property name="margin_top">18</property>
+                    <style>
+                      <class name="content"/>
+                    </style>
                   </object>
                 </child>
               </object>
@@ -227,5 +113,6 @@
         </child>
       </object>
     </child>
-  </object>
+  </template>
 </interface>
+

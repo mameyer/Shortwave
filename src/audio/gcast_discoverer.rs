@@ -1,5 +1,5 @@
 // Shortwave - gcast_discoverer.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -40,6 +40,7 @@ pub enum GCastDiscovererMessage {
     FoundDevice(GCastDevice),
 }
 
+#[derive(Debug)]
 pub struct GCastDiscoverer {
     sender: Sender<GCastDiscovererMessage>,
     known_devices: Arc<Mutex<Vec<GCastDevice>>>,

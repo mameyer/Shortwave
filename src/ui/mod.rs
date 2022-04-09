@@ -1,5 +1,5 @@
 // Shortwave - mod.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -39,6 +39,6 @@ pub use station_favicon::FaviconSize;
 pub use station_favicon::StationFavicon;
 pub use station_flowbox::SwStationFlowBox;
 pub use station_row::SwStationRow;
-pub use streaming_dialog::StreamingDialog;
+pub use streaming_dialog::SwStreamingDialog;
 pub use window::SwApplicationWindow;
 pub use window::SwView;
