@@ -133,7 +133,7 @@
                           <object class="AdwActionRow">
                             <property name="title" translatable="yes">Local Station</property>
                             <property name="subtitle" translatable="yes">This station exists only in your library, and is not part of the public online station database.</property>
-                            <property name="icon_name">dialog-information-symbolic</property>
+                            <property name="icon_name">cloud-disabled-symbolic</property>
                           </object>
                         </child>
                         <style>

@@ -27,6 +27,7 @@
     <file compressed="true">images/metal.png</file>
   </gresource>
   <gresource prefix="/de/haeckerfelix/Shortwave/icons/16x16/status/">
+    <file preprocess="xml-stripblanks" alias="cloud-disabled-symbolic.svg">icons/hicolor/scalable/status/cloud-disabled-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="restore-window-symbolic.svg">icons/hicolor/scalable/status/restore-window-symbolic.svg</file>
   </gresource>
 </gresources>

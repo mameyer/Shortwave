@@ -42,6 +42,8 @@ mod imp {
         #[template_child]
         pub favicon_box: TemplateChild<gtk::Box>,
         #[template_child]
+        pub local_image: TemplateChild<gtk::Image>,
+        #[template_child]
         pub orphaned_image: TemplateChild<gtk::Image>,
         #[template_child]
         pub play_button: TemplateChild<gtk::Button>,
@@ -120,7 +122,7 @@ impl SwStationRow {
         imp.subtitle_label.set_text(&subtitle);
         imp.subtitle_label.set_visible(!subtitle.is_empty());
 
-        // Check if station is orphaned
+        imp.local_image.set_visible(station.is_local());
         imp.orphaned_image.set_visible(station.is_orphaned());
 
         // Download & set station favicon

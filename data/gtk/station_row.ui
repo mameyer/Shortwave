@@ -14,7 +14,7 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="spacing">6</property>
+            <property name="spacing">12</property>
             <property name="margin_end">12</property>
             <property name="margin_start">12</property>
             <child>
@@ -43,6 +43,12 @@
                     </style>
                   </object>
                 </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImage" id="local_image">
+                <property name="icon_name">cloud-disabled-symbolic</property>
+                <property name="visible">False</property>
               </object>
             </child>
             <child>
