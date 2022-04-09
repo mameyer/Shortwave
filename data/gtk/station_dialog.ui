@@ -142,6 +142,21 @@
                       </object>
                     </child>
                     <child>
+                      <object class="AdwPreferencesGroup" id="orphaned_station_group">
+                        <property name="visible">False</property>
+                        <child>
+                          <object class="AdwActionRow">
+                            <property name="title" translatable="yes">Orphaned Station</property>
+                            <property name="subtitle" translatable="yes">The information could not be updated, probably this station was removed from the public online station database.</property>
+                            <property name="icon_name">dialog-error-symbolic</property>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="error-row"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
                       <object class="AdwPreferencesGroup" id="information_group">
                         <property name="title" translatable="yes">Information</property>
                         <child>

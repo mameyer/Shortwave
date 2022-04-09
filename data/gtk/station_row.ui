@@ -46,6 +46,15 @@
               </object>
             </child>
             <child>
+              <object class="GtkImage" id="orphaned_image">
+                <property name="icon_name">dialog-error-symbolic</property>
+                <property name="visible">False</property>
+                <style>
+                  <class name="error"/>
+                </style>
+              </object>
+            </child>
+            <child>
               <object class="GtkButton" id="play_button">
                 <property name="width_request">36</property>
                 <property name="height_request">36</property>

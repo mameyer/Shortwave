@@ -98,3 +98,9 @@ scrolledwindow.flat-headerbar scrollbar.vertical {
   font-weight: bold;
   box-shadow: none;
 }
+
+.error-row list {
+  background: alpha(@error_color, .3);
+  font-weight: bold;
+  box-shadow: none;
+}

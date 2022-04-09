@@ -50,6 +50,8 @@ mod imp {
         #[template_child]
         pub local_station_group: TemplateChild<adw::PreferencesGroup>,
         #[template_child]
+        pub orphaned_station_group: TemplateChild<adw::PreferencesGroup>,
+        #[template_child]
         pub title_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub homepage_label: TemplateChild<gtk::Label>,
@@ -239,9 +241,14 @@ impl SwStationDialog {
         }
 
         imp.votes_label.set_text(&metadata.votes.to_string());
+
         if imp.station.get().unwrap().is_local() {
             imp.local_station_group.set_visible(true);
             imp.information_group.set_visible(false);
+        }
+
+        if imp.station.get().unwrap().is_orphaned() {
+            imp.orphaned_station_group.set_visible(true);
         }
 
         // Location & Map

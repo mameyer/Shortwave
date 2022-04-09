@@ -157,7 +157,7 @@ impl SwCreateStationDialog {
         let url = Url::parse(&imp.url_entry.text()).unwrap();
         let favicon = imp.favicon.borrow().clone();
 
-        let station = SwStation::new(uuid, true, StationMetadata::new(name, url), favicon);
+        let station = SwStation::new(uuid, true, false, StationMetadata::new(name, url), favicon);
         send!(imp.sender.get().unwrap(), Action::LibraryAddStations(vec![station]));
         self.close();
     }

@@ -1,5 +1,5 @@
 // Shortwave - client.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -68,7 +68,10 @@ impl Client {
         let url = self.build_url(STATION_SEARCH, Some(&request.url_encode())).await?;
         debug!("Station request URL: {}", url);
         let stations_md: Vec<StationMetadata> = HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
-        let stations: Vec<SwStation> = stations_md.into_iter().map(|metadata| SwStation::new(metadata.stationuuid.clone(), false, metadata, None)).collect();
+        let stations: Vec<SwStation> = stations_md
+            .into_iter()
+            .map(|metadata| SwStation::new(metadata.stationuuid.clone(), false, false, metadata, None))
+            .collect();
 
         debug!("Found {} station(s)!", stations.len());
         self.model.clear();

@@ -1,5 +1,5 @@
 // Shortwave - station.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use glib::{ObjectExt, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString, ToValue};
+use glib::{ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString, ToValue};
 use gtk::gdk_pixbuf;
 use gtk::glib;
 use gtk::prelude::*;
@@ -31,6 +31,7 @@ mod imp {
     pub struct SwStation {
         pub uuid: OnceCell<String>,
         pub is_local: OnceCell<bool>,
+        pub is_orphaned: OnceCell<bool>,
         pub metadata: OnceCell<StationMetadata>,
         pub favicon: OnceCell<gdk_pixbuf::Pixbuf>,
     }
@@ -48,6 +49,7 @@ mod imp {
                 vec![
                     ParamSpecString::new("uuid", "UUID", "UUID", None, ParamFlags::READABLE),
                     ParamSpecBoolean::new("is-local", "Is a local station", "Is a local station", false, ParamFlags::READABLE),
+                    ParamSpecBoolean::new("is-orphaned", "Is a orphaned station", "Is a orphaned station", false, ParamFlags::READABLE),
                     ParamSpecBoxed::new("metadata", "Metadata", "Metadata", StationMetadata::static_type(), ParamFlags::READABLE),
                     ParamSpecObject::new("favicon", "Favicon", "Favicon", gdk_pixbuf::Pixbuf::static_type(), glib::ParamFlags::READABLE),
                 ]
@@ -55,12 +57,13 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "uuid" => self.uuid.get().unwrap().to_value(),
-                "is-local" => self.is_local.get().unwrap().to_value(),
-                "metadata" => self.metadata.get().unwrap().to_value(),
-                "favicon" => self.favicon.get().to_value(),
+                "uuid" => obj.uuid().to_value(),
+                "is-local" => obj.is_local().to_value(),
+                "is-orphaned" => obj.is_local().to_value(),
+                "metadata" => obj.metadata().to_value(),
+                "favicon" => obj.favicon().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -72,12 +75,13 @@ glib::wrapper! {
 }
 
 impl SwStation {
-    pub fn new(uuid: String, is_local: bool, metadata: StationMetadata, favicon: Option<gdk_pixbuf::Pixbuf>) -> Self {
+    pub fn new(uuid: String, is_local: bool, is_orphaned: bool, metadata: StationMetadata, favicon: Option<gdk_pixbuf::Pixbuf>) -> Self {
         let station = glib::Object::new::<Self>(&[]).unwrap();
 
         let imp = imp::SwStation::from_instance(&station);
         imp.uuid.set(uuid).unwrap();
         imp.is_local.set(is_local).unwrap();
+        imp.is_orphaned.set(is_orphaned).unwrap();
         imp.metadata.set(metadata).unwrap();
 
         if let Some(pixbuf) = favicon {
@@ -88,18 +92,22 @@ impl SwStation {
     }
 
     pub fn uuid(&self) -> String {
-        self.property("uuid")
+        self.imp().uuid.get().unwrap().clone()
     }
 
     pub fn is_local(&self) -> bool {
-        self.property("is-local")
+        *self.imp().is_local.get().unwrap()
+    }
+
+    pub fn is_orphaned(&self) -> bool {
+        *self.imp().is_orphaned.get().unwrap()
     }
 
     pub fn metadata(&self) -> StationMetadata {
-        self.property("metadata")
+        self.imp().metadata.get().unwrap().clone()
     }
 
     pub fn favicon(&self) -> Option<gdk_pixbuf::Pixbuf> {
-        self.property::<Option<gdk_pixbuf::Pixbuf>>("favicon")
+        self.imp().favicon.get().cloned()
     }
 }

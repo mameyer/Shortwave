@@ -1,5 +1,5 @@
 // Shortwave - station_row.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -41,6 +41,8 @@ mod imp {
         pub subtitle_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub favicon_box: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub orphaned_image: TemplateChild<gtk::Image>,
         #[template_child]
         pub play_button: TemplateChild<gtk::Button>,
 
@@ -117,6 +119,9 @@ impl SwStationRow {
 
         imp.subtitle_label.set_text(&subtitle);
         imp.subtitle_label.set_visible(!subtitle.is_empty());
+
+        // Check if station is orphaned
+        imp.orphaned_image.set_visible(station.is_orphaned());
 
         // Download & set station favicon
         let station_favicon = StationFavicon::new(FaviconSize::Small);

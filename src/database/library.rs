@@ -1,5 +1,5 @@
 // Shortwave - library.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -204,7 +204,7 @@ impl SwLibrary {
         if entry.is_local {
             if let Some(data) = &entry.data {
                 match self.load_station_metadata(&entry.uuid, data) {
-                    Ok(metadata) => imp.model.add_station(&SwStation::new(entry.uuid.clone(), true, metadata, favicon)),
+                    Ok(metadata) => imp.model.add_station(&SwStation::new(entry.uuid.clone(), true, false, metadata, favicon)),
                     Err(_) => self.delete_unknown_station(&entry.uuid),
                 }
             } else {
@@ -213,7 +213,7 @@ impl SwLibrary {
         } else {
             match imp.client.clone().station_metadata_by_uuid(&entry.uuid).await {
                 Ok(metadata) => {
-                    let station = SwStation::new(entry.uuid.clone(), false, metadata, favicon);
+                    let station = SwStation::new(entry.uuid.clone(), false, false, metadata, favicon);
 
                     // Cache data for future use
                     let entry = StationEntry::for_station(&station);
@@ -223,16 +223,13 @@ impl SwLibrary {
                     imp.model.add_station(&station)
                 }
                 Err(err) => {
-                    warn!("Failed to fetch station: {}", entry.uuid);
-                    warn!("Error while receiving: {}", err);
-                    warn!("Trying to use cached data");
-
+                    warn!("Trying to use cached data for station {}, failed to retrieve data: {}", entry.uuid, err);
                     let removed_online = matches!(err, Error::InvalidStationError(_));
 
                     if let Some(data) = &entry.data {
                         match self.load_station_metadata(&entry.uuid, data) {
                             Ok(metadata) => {
-                                let station = SwStation::new(entry.uuid.clone(), false, metadata, favicon);
+                                let station = SwStation::new(entry.uuid.clone(), false, true, metadata, favicon);
                                 imp.model.add_station(&station);
                             }
                             Err(_) => {
