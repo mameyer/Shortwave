@@ -175,9 +175,9 @@ glib::wrapper! {
 
 impl SwStationDialog {
     pub fn new(sender: Sender<Action>, station: SwStation) -> Self {
-        let dialog = glib::Object::new(&[]).unwrap();
+        let dialog: Self = glib::Object::new(&[]).unwrap();
 
-        let imp = imp::SwStationDialog::from_instance(&dialog);
+        let imp = dialog.imp();
         imp.station.set(station).unwrap();
         imp.sender.set(sender).unwrap();
 
@@ -190,7 +190,7 @@ impl SwStationDialog {
     }
 
     fn setup_widgets(&self) {
-        let imp = imp::SwStationDialog::from_instance(self);
+        let imp = self.imp();
         let station = imp.station.get().unwrap();
         let metadata = station.metadata();
 
@@ -300,10 +300,10 @@ impl SwStationDialog {
     }
 
     fn setup_signals(&self) {
-        let imp = imp::SwStationDialog::from_instance(self);
+        let imp = self.imp();
 
         imp.scrolled_window.vadjustment().connect_value_notify(clone!(@weak self as this => move |adj|{
-            let imp = imp::SwStationDialog::from_instance(&this);
+            let imp = this.imp();
             if adj.value() < 210.0 {
                 imp.headerbar.add_css_class("hidden");
                 imp.dialog_title.set_visible(false);
@@ -314,7 +314,7 @@ impl SwStationDialog {
         }));
 
         imp.library_add_button.connect_clicked(clone!(@weak self as this => move|_|
-            let imp = imp::SwStationDialog::from_instance(&this);
+            let imp = this.imp();
             let station = imp.station.get().unwrap().clone();
 
             send!(imp.sender.get().unwrap(), Action::LibraryAddStations(vec![station]));
@@ -323,7 +323,7 @@ impl SwStationDialog {
         ));
 
         imp.library_remove_button.connect_clicked(clone!(@weak self as this => move|_|
-            let imp = imp::SwStationDialog::from_instance(&this);
+            let imp = this.imp();
             let station = imp.station.get().unwrap().clone();
 
             send!(imp.sender.get().unwrap(), Action::LibraryRemoveStations(vec![station]));
@@ -332,7 +332,7 @@ impl SwStationDialog {
         ));
 
         imp.start_playback_button.connect_clicked(clone!(@weak self as this => move|_|
-            let imp = imp::SwStationDialog::from_instance(&this);
+            let imp = this.imp();
             let station = imp.station.get().unwrap().clone();
 
             send!(imp.sender.get().unwrap(), Action::PlaybackSetStation(Box::new(station)));
@@ -341,8 +341,7 @@ impl SwStationDialog {
         ));
 
         imp.copy_stream_button.connect_clicked(clone!(@weak self as this => move|_|
-            let imp = imp::SwStationDialog::from_instance(&this);
-            let metadata = imp.station.get().unwrap().clone().metadata();
+            let metadata = this.imp().station.get().unwrap().clone().metadata();
 
             if let Some(url_resolved) = metadata.url_resolved {
                 let display = gdk::Display::default().unwrap();

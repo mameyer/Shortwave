@@ -105,9 +105,7 @@ glib::wrapper! {
 impl SwLibrary {
     pub fn new(sender: Sender<Action>) -> Self {
         let library = glib::Object::new::<Self>(&[]).unwrap();
-
-        let imp = imp::SwLibrary::from_instance(&library);
-        imp.sender.set(sender).unwrap();
+        library.imp().sender.set(sender).unwrap();
 
         library.load_stations();
         library
@@ -122,11 +120,9 @@ impl SwLibrary {
     }
 
     pub fn add_stations(&self, stations: Vec<SwStation>) {
-        let imp = imp::SwLibrary::from_instance(self);
-
         debug!("Add {} station(s)", stations.len());
         for station in stations {
-            imp.model.add_station(&station);
+            self.imp().model.add_station(&station);
 
             let entry = StationEntry::for_station(&station);
             queries::insert_station(entry).unwrap();
@@ -136,11 +132,9 @@ impl SwLibrary {
     }
 
     pub fn remove_stations(&self, stations: Vec<SwStation>) {
-        let imp = imp::SwLibrary::from_instance(self);
-
         debug!("Remove {} station(s)", stations.len());
         for station in stations {
-            imp.model.remove_station(&station);
+            self.imp().model.remove_station(&station);
             queries::delete_station(&station.uuid()).unwrap();
         }
 
@@ -152,7 +146,7 @@ impl SwLibrary {
     }
 
     fn update_library_status(&self) {
-        let imp = imp::SwLibrary::from_instance(self);
+        let imp = self.imp();
 
         if imp.model.n_items() == 0 {
             *imp.status.borrow_mut() = SwLibraryStatus::Empty;
@@ -173,7 +167,7 @@ impl SwLibrary {
             info!("Stations: {}", entries.len());
 
             // Set library status to loading
-            let imp = imp::SwLibrary::from_instance(&this);
+            let imp = this.imp();
             *imp.status.borrow_mut() = SwLibraryStatus::Loading;
             this.notify("status");
 
@@ -187,7 +181,7 @@ impl SwLibrary {
 
     /// Try to add a station to the database.
     async fn load_station(&self, entry: StationEntry) {
-        let imp = imp::SwLibrary::from_instance(&self);
+        let imp = self.imp();
 
         let favicon = if let Some(data) = entry.favicon {
             let loader = gdk_pixbuf::PixbufLoader::new();
@@ -265,7 +259,7 @@ impl SwLibrary {
 
     /// Delete an unknown or malformed station entry notifying the user.
     fn delete_unknown_station(&self, uuid: &str) {
-        let imp = imp::SwLibrary::from_instance(&self);
+        let imp = self.imp();
 
         warn!("Removing unknown station: {}", uuid);
         queries::delete_station(&uuid).unwrap();

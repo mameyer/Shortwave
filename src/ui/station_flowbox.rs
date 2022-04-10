@@ -96,7 +96,7 @@ glib::wrapper! {
 
 impl SwStationFlowBox {
     pub fn init(&self, model: SwStationModel, sender: Sender<Action>) {
-        let imp = imp::SwStationFlowBox::from_instance(self);
+        let imp = self.imp();
         imp.model.set_model(Some(&model));
 
         self.setup_signals(sender);
@@ -107,16 +107,14 @@ impl SwStationFlowBox {
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {
-        let imp = imp::SwStationFlowBox::from_instance(self);
+        let imp = self.imp();
         imp.sorter.set_sorting(sorting);
         imp.sorter.set_descending(descending);
     }
 
     fn setup_signals(&self, sender: Sender<Action>) {
-        let imp = imp::SwStationFlowBox::from_instance(self);
-
-        imp.flowbox.get().bind_model(
-            Some(&imp.model),
+        self.imp().flowbox.get().bind_model(
+            Some(&self.imp().model),
             clone!(@strong sender => move |station|{
                 let station = station.downcast_ref::<SwStation>().unwrap();
                 let row = SwStationRow::new(sender.clone(), station.clone());
@@ -125,7 +123,7 @@ impl SwStationFlowBox {
         );
 
         // Show StationDialog when row gets clicked
-        imp.flowbox.connect_child_activated(clone!(@strong sender => move |_, child| {
+        self.imp().flowbox.connect_child_activated(clone!(@strong sender => move |_, child| {
             let row = child.clone().downcast::<SwStationRow>().unwrap();
             let station = row.station();
 

@@ -1,5 +1,5 @@
 // Shortwave - search_page.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -95,20 +95,18 @@ glib::wrapper! {
 
 impl SwLibraryPage {
     pub fn init(&self, sender: Sender<Action>) {
-        let imp = imp::SwLibraryPage::from_instance(self);
-        imp.sender.set(sender).unwrap();
+        self.imp().sender.set(sender).unwrap();
 
         self.setup_widgets();
         self.setup_signals();
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {
-        let imp = imp::SwLibraryPage::from_instance(self);
-        imp.flowbox.get().set_sorting(sorting, descending);
+        self.imp().flowbox.get().set_sorting(sorting, descending);
     }
 
     fn setup_widgets(&self) {
-        let imp = imp::SwLibraryPage::from_instance(self);
+        let imp = self.imp();
 
         // Setup empty state page
         imp.status_page.set_icon_name(Some(&config::APP_ID));
@@ -124,12 +122,13 @@ impl SwLibraryPage {
     }
 
     fn setup_signals(&self) {
-        let imp = imp::SwLibraryPage::from_instance(self);
-        imp.library.connect_notify_local(Some("status"), clone!(@weak self as this => move |_, _|this.update_stack_page()));
+        self.imp()
+            .library
+            .connect_notify_local(Some("status"), clone!(@weak self as this => move |_, _|this.update_stack_page()));
     }
 
     fn update_stack_page(&self) {
-        let imp = imp::SwLibraryPage::from_instance(self);
+        let imp = self.imp();
 
         match imp.library.status() {
             SwLibraryStatus::Loading => imp.stack.set_visible_child_name("loading"),

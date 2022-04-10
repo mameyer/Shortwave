@@ -1,5 +1,5 @@
 // Shortwave - search_page.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -124,7 +124,7 @@ glib::wrapper! {
 
 impl SwSearchPage {
     pub fn init(&self, sender: Sender<Action>) {
-        let imp = imp::SwSearchPage::from_instance(self);
+        let imp = self.imp();
 
         let model = &*imp.client.model.clone();
         imp.flowbox.init(model.clone(), sender.clone());
@@ -135,10 +135,10 @@ impl SwSearchPage {
     }
 
     fn setup_signals(&self) {
-        let imp = imp::SwSearchPage::from_instance(self);
+        let imp = self.imp();
 
         imp.search_entry.connect_search_changed(clone!(@weak self as this => move |entry| {
-            let imp = imp::SwSearchPage::from_instance(&this);
+            let imp = this.imp();
             let text = entry.text().to_string();
 
             let text = if text.is_empty() {
@@ -157,20 +157,20 @@ impl SwSearchPage {
         }));
 
         self.connect_map(|this| {
-            let imp = imp::SwSearchPage::from_instance(&this);
+            let imp = this.imp();
             imp.search_entry.grab_focus();
             imp.search_entry.select_region(0, -1);
         });
     }
 
     fn setup_gactions(&self) {
-        let imp = imp::SwSearchPage::from_instance(self);
+        let imp = self.imp();
         let variant_ty = Some(glib::VariantTy::new("s").unwrap());
 
         let sorting_action = gio::SimpleAction::new_stateful("sorting", variant_ty, &"Votes".to_variant());
         imp.search_action_group.add_action(&sorting_action);
         sorting_action.connect_change_state(clone!(@weak self as this => move |action, state|{
-            let imp = imp::SwSearchPage::from_instance(&this);
+            let imp = this.imp();
             if let Some(state) = state{
                 action.set_state(&state);
                 let order = state.str().unwrap();
@@ -201,7 +201,7 @@ impl SwSearchPage {
         let order_action = gio::SimpleAction::new_stateful("order", variant_ty, &"Descending".to_variant());
         imp.search_action_group.add_action(&order_action);
         order_action.connect_change_state(clone!(@weak self as this => move |action, state|{
-            let imp = imp::SwSearchPage::from_instance(&this);
+            let imp = this.imp();
             if let Some(state) = state{
                 action.set_state(&state);
 
@@ -226,7 +226,7 @@ impl SwSearchPage {
     }
 
     pub fn update_search(&self) {
-        let imp = imp::SwSearchPage::from_instance(self);
+        let imp = self.imp();
 
         // Reset previous timeout
         let id: Option<glib::source::SourceId> = imp.timeout_id.borrow_mut().take();
@@ -246,14 +246,14 @@ impl SwSearchPage {
         let id = glib::source::timeout_add_seconds_local(
             1,
             clone!(@weak self as this => @default-return glib::Continue(false), move || {
-                let imp = imp::SwSearchPage::from_instance(&this);
+                let imp = this.imp();
                 *imp.timeout_id.borrow_mut() = None;
 
                 let request = imp.station_request.borrow().clone();
                 debug!("Search for: {:?}", request);
 
                 let fut = imp.client.clone().send_station_request(request).map(clone!(@weak this => move |result| {
-                    let imp = imp::SwSearchPage::from_instance(&this);
+                    let imp = this.imp();
 
                     let max_results = imp.station_request.borrow().limit.unwrap();
                     let over_max_results = imp.client.model.n_items() >= max_results;

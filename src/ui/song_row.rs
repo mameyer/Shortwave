@@ -1,5 +1,5 @@
 // Shortwave - song_row.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -86,7 +86,7 @@ impl SwSongRow {
         row.set_tooltip_text(Some(&song.title));
         row.set_subtitle(&duration);
 
-        let imp = imp::SwSongRow::from_instance(&row);
+        let imp = row.imp();
         imp.sender.set(sender).unwrap();
         imp.song.set(song).unwrap();
 
@@ -95,10 +95,10 @@ impl SwSongRow {
     }
 
     fn setup_signals(&self) {
-        let imp = imp::SwSongRow::from_instance(self);
+        let imp = self.imp();
 
         imp.save_button.connect_clicked(clone!(@weak self as this => move |_| {
-            let imp = imp::SwSongRow::from_instance(&this);
+            let imp = this.imp();
 
             // Save the song
             let sender = imp.sender.get().unwrap();
@@ -114,9 +114,7 @@ impl SwSongRow {
         }));
 
         imp.open_button.connect_clicked(clone!(@strong self as this => move |_| {
-            let imp = imp::SwSongRow::from_instance(&this);
-            let song = imp.song.get().unwrap();
-
+            let song = this.imp().song.get().unwrap();
             open::that(song.path.clone()).expect("Could not play song");
         }));
     }

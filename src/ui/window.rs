@@ -176,7 +176,7 @@ impl SwApplicationWindow {
     }
 
     pub fn setup_widgets(&self, sender: Sender<Action>, player: Rc<Player>) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
 
         // Init pages
         imp.library_page.init(sender.clone());
@@ -215,7 +215,7 @@ impl SwApplicationWindow {
     }
 
     fn setup_signals(&self, _sender: Sender<Action>) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
 
         // flap
         imp.window_flap.get().connect_folded_notify(clone!(@strong self as this => move |_| {
@@ -227,10 +227,9 @@ impl SwApplicationWindow {
 
         // search_button
         imp.search_button.connect_toggled(clone!(@strong self as this => move |search_button| {
-            let imp = imp::SwApplicationWindow::from_instance(&this);
             if search_button.is_active(){
                 this.set_view(SwView::Search);
-            }else if *imp.view.borrow() != SwView::Player {
+            }else if *this.imp().view.borrow() != SwView::Player {
                 this.set_view(SwView::Discover);
             }
         }));
@@ -248,7 +247,7 @@ impl SwApplicationWindow {
     }
 
     fn setup_gactions(&self, sender: Sender<Action>) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
         let app = self.application().unwrap();
 
         // win.show-help-overlay
@@ -359,7 +358,7 @@ impl SwApplicationWindow {
     }
 
     pub fn show_player_widget(&self) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
 
         imp.toolbar_controller_revealer.set_visible(true);
         imp.window_flap.set_locked(false);
@@ -368,7 +367,7 @@ impl SwApplicationWindow {
     }
 
     pub fn show_notification(&self, notification: Rc<Notification>) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
 
         // Remove previous notification
         if let Some(notification) = imp.current_notification.borrow_mut().take() {
@@ -380,8 +379,7 @@ impl SwApplicationWindow {
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
-        imp.library_page.get().set_sorting(sorting, descending);
+        self.imp().library_page.get().set_sorting(sorting, descending);
     }
 
     pub fn view(&self) -> SwView {
@@ -447,7 +445,7 @@ impl SwApplicationWindow {
 
     pub fn go_back(&self) {
         debug!("Go back to previous view");
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
 
         if *imp.view.borrow() == SwView::Player {
             imp.window_flap.set_reveal_flap(false);
@@ -459,7 +457,7 @@ impl SwApplicationWindow {
     }
 
     fn update_visible_view(&self) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
 
         let view = if imp.window_flap.is_folded() && imp.window_flap.reveals_flap() {
             SwView::Player
@@ -481,7 +479,7 @@ impl SwApplicationWindow {
     }
 
     fn update_view(&self) {
-        let imp = imp::SwApplicationWindow::from_instance(self);
+        let imp = self.imp();
         let view = *imp.view.borrow();
         debug!("Set view to {:?}", view);
 

@@ -78,7 +78,7 @@ impl SwStation {
     pub fn new(uuid: String, is_local: bool, is_orphaned: bool, metadata: StationMetadata, favicon: Option<gdk_pixbuf::Pixbuf>) -> Self {
         let station = glib::Object::new::<Self>(&[]).unwrap();
 
-        let imp = imp::SwStation::from_instance(&station);
+        let imp = station.imp();
         imp.uuid.set(uuid).unwrap();
         imp.is_local.set(is_local).unwrap();
         imp.is_orphaned.set(is_orphaned).unwrap();

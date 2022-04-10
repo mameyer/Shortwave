@@ -120,13 +120,11 @@ impl SwCreateStationDialog {
         let imp = self.imp();
 
         imp.back_button.connect_clicked(clone!(@weak self as this => move |_| {
-            let imp = imp::SwCreateStationDialog::from_instance(&this);
-            imp.stack.set_visible_child_name("start");
+            this.imp().stack.set_visible_child_name("start");
         }));
 
         imp.favicon_button.connect_clicked(clone!(@weak self as this => move |_| {
-            let imp = imp::SwCreateStationDialog::from_instance(&this);
-            imp.file_chooser.get().unwrap().show();
+            this.imp().file_chooser.get().unwrap().show();
         }));
 
         imp.file_chooser.get().unwrap().connect_response(clone!(@weak self as this => move |file_chooser, response| {

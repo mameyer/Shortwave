@@ -1,5 +1,5 @@
 // Shortwave - featured_carousel.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -100,7 +100,7 @@ glib::wrapper! {
 
 impl SwFeaturedCarousel {
     pub fn init(&self) {
-        let imp = imp::SwFeaturedCarousel::from_instance(self);
+        let imp = self.imp();
 
         let style_ctx = imp.carousel.style_context();
         style_ctx.add_provider(&imp.css_provider, 600);
@@ -109,7 +109,7 @@ impl SwFeaturedCarousel {
     }
 
     pub fn add_page(&self, title: &str, color: &str, action: Option<Action>) {
-        let imp = imp::SwFeaturedCarousel::from_instance(self);
+        let imp = self.imp();
 
         let builder = gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/featured_carousel_page.ui");
         get_widget!(builder, gtk::Box, page_box);
@@ -140,10 +140,10 @@ impl SwFeaturedCarousel {
     }
 
     fn setup_signals(&self) {
-        let imp = imp::SwFeaturedCarousel::from_instance(self);
+        let imp = self.imp();
 
         imp.previous_button.connect_clicked(clone!(@weak self as this => move |_|{
-            let imp = imp::SwFeaturedCarousel::from_instance(&this);
+            let imp = this.imp();
             let position = imp.carousel.position().round() as usize;
 
             if position > 0 {
@@ -154,7 +154,7 @@ impl SwFeaturedCarousel {
         }));
 
         imp.next_button.connect_clicked(clone!(@weak self as this => move |_|{
-            let imp = imp::SwFeaturedCarousel::from_instance(&this);
+            let imp = this.imp();
             let position = imp.carousel.position().round() as usize;
 
             if position < imp.pages.borrow().len() - 1 {
@@ -171,7 +171,7 @@ impl SwFeaturedCarousel {
     }
 
     fn update_buttons(&self) {
-        let imp = imp::SwFeaturedCarousel::from_instance(self);
+        let imp = self.imp();
 
         let position = imp.carousel.position();
         let length = (imp.pages.borrow().len() - 1) as f64;
@@ -184,7 +184,7 @@ impl SwFeaturedCarousel {
     }
 
     fn update_style(&self) {
-        let imp = imp::SwFeaturedCarousel::from_instance(self);
+        let imp = self.imp();
 
         if imp.pages.borrow().len() == 0 {
             return;
@@ -217,7 +217,7 @@ impl SwFeaturedCarousel {
     }
 
     fn set_color(&self, color: &gdk::RGBA) {
-        let imp = imp::SwFeaturedCarousel::from_instance(self);
+        let imp = self.imp();
 
         imp.css_provider.load_from_data(
             format!(

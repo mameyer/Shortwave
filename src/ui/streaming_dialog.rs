@@ -87,7 +87,7 @@ impl SwStreamingDialog {
         gcd.start_discover();
         let gcd_receiver = gcd_t.1;
 
-        let imp = imp::SwStreamingDialog::from_instance(&dialog);
+        let imp = dialog.imp();
         imp.sender.set(sender).unwrap();
         imp.gcd.set(gcd).unwrap();
 
@@ -96,8 +96,6 @@ impl SwStreamingDialog {
     }
 
     fn setup_signals(&self, gcd_receiver: Receiver<GCastDiscovererMessage>) {
-        let imp = self.imp();
-
         gcd_receiver.attach(
             None,
             clone!(@weak self as this => @default-panic, move |message| {
@@ -135,7 +133,7 @@ impl SwStreamingDialog {
             }),
         );
 
-        imp.devices_listbox.connect_row_activated(clone!(@weak self as this => move |_, row|{
+        self.imp().devices_listbox.connect_row_activated(clone!(@weak self as this => move |_, row|{
             let imp = this.imp();
             let row: adw::ActionRow = row.clone().downcast().unwrap();
             let ip_addr: IpAddr = IpAddr::from_str(row.subtitle().unwrap().as_str()).unwrap();

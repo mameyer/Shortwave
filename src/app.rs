@@ -1,5 +1,5 @@
 // Shortwave - app.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -186,7 +186,7 @@ impl SwApplication {
     }
 
     fn create_window(&self) -> SwApplicationWindow {
-        let imp = imp::SwApplication::from_instance(self);
+        let imp = self.imp();
         let window = SwApplicationWindow::new(imp.sender.clone(), self.clone(), imp.player.clone());
 
         // Set initial view
@@ -231,12 +231,11 @@ impl SwApplication {
     }
 
     pub fn library(&self) -> SwLibrary {
-        let imp = imp::SwApplication::from_instance(self);
-        imp.library.clone()
+        self.imp().library.clone()
     }
 
     fn process_action(&self, action: Action) -> glib::Continue {
-        let imp = imp::SwApplication::from_instance(self);
+        let imp = self.imp();
 
         match action {
             Action::ViewGoBack => imp.window.get().unwrap().upgrade().unwrap().go_back(),
@@ -263,15 +262,13 @@ impl SwApplication {
     }
 
     fn apply_settings_changes(&self, key: Key) {
-        let imp = imp::SwApplication::from_instance(self);
-
         debug!("Settings key changed: {:?}", &key);
         match key {
             Key::ViewSorting | Key::ViewOrder => {
                 let sorting: SwSorting = SwSorting::from_str(&settings_manager::string(Key::ViewSorting)).unwrap();
                 let order = settings_manager::string(Key::ViewOrder);
                 let descending = order == "Descending";
-                imp.window.get().unwrap().upgrade().unwrap().set_sorting(sorting, descending);
+                self.imp().window.get().unwrap().upgrade().unwrap().set_sorting(sorting, descending);
             }
             Key::DarkMode => self.update_color_scheme(),
             _ => (),

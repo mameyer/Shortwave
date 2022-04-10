@@ -83,7 +83,7 @@ impl SwStationRow {
     pub fn new(sender: Sender<Action>, station: SwStation) -> Self {
         let row = glib::Object::new::<Self>(&[]).unwrap();
 
-        let imp = imp::SwStationRow::from_instance(&row);
+        let imp = row.imp();
         imp.sender.set(sender).unwrap();
         imp.station.set(station).unwrap();
 
@@ -94,7 +94,7 @@ impl SwStationRow {
     }
 
     fn setup_signals(&self) {
-        let imp = imp::SwStationRow::from_instance(self);
+        let imp = self.imp();
 
         // play_button
         imp.play_button.connect_clicked(clone!(@strong imp.sender as sender, @strong imp.station as station => move |_| {
@@ -103,7 +103,7 @@ impl SwStationRow {
     }
 
     fn setup_widgets(&self) {
-        let imp = imp::SwStationRow::from_instance(self);
+        let imp = self.imp();
 
         // Set row information
         let station = imp.station.get().unwrap();
@@ -142,7 +142,6 @@ impl SwStationRow {
     }
 
     pub fn station(&self) -> SwStation {
-        let imp = imp::SwStationRow::from_instance(self);
-        imp.station.get().unwrap().clone()
+        self.imp().station.get().unwrap().clone()
     }
 }

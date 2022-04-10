@@ -1,5 +1,5 @@
 // Shortwave - discover_page.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -78,14 +78,14 @@ glib::wrapper! {
 
 impl SwDiscoverPage {
     pub fn init(&self, sender: Sender<app::Action>) {
-        let imp = imp::SwDiscoverPage::from_instance(self);
+        let imp = self.imp();
         imp.sender.set(sender).unwrap();
 
         self.setup_widgets();
     }
 
     fn setup_widgets(&self) {
-        let imp = imp::SwDiscoverPage::from_instance(self);
+        let imp = self.imp();
 
         // TODO: Implement show-server-stats action
         let _action = Action::new("win.show-server-stats", &i18n("Show statistics"));
@@ -124,7 +124,7 @@ impl SwDiscoverPage {
     }
 
     fn fill_flowbox(&self, flowbox: &SwStationFlowBox, request: StationRequest) {
-        let imp = imp::SwDiscoverPage::from_instance(self);
+        let imp = self.imp();
 
         let client = Client::new(settings_manager::string(Key::ApiLookupDomain));
         let sender = imp.sender.get().unwrap().clone();
