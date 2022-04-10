@@ -1,5 +1,5 @@
 // Shortwave - song_listbox.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,12 +15,12 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use glib::Sender;
-use gtk::glib;
 use gtk::prelude::*;
+use gtk::{gdk, glib};
 
 use crate::app::Action;
 use crate::audio::Song;
-use crate::ui::song_row::SwSongRow;
+use crate::ui::{SwApplicationWindow, SwSongRow};
 
 pub struct SongListBox {
     pub widget: gtk::Box,
@@ -53,8 +53,14 @@ impl SongListBox {
     fn setup_signals(&self) {
         get_widget!(self.builder, gtk::Button, open_music_folder_button);
         open_music_folder_button.connect_clicked(|_| {
-            open::that(glib::user_special_dir(glib::UserDirectory::Music).unwrap())
-                .expect("Unable to open music folder");
+            if let Some(dir) = glib::user_special_dir(glib::UserDirectory::Music) {
+                let path = format!("file://{}", dir.as_os_str().to_str().unwrap());
+                gtk::show_uri(
+                    Some(&SwApplicationWindow::default()),
+                    &path,
+                    gdk::CURRENT_TIME,
+                );
+            }
         });
     }
 

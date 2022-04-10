@@ -21,14 +21,14 @@ use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use glib::{clone, subclass, Sender};
 use gtk::subclass::prelude::*;
-use gtk::{gdk_pixbuf, gio, glib, CompositeTemplate};
+use gtk::{gdk, gdk_pixbuf, gio, glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 use url::Url;
 use uuid::Uuid;
 
 use crate::api::{StationMetadata, SwStation};
-use crate::app::{Action, SwApplication};
-use crate::ui::{FaviconSize, StationFavicon};
+use crate::app::Action;
+use crate::ui::{FaviconSize, StationFavicon, SwApplicationWindow};
 
 mod imp {
     use super::*;
@@ -110,12 +110,7 @@ impl SwCreateStationDialog {
         imp.file_chooser.set(file_chooser).unwrap();
         imp.sender.set(sender).unwrap();
 
-        let window = gio::Application::default()
-            .unwrap()
-            .downcast_ref::<SwApplication>()
-            .unwrap()
-            .active_window()
-            .unwrap();
+        let window = SwApplicationWindow::default();
         dialog.set_transient_for(Some(&window));
 
         dialog.setup_signals();
@@ -148,7 +143,11 @@ impl SwCreateStationDialog {
 
     #[template_callback]
     fn create_public_station(&self) {
-        open::that("https://www.radio-browser.info/#/add").expect("Could not open webpage.");
+        gtk::show_uri(
+            Some(&SwApplicationWindow::default()),
+            "https://www.radio-browser.info/add",
+            gdk::CURRENT_TIME,
+        );
         self.close();
     }
 
