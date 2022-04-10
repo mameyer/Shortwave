@@ -1,5 +1,5 @@
 // Shortwave - station_flowbox.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -76,9 +76,9 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "model" => self.model.to_value(),
+                "model" => obj.model().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -100,6 +100,10 @@ impl SwStationFlowBox {
         imp.model.set_model(Some(&model));
 
         self.setup_signals(sender);
+    }
+
+    pub fn model(&self) -> gtk::SortListModel {
+        self.imp().model.clone()
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {

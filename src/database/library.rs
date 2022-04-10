@@ -88,10 +88,10 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "model" => self.model.to_value(),
-                "status" => self.status.borrow().to_value(),
+                "model" => obj.model().to_value(),
+                "status" => obj.status().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -114,11 +114,11 @@ impl SwLibrary {
     }
 
     pub fn model(&self) -> SwStationModel {
-        self.property("model")
+        self.imp().model.clone()
     }
 
     pub fn status(&self) -> SwLibraryStatus {
-        self.property("status")
+        self.imp().status.borrow().clone()
     }
 
     pub fn add_stations(&self, stations: Vec<SwStation>) {

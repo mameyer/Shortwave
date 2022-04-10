@@ -1,5 +1,5 @@
 // Shortwave - station_sorter.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,21 +17,20 @@
 use glib::{Enum, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecEnum, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
+use gtk::subclass::prelude::*;
 use once_cell::sync::Lazy;
 
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 
 use crate::api::SwStation;
 
 mod imp {
     use super::*;
-    use glib::subclass::prelude::*;
-    use gtk::subclass::sorter::SorterImpl;
 
     #[derive(Debug, Default)]
     pub struct SwStationSorter {
-        descending: RefCell<bool>,
-        sorting: RefCell<SwSorting>,
+        pub descending: Cell<bool>,
+        pub sorting: RefCell<SwSorting>,
     }
 
     #[glib::object_subclass]
@@ -53,24 +52,18 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "descending" => self.descending.borrow().to_value(),
-                "sorting" => self.sorting.borrow().to_value(),
+                "descending" => obj.descending().to_value(),
+                "sorting" => obj.sorting().to_value(),
                 _ => unimplemented!(),
             }
         }
 
         fn set_property(&self, obj: &Self::Type, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
             match pspec.name() {
-                "descending" => {
-                    *self.descending.borrow_mut() = value.get().unwrap();
-                    obj.changed(gtk::SorterChange::Different);
-                }
-                "sorting" => {
-                    *self.sorting.borrow_mut() = value.get().unwrap();
-                    obj.changed(gtk::SorterChange::Different);
-                }
+                "descending" => obj.set_descending(value.get().unwrap()),
+                "sorting" => obj.set_descending(value.get().unwrap()),
                 _ => unimplemented!(),
             }
         }
@@ -84,7 +77,7 @@ mod imp {
         fn compare(&self, _sorter: &Self::Type, item1: &glib::Object, item2: &glib::Object) -> gtk::Ordering {
             let a = &item1.clone().downcast::<SwStation>().unwrap();
             let b = &item2.clone().downcast::<SwStation>().unwrap();
-            super::SwStationSorter::station_cmp(a, b, *self.sorting.borrow(), *self.descending.borrow()).into()
+            super::SwStationSorter::station_cmp(a, b, *self.sorting.borrow(), self.descending.get()).into()
         }
     }
 }
@@ -98,12 +91,22 @@ impl SwStationSorter {
         glib::Object::new(&[]).expect("Failed to create SwStationSorter")
     }
 
-    pub fn set_sorting(&self, sorting: SwSorting) {
-        self.set_property("sorting", &sorting)
+    pub fn descending(&self) -> bool {
+        self.imp().descending.get()
     }
 
     pub fn set_descending(&self, descending: bool) {
-        self.set_property("descending", &descending)
+        self.imp().descending.set(descending);
+        self.changed(gtk::SorterChange::Different);
+    }
+
+    pub fn sorting(&self) -> SwSorting {
+        self.imp().sorting.borrow().clone()
+    }
+
+    pub fn set_sorting(&self, sorting: SwSorting) {
+        *self.imp().sorting.borrow_mut() = sorting;
+        self.changed(gtk::SorterChange::Different);
     }
 
     fn station_cmp(a: &SwStation, b: &SwStation, sorting: SwSorting, descending: bool) -> std::cmp::Ordering {

@@ -1,5 +1,5 @@
 // Shortwave - window.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -122,24 +122,16 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "view" => self.view.borrow().to_value(),
+                "view" => obj.view().to_value(),
                 _ => unimplemented!(),
             }
         }
 
         fn set_property(&self, obj: &Self::Type, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
             match pspec.name() {
-                "view" => {
-                    *self.view.borrow_mut() = value.get().unwrap();
-
-                    // Delay updating the view, otherwise it could invalidate widgets if it gets
-                    // called during an allocation and cause glitches (eg. short flickering)
-                    glib::idle_add_local(clone!(@weak obj => @default-return glib::Continue(false), move||{
-                        obj.update_view(); glib::Continue(false)
-                    }));
-                }
+                "view" => obj.set_view(value.get().unwrap()),
                 _ => unimplemented!(),
             }
         }
@@ -392,8 +384,18 @@ impl SwApplicationWindow {
         imp.library_page.get().set_sorting(sorting, descending);
     }
 
+    pub fn view(&self) -> SwView {
+        self.imp().view.borrow().clone()
+    }
+
     pub fn set_view(&self, view: SwView) {
-        self.set_property("view", &view)
+        *self.imp().view.borrow_mut() = view;
+
+        // Delay updating the view, otherwise it could invalidate widgets if it gets
+        // called during an allocation and cause glitches (eg. short flickering)
+        glib::idle_add_local(clone!(@weak self as this => @default-return glib::Continue(false), move||{
+            this.update_view(); glib::Continue(false)
+        }));
     }
 
     pub fn enable_mini_player(&self, enable: bool) {
