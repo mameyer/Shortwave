@@ -19,16 +19,16 @@ use adw::subclass::prelude::*;
 use futures_util::future::FutureExt;
 use glib::{clone, subclass, Sender};
 use gtk::subclass::prelude::*;
-use gtk::{gdk, gio, glib, CompositeTemplate};
+use gtk::{gdk, glib, CompositeTemplate};
 use inflector::Inflector;
 use once_cell::unsync::OnceCell;
 use shumate::prelude::*;
 
 use crate::api::{FaviconDownloader, SwStation};
-use crate::app::{Action, SwApplication};
+use crate::app::Action;
 use crate::database::SwLibrary;
 use crate::i18n;
-use crate::ui::{FaviconSize, StationFavicon};
+use crate::ui::{FaviconSize, StationFavicon, SwApplicationWindow};
 
 mod imp {
     use super::*;
@@ -178,12 +178,7 @@ impl SwStationDialog {
         imp.station.set(station).unwrap();
         imp.sender.set(sender).unwrap();
 
-        let window = gio::Application::default()
-            .unwrap()
-            .downcast_ref::<SwApplication>()
-            .unwrap()
-            .active_window()
-            .unwrap();
+        let window = SwApplicationWindow::default();
         dialog.set_transient_for(Some(&window));
 
         dialog.setup_widgets();

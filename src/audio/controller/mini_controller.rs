@@ -122,7 +122,8 @@ impl Controller for MiniController {
             PlaybackState::Loading => "loading",
             PlaybackState::Failure(_) => "start_playback",
         };
-        self.playback_button_stack.set_visible_child_name
+        self.playback_button_stack
+            .set_visible_child_name(&child_name);
     }
 
     fn set_volume(&self, volume: f64) {

@@ -21,11 +21,12 @@ use std::str::FromStr;
 use adw::prelude::*;
 use glib::{clone, subclass, Receiver, Sender};
 use gtk::subclass::prelude::*;
-use gtk::{gio, glib, CompositeTemplate};
+use gtk::{glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 
-use crate::app::{Action, SwApplication};
+use crate::app::Action;
 use crate::audio::{GCastDiscoverer, GCastDiscovererMessage};
+use crate::ui::SwApplicationWindow;
 
 mod imp {
     use super::*;
@@ -143,7 +144,7 @@ impl SwStreamingDialog {
         );
 
         self.connect_show(clone!(@weak self as this => move |_|{
-            let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();
+            let window = SwApplicationWindow::default();
             this.set_transient_for(Some(&window));
             this.set_modal(true);
         }));

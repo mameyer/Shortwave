@@ -1,5 +1,5 @@
 // Shortwave - inhibit_controller.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ use gtk::prelude::*;
 use crate::api::SwStation;
 use crate::app::SwApplication;
 use crate::audio::{Controller, PlaybackState};
+use crate::ui::SwApplicationWindow;
 
 #[derive(Debug, Default)]
 pub struct InhibitController {
@@ -43,7 +44,7 @@ impl Controller for InhibitController {
             .downcast_ref::<SwApplication>()
             .unwrap()
             .clone();
-        let window = app.active_window().unwrap();
+        let window = SwApplicationWindow::default();
 
         if playback_state == &PlaybackState::Playing || playback_state == &PlaybackState::Loading {
             if self.cookie.get() == 0 {

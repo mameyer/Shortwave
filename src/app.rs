@@ -119,8 +119,7 @@ mod imp {
             // If the window already exists,
             // present it instead creating a new one again.
             if let Some(weak_window) = self.window.get() {
-                let window = weak_window.upgrade().unwrap();
-                window.present();
+                weak_window.upgrade().unwrap().present();
                 info!("Application window presented.");
                 return;
             }
@@ -204,7 +203,7 @@ impl SwApplication {
     }
 
     fn setup_gactions(&self) {
-        let window = self.active_window().unwrap();
+        let window = SwApplicationWindow::default();
 
         // app.show-preferences
         action!(
@@ -243,7 +242,7 @@ impl SwApplication {
 
     fn process_action(&self, action: Action) -> glib::Continue {
         let imp = self.imp();
-        let window = imp.window.get().unwrap().upgrade().unwrap();
+        let window = SwApplicationWindow::default();
 
         match action {
             Action::ViewGoBack => window.go_back(),
@@ -303,5 +302,14 @@ impl SwApplication {
             };
             manager.set_color_scheme(color_scheme);
         }
+    }
+}
+
+impl Default for SwApplication {
+    fn default() -> Self {
+        gio::Application::default()
+            .expect("Could not get default GApplication")
+            .downcast()
+            .unwrap()
     }
 }

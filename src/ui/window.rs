@@ -21,7 +21,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::{clone, subclass, Enum, ParamFlags, ParamSpec, ParamSpecEnum, Sender, ToValue};
 use gtk::subclass::prelude::*;
-use gtk::{gio, glib, CompositeTemplate};
+use gtk::{gdk, gio, glib, CompositeTemplate};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 
@@ -280,7 +280,11 @@ impl SwApplicationWindow {
 
         // win.open-radio-browser-info
         action!(self, "open-radio-browser-info", |_, _| {
-            open::that("https://www.radio-browser.info/").expect("Could not open webpage.");
+            gtk::show_uri(
+                Some(&SwApplicationWindow::default()),
+                "https://www.radio-browser.info/",
+                gdk::CURRENT_TIME,
+            );
         });
 
         // win.create-new-station
@@ -565,5 +569,15 @@ impl SwApplicationWindow {
                 imp.back_button.set_visible(true);
             }
         }
+    }
+}
+
+impl Default for SwApplicationWindow {
+    fn default() -> Self {
+        SwApplication::default()
+            .active_window()
+            .unwrap()
+            .downcast()
+            .unwrap()
     }
 }

@@ -1,5 +1,5 @@
 // Shortwave - about_dialog.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,8 +18,9 @@ use gtk::prelude::*;
 
 use crate::config;
 use crate::i18n::*;
+use crate::ui::SwApplicationWindow;
 
-pub fn show_about_dialog(window: &gtk::Window) {
+pub fn show_about_dialog(window: &SwApplicationWindow) {
     let vcs_tag = config::VCS_TAG;
     let version: String = match config::PROFILE {
         "development" => format!("{} \n(Development Commit {})", config::VERSION, vcs_tag),
