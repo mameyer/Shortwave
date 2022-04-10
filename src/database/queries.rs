@@ -33,19 +33,25 @@ pub fn stations() -> Result<Vec<StationEntry>, diesel::result::Error> {
 
 pub fn contains_station(uuid: &str) -> Result<bool, diesel::result::Error> {
     let con = connect_db!();
-    let entries = library::table.filter(library::uuid.eq(uuid)).load::<StationEntry>(&con)?;
+    let entries = library::table
+        .filter(library::uuid.eq(uuid))
+        .load::<StationEntry>(&con)?;
     Ok(!entries.is_empty())
 }
 
 pub fn insert_station(entry: StationEntry) -> Result<(), diesel::result::Error> {
     let con = connect_db!();
-    diesel::insert_into(library::table).values(entry).execute(&*con)?;
+    diesel::insert_into(library::table)
+        .values(entry)
+        .execute(&*con)?;
     Ok(())
 }
 
 pub fn update_station(entry: StationEntry) -> Result<(), diesel::result::Error> {
     let con = connect_db!();
-    diesel::replace_into(library::table).values(entry).execute(&*con)?;
+    diesel::replace_into(library::table)
+        .values(entry)
+        .execute(&*con)?;
     Ok(())
 }
 

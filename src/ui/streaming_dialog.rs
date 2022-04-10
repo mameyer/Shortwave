@@ -129,16 +129,18 @@ impl SwStreamingDialog {
             }),
         );
 
-        self.imp().devices_listbox.connect_row_activated(clone!(@weak self as this => move |_, row|{
-            let imp = this.imp();
-            let row: adw::ActionRow = row.clone().downcast().unwrap();
-            let ip_addr: IpAddr = IpAddr::from_str(row.subtitle().unwrap().as_str()).unwrap();
+        self.imp().devices_listbox.connect_row_activated(
+            clone!(@weak self as this => move |_, row|{
+                let imp = this.imp();
+                let row: adw::ActionRow = row.clone().downcast().unwrap();
+                let ip_addr: IpAddr = IpAddr::from_str(row.subtitle().unwrap().as_str()).unwrap();
 
-            // Get GCastDevice
-            let device = imp.gcd.get().unwrap().device_by_ip_addr(ip_addr).unwrap();
-            send!(imp.sender.get().unwrap(), Action::PlaybackConnectGCastDevice(device));
-            this.hide();
-        }));
+                // Get GCastDevice
+                let device = imp.gcd.get().unwrap().device_by_ip_addr(ip_addr).unwrap();
+                send!(imp.sender.get().unwrap(), Action::PlaybackConnectGCastDevice(device));
+                this.hide();
+            }),
+        );
 
         self.connect_show(clone!(@weak self as this => move |_|{
             let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();

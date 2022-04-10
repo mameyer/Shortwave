@@ -38,15 +38,22 @@ pub struct Backend {
 impl Backend {
     pub fn new(sender: Sender<Action>) -> Self {
         // Song backend
-        let save_count: usize = settings_manager::integer(Key::RecorderSaveCount).try_into().unwrap();
+        let save_count: usize = settings_manager::integer(Key::RecorderSaveCount)
+            .try_into()
+            .unwrap();
         let song = SongBackend::new(sender.clone(), save_count);
         song.delete_songs(); // Delete old songs
 
         // Gstreamer backend
-        let (gstreamer_sender, gstreamer_receiver) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
+        let (gstreamer_sender, gstreamer_receiver) =
+            glib::MainContext::channel(glib::PRIORITY_DEFAULT);
         let gstreamer_receiver = Some(gstreamer_receiver);
         let gstreamer = GstreamerBackend::new(gstreamer_sender, sender);
 
-        Self { gstreamer, gstreamer_receiver, song }
+        Self {
+            gstreamer,
+            gstreamer_receiver,
+            song,
+        }
     }
 }

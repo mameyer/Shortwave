@@ -31,7 +31,14 @@ use crate::api::*;
 use crate::config;
 use crate::model::SwStationModel;
 
-pub static USER_AGENT: Lazy<String> = Lazy::new(|| format!("{}/{}-{}", config::PKGNAME, config::VERSION, config::PROFILE));
+pub static USER_AGENT: Lazy<String> = Lazy::new(|| {
+    format!(
+        "{}/{}-{}",
+        config::PKGNAME,
+        config::VERSION,
+        config::PROFILE
+    )
+});
 
 pub static HTTP_CLIENT: Lazy<isahc::HttpClient> = Lazy::new(|| {
     isahc::HttpClientBuilder::new()
@@ -65,12 +72,17 @@ impl Client {
     }
 
     pub async fn send_station_request(self, request: StationRequest) -> Result<(), Error> {
-        let url = self.build_url(STATION_SEARCH, Some(&request.url_encode())).await?;
+        let url = self
+            .build_url(STATION_SEARCH, Some(&request.url_encode()))
+            .await?;
         debug!("Station request URL: {}", url);
-        let stations_md: Vec<StationMetadata> = HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
+        let stations_md: Vec<StationMetadata> =
+            HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
         let stations: Vec<SwStation> = stations_md
             .into_iter()
-            .map(|metadata| SwStation::new(metadata.stationuuid.clone(), false, false, metadata, None))
+            .map(|metadata| {
+                SwStation::new(metadata.stationuuid.clone(), false, false, metadata, None)
+            })
             .collect();
 
         debug!("Found {} station(s)!", stations.len());
@@ -83,10 +95,13 @@ impl Client {
     }
 
     pub async fn station_metadata_by_uuid(self, uuid: &str) -> Result<StationMetadata, Error> {
-        let url = self.build_url(&format!("{}{}", STATION_BY_UUID, uuid), None).await?;
+        let url = self
+            .build_url(&format!("{}{}", STATION_BY_UUID, uuid), None)
+            .await?;
         debug!("Request station by UUID URL: {}", url);
 
-        let mut metadata: Vec<StationMetadata> = HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
+        let mut metadata: Vec<StationMetadata> =
+            HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
         match metadata.pop() {
             Some(data) => Ok(data),
             None => {
@@ -98,7 +113,9 @@ impl Client {
 
     async fn build_url(&self, param: &str, options: Option<&str>) -> Result<Url, Error> {
         if self.server.get().is_none() {
-            let server_ip = Self::api_server(self.lookup_domain.clone()).await.ok_or(Error::NoServerReachable)?;
+            let server_ip = Self::api_server(self.lookup_domain.clone())
+                .await
+                .ok_or(Error::NoServerReachable)?;
             self.server.set(server_ip).unwrap();
         }
 
@@ -116,7 +133,9 @@ impl Client {
             warn!("Unable to use dns resolver from system conf");
             let config = rconfig::ResolverConfig::default();
             let opts = rconfig::ResolverOpts::default();
-            resolver(config, opts).await.expect("failed to connect resolver")
+            resolver(config, opts)
+                .await
+                .expect("failed to connect resolver")
         };
 
         // Do forward lookup to receive a list with the api servers
@@ -128,7 +147,11 @@ impl Client {
 
         for ip in ips {
             // Do a reverse lookup to get the hostname
-            let result = resolver.reverse_lookup(ip).await.ok().and_then(|r| r.into_iter().next());
+            let result = resolver
+                .reverse_lookup(ip)
+                .await
+                .ok()
+                .and_then(|r| r.into_iter().next());
             if result.is_none() {
                 warn!("Reverse lookup failed for {} failed", ip);
                 continue;
@@ -137,10 +160,18 @@ impl Client {
 
             // Check if the server is online / returns data
             // If not, try using the next one in the list
-            debug!("Trying to connect to {} ({})", hostname.to_string(), ip.to_string());
+            debug!(
+                "Trying to connect to {} ({})",
+                hostname.to_string(),
+                ip.to_string()
+            );
             match Self::test_api_server(hostname.to_string()).await {
                 Ok(_) => {
-                    info!("Using {} ({}) as api sever", hostname.to_string(), ip.to_string());
+                    info!(
+                        "Using {} ({}) as api sever",
+                        hostname.to_string(),
+                        ip.to_string()
+                    );
                     return Some(Url::parse(&format!("https://{}/", hostname)).unwrap());
                 }
                 Err(err) => {
@@ -153,7 +184,11 @@ impl Client {
     }
 
     async fn test_api_server(ip: String) -> Result<(), Error> {
-        let _stats: Option<Stats> = HTTP_CLIENT.get_async(format!("https://{}/{}", ip, STATS)).await?.json().await?;
+        let _stats: Option<Stats> = HTTP_CLIENT
+            .get_async(format!("https://{}/{}", ip, STATS))
+            .await?
+            .json()
+            .await?;
         Ok(())
     }
 }

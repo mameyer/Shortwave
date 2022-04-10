@@ -108,7 +108,8 @@ impl SwFeaturedCarousel {
     pub fn add_page(&self, title: &str, color: &str, action: Option<Action>) {
         let imp = self.imp();
 
-        let builder = gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/featured_carousel_page.ui");
+        let builder =
+            gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/featured_carousel_page.ui");
         get_widget!(builder, gtk::Box, page_box);
         get_widget!(builder, gtk::Label, title_label);
         get_widget!(builder, gtk::Label, action_label);
@@ -125,7 +126,10 @@ impl SwFeaturedCarousel {
         imp.carousel.append(&page_box);
 
         let rgba = gdk::RGBA::from_str(color).unwrap();
-        let page = Page { page: page_box, color: rgba };
+        let page = Page {
+            page: page_box,
+            color: rgba,
+        };
 
         imp.pages.borrow_mut().append(&mut vec![page]);
 
@@ -139,16 +143,17 @@ impl SwFeaturedCarousel {
     fn setup_signals(&self) {
         let imp = self.imp();
 
-        imp.previous_button.connect_clicked(clone!(@weak self as this => move |_|{
-            let imp = this.imp();
-            let position = imp.carousel.position().round() as usize;
+        imp.previous_button
+            .connect_clicked(clone!(@weak self as this => move |_|{
+                let imp = this.imp();
+                let position = imp.carousel.position().round() as usize;
 
-            if position > 0 {
-                imp.carousel.scroll_to(&imp.pages.borrow()[position - 1].page, true);
-            }else{
-                imp.carousel.scroll_to(&imp.pages.borrow()[0].page, true);
-            }
-        }));
+                if position > 0 {
+                    imp.carousel.scroll_to(&imp.pages.borrow()[position - 1].page, true);
+                }else{
+                    imp.carousel.scroll_to(&imp.pages.borrow()[0].page, true);
+                }
+            }));
 
         imp.next_button.connect_clicked(clone!(@weak self as this => move |_|{
             let imp = this.imp();
@@ -161,10 +166,11 @@ impl SwFeaturedCarousel {
             }
         }));
 
-        imp.carousel.connect_position_notify(clone!(@weak self as this => move |_|{
-            this.update_buttons();
-            this.update_style();
-        }));
+        imp.carousel
+            .connect_position_notify(clone!(@weak self as this => move |_|{
+                this.update_buttons();
+                this.update_style();
+            }));
     }
 
     fn update_buttons(&self) {

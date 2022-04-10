@@ -50,7 +50,10 @@ impl GCastDiscoverer {
         let (sender, receiver) = glib::MainContext::channel(glib::PRIORITY_DEFAULT);
         let known_devices = Arc::new(Mutex::new(Vec::new()));
 
-        let gcd = Self { sender, known_devices };
+        let gcd = Self {
+            sender,
+            known_devices,
+        };
         (gcd, receiver)
     }
 
@@ -100,7 +103,10 @@ impl GCastDiscoverer {
     fn device(response: mdns::Response) -> Option<GCastDevice> {
         let mut values: HashMap<String, String> = HashMap::new();
 
-        let addr = response.records().filter_map(Self::record_to_ip_addr).next();
+        let addr = response
+            .records()
+            .filter_map(Self::record_to_ip_addr)
+            .next();
         if addr == None {
             debug!("Cast device does not advertise address.");
             return None;

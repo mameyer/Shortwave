@@ -46,7 +46,11 @@ impl SongBackend {
         let listbox = SongListBox::new(sender);
         let songs = IndexMap::new();
 
-        Self { listbox, songs, save_count }
+        Self {
+            listbox,
+            songs,
+            save_count,
+        }
     }
 
     pub fn add_song(&mut self, song: Song) {

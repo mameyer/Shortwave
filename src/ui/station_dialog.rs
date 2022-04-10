@@ -178,7 +178,12 @@ impl SwStationDialog {
         imp.station.set(station).unwrap();
         imp.sender.set(sender).unwrap();
 
-        let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();
+        let window = gio::Application::default()
+            .unwrap()
+            .downcast_ref::<SwApplication>()
+            .unwrap()
+            .active_window()
+            .unwrap();
         dialog.set_transient_for(Some(&window));
 
         dialog.setup_widgets();
@@ -198,11 +203,13 @@ impl SwStationDialog {
         if let Some(pixbuf) = station.favicon() {
             station_favicon.set_pixbuf(&pixbuf);
         } else if let Some(favicon) = metadata.favicon.as_ref() {
-            let fut = FaviconDownloader::download(favicon.clone(), FaviconSize::Big as i32).map(move |pixbuf| {
-                if let Ok(pixbuf) = pixbuf {
-                    station_favicon.set_pixbuf(&pixbuf)
-                }
-            });
+            let fut = FaviconDownloader::download(favicon.clone(), FaviconSize::Big as i32).map(
+                move |pixbuf| {
+                    if let Ok(pixbuf) = pixbuf {
+                        station_favicon.set_pixbuf(&pixbuf)
+                    }
+                },
+            );
             spawn!(fut);
         }
 
@@ -215,7 +222,8 @@ impl SwStationDialog {
             let domain = homepage.domain().unwrap();
 
             imp.homepage_label.set_visible(true);
-            imp.homepage_label.set_markup(&format!("<a href=\"{}\">{}</a>", &url, &domain));
+            imp.homepage_label
+                .set_markup(&format!("<a href=\"{}\">{}</a>", &url, &domain));
             imp.homepage_label.set_tooltip_text(Some(&url));
         }
 
@@ -234,7 +242,8 @@ impl SwStationDialog {
 
         if !metadata.language.is_empty() {
             imp.language_row.set_visible(true);
-            imp.language_label.set_text(&metadata.language.to_title_case());
+            imp.language_label
+                .set_text(&metadata.language.to_title_case());
         }
 
         imp.votes_label.set_text(&metadata.votes.to_string());
@@ -292,59 +301,66 @@ impl SwStationDialog {
             metadata.url.map(|x| x.to_string()).unwrap_or(String::new())
         };
         let url = url.to_string().replace("&", "&amp;");
-        imp.stream_label.set_markup(&format!("<a href=\"{}\">{}</a>", &url, &url));
+        imp.stream_label
+            .set_markup(&format!("<a href=\"{}\">{}</a>", &url, &url));
         imp.stream_label.set_tooltip_text(Some(&url));
     }
 
     fn setup_signals(&self) {
         let imp = self.imp();
 
-        imp.scrolled_window.vadjustment().connect_value_notify(clone!(@weak self as this => move |adj|{
-            let imp = this.imp();
-            if adj.value() < 210.0 {
-                imp.headerbar.add_css_class("hidden");
-                imp.dialog_title.set_visible(false);
-            }else {
-                imp.headerbar.remove_css_class("hidden");
-                imp.dialog_title.set_visible(true);
-            }
-        }));
+        imp.scrolled_window.vadjustment().connect_value_notify(
+            clone!(@weak self as this => move |adj|{
+                let imp = this.imp();
+                if adj.value() < 210.0 {
+                    imp.headerbar.add_css_class("hidden");
+                    imp.dialog_title.set_visible(false);
+                }else {
+                    imp.headerbar.remove_css_class("hidden");
+                    imp.dialog_title.set_visible(true);
+                }
+            }),
+        );
 
-        imp.library_add_button.connect_clicked(clone!(@weak self as this => move|_|
-            let imp = this.imp();
-            let station = imp.station.get().unwrap().clone();
+        imp.library_add_button
+            .connect_clicked(clone!(@weak self as this => move|_|
+                let imp = this.imp();
+                let station = imp.station.get().unwrap().clone();
 
-            send!(imp.sender.get().unwrap(), Action::LibraryAddStations(vec![station]));
-            this.hide();
-            this.close();
-        ));
+                send!(imp.sender.get().unwrap(), Action::LibraryAddStations(vec![station]));
+                this.hide();
+                this.close();
+            ));
 
-        imp.library_remove_button.connect_clicked(clone!(@weak self as this => move|_|
-            let imp = this.imp();
-            let station = imp.station.get().unwrap().clone();
+        imp.library_remove_button
+            .connect_clicked(clone!(@weak self as this => move|_|
+                let imp = this.imp();
+                let station = imp.station.get().unwrap().clone();
 
-            send!(imp.sender.get().unwrap(), Action::LibraryRemoveStations(vec![station]));
-            this.hide();
-            this.close();
-        ));
+                send!(imp.sender.get().unwrap(), Action::LibraryRemoveStations(vec![station]));
+                this.hide();
+                this.close();
+            ));
 
-        imp.start_playback_button.connect_clicked(clone!(@weak self as this => move|_|
-            let imp = this.imp();
-            let station = imp.station.get().unwrap().clone();
+        imp.start_playback_button
+            .connect_clicked(clone!(@weak self as this => move|_|
+                let imp = this.imp();
+                let station = imp.station.get().unwrap().clone();
 
-            send!(imp.sender.get().unwrap(), Action::PlaybackSetStation(Box::new(station)));
-            this.hide();
-            this.close();
-        ));
+                send!(imp.sender.get().unwrap(), Action::PlaybackSetStation(Box::new(station)));
+                this.hide();
+                this.close();
+            ));
 
-        imp.copy_stream_button.connect_clicked(clone!(@weak self as this => move|_|
-            let metadata = this.imp().station.get().unwrap().clone().metadata();
+        imp.copy_stream_button
+            .connect_clicked(clone!(@weak self as this => move|_|
+                let metadata = this.imp().station.get().unwrap().clone().metadata();
 
-            if let Some(url_resolved) = metadata.url_resolved {
-                let display = gdk::Display::default().unwrap();
-                let clipboard = display.clipboard();
-                clipboard.set_text(&url_resolved.to_string());
-            }
-        ));
+                if let Some(url_resolved) = metadata.url_resolved {
+                    let display = gdk::Display::default().unwrap();
+                    let clipboard = display.clipboard();
+                    clipboard.set_text(&url_resolved.to_string());
+                }
+            ));
     }
 }

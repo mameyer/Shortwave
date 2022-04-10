@@ -39,7 +39,11 @@ pub struct MprisController {
 
 impl MprisController {
     pub fn new(sender: Sender<Action>) -> Self {
-        let mpris = MprisPlayer::new(config::APP_ID.to_string(), config::NAME.to_string(), config::APP_ID.to_string());
+        let mpris = MprisPlayer::new(
+            config::APP_ID.to_string(),
+            config::NAME.to_string(),
+            config::APP_ID.to_string(),
+        );
         mpris.set_can_raise(true);
         mpris.set_can_play(false);
         mpris.set_can_seek(false);
@@ -69,7 +73,10 @@ impl MprisController {
         if let Some(station) = station.clone() {
             station.metadata().favicon.map(|favicon| {
                 FaviconDownloader::file(&favicon).map(|file| {
-                    let path = format!("file://{}", file.path().unwrap().to_str().unwrap().to_owned());
+                    let path = format!(
+                        "file://{}",
+                        file.path().unwrap().to_str().unwrap().to_owned()
+                    );
                     metadata.art_url = Some(path);
                 })
             });
@@ -87,33 +94,39 @@ impl MprisController {
 
     fn setup_signals(&self) {
         // mpris raise
-        self.mpris.connect_raise(clone!(@strong self.sender as sender => move || {
-            send!(sender, Action::ViewRaise);
-        }));
+        self.mpris
+            .connect_raise(clone!(@strong self.sender as sender => move || {
+                send!(sender, Action::ViewRaise);
+            }));
 
         // mpris play / pause
-        self.mpris.connect_play_pause(clone!(@weak self.mpris as mpris, @strong self.sender as sender => move || {
-            match mpris.get_playback_status().unwrap().as_ref() {
-                "Paused" => send!(sender, Action::PlaybackSet(true)),
-                "Stopped" => send!(sender, Action::PlaybackSet(true)),
-                _ => send!(sender, Action::PlaybackSet(false)),
-            };
-        }));
+        self.mpris.connect_play_pause(
+            clone!(@weak self.mpris as mpris, @strong self.sender as sender => move || {
+                match mpris.get_playback_status().unwrap().as_ref() {
+                    "Paused" => send!(sender, Action::PlaybackSet(true)),
+                    "Stopped" => send!(sender, Action::PlaybackSet(true)),
+                    _ => send!(sender, Action::PlaybackSet(false)),
+                };
+            }),
+        );
 
         // mpris play
-        self.mpris.connect_play(clone!(@strong self.sender as sender => move || {
-            send!(sender, Action::PlaybackSet(true));
-        }));
+        self.mpris
+            .connect_play(clone!(@strong self.sender as sender => move || {
+                send!(sender, Action::PlaybackSet(true));
+            }));
 
         // mpris stop
-        self.mpris.connect_stop(clone!(@strong self.sender as sender => move || {
-            send!(sender, Action::PlaybackSet(false));
-        }));
+        self.mpris
+            .connect_stop(clone!(@strong self.sender as sender => move || {
+                send!(sender, Action::PlaybackSet(false));
+            }));
 
         // mpris pause
-        self.mpris.connect_pause(clone!(@strong self.sender as sender => move || {
-            send!(sender, Action::PlaybackSet(false));
-        }));
+        self.mpris
+            .connect_pause(clone!(@strong self.sender as sender => move || {
+                send!(sender, Action::PlaybackSet(false));
+            }));
 
         // mpris volume
         self.mpris.connect_volume(clone!(@strong self.sender as sender, @weak self.volume as old_volume => move |new_volume| {

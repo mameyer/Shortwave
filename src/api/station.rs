@@ -14,7 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use glib::{ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString, ToValue};
+use glib::{
+    ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString,
+    ToValue,
+};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk_pixbuf, glib};
@@ -47,10 +50,34 @@ mod imp {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
                     ParamSpecString::new("uuid", "UUID", "UUID", None, ParamFlags::READABLE),
-                    ParamSpecBoolean::new("is-local", "Is a local station", "Is a local station", false, ParamFlags::READABLE),
-                    ParamSpecBoolean::new("is-orphaned", "Is a orphaned station", "Is a orphaned station", false, ParamFlags::READABLE),
-                    ParamSpecBoxed::new("metadata", "Metadata", "Metadata", StationMetadata::static_type(), ParamFlags::READABLE),
-                    ParamSpecObject::new("favicon", "Favicon", "Favicon", gdk_pixbuf::Pixbuf::static_type(), glib::ParamFlags::READABLE),
+                    ParamSpecBoolean::new(
+                        "is-local",
+                        "Is a local station",
+                        "Is a local station",
+                        false,
+                        ParamFlags::READABLE,
+                    ),
+                    ParamSpecBoolean::new(
+                        "is-orphaned",
+                        "Is a orphaned station",
+                        "Is a orphaned station",
+                        false,
+                        ParamFlags::READABLE,
+                    ),
+                    ParamSpecBoxed::new(
+                        "metadata",
+                        "Metadata",
+                        "Metadata",
+                        StationMetadata::static_type(),
+                        ParamFlags::READABLE,
+                    ),
+                    ParamSpecObject::new(
+                        "favicon",
+                        "Favicon",
+                        "Favicon",
+                        gdk_pixbuf::Pixbuf::static_type(),
+                        glib::ParamFlags::READABLE,
+                    ),
                 ]
             });
             PROPERTIES.as_ref()
@@ -74,7 +101,13 @@ glib::wrapper! {
 }
 
 impl SwStation {
-    pub fn new(uuid: String, is_local: bool, is_orphaned: bool, metadata: StationMetadata, favicon: Option<gdk_pixbuf::Pixbuf>) -> Self {
+    pub fn new(
+        uuid: String,
+        is_local: bool,
+        is_orphaned: bool,
+        metadata: StationMetadata,
+        favicon: Option<gdk_pixbuf::Pixbuf>,
+    ) -> Self {
         let station = glib::Object::new::<Self>(&[]).unwrap();
 
         let imp = station.imp();

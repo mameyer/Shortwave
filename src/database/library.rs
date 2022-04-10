@@ -17,7 +17,9 @@
 use std::cell::RefCell;
 
 use futures::future::join_all;
-use glib::{clone, Enum, ObjectExt, ParamFlags, ParamSpec, ParamSpecEnum, ParamSpecObject, Sender, ToValue};
+use glib::{
+    clone, Enum, ObjectExt, ParamFlags, ParamSpec, ParamSpecEnum, ParamSpecObject, Sender, ToValue,
+};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk_pixbuf, glib};
@@ -73,7 +75,12 @@ mod imp {
             let client = Client::new(settings_manager::string(Key::ApiLookupDomain));
             let sender = OnceCell::default();
 
-            Self { model, status, client, sender }
+            Self {
+                model,
+                status,
+                client,
+                sender,
+            }
         }
     }
 
@@ -81,8 +88,21 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpecObject::new("model", "Model", "Model", SwStationModel::static_type(), glib::ParamFlags::READABLE),
-                    ParamSpecEnum::new("status", "Status", "Status", SwLibraryStatus::static_type(), SwLibraryStatus::default() as i32, ParamFlags::READABLE),
+                    ParamSpecObject::new(
+                        "model",
+                        "Model",
+                        "Model",
+                        SwStationModel::static_type(),
+                        glib::ParamFlags::READABLE,
+                    ),
+                    ParamSpecEnum::new(
+                        "status",
+                        "Status",
+                        "Status",
+                        SwLibraryStatus::static_type(),
+                        SwLibraryStatus::default() as i32,
+                        ParamFlags::READABLE,
+                    ),
                 ]
             });
 
@@ -199,16 +219,28 @@ impl SwLibrary {
         if entry.is_local {
             if let Some(data) = &entry.data {
                 match self.load_station_metadata(&entry.uuid, data) {
-                    Ok(metadata) => imp.model.add_station(&SwStation::new(entry.uuid.clone(), true, false, metadata, favicon)),
+                    Ok(metadata) => imp.model.add_station(&SwStation::new(
+                        entry.uuid.clone(),
+                        true,
+                        false,
+                        metadata,
+                        favicon,
+                    )),
                     Err(_) => self.delete_unknown_station(&entry.uuid),
                 }
             } else {
                 self.delete_unknown_station(&entry.uuid);
             }
         } else {
-            match imp.client.clone().station_metadata_by_uuid(&entry.uuid).await {
+            match imp
+                .client
+                .clone()
+                .station_metadata_by_uuid(&entry.uuid)
+                .await
+            {
                 Ok(metadata) => {
-                    let station = SwStation::new(entry.uuid.clone(), false, false, metadata, favicon);
+                    let station =
+                        SwStation::new(entry.uuid.clone(), false, false, metadata, favicon);
 
                     // Cache data for future use
                     let entry = StationEntry::for_station(&station);
@@ -218,13 +250,22 @@ impl SwLibrary {
                     imp.model.add_station(&station)
                 }
                 Err(err) => {
-                    warn!("Trying to use cached data for station {}, failed to retrieve data: {}", entry.uuid, err);
+                    warn!(
+                        "Trying to use cached data for station {}, failed to retrieve data: {}",
+                        entry.uuid, err
+                    );
                     let removed_online = matches!(err, Error::InvalidStationError(_));
 
                     if let Some(data) = &entry.data {
                         match self.load_station_metadata(&entry.uuid, data) {
                             Ok(metadata) => {
-                                let station = SwStation::new(entry.uuid.clone(), false, true, metadata, favicon);
+                                let station = SwStation::new(
+                                    entry.uuid.clone(),
+                                    false,
+                                    true,
+                                    metadata,
+                                    favicon,
+                                );
                                 imp.model.add_station(&station);
                             }
                             Err(_) => {
@@ -246,7 +287,11 @@ impl SwLibrary {
     }
 
     /// Deserialize the provided data as a station.
-    fn load_station_metadata(&self, uuid: &str, data: &str) -> Result<StationMetadata, serde_json::Error> {
+    fn load_station_metadata(
+        &self,
+        uuid: &str,
+        data: &str,
+    ) -> Result<StationMetadata, serde_json::Error> {
         match serde_json::from_str(data) {
             Ok(metadata) => Ok(metadata),
             Err(err) => {
@@ -265,7 +310,11 @@ impl SwLibrary {
         warn!("Removing unknown station: {}", uuid);
         queries::delete_station(&uuid).unwrap();
 
-        let notification = Notification::new_info(&i18n("An invalid station was removed from the library."));
-        send!(imp.sender.get().unwrap(), Action::ViewShowNotification(notification));
+        let notification =
+            Notification::new_info(&i18n("An invalid station was removed from the library."));
+        send!(
+            imp.sender.get().unwrap(),
+            Action::ViewShowNotification(notification)
+        );
     }
 }

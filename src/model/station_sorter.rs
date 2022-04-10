@@ -44,8 +44,21 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpecBoolean::new("descending", "Descending", "Descending", false, ParamFlags::READWRITE),
-                    ParamSpecEnum::new("sorting", "Sorting", "Sorting", SwSorting::static_type(), SwSorting::default() as i32, ParamFlags::READWRITE),
+                    ParamSpecBoolean::new(
+                        "descending",
+                        "Descending",
+                        "Descending",
+                        false,
+                        ParamFlags::READWRITE,
+                    ),
+                    ParamSpecEnum::new(
+                        "sorting",
+                        "Sorting",
+                        "Sorting",
+                        SwSorting::static_type(),
+                        SwSorting::default() as i32,
+                        ParamFlags::READWRITE,
+                    ),
                 ]
             });
 
@@ -60,7 +73,13 @@ mod imp {
             }
         }
 
-        fn set_property(&self, obj: &Self::Type, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
+        fn set_property(
+            &self,
+            obj: &Self::Type,
+            _id: usize,
+            value: &glib::Value,
+            pspec: &ParamSpec,
+        ) {
             match pspec.name() {
                 "descending" => obj.set_descending(value.get().unwrap()),
                 "sorting" => obj.set_descending(value.get().unwrap()),
@@ -74,10 +93,16 @@ mod imp {
             gtk::SorterOrder::Total
         }
 
-        fn compare(&self, _sorter: &Self::Type, item1: &glib::Object, item2: &glib::Object) -> gtk::Ordering {
+        fn compare(
+            &self,
+            _sorter: &Self::Type,
+            item1: &glib::Object,
+            item2: &glib::Object,
+        ) -> gtk::Ordering {
             let a = &item1.clone().downcast::<SwStation>().unwrap();
             let b = &item2.clone().downcast::<SwStation>().unwrap();
-            super::SwStationSorter::station_cmp(a, b, *self.sorting.borrow(), self.descending.get()).into()
+            super::SwStationSorter::station_cmp(a, b, *self.sorting.borrow(), self.descending.get())
+                .into()
         }
     }
 }
@@ -109,7 +134,12 @@ impl SwStationSorter {
         self.changed(gtk::SorterChange::Different);
     }
 
-    fn station_cmp(a: &SwStation, b: &SwStation, sorting: SwSorting, descending: bool) -> std::cmp::Ordering {
+    fn station_cmp(
+        a: &SwStation,
+        b: &SwStation,
+        sorting: SwSorting,
+        descending: bool,
+    ) -> std::cmp::Ordering {
         let mut station_a = a.clone();
         let mut station_b = b.clone();
 
@@ -120,12 +150,21 @@ impl SwStationSorter {
         match sorting {
             SwSorting::Default => std::cmp::Ordering::Equal,
             SwSorting::Name => station_a.metadata().name.cmp(&station_b.metadata().name),
-            SwSorting::Language => station_a.metadata().language.cmp(&station_b.metadata().language),
-            SwSorting::Country => station_a.metadata().country.cmp(&station_b.metadata().country),
+            SwSorting::Language => station_a
+                .metadata()
+                .language
+                .cmp(&station_b.metadata().language),
+            SwSorting::Country => station_a
+                .metadata()
+                .country
+                .cmp(&station_b.metadata().country),
             SwSorting::State => station_a.metadata().state.cmp(&station_b.metadata().state),
             SwSorting::Codec => station_a.metadata().codec.cmp(&station_b.metadata().codec),
             SwSorting::Votes => station_a.metadata().votes.cmp(&station_b.metadata().votes),
-            SwSorting::Bitrate => station_a.metadata().bitrate.cmp(&station_b.metadata().bitrate),
+            SwSorting::Bitrate => station_a
+                .metadata()
+                .bitrate
+                .cmp(&station_b.metadata().bitrate),
         }
     }
 }

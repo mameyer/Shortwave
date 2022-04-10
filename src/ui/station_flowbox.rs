@@ -66,7 +66,15 @@ mod imp {
 
     impl ObjectImpl for SwStationFlowBox {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| vec![ParamSpecObject::new("model", "Model", "Model", gtk::SortListModel::static_type(), ParamFlags::READABLE)]);
+            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
+                vec![ParamSpecObject::new(
+                    "model",
+                    "Model",
+                    "Model",
+                    gtk::SortListModel::static_type(),
+                    ParamFlags::READABLE,
+                )]
+            });
 
             PROPERTIES.as_ref()
         }
@@ -108,7 +116,9 @@ impl SwStationFlowBox {
     }
 
     fn setup_signals(&self, sender: Sender<Action>) {
-        self.imp().flowbox.get().bind_model(
+        let imp = self.imp();
+
+        imp.flowbox.get().bind_model(
             Some(&self.imp().model),
             clone!(@strong sender => move |station|{
                 let station = station.downcast_ref::<SwStation>().unwrap();
@@ -118,12 +128,13 @@ impl SwStationFlowBox {
         );
 
         // Show StationDialog when row gets clicked
-        self.imp().flowbox.connect_child_activated(clone!(@strong sender => move |_, child| {
-            let row = child.clone().downcast::<SwStationRow>().unwrap();
-            let station = row.station();
+        imp.flowbox
+            .connect_child_activated(clone!(@strong sender => move |_, child| {
+                let row = child.clone().downcast::<SwStationRow>().unwrap();
+                let station = row.station();
 
-            let station_dialog = SwStationDialog::new(sender.clone(), station);
-            station_dialog.show();
-        }));
+                let station_dialog = SwStationDialog::new(sender.clone(), station);
+                station_dialog.show();
+            }));
     }
 }

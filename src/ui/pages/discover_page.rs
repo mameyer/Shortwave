@@ -87,13 +87,22 @@ impl SwDiscoverPage {
 
         // TODO: Implement show-server-stats action
         let _action = Action::new("win.show-server-stats", &i18n("Show statistics"));
-        imp.carousel.add_page(&i18n("Browse over 30,000 stations"), "#1a5fb4", None);
+        imp.carousel
+            .add_page(&i18n("Browse over 30,000 stations"), "#1a5fb4", None);
 
         let action = Action::new("win.create-new-station", &i18n("Add new station"));
-        imp.carousel.add_page(&i18n("Your favorite station is missing?"), "#e5a50a", Some(action));
+        imp.carousel.add_page(
+            &i18n("Your favorite station is missing?"),
+            "#e5a50a",
+            Some(action),
+        );
 
         let action = Action::new("win.open-radio-browser-info", &i18n("Open website"));
-        imp.carousel.add_page(&i18n("Powered by radio-browser.info"), "#26a269", Some(action));
+        imp.carousel.add_page(
+            &i18n("Powered by radio-browser.info"),
+            "#26a269",
+            Some(action),
+        );
 
         // Most voted stations (stations with the most votes)
         let votes_request = StationRequest {
@@ -132,7 +141,10 @@ impl SwDiscoverPage {
 
         let fut = client.send_station_request(request).map(move |result| {
             if let Err(err) = result {
-                let notification = Notification::new_error(&i18n("Station data could not be received."), &err.to_string());
+                let notification = Notification::new_error(
+                    &i18n("Station data could not be received."),
+                    &err.to_string(),
+                );
                 send!(sender, app::Action::ViewShowNotification(notification));
             }
         });

@@ -113,7 +113,16 @@ mod imp {
 
     impl ObjectImpl for SwApplicationWindow {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| vec![ParamSpecEnum::new("view", "View", "View", SwView::static_type(), SwView::default() as i32, ParamFlags::READWRITE)]);
+            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
+                vec![ParamSpecEnum::new(
+                    "view",
+                    "View",
+                    "View",
+                    SwView::static_type(),
+                    SwView::default() as i32,
+                    ParamFlags::READWRITE,
+                )]
+            });
 
             PROPERTIES.as_ref()
         }
@@ -125,7 +134,13 @@ mod imp {
             }
         }
 
-        fn set_property(&self, obj: &Self::Type, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
+        fn set_property(
+            &self,
+            obj: &Self::Type,
+            _id: usize,
+            value: &glib::Value,
+            pspec: &ParamSpec,
+        ) {
             match pspec.name() {
                 "view" => obj.set_view(value.get().unwrap()),
                 _ => unimplemented!(),
@@ -180,21 +195,27 @@ impl SwApplicationWindow {
         imp.search_page.init(sender);
 
         // Wire everything up
-        imp.mini_controller_box.append(&player.mini_controller_widget);
-        imp.toolbar_controller_box.append(&player.toolbar_controller_widget);
+        imp.mini_controller_box
+            .append(&player.mini_controller_widget);
+        imp.toolbar_controller_box
+            .append(&player.toolbar_controller_widget);
         imp.window_flap.set_flap(Some(&player.widget));
 
         // Animations for smooth mini player transitions
-        let x_callback = adw::CallbackAnimationTarget::new(Some(Box::new(clone!(@weak self as this => move |val|{
-            this.set_default_width(val as i32);
-        }))));
+        let x_callback = adw::CallbackAnimationTarget::new(Some(Box::new(
+            clone!(@weak self as this => move |val|{
+                this.set_default_width(val as i32);
+            }),
+        )));
         let x_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &x_callback);
         x_animation.set_easing(adw::Easing::EaseOutCubic);
         imp.window_animation_x.set(x_animation).unwrap();
 
-        let y_callback = adw::CallbackAnimationTarget::new(Some(Box::new(clone!(@weak self as this => move |val|{
-            this.set_default_height(val as i32);
-        }))));
+        let y_callback = adw::CallbackAnimationTarget::new(Some(Box::new(
+            clone!(@weak self as this => move |val|{
+                this.set_default_height(val as i32);
+            }),
+        )));
         let y_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &y_callback);
         y_animation.set_easing(adw::Easing::EaseOutCubic);
         imp.window_animation_y.set(y_animation).unwrap();
@@ -214,21 +235,26 @@ impl SwApplicationWindow {
         let imp = self.imp();
 
         // flap
-        imp.window_flap.get().connect_folded_notify(clone!(@strong self as this => move |_| {
-            this.update_visible_view();
-        }));
-        imp.window_flap.get().connect_reveal_flap_notify(clone!(@strong self as this => move |_| {
-            this.update_visible_view();
-        }));
+        imp.window_flap
+            .get()
+            .connect_folded_notify(clone!(@strong self as this => move |_| {
+                this.update_visible_view();
+            }));
+        imp.window_flap
+            .get()
+            .connect_reveal_flap_notify(clone!(@strong self as this => move |_| {
+                this.update_visible_view();
+            }));
 
         // search_button
-        imp.search_button.connect_toggled(clone!(@strong self as this => move |search_button| {
-            if search_button.is_active(){
-                this.set_view(SwView::Search);
-            }else if *this.imp().view.borrow() != SwView::Player {
-                this.set_view(SwView::Discover);
-            }
-        }));
+        imp.search_button
+            .connect_toggled(clone!(@strong self as this => move |search_button| {
+                if search_button.is_active(){
+                    this.set_view(SwView::Search);
+                }else if *this.imp().view.borrow() != SwView::Player {
+                    this.set_view(SwView::Discover);
+                }
+            }));
 
         // window gets closed
         self.connect_close_request(move |window| {
@@ -375,7 +401,10 @@ impl SwApplicationWindow {
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {
-        self.imp().library_page.get().set_sorting(sorting, descending);
+        self.imp()
+            .library_page
+            .get()
+            .set_sorting(sorting, descending);
     }
 
     pub fn view(&self) -> SwView {
@@ -387,9 +416,11 @@ impl SwApplicationWindow {
 
         // Delay updating the view, otherwise it could invalidate widgets if it gets
         // called during an allocation and cause glitches (eg. short flickering)
-        glib::idle_add_local(clone!(@weak self as this => @default-return glib::Continue(false), move||{
-            this.update_view(); glib::Continue(false)
-        }));
+        glib::idle_add_local(
+            clone!(@weak self as this => @default-return glib::Continue(false), move||{
+                this.update_view(); glib::Continue(false)
+            }),
+        );
     }
 
     pub fn enable_mini_player(&self, enable: bool) {
@@ -500,15 +531,19 @@ impl SwApplicationWindow {
         // Show requested view / page
         match view {
             SwView::Library => {
-                imp.window_leaflet.set_visible_child(&imp.library_page.get());
-                imp.appmenu_button.set_menu_model(Some(&imp.library_menu.get()));
+                imp.window_leaflet
+                    .set_visible_child(&imp.library_page.get());
+                imp.appmenu_button
+                    .set_menu_model(Some(&imp.library_menu.get()));
                 imp.search_revealer.set_reveal_child(false);
                 imp.add_button.set_visible(true);
                 imp.back_button.set_visible(false);
             }
             SwView::Discover => {
-                imp.window_leaflet.set_visible_child(&imp.discover_page.get());
-                imp.appmenu_button.set_menu_model(Some(&imp.default_menu.get()));
+                imp.window_leaflet
+                    .set_visible_child(&imp.discover_page.get());
+                imp.appmenu_button
+                    .set_menu_model(Some(&imp.default_menu.get()));
                 imp.search_button.set_active(false);
                 imp.search_revealer.set_reveal_child(true);
                 imp.add_button.set_visible(false);
@@ -516,7 +551,8 @@ impl SwApplicationWindow {
             }
             SwView::Search => {
                 imp.window_leaflet.set_visible_child(&imp.search_page.get());
-                imp.appmenu_button.set_menu_model(Some(&imp.default_menu.get()));
+                imp.appmenu_button
+                    .set_menu_model(Some(&imp.default_menu.get()));
                 imp.search_button.set_active(true);
                 imp.search_revealer.set_reveal_child(true);
                 imp.add_button.set_visible(false);

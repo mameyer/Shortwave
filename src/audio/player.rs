@@ -31,7 +31,10 @@ use crate::app::Action;
 use crate::audio::backend::*;
 #[cfg(unix)]
 use crate::audio::controller::MprisController;
-use crate::audio::controller::{Controller, GCastController, InhibitController, MiniController, SidebarController, ToolbarController};
+use crate::audio::controller::{
+    Controller, GCastController, InhibitController, MiniController, SidebarController,
+    ToolbarController,
+};
 use crate::audio::{GCastDevice, Song};
 use crate::i18n::*;
 use crate::settings::{settings_manager, Key};
@@ -178,12 +181,23 @@ impl Player {
 
         if let Some(url) = metadata.url_resolved {
             debug!("Start playing new URI: {}", url.to_string());
-            self.backend.lock().unwrap().gstreamer.new_source_uri(&url.to_string());
+            self.backend
+                .lock()
+                .unwrap()
+                .gstreamer
+                .new_source_uri(&url.to_string());
         } else if let Some(url) = metadata.url {
             debug!("Start playing new URI: {}", url.to_string());
-            self.backend.lock().unwrap().gstreamer.new_source_uri(&url.to_string());
+            self.backend
+                .lock()
+                .unwrap()
+                .gstreamer
+                .new_source_uri(&url.to_string());
         } else {
-            let notification = Notification::new_error(&i18n("Station cannot be streamed."), &i18n("URL is not valid."));
+            let notification = Notification::new_error(
+                &i18n("Station cannot be streamed."),
+                &i18n("URL is not valid."),
+            );
             send!(self.sender, Action::ViewShowNotification(notification));
         }
     }
@@ -192,7 +206,11 @@ impl Player {
         debug!("Set playback: {:?}", playback);
         match playback {
             PlaybackState::Playing => {
-                self.backend.lock().unwrap().gstreamer.set_state(gstreamer::State::Playing);
+                self.backend
+                    .lock()
+                    .unwrap()
+                    .gstreamer
+                    .set_state(gstreamer::State::Playing);
             }
             PlaybackState::Stopped => {
                 let mut backend = self.backend.lock().unwrap();
@@ -259,7 +277,14 @@ impl Player {
 
     fn setup_signals(self: Rc<Self>) {
         // Wait for new messages from the Gstreamer backend
-        let receiver = self.backend.clone().lock().unwrap().gstreamer_receiver.take().unwrap();
+        let receiver = self
+            .backend
+            .clone()
+            .lock()
+            .unwrap()
+            .gstreamer_receiver
+            .take()
+            .unwrap();
         receiver.attach(None, clone!(@strong self as this => move |message| this.clone().process_gst_message(message)));
 
         // Disconnect from gcast device
@@ -277,13 +302,20 @@ impl Player {
 
                 // If we're already recording something, we need to stop it first.
                 if backend.gstreamer.is_recording() {
-                    let threshold: i64 = settings_manager::integer(Key::RecorderSongDurationThreshold).try_into().unwrap();
+                    let threshold: i64 =
+                        settings_manager::integer(Key::RecorderSongDurationThreshold)
+                            .try_into()
+                            .unwrap();
                     let duration: i64 = backend.gstreamer.current_recording_duration();
                     if duration > threshold {
                         backend.gstreamer.stop_recording(false);
 
                         let duration = Duration::from_secs(duration.try_into().unwrap());
-                        let song = self.song_title.borrow().create_song(duration).expect("Unable to create new song");
+                        let song = self
+                            .song_title
+                            .borrow()
+                            .create_song(duration)
+                            .expect("Unable to create new song");
 
                         backend.song.add_song(song);
                     } else {
@@ -293,7 +325,9 @@ impl Player {
                 }
 
                 // Set new song title
-                self.song_title.borrow_mut().set_current_title(title.clone());
+                self.song_title
+                    .borrow_mut()
+                    .set_current_title(title.clone());
                 for con in &*self.controller {
                     con.set_song_title(&title);
                 }
@@ -301,7 +335,12 @@ impl Player {
                 // Start recording new song
                 // We don't start recording the "first" detected song, since it is going to be incomplete
                 if !self.song_title.borrow().is_first_song() {
-                    backend.gstreamer.start_recording(self.song_title.borrow().current_path().expect("Unable to get song path"));
+                    backend.gstreamer.start_recording(
+                        self.song_title
+                            .borrow()
+                            .current_path()
+                            .expect("Unable to get song path"),
+                    );
                 } else {
                     debug!("Song will not be recorded because it may be incomplete (first song for this station).")
                 }
@@ -318,7 +357,9 @@ impl Player {
 
                 // Discard recorded data when a failure occurs,
                 // since the song has not been recorded completely.
-                if self.backend.lock().unwrap().gstreamer.is_recording() && matches!(state, PlaybackState::Failure(_)) {
+                if self.backend.lock().unwrap().gstreamer.is_recording()
+                    && matches!(state, PlaybackState::Failure(_))
+                {
                     self.backend.lock().unwrap().gstreamer.stop_recording(true);
                 }
             }
@@ -328,7 +369,8 @@ impl Player {
 
     fn show_song_notification(&self) {
         let current_station = self.current_station.borrow().clone().unwrap();
-        let notification = gio::Notification::new(&self.song_title.borrow().current_title().unwrap());
+        let notification =
+            gio::Notification::new(&self.song_title.borrow().current_title().unwrap());
         notification.set_body(Some(&current_station.metadata().name));
         //notification.add_button("Record and save this song", "app.record-and-save-song");
 
@@ -379,7 +421,9 @@ impl SongTitle {
     /// Returns song for current title
     pub fn create_song(&self, duration: Duration) -> Option<Song> {
         if let Some(title) = &self.current_title {
-            let path = self.current_path().expect("Unable to get path for current song");
+            let path = self
+                .current_path()
+                .expect("Unable to get path for current song");
             return Some(Song::new(&title, path, duration));
         }
         None

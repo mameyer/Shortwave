@@ -135,7 +135,10 @@ mod imp {
 
             // Setup action channel
             let receiver = self.receiver.borrow_mut().take().unwrap();
-            receiver.attach(None, clone!(@strong app => move |action| app.process_action(action)));
+            receiver.attach(
+                None,
+                clone!(@strong app => move |action| app.process_action(action)),
+            );
 
             // Setup settings signal (we get notified when a key gets changed)
             self.settings.connect_changed(
@@ -168,7 +171,12 @@ glib::wrapper! {
 // SwApplication implementation itself
 impl SwApplication {
     pub fn run() {
-        info!("{} ({}) ({})", config::NAME, config::APP_ID, config::VCS_TAG);
+        info!(
+            "{} ({}) ({})",
+            config::NAME,
+            config::APP_ID,
+            config::VCS_TAG
+        );
         info!("Version: {} ({})", config::VERSION, config::PROFILE);
         info!("Isahc version: {}", isahc::version());
 
@@ -235,18 +243,21 @@ impl SwApplication {
 
     fn process_action(&self, action: Action) -> glib::Continue {
         let imp = self.imp();
+        let window = imp.window.get().unwrap().upgrade().unwrap();
 
         match action {
-            Action::ViewGoBack => imp.window.get().unwrap().upgrade().unwrap().go_back(),
-            Action::ViewSet(view) => imp.window.get().unwrap().upgrade().unwrap().set_view(view),
-            Action::ViewRaise => imp.window.get().unwrap().upgrade().unwrap().present_with_time((glib::monotonic_time() / 1000) as u32),
-            Action::ViewSetMiniPlayer(enable) => imp.window.get().unwrap().upgrade().unwrap().enable_mini_player(enable),
-            Action::ViewShowNotification(notification) => imp.window.get().unwrap().upgrade().unwrap().show_notification(notification),
-            Action::PlaybackConnectGCastDevice(device) => imp.player.connect_to_gcast_device(device),
+            Action::ViewGoBack => window.go_back(),
+            Action::ViewSet(view) => window.set_view(view),
+            Action::ViewRaise => window.present_with_time((glib::monotonic_time() / 1000) as u32),
+            Action::ViewSetMiniPlayer(enable) => window.enable_mini_player(enable),
+            Action::ViewShowNotification(notification) => window.show_notification(notification),
+            Action::PlaybackConnectGCastDevice(device) => {
+                imp.player.connect_to_gcast_device(device)
+            }
             Action::PlaybackDisconnectGCastDevice => imp.player.disconnect_from_gcast_device(),
             Action::PlaybackSetStation(station) => {
                 imp.player.set_station(*station);
-                imp.window.get().unwrap().upgrade().unwrap().show_player_widget();
+                window.show_player_widget();
             }
             Action::PlaybackSet(true) => imp.player.set_playback(PlaybackState::Playing),
             Action::PlaybackSet(false) => imp.player.set_playback(PlaybackState::Stopped),
@@ -264,10 +275,18 @@ impl SwApplication {
         debug!("Settings key changed: {:?}", &key);
         match key {
             Key::ViewSorting | Key::ViewOrder => {
-                let sorting: SwSorting = SwSorting::from_str(&settings_manager::string(Key::ViewSorting)).unwrap();
+                let value = settings_manager::string(Key::ViewSorting);
+                let sorting = SwSorting::from_str(&value).unwrap();
                 let order = settings_manager::string(Key::ViewOrder);
                 let descending = order == "Descending";
-                self.imp().window.get().unwrap().upgrade().unwrap().set_sorting(sorting, descending);
+
+                self.imp()
+                    .window
+                    .get()
+                    .unwrap()
+                    .upgrade()
+                    .unwrap()
+                    .set_sorting(sorting, descending);
             }
             Key::DarkMode => self.update_color_scheme(),
             _ => (),

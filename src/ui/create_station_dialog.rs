@@ -98,14 +98,24 @@ impl SwCreateStationDialog {
 
         let imp = dialog.imp();
         let favicon_widget = StationFavicon::new(FaviconSize::Big);
-        let file_chooser = gtk::FileChooserNative::builder().transient_for(&dialog).modal(true).title(&gettext("Select station image")).build();
+        let file_chooser = gtk::FileChooserNative::builder()
+            .transient_for(&dialog)
+            .modal(true)
+            .title(&gettext("Select station image"))
+            .build();
 
         imp.favicon_widget.set(favicon_widget).unwrap();
-        imp.favicon_box.append(&imp.favicon_widget.get().unwrap().widget);
+        imp.favicon_box
+            .append(&imp.favicon_widget.get().unwrap().widget);
         imp.file_chooser.set(file_chooser).unwrap();
         imp.sender.set(sender).unwrap();
 
-        let window = gio::Application::default().unwrap().downcast_ref::<SwApplication>().unwrap().active_window().unwrap();
+        let window = gio::Application::default()
+            .unwrap()
+            .downcast_ref::<SwApplication>()
+            .unwrap()
+            .active_window()
+            .unwrap();
         dialog.set_transient_for(Some(&window));
 
         dialog.setup_signals();
@@ -115,21 +125,25 @@ impl SwCreateStationDialog {
     fn setup_signals(&self) {
         let imp = self.imp();
 
-        imp.back_button.connect_clicked(clone!(@weak self as this => move |_| {
-            this.imp().stack.set_visible_child_name("start");
-        }));
+        imp.back_button
+            .connect_clicked(clone!(@weak self as this => move |_| {
+                this.imp().stack.set_visible_child_name("start");
+            }));
 
-        imp.favicon_button.connect_clicked(clone!(@weak self as this => move |_| {
-            this.imp().file_chooser.get().unwrap().show();
-        }));
+        imp.favicon_button
+            .connect_clicked(clone!(@weak self as this => move |_| {
+                this.imp().file_chooser.get().unwrap().show();
+            }));
 
-        imp.file_chooser.get().unwrap().connect_response(clone!(@weak self as this => move |file_chooser, response| {
-            if response == gtk::ResponseType::Accept {
-                if let Some(file) = file_chooser.file() {
-                    this.set_favicon(file);
+        imp.file_chooser.get().unwrap().connect_response(
+            clone!(@weak self as this => move |file_chooser, response| {
+                if response == gtk::ResponseType::Accept {
+                    if let Some(file) = file_chooser.file() {
+                        this.set_favicon(file);
+                    }
                 }
-            }
-        }));
+            }),
+        );
     }
 
     #[template_callback]
@@ -152,7 +166,10 @@ impl SwCreateStationDialog {
         let favicon = imp.favicon.borrow().clone();
 
         let station = SwStation::new(uuid, true, false, StationMetadata::new(name, url), favicon);
-        send!(imp.sender.get().unwrap(), Action::LibraryAddStations(vec![station]));
+        send!(
+            imp.sender.get().unwrap(),
+            Action::LibraryAddStations(vec![station])
+        );
         self.close();
     }
 

@@ -134,24 +134,25 @@ impl SwSearchPage {
     fn setup_signals(&self) {
         let imp = self.imp();
 
-        imp.search_entry.connect_search_changed(clone!(@weak self as this => move |entry| {
-            let imp = this.imp();
-            let text = entry.text().to_string();
+        imp.search_entry
+            .connect_search_changed(clone!(@weak self as this => move |entry| {
+                let imp = this.imp();
+                let text = entry.text().to_string();
 
-            let text = if text.is_empty() {
-                None
-            }else{
-                Some(text)
-            };
+                let text = if text.is_empty() {
+                    None
+                }else{
+                    Some(text)
+                };
 
-            // Update station request and redo search
-            let station_request = StationRequest{
-                name: text,
-                ..imp.station_request.borrow().clone()
-            };
-            *imp.station_request.borrow_mut() = station_request;
-            this.update_search();
-        }));
+                // Update station request and redo search
+                let station_request = StationRequest{
+                    name: text,
+                    ..imp.station_request.borrow().clone()
+                };
+                *imp.station_request.borrow_mut() = station_request;
+                this.update_search();
+            }));
 
         self.connect_map(|this| {
             let imp = this.imp();
@@ -164,7 +165,8 @@ impl SwSearchPage {
         let imp = self.imp();
         let variant_ty = Some(glib::VariantTy::new("s").unwrap());
 
-        let sorting_action = gio::SimpleAction::new_stateful("sorting", variant_ty, &"Votes".to_variant());
+        let sorting_action =
+            gio::SimpleAction::new_stateful("sorting", variant_ty, &"Votes".to_variant());
         imp.search_action_group.add_action(&sorting_action);
         sorting_action.connect_change_state(clone!(@weak self as this => move |action, state|{
             let imp = this.imp();
@@ -195,7 +197,8 @@ impl SwSearchPage {
             }
         }));
 
-        let order_action = gio::SimpleAction::new_stateful("order", variant_ty, &"Descending".to_variant());
+        let order_action =
+            gio::SimpleAction::new_stateful("order", variant_ty, &"Descending".to_variant());
         imp.search_action_group.add_action(&order_action);
         order_action.connect_change_state(clone!(@weak self as this => move |action, state|{
             let imp = this.imp();

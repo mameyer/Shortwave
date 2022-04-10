@@ -35,7 +35,9 @@ fn kreplace(input: String, kwargs: &[(&str, &str)]) -> String {
     let mut s = input;
     for (k, v) in kwargs {
         if let Ok(re) = Regex::new(&format!("\\{{{}\\}}", k)) {
-            s = re.replace_all(&s, |_: &Captures<'_>| (*v).to_string()).to_string();
+            s = re
+                .replace_all(&s, |_: &Captures<'_>| (*v).to_string())
+                .to_string();
         }
     }
 
@@ -113,7 +115,13 @@ pub fn pni18n_f(ctx: &str, single: &str, multiple: &str, number: u32, args: &[&s
 }
 
 #[allow(dead_code)]
-pub fn pni18n_k(ctx: &str, single: &str, multiple: &str, number: u32, kwargs: &[(&str, &str)]) -> String {
+pub fn pni18n_k(
+    ctx: &str,
+    single: &str,
+    multiple: &str,
+    number: u32,
+    kwargs: &[(&str, &str)],
+) -> String {
     let s = npgettext(ctx, single, multiple, number);
     kreplace(s, kwargs)
 }

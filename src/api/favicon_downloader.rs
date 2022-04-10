@@ -45,7 +45,12 @@ impl FaviconDownloader {
 
         // Download favicon
         let mut bytes = vec![];
-        HTTP_CLIENT.get_async(url.as_str()).await?.into_body().read_to_end(&mut bytes).await?;
+        HTTP_CLIENT
+            .get_async(url.as_str())
+            .await?
+            .into_body()
+            .read_to_end(&mut bytes)
+            .await?;
 
         let input_stream = gio::MemoryInputStream::from_bytes(&glib::Bytes::from(&bytes));
         let pixbuf = Pixbuf::from_stream_at_scale_future(&input_stream, size, size, true).await?;
@@ -62,7 +67,10 @@ impl FaviconDownloader {
     async fn cached_pixbuf(url: &Url, size: i32) -> Result<Pixbuf, Error> {
         let file = Self::file(&url)?;
         if Self::exists(&file) {
-            let ios = file.open_readwrite_future(glib::PRIORITY_DEFAULT).await.expect("Could not open file");
+            let ios = file
+                .open_readwrite_future(glib::PRIORITY_DEFAULT)
+                .await
+                .expect("Could not open file");
             let data_input_stream = DataInputStream::new(&ios.input_stream());
 
             Ok(Pixbuf::from_stream_at_scale_future(&data_input_stream, size, size, true).await?)

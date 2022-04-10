@@ -94,26 +94,28 @@ impl SwSongRow {
     fn setup_signals(&self) {
         let imp = self.imp();
 
-        imp.save_button.connect_clicked(clone!(@weak self as this => move |_| {
-            let imp = this.imp();
+        imp.save_button
+            .connect_clicked(clone!(@weak self as this => move |_| {
+                let imp = this.imp();
 
-            // Save the song
-            let sender = imp.sender.get().unwrap();
-            let song = imp.song.get().unwrap();
-            send!(sender, Action::PlaybackSaveSong(song.clone()));
+                // Save the song
+                let sender = imp.sender.get().unwrap();
+                let song = imp.song.get().unwrap();
+                send!(sender, Action::PlaybackSaveSong(song.clone()));
 
-            // Display play button instead of save button
-            imp.button_stack.set_visible_child_name("open");
-            this.set_activatable_widget(Some(&imp.open_button.get()));
+                // Display play button instead of save button
+                imp.button_stack.set_visible_child_name("open");
+                this.set_activatable_widget(Some(&imp.open_button.get()));
 
-            // Dim row
-            this.add_css_class("dim-label");
-        }));
+                // Dim row
+                this.add_css_class("dim-label");
+            }));
 
-        imp.open_button.connect_clicked(clone!(@strong self as this => move |_| {
-            let song = this.imp().song.get().unwrap();
-            open::that(song.path.clone()).expect("Could not play song");
-        }));
+        imp.open_button
+            .connect_clicked(clone!(@strong self as this => move |_| {
+                let song = this.imp().song.get().unwrap();
+                open::that(song.path.clone()).expect("Could not play song");
+            }));
     }
 
     // stolen from gnome-podcasts

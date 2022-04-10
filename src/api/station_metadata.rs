@@ -93,7 +93,11 @@ fn url_to_str<S>(url: &Option<Url>, serializer: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,
 {
-    let value = if let Some(url) = url { url.as_str() } else { "" };
+    let value = if let Some(url) = url {
+        url.as_str()
+    } else {
+        ""
+    };
     serializer.serialize_str(value)
 }
 

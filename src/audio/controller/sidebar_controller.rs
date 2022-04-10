@@ -51,7 +51,8 @@ pub struct SidebarController {
 
 impl SidebarController {
     pub fn new(sender: Sender<Action>) -> Self {
-        let builder = gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/sidebar_controller.ui");
+        let builder =
+            gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/sidebar_controller.ui");
         get_widget!(builder, gtk::Box, sidebar_controller);
         get_widget!(builder, gtk::Label, title_label);
         get_widget!(builder, gtk::Label, subtitle_label);
@@ -71,9 +72,10 @@ impl SidebarController {
         favicon_box.append(&station_favicon.widget);
 
         // volume_button | We need the volume_signal_id later to block the signal
-        let volume_signal_id = volume_button.connect_value_changed(clone!(@strong sender => move |_, value| {
-            send!(sender, Action::PlaybackSetVolume(value));
-        }));
+        let volume_signal_id =
+            volume_button.connect_value_changed(clone!(@strong sender => move |_, value| {
+                send!(sender, Action::PlaybackSetVolume(value));
+            }));
 
         // action group
         let action_group = gio::SimpleActionGroup::new();
@@ -108,19 +110,24 @@ impl SidebarController {
 
     fn setup_signals(&self) {
         // start_playback_button
-        self.start_playback_button.connect_clicked(clone!(@strong self.sender as sender => move |_| {
-            send!(sender, Action::PlaybackSet(true));
-        }));
+        self.start_playback_button.connect_clicked(
+            clone!(@strong self.sender as sender => move |_| {
+                send!(sender, Action::PlaybackSet(true));
+            }),
+        );
 
         // stop_playback_button
-        self.stop_playback_button.connect_clicked(clone!(@strong self.sender as sender => move |_| {
-            send!(sender, Action::PlaybackSet(false));
-        }));
+        self.stop_playback_button.connect_clicked(
+            clone!(@strong self.sender as sender => move |_| {
+                send!(sender, Action::PlaybackSet(false));
+            }),
+        );
 
         // stop_playback_button
-        self.loading_button.connect_clicked(clone!(@strong self.sender as sender => move |_| {
-            send!(sender, Action::PlaybackSet(false));
-        }));
+        self.loading_button
+            .connect_clicked(clone!(@strong self.sender as sender => move |_| {
+                send!(sender, Action::PlaybackSet(false));
+            }));
 
         // details button
         action!(
@@ -148,7 +155,8 @@ impl Controller for SidebarController {
     fn set_station(&self, station: SwStation) {
         self.action_revealer.set_reveal_child(true);
         self.title_label.set_text(&station.metadata().name);
-        self.title_label.set_tooltip_text(Some(station.metadata().name.as_str()));
+        self.title_label
+            .set_tooltip_text(Some(station.metadata().name.as_str()));
         *self.station.borrow_mut() = Some(station.clone());
 
         // Download & set icon
@@ -158,11 +166,12 @@ impl Controller for SidebarController {
         if let Some(pixbuf) = station.favicon() {
             station_favicon.set_pixbuf(&pixbuf);
         } else if let Some(favicon) = station.metadata().favicon {
-            let fut = FaviconDownloader::download(favicon, FaviconSize::Big as i32).map(move |pixbuf| {
-                if let Ok(pixbuf) = pixbuf {
-                    station_favicon.set_pixbuf(&pixbuf)
-                }
-            });
+            let fut =
+                FaviconDownloader::download(favicon, FaviconSize::Big as i32).map(move |pixbuf| {
+                    if let Ok(pixbuf) = pixbuf {
+                        station_favicon.set_pixbuf(&pixbuf)
+                    }
+                });
             spawn!(fut);
         } else {
             self.station_favicon.reset();
@@ -174,17 +183,19 @@ impl Controller for SidebarController {
     }
 
     fn set_playback_state(&self, playback_state: &PlaybackState) {
-        match playback_state {
-            PlaybackState::Playing => self.playback_button_stack.set_visible_child_name("stop_playback"),
-            PlaybackState::Stopped => self.playback_button_stack.set_visible_child_name("start_playback"),
-            PlaybackState::Loading => self.playback_button_stack.set_visible_child_name("loading"),
+        let child_name = match playback_state {
+            PlaybackState::Playing => "stop_playback",
+            PlaybackState::Stopped => "start_playback",
+            PlaybackState::Loading => "loading",
             PlaybackState::Failure(msg) => {
-                self.playback_button_stack.set_visible_child_name("error");
                 let mut text = self.error_label.text().to_string();
                 text = text + " " + msg;
                 self.error_label.set_text(&text);
+                "error"
             }
         };
+        self.playback_button_stack
+            .set_visible_child_name(child_name);
     }
 
     fn set_volume(&self, volume: f64) {

@@ -1,5 +1,5 @@
 // Shortwave - gstreamer_backend.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -88,8 +88,8 @@ impl GstreamerBackend {
             "uridecodebin name=uridecodebin use-buffering=true buffer-duration=6000000000 ! audioconvert name=audioconvert ! tee name=tee ! queue ! {} name={}",
             audiosink, audiosink
         );
-        let pipeline = gstreamer::parse_launch(&pipeline_launch).expect("Could not create gstreamer pipeline");
-        let pipeline = pipeline.downcast::<gstreamer::Pipeline>().expect("Couldn't downcast pipeline");
+        let pipeline = gstreamer::parse_launch(&pipeline_launch).unwrap();
+        let pipeline = pipeline.downcast::<gstreamer::Pipeline>().unwrap();
         pipeline.set_message_forward(true);
 
         // The recorderbin gets added / removed dynamically to the pipeline
@@ -207,7 +207,10 @@ impl GstreamerBackend {
         debug!("Set playback state: {:?}", state);
 
         if state == gstreamer::State::Null {
-            send!(self.sender, GstreamerMessage::PlaybackStateChanged(PlaybackState::Stopped));
+            send!(
+                self.sender,
+                GstreamerMessage::PlaybackStateChanged(PlaybackState::Stopped)
+            );
         }
 
         let res = self.pipeline.set_state(state);
@@ -216,7 +219,9 @@ impl GstreamerBackend {
             warn!("Failed to set pipeline to playing");
             send!(
                 self.sender,
-                GstreamerMessage::PlaybackStateChanged(PlaybackState::Failure(String::from("Failed to set pipeline to playing")))
+                GstreamerMessage::PlaybackStateChanged(PlaybackState::Failure(String::from(
+                    "Failed to set pipeline to playing"
+                )))
             );
             let _ = self.pipeline.set_state(gstreamer::State::Null);
             return;
@@ -233,7 +238,10 @@ impl GstreamerBackend {
     }
 
     pub fn state(&self) -> PlaybackState {
-        let state = self.pipeline.state(gstreamer::ClockTime::from_mseconds(250)).1;
+        let state = self
+            .pipeline
+            .state(gstreamer::ClockTime::from_mseconds(250))
+            .1;
         match state {
             gstreamer::State::Playing => PlaybackState::Playing,
             _ => PlaybackState::Stopped,
@@ -243,19 +251,29 @@ impl GstreamerBackend {
     pub fn set_volume(&self, volume: f64) {
         if let Some(pulsesink) = self.pipeline.by_name("pulsesink") {
             // We need to block the signal, otherwise we risk creating a endless loop
-            glib::signal::signal_handler_block(&pulsesink, &self.volume_signal_id.as_ref().unwrap());
+            glib::signal::signal_handler_block(
+                &pulsesink,
+                &self.volume_signal_id.as_ref().unwrap(),
+            );
 
             if volume != 0.0 {
                 pulsesink.set_property("mute", &false);
             }
 
-            let pa_volume = StreamVolume::convert_volume(StreamVolumeFormat::Cubic, StreamVolumeFormat::Linear, volume);
+            let pa_volume = StreamVolume::convert_volume(
+                StreamVolumeFormat::Cubic,
+                StreamVolumeFormat::Linear,
+                volume,
+            );
             pulsesink.set_property("volume", &pa_volume);
 
             *self.volume.lock().unwrap() = volume;
 
             // Unblock the signal again
-            glib::signal::signal_handler_unblock(&pulsesink, &self.volume_signal_id.as_ref().unwrap());
+            glib::signal::signal_handler_unblock(
+                &pulsesink,
+                &self.volume_signal_id.as_ref().unwrap(),
+            );
         } else {
             warn!("PulseAudio is required for changing the volume.")
         }
@@ -278,7 +296,9 @@ impl GstreamerBackend {
             warn!("Failed to set pipeline to playing");
             send!(
                 self.sender,
-                GstreamerMessage::PlaybackStateChanged(PlaybackState::Failure(String::from("Failed to set pipeline to playing")))
+                GstreamerMessage::PlaybackStateChanged(PlaybackState::Failure(String::from(
+                    "Failed to set pipeline to playing"
+                )))
             );
             let _ = self.pipeline.set_state(gstreamer::State::Null);
             return;
@@ -297,14 +317,20 @@ impl GstreamerBackend {
         debug!("Creating new recorderbin...");
 
         // Create actual recorderbin
-        let description = "queue name=queue ! vorbisenc ! oggmux  ! filesink name=filesink async=false";
-        let recorderbin = gstreamer::parse_bin_from_description(description, true).expect("Unable to create recorderbin");
+        let description =
+            "queue name=queue ! vorbisenc ! oggmux  ! filesink name=filesink async=false";
+        let recorderbin = gstreamer::parse_bin_from_description(description, true)
+            .expect("Unable to create recorderbin");
         recorderbin.set_property("message-forward", &true);
 
         // We need to set an offset, otherwise the length of the recorded song would be wrong.
         // Get current clock time and calculate offset
         let offset = Self::calculate_pipeline_offset(&self.pipeline);
-        let queue_srcpad = recorderbin.by_name("queue").unwrap().static_pad("src").unwrap();
+        let queue_srcpad = recorderbin
+            .by_name("queue")
+            .unwrap()
+            .static_pad("src")
+            .unwrap();
         queue_srcpad.set_offset(offset);
 
         // Set recording path
@@ -313,19 +339,29 @@ impl GstreamerBackend {
 
         // First try setting the recording bin to playing: if this fails we know this before it
         // potentially interferred with the other part of the pipeline
-        recorderbin.set_state(gstreamer::State::Playing).expect("Failed to start recording");
+        recorderbin
+            .set_state(gstreamer::State::Playing)
+            .expect("Failed to start recording");
 
         // Add new recorderbin to the pipeline
-        self.pipeline.add(&recorderbin).expect("Unable to add recorderbin to pipeline");
+        self.pipeline
+            .add(&recorderbin)
+            .expect("Unable to add recorderbin to pipeline");
 
         // Get our tee element by name, request a new source pad from it and then link that to our
         // recording bin to actually start receiving data
         let tee = self.pipeline.by_name("tee").unwrap();
-        let tee_srcpad = tee.request_pad_simple("src_%u").expect("Failed to request new pad from tee");
-        let sinkpad = recorderbin.static_pad("sink").expect("Failed to get sink pad from recorderbin");
+        let tee_srcpad = tee
+            .request_pad_simple("src_%u")
+            .expect("Failed to request new pad from tee");
+        let sinkpad = recorderbin
+            .static_pad("sink")
+            .expect("Failed to get sink pad from recorderbin");
 
         // Link tee srcpad with the sinkpad of the recorderbin
-        tee_srcpad.link(&sinkpad).expect("Unable to link tee srcpad with recorderbin sinkpad");
+        tee_srcpad
+            .link(&sinkpad)
+            .expect("Unable to link tee srcpad with recorderbin sinkpad");
 
         *self.recorderbin.lock().unwrap() = Some(recorderbin);
         debug!("Started recording to {:?}", path);
@@ -340,10 +376,15 @@ impl GstreamerBackend {
             Some(bin) => bin,
         };
 
-        debug!("Stop recording... (Discard recorded data: {:?})", &discard_data);
+        debug!(
+            "Stop recording... (Discard recorded data: {:?})",
+            &discard_data
+        );
 
         // Get the source pad of the tee that is connected to the recorderbin
-        let recorderbin_sinkpad = recorderbin.static_pad("sink").expect("Failed to get sink pad from recorderbin");
+        let recorderbin_sinkpad = recorderbin
+            .static_pad("sink")
+            .expect("Failed to get sink pad from recorderbin");
         let tee_srcpad = match recorderbin_sinkpad.peer() {
             Some(peer) => peer,
             None => return,
@@ -396,17 +437,31 @@ impl GstreamerBackend {
     pub fn current_recording_duration(&self) -> i64 {
         let recorderbin: &Option<Bin> = &*self.recorderbin.lock().unwrap();
         if let Some(recorderbin) = recorderbin {
-            let queue_srcpad = recorderbin.by_name("queue").unwrap().static_pad("src").unwrap();
+            let queue_srcpad = recorderbin
+                .by_name("queue")
+                .unwrap()
+                .static_pad("src")
+                .unwrap();
             let offset = queue_srcpad.offset() / 1_000_000_000;
 
-            let pipeline_time = self.pipeline.clock().expect("Could not get pipeline clock").time().unwrap().nseconds() as i64 / 1_000_000_000;
+            let pipeline_time = self
+                .pipeline
+                .clock()
+                .expect("Could not get pipeline clock")
+                .time()
+                .unwrap()
+                .nseconds() as i64
+                / 1_000_000_000;
             let result = pipeline_time + offset + 1;
 
             // Workaround to avoid crash as described in issue #540
             // https://gitlab.gnome.org/World/Shortwave/-/issues/540
             // TODO: Find out actual root cause for this nonsense
             if result > 86_400 || result < 0 {
-                error!("Unable to determine correct recording value: {} seconds", result);
+                error!(
+                    "Unable to determine correct recording value: {} seconds",
+                    result
+                );
                 return 0;
             }
 
@@ -418,8 +473,17 @@ impl GstreamerBackend {
     }
 
     fn calculate_pipeline_offset(pipeline: &Pipeline) -> i64 {
-        let clock_time = pipeline.clock().expect("Could not get pipeline clock").time().unwrap().nseconds() as i64;
-        let base_time = pipeline.base_time().expect("Could not get pipeline base time").nseconds() as i64;
+        let clock_time = pipeline
+            .clock()
+            .expect("Could not get pipeline clock")
+            .time()
+            .unwrap()
+            .nseconds() as i64;
+        let base_time = pipeline
+            .base_time()
+            .expect("Could not get pipeline base time")
+            .nseconds() as i64;
+
         -(clock_time - base_time)
     }
 
@@ -439,7 +503,13 @@ impl GstreamerBackend {
         pulsesink.is_ok()
     }
 
-    fn parse_bus_message(pipeline: Pipeline, message: &gstreamer::Message, sender: Sender<GstreamerMessage>, buffering_state: &Arc<Mutex<BufferingState>>, current_title: Arc<Mutex<String>>) {
+    fn parse_bus_message(
+        pipeline: Pipeline,
+        message: &gstreamer::Message,
+        sender: Sender<GstreamerMessage>,
+        buffering_state: &Arc<Mutex<BufferingState>>,
+        current_title: Arc<Mutex<String>>,
+    ) {
         match message.view() {
             MessageView::Tag(tag) => {
                 if let Some(t) = tag.tags().get::<gstreamer::tags::Title>() {
@@ -465,7 +535,10 @@ impl GstreamerBackend {
                         _ => PlaybackState::Stopped,
                     };
 
-                    send!(sender, GstreamerMessage::PlaybackStateChanged(playback_state));
+                    send!(
+                        sender,
+                        GstreamerMessage::PlaybackStateChanged(playback_state)
+                    );
                 }
             }
             MessageView::Buffering(buffering) => {
@@ -477,7 +550,10 @@ impl GstreamerBackend {
                 if percent < 100 {
                     if !buffering_state.buffering {
                         buffering_state.buffering = true;
-                        send!(sender, GstreamerMessage::PlaybackStateChanged(PlaybackState::Loading));
+                        send!(
+                            sender,
+                            GstreamerMessage::PlaybackStateChanged(PlaybackState::Loading)
+                        );
 
                         if buffering_state.is_live == Some(false) {
                             debug!("Pausing pipeline because buffering started");
@@ -485,7 +561,9 @@ impl GstreamerBackend {
                             let sinkpad = tee.static_pad("sink").unwrap();
                             let probe_id = sinkpad
                                 .add_probe(
-                                    gstreamer::PadProbeType::BLOCK | gstreamer::PadProbeType::BUFFER | gstreamer::PadProbeType::BUFFER_LIST,
+                                    gstreamer::PadProbeType::BLOCK
+                                        | gstreamer::PadProbeType::BUFFER
+                                        | gstreamer::PadProbeType::BUFFER_LIST,
                                     |_pad, _info| {
                                         debug!("Pipeline blocked because of buffering");
                                         gstreamer::PadProbeReturn::Ok
@@ -499,7 +577,10 @@ impl GstreamerBackend {
                     }
                 } else if buffering_state.buffering {
                     buffering_state.buffering = false;
-                    send!(sender, GstreamerMessage::PlaybackStateChanged(PlaybackState::Playing));
+                    send!(
+                        sender,
+                        GstreamerMessage::PlaybackStateChanged(PlaybackState::Playing)
+                    );
 
                     if buffering_state.is_live == Some(false) {
                         debug!("Resuming pipeline because buffering finished");
@@ -517,10 +598,11 @@ impl GstreamerBackend {
                     let message: gstreamer::message::Message = structure.get("message").unwrap();
                     if let MessageView::Eos(_) = &message.view() {
                         // Get recorderbin from message
-                        let recorderbin = match message.src().and_then(|src| src.downcast::<Bin>().ok()) {
-                            Some(src) => src,
-                            None => return,
-                        };
+                        let recorderbin =
+                            match message.src().and_then(|src| src.downcast::<Bin>().ok()) {
+                                Some(src) => src,
+                                None => return,
+                            };
 
                         // And then asynchronously remove it and set its state to Null
                         pipeline.call_async(move |pipeline| {
@@ -537,7 +619,10 @@ impl GstreamerBackend {
                 } else {
                     warn!("Gstreamer Error: {}", msg);
                 }
-                send!(sender, GstreamerMessage::PlaybackStateChanged(PlaybackState::Failure(msg)));
+                send!(
+                    sender,
+                    GstreamerMessage::PlaybackStateChanged(PlaybackState::Failure(msg))
+                );
             }
             _ => (),
         };

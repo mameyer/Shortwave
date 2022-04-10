@@ -1,5 +1,5 @@
 // Shortwave - mini_controller.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -43,7 +43,8 @@ pub struct MiniController {
 
 impl MiniController {
     pub fn new(sender: Sender<Action>) -> Self {
-        let builder = gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/mini_controller.ui");
+        let builder =
+            gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/mini_controller.ui");
         get_widget!(builder, gtk::Box, mini_controller);
         get_widget!(builder, gtk::Label, title_label);
         get_widget!(builder, gtk::Label, subtitle_label);
@@ -55,9 +56,10 @@ impl MiniController {
         get_widget!(builder, gtk::VolumeButton, volume_button);
 
         // volume_button | We need the volume_signal_id later to block the signal
-        let volume_signal_id = volume_button.connect_value_changed(clone!(@strong sender => move |_, value| {
-            send!(sender, Action::PlaybackSetVolume(value));
-        }));
+        let volume_signal_id =
+            volume_button.connect_value_changed(clone!(@strong sender => move |_, value| {
+                send!(sender, Action::PlaybackSetVolume(value));
+            }));
 
         let station = Rc::new(RefCell::new(None));
 
@@ -82,38 +84,45 @@ impl MiniController {
 
     fn setup_signals(&self) {
         // start_playback_button
-        self.start_playback_button.connect_clicked(clone!(@strong self.sender as sender => move |_| {
-            send!(sender, Action::PlaybackSet(true));
-        }));
+        self.start_playback_button.connect_clicked(
+            clone!(@strong self.sender as sender => move |_| {
+                send!(sender, Action::PlaybackSet(true));
+            }),
+        );
 
         // stop_playback_button
-        self.stop_playback_button.connect_clicked(clone!(@strong self.sender as sender => move |_| {
-            send!(sender, Action::PlaybackSet(false));
-        }));
+        self.stop_playback_button.connect_clicked(
+            clone!(@strong self.sender as sender => move |_| {
+                send!(sender, Action::PlaybackSet(false));
+            }),
+        );
 
         // loading_button
-        self.loading_button.connect_clicked(clone!(@strong self.sender as sender => move |_| {
-            send!(sender, Action::PlaybackSet(false));
-        }));
+        self.loading_button
+            .connect_clicked(clone!(@strong self.sender as sender => move |_| {
+                send!(sender, Action::PlaybackSet(false));
+            }));
     }
 }
 
 impl Controller for MiniController {
     fn set_station(&self, station: SwStation) {
         self.title_label.set_text(&station.metadata().name);
-        self.title_label.set_tooltip_text(Some(station.metadata().name.as_str()));
+        self.title_label
+            .set_tooltip_text(Some(station.metadata().name.as_str()));
         *self.station.borrow_mut() = Some(station);
 
         self.subtitle_revealer.set_reveal_child(false);
     }
 
     fn set_playback_state(&self, playback_state: &PlaybackState) {
-        match playback_state {
-            PlaybackState::Playing => self.playback_button_stack.set_visible_child_name("stop_playback"),
-            PlaybackState::Stopped => self.playback_button_stack.set_visible_child_name("start_playback"),
-            PlaybackState::Loading => self.playback_button_stack.set_visible_child_name("loading"),
-            PlaybackState::Failure(_) => self.playback_button_stack.set_visible_child_name("start_playback"),
+        let child_name = match playback_state {
+            PlaybackState::Playing => "stop_playback",
+            PlaybackState::Stopped => "start_playback",
+            PlaybackState::Loading => "loading",
+            PlaybackState::Failure(_) => "start_playback",
         };
+        self.playback_button_stack.set_visible_child_name
     }
 
     fn set_volume(&self, volume: f64) {

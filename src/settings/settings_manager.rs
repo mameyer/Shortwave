@@ -45,7 +45,10 @@ pub fn settings() -> gio::Settings {
 
 pub fn bind_property<P: IsA<glib::Object>>(key: Key, object: &P, property: &str) {
     let settings = settings();
-    settings.bind(key.to_string().as_str(), object, property).flags(gio::SettingsBindFlags::DEFAULT).build();
+    settings
+        .bind(key.to_string().as_str(), object, property)
+        .flags(gio::SettingsBindFlags::DEFAULT)
+        .build();
 }
 
 #[allow(dead_code)]

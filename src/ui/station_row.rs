@@ -131,11 +131,13 @@ impl SwStationRow {
         if let Some(pixbuf) = station.favicon() {
             station_favicon.set_pixbuf(&pixbuf);
         } else if let Some(favicon) = station.metadata().favicon.as_ref() {
-            let fut = FaviconDownloader::download(favicon.clone(), FaviconSize::Small as i32).map(move |pixbuf| {
-                if let Ok(pixbuf) = pixbuf {
-                    station_favicon.set_pixbuf(&pixbuf)
-                }
-            });
+            let fut = FaviconDownloader::download(favicon.clone(), FaviconSize::Small as i32).map(
+                move |pixbuf| {
+                    if let Ok(pixbuf) = pixbuf {
+                        station_favicon.set_pixbuf(&pixbuf)
+                    }
+                },
+            );
             spawn!(fut);
         }
     }

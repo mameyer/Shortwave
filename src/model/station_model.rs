@@ -52,7 +52,10 @@ mod imp {
         }
 
         fn item(&self, _list_model: &Self::Type, position: u32) -> Option<glib::Object> {
-            self.map.borrow().get_index(position.try_into().unwrap()).map(|(_, o)| o.clone().upcast::<glib::Object>())
+            self.map
+                .borrow()
+                .get_index(position.try_into().unwrap())
+                .map(|(_, o)| o.clone().upcast::<glib::Object>())
         }
     }
 }
@@ -71,7 +74,10 @@ impl SwStationModel {
         let pos = {
             let mut map = self.imp().map.borrow_mut();
             if map.contains_key(&station.uuid()) {
-                warn!("Station {:?} already exists in model", station.metadata().name);
+                warn!(
+                    "Station {:?} already exists in model",
+                    station.metadata().name
+                );
                 return;
             }
 

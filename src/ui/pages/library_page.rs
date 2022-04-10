@@ -56,7 +56,10 @@ mod imp {
             let stack = TemplateChild::default();
             let flowbox = TemplateChild::default();
 
-            let app = gio::Application::default().unwrap().downcast::<SwApplication>().unwrap();
+            let app = gio::Application::default()
+                .unwrap()
+                .downcast::<SwApplication>()
+                .unwrap();
             let library = app.library();
 
             let sender = OnceCell::default();
@@ -110,19 +113,22 @@ impl SwLibraryPage {
         imp.status_page.set_icon_name(Some(&config::APP_ID));
 
         // Welcome text which gets displayed when the library is empty. "{}" is the application name.
-        imp.status_page.set_title(&i18n_f("Welcome to {}", &[config::NAME]));
+        imp.status_page
+            .set_title(&i18n_f("Welcome to {}", &[config::NAME]));
 
         // Station flowbox
-        imp.flowbox.init(imp.library.model(), imp.sender.get().unwrap().clone());
+        imp.flowbox
+            .init(imp.library.model(), imp.sender.get().unwrap().clone());
 
         // Set intial stack page
         self.update_stack_page();
     }
 
     fn setup_signals(&self) {
-        self.imp()
-            .library
-            .connect_notify_local(Some("status"), clone!(@weak self as this => move |_, _|this.update_stack_page()));
+        self.imp().library.connect_notify_local(
+            Some("status"),
+            clone!(@weak self as this => move |_, _|this.update_stack_page()),
+        );
     }
 
     fn update_stack_page(&self) {

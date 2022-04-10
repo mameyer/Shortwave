@@ -80,8 +80,14 @@ impl GCastController {
                 if let Ok(action) = receiver.recv() {
                     match action {
                         GCastAction::Connect => {
-                            debug!("Connect to gcast device with IP \"{}\"...", *device_ip.lock().unwrap());
-                            match CastDevice::connect_without_host_verification(device_ip.lock().unwrap().to_string(), 8009) {
+                            debug!(
+                                "Connect to gcast device with IP \"{}\"...",
+                                *device_ip.lock().unwrap()
+                            );
+                            match CastDevice::connect_without_host_verification(
+                                device_ip.lock().unwrap().to_string(),
+                                8009,
+                            ) {
                                 Ok(d) => {
                                     d.connection.connect("receiver-0".to_string()).unwrap();
                                     d.heartbeat.ping().unwrap();
@@ -133,7 +139,11 @@ impl GCastController {
                                             content_type: "".to_string(),
                                             stream_type: StreamType::Live,
                                             duration: None,
-                                            metadata: Some(rust_cast::channels::media::Metadata::Generic(metadata)),
+                                            metadata: Some(
+                                                rust_cast::channels::media::Metadata::Generic(
+                                                    metadata,
+                                                ),
+                                            ),
                                         },
                                     )
                                     .expect("Could not transer media information to gcast device.");
@@ -168,7 +178,9 @@ impl GCastController {
                                     Ok(ChannelMessage::Raw(response)) => {
                                         debug!("GCast [Raw] {:?}", response);
                                     }
-                                    Err(error) => error!("Error occurred while receiving message {}", error),
+                                    Err(error) => {
+                                        error!("Error occurred while receiving message {}", error)
+                                    }
                                 };
                                 send!(gcast_sender, GCastAction::HeartBeat);
                             }
@@ -176,7 +188,10 @@ impl GCastController {
                         GCastAction::Disconnect => {
                             if let Some(d) = device.as_ref() {
                                 debug!("Disconnect from gcast device...");
-                                match d.receiver.stop_app(app.as_ref().unwrap().session_id.as_str()) {
+                                match d
+                                    .receiver
+                                    .stop_app(app.as_ref().unwrap().session_id.as_str())
+                                {
                                     Ok(_) => connected = false,
                                     _ => warn!("Unable to disconnect from gcast device."),
                                 }
