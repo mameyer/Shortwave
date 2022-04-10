@@ -9,7 +9,6 @@
     <file compressed="true" preprocess="xml-stripblanks">gtk/station_dialog.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/station_row.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/station_flowbox.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks">gtk/notification.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/song_listbox.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/song_row.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/sidebar_controller.ui</file>

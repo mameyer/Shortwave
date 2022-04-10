@@ -31,7 +31,7 @@ use crate::config;
 use crate::model::SwSorting;
 use crate::settings::{settings_manager, Key};
 use crate::ui::pages::*;
-use crate::ui::{Notification, SwCreateStationDialog};
+use crate::ui::SwCreateStationDialog;
 
 #[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
@@ -73,7 +73,7 @@ mod imp {
         #[template_child]
         pub window_flap: TemplateChild<adw::Flap>,
         #[template_child]
-        pub overlay: TemplateChild<gtk::Overlay>,
+        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
         pub add_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -92,7 +92,6 @@ mod imp {
 
         pub window_animation_x: OnceCell<adw::TimedAnimation>,
         pub window_animation_y: OnceCell<adw::TimedAnimation>,
-        pub current_notification: RefCell<Option<Rc<Notification>>>,
         pub view: RefCell<SwView>,
     }
 
@@ -392,16 +391,9 @@ impl SwApplicationWindow {
         self.update_visible_view();
     }
 
-    pub fn show_notification(&self, notification: Rc<Notification>) {
+    pub fn show_notification(&self, notification: adw::Toast) {
         let imp = self.imp();
-
-        // Remove previous notification
-        if let Some(notification) = imp.current_notification.borrow_mut().take() {
-            notification.hide();
-        }
-
-        notification.show(&imp.overlay);
-        *imp.current_notification.borrow_mut() = Some(notification);
+        imp.toast_overlay.add_toast(&notification);
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {

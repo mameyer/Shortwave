@@ -29,7 +29,7 @@ use crate::api::{Client, StationRequest};
 use crate::app::Action;
 use crate::i18n::*;
 use crate::settings::{settings_manager, Key};
-use crate::ui::{Notification, SwStationFlowBox};
+use crate::ui::SwStationFlowBox;
 
 mod imp {
     use super::*;
@@ -266,7 +266,10 @@ impl SwSearchPage {
                     }
 
                     if let Err(err) = result {
-                        let notification = Notification::new_error(&i18n("Station data could not be received."), &err.to_string());
+                        warn!("Station data could not be received: {}", err.to_string());
+
+                        let text = i18n("Station data could not be received.");
+                        let notification = adw::Toast::new(&text);
                         send!(imp.sender.get().unwrap(), Action::ViewShowNotification(notification));
                     }
                 }));

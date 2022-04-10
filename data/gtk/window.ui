@@ -51,7 +51,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkOverlay" id="overlay">
+              <object class="AdwToastOverlay" id="toast_overlay">
                 <child>
                   <object class="AdwFlap" id="window_flap">
                     <property name="reveal-flap">False</property>

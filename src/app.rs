@@ -33,7 +33,7 @@ use crate::config;
 use crate::database::SwLibrary;
 use crate::model::SwSorting;
 use crate::settings::{settings_manager, Key, SettingsWindow};
-use crate::ui::{about_dialog, Notification, SwApplicationWindow, SwView};
+use crate::ui::{about_dialog, SwApplicationWindow, SwView};
 
 #[derive(Debug, Clone)]
 pub enum Action {
@@ -42,7 +42,7 @@ pub enum Action {
     ViewSet(SwView),
     ViewSetMiniPlayer(bool),
     ViewRaise,
-    ViewShowNotification(Rc<Notification>),
+    ViewShowNotification(adw::Toast),
 
     /* Audio Playback */
     PlaybackConnectGCastDevice(GCastDevice),
@@ -242,6 +242,10 @@ impl SwApplication {
 
     fn process_action(&self, action: Action) -> glib::Continue {
         let imp = self.imp();
+        if self.active_window().is_none() {
+            return glib::Continue(true);
+        }
+
         let window = SwApplicationWindow::default();
 
         match action {

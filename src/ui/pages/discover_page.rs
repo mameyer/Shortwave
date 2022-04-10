@@ -27,7 +27,7 @@ use crate::app;
 use crate::i18n::*;
 use crate::settings::{settings_manager, Key};
 use crate::ui::featured_carousel::Action;
-use crate::ui::{Notification, SwFeaturedCarousel, SwStationFlowBox};
+use crate::ui::{SwFeaturedCarousel, SwStationFlowBox};
 
 mod imp {
     use super::*;
@@ -141,10 +141,10 @@ impl SwDiscoverPage {
 
         let fut = client.send_station_request(request).map(move |result| {
             if let Err(err) = result {
-                let notification = Notification::new_error(
-                    &i18n("Station data could not be received."),
-                    &err.to_string(),
-                );
+                warn!("Station data could not be received: {}", err.to_string());
+
+                let text = i18n("Station data could not be received.");
+                let notification = adw::Toast::new(&text);
                 send!(sender, app::Action::ViewShowNotification(notification));
             }
         });

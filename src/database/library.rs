@@ -33,7 +33,6 @@ use crate::database::{connection, queries};
 use crate::i18n::*;
 use crate::model::SwStationModel;
 use crate::settings::{settings_manager, Key};
-use crate::ui::Notification;
 
 #[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
@@ -310,8 +309,8 @@ impl SwLibrary {
         warn!("Removing unknown station: {}", uuid);
         queries::delete_station(&uuid).unwrap();
 
-        let notification =
-            Notification::new_info(&i18n("An invalid station was removed from the library."));
+        let text = i18n("An invalid station was removed from the library.");
+        let notification = adw::Toast::new(&text);
         send!(
             imp.sender.get().unwrap(),
             Action::ViewShowNotification(notification)
