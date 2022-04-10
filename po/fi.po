@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2021-11-04 09:51+0000\n"
-"PO-Revision-Date: 2022-02-02 20:47+0200\n"
+"POT-Creation-Date: 2022-04-10 11:10+0000\n"
+"PO-Revision-Date: 2022-04-10 15:47+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -18,8 +18,52 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
+#: data/gtk/create_station_dialog.ui:8
+msgid "Create new station"
+msgstr "Luo uusi asema"
+
+#: data/gtk/create_station_dialog.ui:32
+msgid "Create New Station"
+msgstr "Luo uusi asema"
+
+#: data/gtk/create_station_dialog.ui:33
+msgid ""
+"You can decide if you want the new station to be visible for all users "
+"worldwide or if you want to create a local station."
+msgstr ""
+"Voit päättää, onko uusi asema näkyvissä kaikille käyttäjille "
+"maailmanlaajuisesti vai haluatko luoda paikallisen aseman."
+
+#: data/gtk/create_station_dialog.ui:43
+msgid "Create _Public Station"
+msgstr "Luo _julkinen asema"
+
+#: data/gtk/create_station_dialog.ui:54
+msgid "Create _Local Station"
+msgstr "Luo _paikallinen asema"
+
+#: data/gtk/create_station_dialog.ui:80
+msgid "Create Local Station"
+msgstr "Luo paikallinen asema"
+
+#: data/gtk/create_station_dialog.ui:113
+msgid "Change station image"
+msgstr "Vaihda aseman kuva"
+
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:179
+msgid "Name"
+msgstr "Nimi"
+
+#: data/gtk/create_station_dialog.ui:151
+msgid "Stream URL"
+msgstr "Suoratoiston URL-osoite"
+
+#: data/gtk/create_station_dialog.ui:165
+msgid "Create Station"
+msgstr "Luo asema"
+
 #: data/gtk/discover_page.ui:28
-msgid "Most voted stations"
+msgid "Most Voted Stations"
 msgstr "Eniten ääniä keränneet asemat"
 
 #: data/gtk/discover_page.ui:43
@@ -27,15 +71,15 @@ msgid "Trending"
 msgstr "Nousussa"
 
 #: data/gtk/discover_page.ui:58
-msgid "Other users are listening to…"
+msgid "Other Users Are Listening To…"
 msgstr "Muut käyttäjät kuuntelevat…"
 
 #: data/gtk/library_page.ui:60
-msgid "Receiving station data…"
+msgid "Receiving Station Data…"
 msgstr "Vastaanotetaan aseman tietoja…"
 
 #: data/gtk/library_page.ui:87
-msgid "_Discover new stations"
+msgid "_Discover New Stations"
 msgstr "L_öydä uusia asemia"
 
 #: data/gtk/mini_controller.ui:87
@@ -44,16 +88,12 @@ msgstr "SHORTWAVE INTERNET RADIO"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
-msgid "No playback"
+msgid "No Playback"
 msgstr "Mitään ei toisteta"
 
 #: data/gtk/notification.ui:58
 msgid "Error details"
 msgstr "Virheen lisätiedot"
-
-#: data/gtk/player.ui:44
-msgid "Connected with"
-msgstr "Yhdistettynä"
 
 #: data/gtk/settings_window.ui:7 data/gtk/help_overlay.ui:11
 msgid "General"
@@ -136,7 +176,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Toisto päällä/pois"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:172
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
 #: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Äänet"
@@ -146,42 +186,42 @@ msgid "Change the sorting of the search results"
 msgstr "Muuta hakutulosten järjestystä"
 
 #: data/gtk/search_page.ui:63
-msgid "No results"
+msgid "No Results"
 msgstr "Ei tuloksia"
 
 #: data/gtk/search_page.ui:64
 msgid "Try using a different search term"
 msgstr "Yritä eri hakuehdoilla"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:106
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:115
 msgid "_Name"
 msgstr "_Nimi"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:111
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:120
 msgid "_Language"
 msgstr "_Kieli"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:116
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:125
 msgid "_Country"
 msgstr "_Maa"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:121
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:130
 msgid "S_tate"
 msgstr "_Tila"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:126
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:135
 msgid "_Votes"
 msgstr "_Äänet"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:131
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:140
 msgid "_Bitrate"
 msgstr "_Bittinopeus"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:138
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:147
 msgid "_Ascending"
 msgstr "_Nouseva"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:143
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:152
 msgid "_Descending"
 msgstr "_Laskeva"
 
@@ -190,16 +230,12 @@ msgid "An error occurred"
 msgstr "Tapahtui virhe"
 
 #: data/gtk/sidebar_controller.ui:188
-msgid "_Show station details"
+msgid "_Show Station Details"
 msgstr "Näytä _aseman tiedot"
 
 #: data/gtk/sidebar_controller.ui:192
-msgid "Stream to a _device"
+msgid "Stream to a _Device"
 msgstr "_Suoratoista laitteelle"
-
-#: data/gtk/sidebar_controller.ui:198
-msgid "_Enable mini player"
-msgstr "_Käytä pienoissoitinta"
 
 #: data/gtk/song_listbox.ui:23
 msgid ""
@@ -212,7 +248,7 @@ msgstr ""
 "Jos asema ei lähetä metatietoja, kappaleita ei voida tunnistaa."
 
 #: data/gtk/song_listbox.ui:66
-msgid "No songs detected"
+msgid "No Songs Detected"
 msgstr "Kappaleita ei havaittu"
 
 #: data/gtk/song_listbox.ui:76
@@ -231,7 +267,7 @@ msgstr "Tallennetut kappaleet sijaitsevat Musiikki-kansiossa."
 msgid "_Open"
 msgstr "_Avaa"
 
-#: data/gtk/song_row.ui:14
+#: data/gtk/song_row.ui:15
 msgid "Save recorded song"
 msgstr "Tallenna nauhoitettu kappale"
 
@@ -239,136 +275,148 @@ msgstr "Tallenna nauhoitettu kappale"
 msgid "Station details"
 msgstr "Aseman tiedot"
 
-#: data/gtk/station_dialog.ui:87
-msgid "_Play this station"
-msgstr "_Toista tämä asema"
+#: data/gtk/station_dialog.ui:88
+msgid "_Play Station"
+msgstr "_Toista asema"
 
-#: data/gtk/station_dialog.ui:100
-msgid "_Add to library"
+#: data/gtk/station_dialog.ui:102
+msgid "_Add to Library"
 msgstr "_Lisää kirjastoon"
 
-#: data/gtk/station_dialog.ui:114
-msgid "_Remove from library"
+#: data/gtk/station_dialog.ui:117
+msgid "_Remove From Library"
 msgstr "_Poista kirjastosta"
 
-#: data/gtk/station_dialog.ui:128
+#: data/gtk/station_dialog.ui:134
+msgid "Local Station"
+msgstr "Paikallinen asema"
+
+#: data/gtk/station_dialog.ui:135
+msgid ""
+"This station exists only in your library, and is not part of the public "
+"online station database."
+msgstr ""
+"Tämä asema on olemassa vain kirjastossasi, eikä se näy osana verkon julkisia "
+"asematietokantoja."
+
+#: data/gtk/station_dialog.ui:149
+msgid "Orphaned Station"
+msgstr "Hylätty asema"
+
+#: data/gtk/station_dialog.ui:150
+msgid ""
+"The information could not be updated, probably this station was removed from "
+"the public online station database."
+msgstr ""
+"Tietoja ei voitu päivittää. Tämä asema todennäköisesti poistettiin verkon "
+"julkisesta asematietokannasta."
+
+#: data/gtk/station_dialog.ui:161
 msgid "Information"
 msgstr "Tiedot"
 
-#: data/gtk/station_dialog.ui:131
-msgid "This is a local private station."
-msgstr "Tämä on paikallinen, yksityinen asema."
-
-#: data/gtk/station_dialog.ui:132
-msgid ""
-"This station is visible only to you. If you remove this station from your "
-"library, you have to create it again."
-msgstr ""
-"Tämä asema on näkyvissä vain sinulle. Jos poistat tämän aseman "
-"kirjastosta, sinun tulee luoda se uudelleen."
-
-#: data/gtk/station_dialog.ui:138 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Kieli"
 
-#: data/gtk/station_dialog.ui:152
+#: data/gtk/station_dialog.ui:179
 msgid "Tags"
 msgstr "Tunnisteet"
 
-#: data/gtk/station_dialog.ui:187
+#: data/gtk/station_dialog.ui:215
 msgid "Location"
 msgstr "Sijainti"
 
-#: data/gtk/station_dialog.ui:192 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "Maa"
 
-#: data/gtk/station_dialog.ui:206 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "Tila"
 
-#: data/gtk/station_dialog.ui:244
+#: data/gtk/station_dialog.ui:284
 msgid "Audio"
 msgstr "Ääni"
 
-#: data/gtk/station_dialog.ui:248 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Bittinopeus"
 
-#: data/gtk/station_dialog.ui:262
+#: data/gtk/station_dialog.ui:303
 msgid "Codec"
 msgstr "Koodekki"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:276
+#: data/gtk/station_dialog.ui:318
 msgid "Stream"
 msgstr "Suoratoisto"
 
-#: data/gtk/streaming_dialog.ui:47
-msgid "Stream to a device"
+#: data/gtk/streaming_dialog.ui:10
+msgid "Stream to a Device"
 msgstr "Suoratoista laitteelle"
 
-#: data/gtk/streaming_dialog.ui:52
-msgid "_Cancel"
-msgstr "_Peru"
+#: data/gtk/streaming_dialog.ui:26
+msgid ""
+"Audio playback can be streamed to a network device (requires Google Cast "
+"support)."
+msgstr ""
+"Äänitoisto on mahdollista suoratoistaa verkkolaitteelle (vaatii Google Cast -"
+"tuen)."
 
-#: data/gtk/streaming_dialog.ui:58
-msgid "_Connect"
-msgstr "_Yhdistä"
-
-#: data/gtk/streaming_dialog.ui:90
-msgid "Devices which implement the Google Cast protocol are supported."
-msgstr "Google Cast -protokollaa noudattavat laitteet ovat tuettuja."
-
-#: data/gtk/streaming_dialog.ui:122
-msgid "No devices found"
+#: data/gtk/streaming_dialog.ui:41
+msgid "No Devices Found"
 msgstr "Laitteita ei löytynyt"
 
-#: data/gtk/streaming_dialog.ui:132
-msgid "_Retry search"
-msgstr "_Hae uudelleen"
+#: data/gtk/streaming_dialog.ui:47 data/gtk/streaming_dialog.ui:70
+msgid "Search again"
+msgstr "Etsi uudelleen"
 
-#: data/gtk/streaming_dialog.ui:180 data/gtk/streaming_dialog.ui:211
-msgid "Searching for devices…"
+#: data/gtk/streaming_dialog.ui:64
+msgid "Search Completed"
+msgstr "Haku suoritettu"
+
+#: data/gtk/streaming_dialog.ui:87
+msgid "Searching for Devices…"
 msgstr "Etsitään laitteita…"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:108 data/gtk/window.ui:189
+msgid "_Enable Mini Player"
+msgstr "_Käytä pienoissoitinta"
+
+#: data/gtk/window.ui:112
 msgid "_Sorting"
 msgstr "_Järjestys"
 
-#: data/gtk/window.ui:152 data/gtk/window.ui:180
+#: data/gtk/window.ui:161 data/gtk/window.ui:195
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "_Avaa radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:157 data/gtk/window.ui:185
-msgid "_Create new station <sup>↗</sup>"
-msgstr "_Luo uusi asema <sup>↗</sup>"
+#: data/gtk/window.ui:166 data/gtk/window.ui:200
+msgid "_Create New Station"
+msgstr "_Luo uusi asema"
 
-#: data/gtk/window.ui:164 data/gtk/window.ui:192
+#: data/gtk/window.ui:173 data/gtk/window.ui:207
 msgid "_Preferences"
 msgstr "_Asetukset"
 
-#: data/gtk/window.ui:168 data/gtk/window.ui:196
+#: data/gtk/window.ui:177 data/gtk/window.ui:211
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#: data/gtk/window.ui:172 data/gtk/window.ui:200
+#: data/gtk/window.ui:181 data/gtk/window.ui:215
 msgid "_About Shortwave"
 msgstr "_Tietoja - Shortwave"
 
-#: src/audio/player.rs:168
-msgid "This station cannot be played because the stream is offline."
-msgstr "Asemaa ei voida toistaa, koska aseman suoratoisto ei ole käynnissä."
-
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "Station cannot be streamed."
 msgstr "Asemaa ei voi suoratoistaa."
 
-#: src/audio/player.rs:186
+#: src/audio/player.rs:188
 msgid "URL is not valid."
 msgstr "Osoite ei ole kelvollinen."
 
-#: src/database/library.rs:271
+#: src/database/library.rs:273
 msgid "An invalid station was removed from the library."
 msgstr "Virheellinen asema poistettiin kirjastosta."
 
@@ -381,14 +429,18 @@ msgstr "Kuuntele internetradiota"
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
+#: src/ui/create_station_dialog.rs:105
+msgid "Select station image"
+msgstr "Valitse kuva asemalle"
+
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:91
 msgid "Show statistics"
 msgstr "Näytä tilastot"
 
 #: src/ui/pages/discover_page.rs:92
-msgid "Browse over 25,500 stations"
-msgstr "Selaa yli 25 500 asemaa"
+msgid "Browse over 30,000 stations"
+msgstr "Selaa yli 30 000 asemaa"
 
 #: src/ui/pages/discover_page.rs:94
 msgid "Add new station"
@@ -427,11 +479,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Hakutulokset rajataan {} kohteeseen. Yritä määrittää tarkempi hakuehto."
 
-#: src/ui/pages/search_page.rs:179
-msgid "Name"
-msgstr "Nimi"
-
-#: src/ui/station_dialog.rs:276
+#: src/ui/station_dialog.rs:288
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
@@ -491,6 +539,34 @@ msgstr "Saumaton integraatio Gnome-työpöytäympäristöön"
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;suoratoisto;nettiradio;"
 
+#~ msgid "Connected with"
+#~ msgstr "Yhdistettynä"
+
+#~ msgid "This is a local private station."
+#~ msgstr "Tämä on paikallinen, yksityinen asema."
+
+#~ msgid ""
+#~ "This station is visible only to you. If you remove this station from your "
+#~ "library, you have to create it again."
+#~ msgstr ""
+#~ "Tämä asema on näkyvissä vain sinulle. Jos poistat tämän aseman "
+#~ "kirjastosta, sinun tulee luoda se uudelleen."
+
+#~ msgid "_Cancel"
+#~ msgstr "_Peru"
+
+#~ msgid "_Connect"
+#~ msgstr "_Yhdistä"
+
+#~ msgid "Devices which implement the Google Cast protocol are supported."
+#~ msgstr "Google Cast -protokollaa noudattavat laitteet ovat tuettuja."
+
+#~ msgid "_Retry search"
+#~ msgstr "_Hae uudelleen"
+
+#~ msgid "This station cannot be played because the stream is offline."
+#~ msgstr "Asemaa ei voida toistaa, koska aseman suoratoisto ei ole käynnissä."
+
 #~ msgid "Homepage"
 #~ msgstr "Verkkosivusto"
 
@@ -511,9 +587,6 @@ msgstr "Gradio;Radio;Stream;Wave;suoratoisto;nettiradio;"
 #~ msgid "Discover"
 #~ msgstr "Löydä"
 
-#~ msgid "Search"
-#~ msgstr "Etsi"
-
 #~ msgid "Languages"
 #~ msgstr "Kielet"
 
@@ -528,9 +601,6 @@ msgstr "Gradio;Radio;Stream;Wave;suoratoisto;nettiradio;"
 
 #~ msgid "Import stations from Gradio"
 #~ msgstr "Tuo asemia Gradio-sovelluksesta"
-
-#~ msgid "Select database to import"
-#~ msgstr "Valitse tuotava tietokanta"
 
 #~ msgid "Import"
 #~ msgstr "Tuo"
