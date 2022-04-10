@@ -15,24 +15,19 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use adw::subclass::prelude::*;
-use glib::clone;
-use glib::Sender;
-use glib::{ParamFlags, ParamSpec, ParamSpecObject, ToValue};
-use gtk::glib;
+use glib::{clone, subclass, ParamFlags, ParamSpec, ParamSpecObject, Sender, ToValue};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
+use gtk::{glib, CompositeTemplate};
 use once_cell::sync::Lazy;
 
 use crate::api::SwStation;
 use crate::app::Action;
-use crate::model::SwStationModel;
-use crate::model::{SwSorting, SwStationSorter};
+use crate::model::{SwSorting, SwStationModel, SwStationSorter};
 use crate::ui::{SwStationDialog, SwStationRow};
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/station_flowbox.ui")]

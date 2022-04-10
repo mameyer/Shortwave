@@ -14,15 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::cell::RefCell;
+
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
-use glib::clone;
-use glib::Sender;
-use gtk::gdk_pixbuf;
+use glib::{clone, subclass, Sender};
 use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
-use gtk::{gio, glib};
+use gtk::{gdk_pixbuf, gio, glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 use url::Url;
 use uuid::Uuid;
@@ -32,10 +31,7 @@ use crate::app::{Action, SwApplication};
 use crate::ui::{FaviconSize, StationFavicon};
 
 mod imp {
-    use std::cell::RefCell;
-
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/create_station_dialog.ui")]

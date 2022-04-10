@@ -14,15 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use super::models::StationEntry;
-use crate::api::{Client, Error, StationMetadata, SwStation};
-use crate::app::Action;
-use crate::database::connection;
-use crate::database::queries;
-use crate::i18n::*;
-use crate::model::SwStationModel;
-use crate::settings::{settings_manager, Key};
-use crate::ui::Notification;
+use std::cell::RefCell;
+
 use futures::future::join_all;
 use glib::{clone, Enum, ObjectExt, ParamFlags, ParamSpec, ParamSpecEnum, ParamSpecObject, Sender, ToValue};
 use gtk::prelude::*;
@@ -30,7 +23,15 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk_pixbuf, glib};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
-use std::cell::RefCell;
+
+use super::models::StationEntry;
+use crate::api::{Client, Error, StationMetadata, SwStation};
+use crate::app::Action;
+use crate::database::{connection, queries};
+use crate::i18n::*;
+use crate::model::SwStationModel;
+use crate::settings::{settings_manager, Key};
+use crate::ui::Notification;
 
 #[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]

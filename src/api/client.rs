@@ -14,6 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::net::IpAddr;
+use std::rc::Rc;
+use std::time::Duration;
+
 use async_std_resolver::{config as rconfig, resolver, resolver_from_system_conf};
 use isahc::config::RedirectPolicy;
 use isahc::prelude::*;
@@ -22,10 +26,6 @@ use once_cell::unsync::OnceCell;
 use rand::prelude::SliceRandom;
 use rand::thread_rng;
 use url::Url;
-
-use std::net::IpAddr;
-use std::rc::Rc;
-use std::time::Duration;
 
 use crate::api::*;
 use crate::config;

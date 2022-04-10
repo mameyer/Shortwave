@@ -14,16 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
+
 use async_std::io::ReadExt;
 use gdk_pixbuf::Pixbuf;
 use gio::prelude::*;
 use gio::DataInputStream;
 use gtk::{gdk_pixbuf, gio, glib};
 use url::Url;
-
-use std::collections::hash_map::DefaultHasher;
-use std::hash::Hash;
-use std::hash::Hasher;
 
 use crate::api::client::HTTP_CLIENT;
 use crate::api::Error;

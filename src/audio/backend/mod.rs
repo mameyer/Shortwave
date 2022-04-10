@@ -17,16 +17,16 @@
 mod gstreamer_backend;
 mod song_backend;
 
-pub use gstreamer_backend::GstreamerMessage;
-
-use crate::app::Action;
-use crate::settings::{settings_manager, Key};
+use std::convert::TryInto;
 
 use glib::{Receiver, Sender};
 use gstreamer_backend::GstreamerBackend;
+pub use gstreamer_backend::GstreamerMessage;
 use gtk::glib;
 use song_backend::SongBackend;
-use std::convert::TryInto;
+
+use crate::app::Action;
+use crate::settings::{settings_manager, Key};
 
 pub struct Backend {
     pub gstreamer: GstreamerBackend,

@@ -14,19 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use futures_util::future::FutureExt;
-use glib::clone;
-use glib::Sender;
-use gtk::prelude::*;
-use gtk::{gio, glib};
-
 use std::cell::RefCell;
 use std::rc::Rc;
 
+use futures_util::future::FutureExt;
+use glib::{clone, Sender};
+use gtk::prelude::*;
+use gtk::{gio, glib};
+
 use crate::api::{FaviconDownloader, SwStation};
 use crate::app::Action;
-use crate::audio::Controller;
-use crate::audio::PlaybackState;
+use crate::audio::{Controller, PlaybackState};
 use crate::ui::{FaviconSize, StationFavicon, SwStationDialog, SwStreamingDialog};
 
 pub struct SidebarController {

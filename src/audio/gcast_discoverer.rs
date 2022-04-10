@@ -17,15 +17,14 @@
 // TODO: Update this to the latest version
 // https://crates.io/crates/mdns
 
+use std::collections::HashMap;
+use std::net::IpAddr;
+use std::sync::{Arc, Mutex};
+use std::thread;
+
 use glib::{Receiver, Sender};
 use gtk::glib;
 use mdns::{Record, RecordKind};
-
-use std::collections::HashMap;
-use std::net::IpAddr;
-use std::sync::Arc;
-use std::sync::Mutex;
-use std::thread;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct GCastDevice {

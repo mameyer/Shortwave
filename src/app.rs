@@ -14,17 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use adw::subclass::prelude::*;
-use gio::subclass::prelude::ApplicationImpl;
-use glib::clone;
-use glib::{Receiver, Sender};
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use gtk::{gio, glib};
-
 use std::cell::RefCell;
 use std::rc::Rc;
 use std::str::FromStr;
+
+use adw::subclass::prelude::*;
+use gio::subclass::prelude::ApplicationImpl;
+use glib::{clone, Receiver, Sender};
+use gtk::glib::WeakRef;
+use gtk::prelude::*;
+use gtk::subclass::prelude::*;
+use gtk::{gio, glib};
+use once_cell::sync::OnceCell;
 
 use crate::api::SwStation;
 use crate::audio::{GCastDevice, PlaybackState, Player, Song};
@@ -61,8 +62,6 @@ pub enum Action {
 
 mod imp {
     use super::*;
-    use gtk::glib::WeakRef;
-    use once_cell::sync::OnceCell;
 
     pub struct SwApplication {
         pub sender: Sender<Action>,

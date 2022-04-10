@@ -14,18 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use glib::clone;
-use glib::Sender;
-use gtk::glib;
-use gtk::prelude::*;
-
 use std::cell::RefCell;
 use std::rc::Rc;
 
+use glib::{clone, Sender};
+use gtk::glib;
+use gtk::prelude::*;
+
 use crate::api::SwStation;
 use crate::app::Action;
-use crate::audio::Controller;
-use crate::audio::PlaybackState;
+use crate::audio::{Controller, PlaybackState};
 
 pub struct MiniController {
     pub widget: gtk::Box,

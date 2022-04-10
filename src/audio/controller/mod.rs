@@ -1,5 +1,5 @@
 // Shortwave - mod.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,19 +17,18 @@
 mod gcast_controller;
 mod inhibit_controller;
 mod mini_controller;
+#[cfg(unix)]
+mod mpris_controller;
 mod sidebar_controller;
 mod toolbar_controller;
 
 pub use gcast_controller::GCastController;
 pub use inhibit_controller::InhibitController;
 pub use mini_controller::MiniController;
-pub use sidebar_controller::SidebarController;
-pub use toolbar_controller::ToolbarController;
-
 #[cfg(unix)]
 pub use mpris_controller::MprisController;
-#[cfg(unix)]
-mod mpris_controller;
+pub use sidebar_controller::SidebarController;
+pub use toolbar_controller::ToolbarController;
 
 use crate::api::SwStation;
 use crate::audio::PlaybackState;

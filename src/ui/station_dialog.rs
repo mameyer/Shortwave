@@ -17,11 +17,9 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use futures_util::future::FutureExt;
-use glib::clone;
-use glib::Sender;
+use glib::{clone, subclass, Sender};
 use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
-use gtk::{gdk, gio, glib};
+use gtk::{gdk, gio, glib, CompositeTemplate};
 use inflector::Inflector;
 use once_cell::unsync::OnceCell;
 use shumate::prelude::*;
@@ -34,7 +32,6 @@ use crate::ui::{FaviconSize, StationFavicon};
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/station_dialog.ui")]

@@ -14,15 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::cell::Cell;
+
 use gtk::gio;
 use gtk::prelude::*;
 
-use std::cell::Cell;
-
 use crate::api::SwStation;
 use crate::app::SwApplication;
-use crate::audio::Controller;
-use crate::audio::PlaybackState;
+use crate::audio::{Controller, PlaybackState};
 
 #[derive(Debug, Default)]
 pub struct InhibitController {

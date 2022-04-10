@@ -17,12 +17,8 @@
 // Source: GNOME Social by Christopher Davis
 // https://gitlab.gnome.org/World/Social
 
-use gettextrs::gettext;
-use gettextrs::ngettext;
-use gettextrs::npgettext;
-use gettextrs::pgettext;
-use regex::Captures;
-use regex::Regex;
+use gettextrs::{gettext, ngettext, npgettext, pgettext};
+use regex::{Captures, Regex};
 
 #[allow(dead_code)]
 fn freplace(input: String, args: &[&str]) -> String {

@@ -14,11 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use adw::prelude::*;
-use glib::clone;
-use glib::Sender;
-use gtk::{gio, glib};
-
 use std::cell::RefCell;
 use std::convert::TryInto;
 use std::fs;
@@ -27,6 +22,10 @@ use std::rc::Rc;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
+use adw::prelude::*;
+use glib::{clone, Sender};
+use gtk::{gio, glib};
+
 use crate::api::SwStation;
 use crate::app::Action;
 use crate::audio::backend::*;
@@ -34,11 +33,10 @@ use crate::audio::backend::*;
 use crate::audio::controller::MprisController;
 use crate::audio::controller::{Controller, GCastController, InhibitController, MiniController, SidebarController, ToolbarController};
 use crate::audio::{GCastDevice, Song};
-use crate::config;
 use crate::i18n::*;
-use crate::path;
 use crate::settings::{settings_manager, Key};
 use crate::ui::Notification;
+use crate::{config, path};
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                             //

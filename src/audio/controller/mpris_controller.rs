@@ -14,21 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use gio::prelude::*;
-use glib::clone;
-use glib::Sender;
-use gtk::{gio, glib};
-use mpris_player::{Metadata, MprisPlayer, OrgMprisMediaPlayer2Player, PlaybackStatus};
-
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 use std::sync::Arc;
 
-use crate::api::FaviconDownloader;
-use crate::api::SwStation;
+use gio::prelude::*;
+use glib::{clone, Sender};
+use gtk::{gio, glib};
+use mpris_player::{Metadata, MprisPlayer, OrgMprisMediaPlayer2Player, PlaybackStatus};
+
+use crate::api::{FaviconDownloader, SwStation};
 use crate::app::Action;
-use crate::audio::Controller;
-use crate::audio::PlaybackState;
+use crate::audio::{Controller, PlaybackState};
 use crate::config;
 
 pub struct MprisController {

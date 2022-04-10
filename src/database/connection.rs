@@ -17,9 +17,6 @@
 // Based on gnome-podcasts by Jordan Petridis
 // https://gitlab.gnome.org/World/podcasts/blob/cf644d508d8d7dab3c9357d12b1262ae6b44c8e8/podcasts-data/src/database.rs
 
-use crate::config;
-use crate::path;
-
 use std::io;
 use std::path::PathBuf;
 
@@ -27,6 +24,8 @@ use diesel::prelude::*;
 use diesel::r2d2;
 use diesel::r2d2::ConnectionManager;
 use once_cell::sync::Lazy;
+
+use crate::{config, path};
 
 // Read database migrations
 embed_migrations!("./data/database/migrations/");

@@ -14,17 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use adw::subclass::prelude::*;
-use adw::Carousel;
-use glib::clone;
-use gtk::gdk;
-use gtk::glib;
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
-
 use std::cell::RefCell;
 use std::str::FromStr;
+
+use adw::subclass::prelude::*;
+use adw::Carousel;
+use glib::{clone, subclass};
+use gtk::prelude::*;
+use gtk::subclass::prelude::*;
+use gtk::{gdk, glib, CompositeTemplate};
 
 #[derive(Debug)]
 pub struct Page {
@@ -34,7 +32,6 @@ pub struct Page {
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/featured_carousel.ui")]

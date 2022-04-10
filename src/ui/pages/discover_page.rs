@@ -16,11 +16,10 @@
 
 use adw::subclass::prelude::*;
 use futures_util::FutureExt;
-use glib::Sender;
-use gtk::glib;
+use glib::{subclass, Sender};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
+use gtk::{glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 
 use crate::api::{Client, StationRequest};
@@ -32,7 +31,6 @@ use crate::ui::{Notification, SwFeaturedCarousel, SwStationFlowBox};
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/discover_page.ui")]

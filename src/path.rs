@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use crate::config;
-
-use gtk::glib;
 use std::fs;
 use std::path::PathBuf;
 
+use gtk::glib;
 use once_cell::sync::Lazy;
+
+use crate::config;
 
 pub static DATA: Lazy<PathBuf> = Lazy::new(|| {
     let mut path = glib::user_data_dir();

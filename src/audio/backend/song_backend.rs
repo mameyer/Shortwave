@@ -14,11 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::fs;
+
 use glib::Sender;
 use gtk::glib;
 use indexmap::IndexMap;
-
-use std::fs;
 
 use crate::api::Error;
 use crate::app::Action;

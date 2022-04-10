@@ -15,10 +15,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use glib::{ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString, ToValue};
-use gtk::gdk_pixbuf;
-use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
+use gtk::{gdk_pixbuf, glib};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 

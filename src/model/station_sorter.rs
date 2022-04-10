@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::cell::{Cell, RefCell};
+
 use glib::{Enum, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecEnum, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use once_cell::sync::Lazy;
-
-use std::cell::{Cell, RefCell};
 
 use crate::api::SwStation;
 

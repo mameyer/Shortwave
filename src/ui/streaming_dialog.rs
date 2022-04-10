@@ -14,25 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use adw::prelude::*;
-use glib::clone;
-use glib::{Receiver, Sender};
-use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
-use gtk::{gio, glib};
-use once_cell::unsync::OnceCell;
-
 use std::net::IpAddr;
 use std::rc::Rc;
 use std::str::FromStr;
 
+use adw::prelude::*;
+use glib::{clone, subclass, Receiver, Sender};
+use gtk::subclass::prelude::*;
+use gtk::{gio, glib, CompositeTemplate};
+use once_cell::unsync::OnceCell;
+
 use crate::app::{Action, SwApplication};
-use crate::audio::GCastDiscoverer;
-use crate::audio::GCastDiscovererMessage;
+use crate::audio::{GCastDiscoverer, GCastDiscovererMessage};
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/streaming_dialog.ui")]

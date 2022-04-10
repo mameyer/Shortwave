@@ -15,11 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use adw::subclass::prelude::*;
-use glib::{clone, Sender};
+use glib::{clone, subclass, Sender};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
-use gtk::{gio, glib};
+use gtk::{gio, glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 
 use crate::app::{Action, SwApplication};
@@ -31,7 +30,6 @@ use crate::ui::SwStationFlowBox;
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/library_page.ui")]

@@ -1,5 +1,5 @@
 // Shortwave - main.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,9 +28,6 @@ extern crate strum_macros;
 #[macro_use]
 extern crate gtk_macros;
 
-use gettextrs::*;
-use std::env;
-
 mod api;
 mod audio;
 mod database;
@@ -43,6 +40,9 @@ mod config;
 mod i18n;
 mod path;
 
+use std::env;
+
+use gettextrs::*;
 use gtk::{gio, glib};
 
 use crate::app::SwApplication;

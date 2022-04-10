@@ -15,12 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use futures_util::future::FutureExt;
-use glib::clone;
-use glib::Sender;
-use gtk::glib;
+use glib::{clone, Sender};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
+use gtk::{glib, CompositeTemplate};
 use inflector::Inflector;
 use once_cell::unsync::OnceCell;
 
@@ -29,8 +27,9 @@ use crate::app::Action;
 use crate::ui::{FaviconSize, StationFavicon};
 
 mod imp {
-    use super::*;
     use glib::subclass;
+
+    use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/station_row.ui")]

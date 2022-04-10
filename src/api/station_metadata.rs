@@ -14,10 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::str::FromStr;
+
 use gtk::glib;
 use inflector::Inflector;
 use serde::{Deserialize, Deserializer, Serializer};
-use std::str::FromStr;
 use url::Url;
 
 #[derive(glib::Boxed, Default, Debug, Clone, Serialize, Deserialize)]

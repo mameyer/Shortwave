@@ -14,19 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use adw::prelude::*;
-use adw::subclass::prelude::*;
-use glib::clone;
-use glib::Sender;
-use glib::{Enum, ParamFlags, ParamSpec, ParamSpecEnum, ToValue};
-use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
-use gtk::{gio, glib};
-use once_cell::sync::Lazy;
-use once_cell::unsync::OnceCell;
-
 use std::cell::RefCell;
 use std::rc::Rc;
+
+use adw::prelude::*;
+use adw::subclass::prelude::*;
+use glib::{clone, subclass, Enum, ParamFlags, ParamSpec, ParamSpecEnum, Sender, ToValue};
+use gtk::subclass::prelude::*;
+use gtk::{gio, glib, CompositeTemplate};
+use once_cell::sync::Lazy;
+use once_cell::unsync::OnceCell;
 
 use crate::app::{Action, SwApplication};
 use crate::audio::Player;
@@ -54,7 +51,6 @@ impl Default for SwView {
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/window.ui")]

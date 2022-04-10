@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::cell::RefCell;
+use std::convert::TryInto;
+
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 use indexmap::map::IndexMap;
 
-use std::convert::TryInto;
-
 use crate::api::SwStation;
 
 mod imp {
     use super::*;
-    use std::cell::RefCell;
 
     #[derive(Debug, Default)]
     pub struct SwStationModel {

@@ -14,9 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use gtk::prelude::*;
+
 use crate::config;
 use crate::i18n::*;
-use gtk::prelude::*;
 
 pub fn show_about_dialog(window: &gtk::Window) {
     let vcs_tag = config::VCS_TAG;

@@ -14,18 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use adw::subclass::prelude::*;
-use futures_util::FutureExt;
-use glib::clone;
-use glib::Sender;
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
-use gtk::{gio, glib};
-use once_cell::unsync::OnceCell;
-
 use std::cell::RefCell;
 use std::rc::Rc;
+
+use adw::subclass::prelude::*;
+use futures_util::FutureExt;
+use glib::{clone, subclass, Sender};
+use gtk::prelude::*;
+use gtk::subclass::prelude::*;
+use gtk::{gio, glib, CompositeTemplate};
+use once_cell::unsync::OnceCell;
 
 use crate::api::{Client, StationRequest};
 use crate::app::Action;
@@ -35,7 +33,6 @@ use crate::ui::{Notification, SwStationFlowBox};
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/search_page.ui")]

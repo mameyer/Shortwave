@@ -17,11 +17,9 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use chrono::NaiveTime;
-use glib::clone;
-use glib::Sender;
-use gtk::glib;
+use glib::{clone, subclass, Sender};
 use gtk::subclass::prelude::*;
-use gtk::CompositeTemplate;
+use gtk::{glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 
 use crate::app::Action;
@@ -29,7 +27,6 @@ use crate::audio::Song;
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/song_row.ui")]

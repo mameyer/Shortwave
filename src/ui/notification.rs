@@ -14,10 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::rc::Rc;
+
 use glib::clone;
 use gtk::glib;
 use gtk::prelude::*;
-use std::rc::Rc;
 
 #[derive(Debug, Clone)]
 pub struct Notification {
