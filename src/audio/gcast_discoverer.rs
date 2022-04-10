@@ -72,6 +72,10 @@ impl GCastDiscoverer {
             let discovery = discovery.timeout(std::time::Duration::from_secs(10));
 
             for response in discovery {
+                if let Err(err) = response {
+                    warn!("Could not discover devices: {}", err.to_string());
+                    break;
+                }
                 let response = response.unwrap();
 
                 let known_devices = known_devices.clone();
