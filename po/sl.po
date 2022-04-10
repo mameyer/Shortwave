@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-03-31 14:26+0000\n"
-"PO-Revision-Date: 2022-03-31 21:38+0200\n"
-"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"POT-Creation-Date: 2022-04-09 21:33+0000\n"
+"PO-Revision-Date: 2022-04-10 09:02+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/gtk/create_station_dialog.ui:8
 msgid "Create new station"
@@ -97,10 +97,6 @@ msgstr "Nič se ne predvajanja"
 #: data/gtk/notification.ui:58
 msgid "Error details"
 msgstr "Podrobnosti napake"
-
-#: data/gtk/player.ui:44
-msgid "Connected with"
-msgstr "Povezano z"
 
 #: data/gtk/settings_window.ui:7 data/gtk/help_overlay.ui:11
 msgid "General"
@@ -183,7 +179,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Preklopi predvajanje"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:184
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
 #: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Glasovi"
@@ -305,72 +301,84 @@ msgid ""
 msgstr ""
 "Ta postaja obstaja le v zbirki in ni del javne podatkovne zbirke postaj."
 
-#: data/gtk/station_dialog.ui:146
+#: data/gtk/station_dialog.ui:149
+msgid "Orphaned Station"
+msgstr "Osirotela postaja"
+
+#: data/gtk/station_dialog.ui:150
+msgid ""
+"The information could not be updated, probably this station was removed from "
+"the public online station database."
+msgstr ""
+"Informacij ni bilo mogoče posodobiti, verjetno je bila ta postaja "
+"odstranjena iz javne zbirke podatkov spletnih postaj."
+
+#: data/gtk/station_dialog.ui:161
 msgid "Information"
 msgstr "Podrobnosti"
 
-#: data/gtk/station_dialog.ui:149 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Jezik"
 
-#: data/gtk/station_dialog.ui:164
+#: data/gtk/station_dialog.ui:179
 msgid "Tags"
 msgstr "Oznake"
 
-#: data/gtk/station_dialog.ui:200
+#: data/gtk/station_dialog.ui:215
 msgid "Location"
 msgstr "Mesto"
 
-#: data/gtk/station_dialog.ui:205 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "Država"
 
-#: data/gtk/station_dialog.ui:225 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "Okraj"
 
-#: data/gtk/station_dialog.ui:269
+#: data/gtk/station_dialog.ui:284
 msgid "Audio"
 msgstr "Zvok"
 
-#: data/gtk/station_dialog.ui:273 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Bitna hitrost"
 
-#: data/gtk/station_dialog.ui:288
+#: data/gtk/station_dialog.ui:303
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:318
 msgid "Stream"
 msgstr "Pretakanje"
 
-#: data/gtk/streaming_dialog.ui:43
+#: data/gtk/streaming_dialog.ui:10
 msgid "Stream to a Device"
 msgstr "Pošlji pretok na napravo"
 
-#: data/gtk/streaming_dialog.ui:48
-msgid "_Cancel"
-msgstr "_Prekliči"
+#: data/gtk/streaming_dialog.ui:26
+msgid ""
+"Audio playback can be streamed to a network device (requires Google Cast "
+"support)."
+msgstr ""
+"Predvajanje zvoka je mogoče pretočiti v omrežno napravo (zahteva podporo za "
+"Google Cast)."
 
-#: data/gtk/streaming_dialog.ui:54
-msgid "_Connect"
-msgstr "_Vzpostavi povezavo"
-
-#: data/gtk/streaming_dialog.ui:86
-msgid "Devices which implement the Google Cast protocol are supported."
-msgstr "Podprte so naprave, ki podpirajo protokol Goggle Cast."
-
-#: data/gtk/streaming_dialog.ui:118
-msgid "No devices found"
+#: data/gtk/streaming_dialog.ui:41
+msgid "No Devices Found"
 msgstr "Ni najdenih naprav"
 
-#: data/gtk/streaming_dialog.ui:128
-msgid "_Retry search"
-msgstr "_Ponovi iskanje"
+#: data/gtk/streaming_dialog.ui:47 data/gtk/streaming_dialog.ui:70
+msgid "Search again"
+msgstr "Išči znova"
 
-#: data/gtk/streaming_dialog.ui:176 data/gtk/streaming_dialog.ui:207
+#: data/gtk/streaming_dialog.ui:64
+msgid "Search Completed"
+msgstr "Iskanje končano"
+
+#: data/gtk/streaming_dialog.ui:87
 msgid "Searching for Devices…"
 msgstr "Poteka iskanje naprav …"
 
@@ -410,7 +418,7 @@ msgstr "Postaje ni mogoče pretakati."
 msgid "URL is not valid."
 msgstr "Podan naslov URL ni veljaven."
 
-#: src/database/library.rs:276
+#: src/database/library.rs:273
 msgid "An invalid station was removed from the library."
 msgstr "Neveljavna postaja je odstranjena iz zbirke."
 
@@ -477,7 +485,7 @@ msgstr[3] ""
 "Iskanje je omejeno na {} zadetke. Poskusite uporabiti bolj natančen iskalni "
 "niz."
 
-#: src/ui/station_dialog.rs:286
+#: src/ui/station_dialog.rs:288
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
@@ -533,52 +541,3 @@ msgstr "Popolna povezava programa z namiznim okoljem GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;Pretok;glasba;"
-
-#~ msgid "This is a local private station."
-#~ msgstr "TO je zasebna krajevna postaja."
-
-#~ msgid ""
-#~ "This station is visible only to you. If you remove this station from your "
-#~ "library, you have to create it again."
-#~ msgstr ""
-#~ "Ta postaja je vidna le vam in če jo odstranite iz zbirke, jo bo treba "
-#~ "ponovno ustvariti."
-
-#~ msgid "This station cannot be played because the stream is offline."
-#~ msgstr "Postaje ni mogoče predvajati, ker je pretok ni na voljo."
-
-#~ msgid "Homepage"
-#~ msgstr "Spletna stran"
-
-#~ msgid "{} Vote"
-#~ msgid_plural "{} Votes"
-#~ msgstr[0] "{} glasov"
-#~ msgstr[1] "{} glas"
-#~ msgstr[2] "{} glasova"
-#~ msgstr[3] "{} glasovi"
-
-#~ msgid "{} · {} Vote"
-#~ msgid_plural "{} · {} Votes"
-#~ msgstr[0] "{} · {} glasov"
-#~ msgstr[1] "{} · {} glas"
-#~ msgstr[2] "{} · {} glasova"
-#~ msgstr[3] "{} · {} glasovi"
-
-#~ msgid "Enable dark mode"
-#~ msgstr "Omogoči temno temo"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Search for stations"
-#~ msgstr "Začne iskanje postajah"
-
-#~ msgid "Discover"
-#~ msgstr "Odkrivaj novo"
-
-#~ msgid "Search"
-#~ msgstr "Iskanje"
-
-#~ msgid "Languages"
-#~ msgstr "Jeziki"
-
-#~ msgid "Library"
-#~ msgstr "Zbirka"
