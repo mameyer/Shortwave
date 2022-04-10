@@ -21,6 +21,7 @@ data/gtk/window.ui
 src/audio/player.rs
 src/database/library.rs
 src/ui/about_dialog.rs
+src/ui/create_station_dialog.rs
 src/ui/pages/discover_page.rs
 src/ui/pages/library_page.rs
 src/ui/pages/search_page.rs
