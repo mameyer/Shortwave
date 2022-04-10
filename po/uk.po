@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-03-29 17:19+0000\n"
-"PO-Revision-Date: 2022-03-29 20:22+0300\n"
+"POT-Creation-Date: 2022-04-10 11:10+0000\n"
+"PO-Revision-Date: 2022-04-10 23:04+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -24,7 +24,6 @@ msgid "Create new station"
 msgstr "Створити станцію"
 
 #: data/gtk/create_station_dialog.ui:32
-#| msgid "Create new station"
 msgid "Create New Station"
 msgstr "Створення станції"
 
@@ -37,17 +36,14 @@ msgstr ""
 "з усього світу, чи ви хочете створити локальну станцію."
 
 #: data/gtk/create_station_dialog.ui:43
-#| msgid "Create _public station"
 msgid "Create _Public Station"
 msgstr "Створити з_агальнодоступу станцію"
 
 #: data/gtk/create_station_dialog.ui:54
-#| msgid "Create _local station"
 msgid "Create _Local Station"
 msgstr "Створити _локальну станцію"
 
 #: data/gtk/create_station_dialog.ui:80
-#| msgid "Create local station"
 msgid "Create Local Station"
 msgstr "Створити локальну станцію"
 
@@ -64,12 +60,10 @@ msgid "Stream URL"
 msgstr "Адреса трансляції"
 
 #: data/gtk/create_station_dialog.ui:165
-#| msgid "Create station"
 msgid "Create Station"
 msgstr "Створити станцію"
 
 #: data/gtk/discover_page.ui:28
-#| msgid "Most voted stations"
 msgid "Most Voted Stations"
 msgstr "Станції із найвищим рейтингом"
 
@@ -78,17 +72,14 @@ msgid "Trending"
 msgstr "Тренди"
 
 #: data/gtk/discover_page.ui:58
-#| msgid "Other users are listening to…"
 msgid "Other Users Are Listening To…"
 msgstr "Інші користувачі слухають…"
 
 #: data/gtk/library_page.ui:60
-#| msgid "Receiving station data…"
 msgid "Receiving Station Data…"
 msgstr "Отримання даних щодо станції…"
 
 #: data/gtk/library_page.ui:87
-#| msgid "_Discover new stations"
 msgid "_Discover New Stations"
 msgstr "Ви_явити нові станції"
 
@@ -98,17 +89,12 @@ msgstr "КОРОТКОХВИЛЬОВЕ ІНТЕРНЕТ-РАДІО"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
-#| msgid "No playback"
 msgid "No Playback"
 msgstr "Немає відтворення"
 
 #: data/gtk/notification.ui:58
 msgid "Error details"
 msgstr "Подробиці щодо помилки"
-
-#: data/gtk/player.ui:44
-msgid "Connected with"
-msgstr "З'єднано з"
 
 #: data/gtk/settings_window.ui:7 data/gtk/help_overlay.ui:11
 msgid "General"
@@ -192,7 +178,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Перемкнути відтворення"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:184
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
 #: src/ui/pages/search_page.rs:183
 msgid "Votes"
 msgstr "Голоси"
@@ -202,7 +188,6 @@ msgid "Change the sorting of the search results"
 msgstr "Змінити упорядкування результатів пошуку"
 
 #: data/gtk/search_page.ui:63
-#| msgid "No results"
 msgid "No Results"
 msgstr "Нічого не знайдено"
 
@@ -210,35 +195,35 @@ msgstr "Нічого не знайдено"
 msgid "Try using a different search term"
 msgstr "Спробуйте інший критерій пошуку"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:109
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:115
 msgid "_Name"
 msgstr "_Назва"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:114
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:120
 msgid "_Language"
 msgstr "_Мова"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:119
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:125
 msgid "_Country"
 msgstr "К_раїна"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:124
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:130
 msgid "S_tate"
 msgstr "_Штат"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:129
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:135
 msgid "_Votes"
 msgstr "_Голоси"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:134
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:140
 msgid "_Bitrate"
 msgstr "_Бітова швидкість"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:141
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:147
 msgid "_Ascending"
 msgstr "За з_ростанням"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:146
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:152
 msgid "_Descending"
 msgstr "За с_паданням"
 
@@ -247,19 +232,12 @@ msgid "An error occurred"
 msgstr "Сталася помилка"
 
 #: data/gtk/sidebar_controller.ui:188
-#| msgid "_Show station details"
 msgid "_Show Station Details"
 msgstr "По_казати параметри станції"
 
 #: data/gtk/sidebar_controller.ui:192
-#| msgid "Stream to a _device"
 msgid "Stream to a _Device"
 msgstr "Трансляція на пр_истрій"
-
-#: data/gtk/sidebar_controller.ui:198
-#| msgid "_Enable mini player"
-msgid "_Enable Mini Player"
-msgstr "Увімкнути _мініпрогравач"
 
 #: data/gtk/song_listbox.ui:23
 msgid ""
@@ -272,7 +250,6 @@ msgstr ""
 "Якщо станція не надсилає метаданих, пісні розпізнано не буде."
 
 #: data/gtk/song_listbox.ui:66
-#| msgid "No songs detected"
 msgid "No Songs Detected"
 msgstr "Не виявлено жодної пісні"
 
@@ -301,22 +278,18 @@ msgid "Station details"
 msgstr "Параметри станції"
 
 #: data/gtk/station_dialog.ui:88
-#| msgid "_Play this station"
 msgid "_Play Station"
 msgstr "_Відтворити станцію"
 
 #: data/gtk/station_dialog.ui:102
-#| msgid "_Add to library"
 msgid "_Add to Library"
 msgstr "Д_одати до бібліотеки"
 
 #: data/gtk/station_dialog.ui:117
-#| msgid "_Remove from library"
 msgid "_Remove From Library"
 msgstr "Ви_лучити з бібліотеки"
 
 #: data/gtk/station_dialog.ui:134
-#| msgid "Local station"
 msgid "Local Station"
 msgstr "Локальна станція"
 
@@ -328,100 +301,118 @@ msgstr ""
 "Запис станції є лише у вашій бібліотеці — він не є частиною "
 "загальнодоступної бази даних станцій в інтернеті."
 
-#: data/gtk/station_dialog.ui:146
+#: data/gtk/station_dialog.ui:149
+#| msgid "Create Station"
+msgid "Orphaned Station"
+msgstr "Осиротіла станція"
+
+#: data/gtk/station_dialog.ui:150
+#| msgid ""
+#| "This station exists only in your library, and is not part of the public "
+#| "online station database."
+msgid ""
+"The information could not be updated, probably this station was removed from "
+"the public online station database."
+msgstr ""
+"Не вдалося оновити відомості. Ймовірно, станцію було вилучено з бази даних"
+" загальнодоступних інтернет-станцій."
+
+#: data/gtk/station_dialog.ui:161
 msgid "Information"
 msgstr "Відомості"
 
-#: data/gtk/station_dialog.ui:149 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:180
 msgid "Language"
 msgstr "Мова"
 
-#: data/gtk/station_dialog.ui:164
+#: data/gtk/station_dialog.ui:179
 msgid "Tags"
 msgstr "Мітки"
 
-#: data/gtk/station_dialog.ui:200
+#: data/gtk/station_dialog.ui:215
 msgid "Location"
 msgstr "Місце"
 
-#: data/gtk/station_dialog.ui:205 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:181
 msgid "Country"
 msgstr "Країна"
 
-#: data/gtk/station_dialog.ui:225 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:182
 msgid "State"
 msgstr "Штат"
 
-#: data/gtk/station_dialog.ui:269
+#: data/gtk/station_dialog.ui:284
 msgid "Audio"
 msgstr "Звук"
 
-#: data/gtk/station_dialog.ui:273 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:184
 msgid "Bitrate"
 msgstr "Бітова швидкість"
 
-#: data/gtk/station_dialog.ui:288
+#: data/gtk/station_dialog.ui:303
 msgid "Codec"
 msgstr "Кодек"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:318
 msgid "Stream"
 msgstr "Трансляція"
 
-#: data/gtk/streaming_dialog.ui:43
-#| msgid "Stream to a device"
+#: data/gtk/streaming_dialog.ui:10
 msgid "Stream to a Device"
 msgstr "Трансляція на пристрій"
 
-#: data/gtk/streaming_dialog.ui:48
-msgid "_Cancel"
-msgstr "_Скасувати"
-
-#: data/gtk/streaming_dialog.ui:54
-msgid "_Connect"
-msgstr "З'_єднатись"
-
-#: data/gtk/streaming_dialog.ui:86
-msgid "Devices which implement the Google Cast protocol are supported."
+#: data/gtk/streaming_dialog.ui:26
+msgid ""
+"Audio playback can be streamed to a network device (requires Google Cast "
+"support)."
 msgstr ""
-"Передбачено підтримку пристроїв, у яких реалізовано протокол Google Cast."
+"Відтворені звукові дані може бути переспрямовано на мережевий пристрій"
+" (потребує підтримки Google Cast)"
 
-#: data/gtk/streaming_dialog.ui:118
-msgid "No devices found"
-msgstr "Пристроїв не знайдено"
+#: data/gtk/streaming_dialog.ui:41
+#| msgid "No devices found"
+msgid "No Devices Found"
+msgstr "Пристроїв не виявлено"
 
-#: data/gtk/streaming_dialog.ui:128
-msgid "_Retry search"
-msgstr "Пов_торити пошук"
+#: data/gtk/streaming_dialog.ui:47 data/gtk/streaming_dialog.ui:70
+#| msgid "Search"
+msgid "Search again"
+msgstr "Шукати ще"
 
-#: data/gtk/streaming_dialog.ui:176 data/gtk/streaming_dialog.ui:207
-#| msgid "Searching for devices…"
+#: data/gtk/streaming_dialog.ui:64
+msgid "Search Completed"
+msgstr "Пошук завершено"
+
+#: data/gtk/streaming_dialog.ui:87
 msgid "Searching for Devices…"
 msgstr "Пошук пристроїв…"
 
-#: data/gtk/window.ui:106
+#: data/gtk/window.ui:108 data/gtk/window.ui:189
+msgid "_Enable Mini Player"
+msgstr "Увімкнути _мініпрогравач"
+
+#: data/gtk/window.ui:112
 msgid "_Sorting"
 msgstr "Вп_орядкування"
 
-#: data/gtk/window.ui:155 data/gtk/window.ui:183
+#: data/gtk/window.ui:161 data/gtk/window.ui:195
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "В_ідкрити radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:160 data/gtk/window.ui:188
-#| msgid "_Create new station"
+#: data/gtk/window.ui:166 data/gtk/window.ui:200
 msgid "_Create New Station"
 msgstr "С_творити станцію"
 
-#: data/gtk/window.ui:167 data/gtk/window.ui:195
+#: data/gtk/window.ui:173 data/gtk/window.ui:207
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: data/gtk/window.ui:171 data/gtk/window.ui:199
+#: data/gtk/window.ui:177 data/gtk/window.ui:211
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: data/gtk/window.ui:175 data/gtk/window.ui:203
+#: data/gtk/window.ui:181 data/gtk/window.ui:215
 msgid "_About Shortwave"
 msgstr "П_ро «Shortwave»"
 
@@ -433,7 +424,7 @@ msgstr "Станцію не можна транслювати."
 msgid "URL is not valid."
 msgstr "Некоректна адреса."
 
-#: src/database/library.rs:276
+#: src/database/library.rs:273
 msgid "An invalid station was removed from the library."
 msgstr "З бібліотеки вилучено некоректний запис станції."
 
@@ -446,13 +437,17 @@ msgstr "Прослуховування інтернет-радіо"
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2020"
 
+#: src/ui/create_station_dialog.rs:105
+#| msgid "Change station image"
+msgid "Select station image"
+msgstr "Виберіть зображення для станції"
+
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:91
 msgid "Show statistics"
 msgstr "Показати статистику"
 
 #: src/ui/pages/discover_page.rs:92
-#| msgid "Browse over 25,500 stations"
 msgid "Browse over 30,000 stations"
 msgstr "Навігація списком із понад 30000 станцій"
 
@@ -501,7 +496,7 @@ msgstr[3] ""
 "Кількість результатів обмежено {} записом. Спробуйте точніше визначити "
 "критерії пошуку."
 
-#: src/ui/station_dialog.rs:286
+#: src/ui/station_dialog.rs:288
 msgid "{} kbit/s"
 msgstr "{} кбіт/с"
 
@@ -561,6 +556,22 @@ msgstr "Безшовна інтеграція до стільничного се
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;градіо;жрадіо;радіо;потік;трансляція;хвиля;"
 
+#~ msgid "Connected with"
+#~ msgstr "З'єднано з"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Скасувати"
+
+#~ msgid "_Connect"
+#~ msgstr "З'_єднатись"
+
+#~ msgid "Devices which implement the Google Cast protocol are supported."
+#~ msgstr ""
+#~ "Передбачено підтримку пристроїв, у яких реалізовано протокол Google Cast."
+
+#~ msgid "_Retry search"
+#~ msgstr "Пов_торити пошук"
+
 #~ msgid "This station cannot be played because the stream is offline."
 #~ msgstr ""
 #~ "Відтворення цієї станції неможливе, оскільки потік даних від неї не "
@@ -599,9 +610,6 @@ msgstr "Gradio;Radio;Stream;Wave;градіо;жрадіо;радіо;потік
 
 #~ msgid "Discover"
 #~ msgstr "Виявлення"
-
-#~ msgid "Search"
-#~ msgstr "Пошук"
 
 #~ msgid "Languages"
 #~ msgstr "Мови"
