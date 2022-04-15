@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-10 16:02+0000\n"
-"PO-Revision-Date: 2022-04-11 10:12+0200\n"
+"POT-Creation-Date: 2022-04-15 19:04+0000\n"
+"PO-Revision-Date: 2022-04-15 21:43+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -51,7 +51,7 @@ msgstr "Skapa lokal station"
 msgid "Change station image"
 msgstr "Ändra bild för station"
 
-#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:178
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:193
 msgid "Name"
 msgstr "Namn"
 
@@ -91,10 +91,6 @@ msgstr "SHORTWAVE INTERNETRADIO"
 #: data/gtk/toolbar_controller.ui:38
 msgid "No Playback"
 msgstr "Ingen uppspelning"
-
-#: data/gtk/notification.ui:58
-msgid "Error details"
-msgstr "Feldetaljer"
 
 #: data/gtk/settings_window.ui:7 data/gtk/help_overlay.ui:11
 msgid "General"
@@ -168,17 +164,22 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Gå bakåt"
 
-#: data/gtk/help_overlay.ui:69
+#: data/gtk/help_overlay.ui:68
+msgctxt "shortcut window"
+msgid "Refresh station data"
+msgstr "Uppdatera stationsdata"
+
+#: data/gtk/help_overlay.ui:75
 msgid "Playback"
 msgstr "Uppspelning"
 
-#: data/gtk/help_overlay.ui:73
+#: data/gtk/help_overlay.ui:79
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Starta/stoppa uppspelning"
 
 #: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
-#: src/ui/pages/search_page.rs:182
+#: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Röster"
 
@@ -194,35 +195,35 @@ msgstr "Inga resultat"
 msgid "Try using a different search term"
 msgstr "Försök använda en annan sökterm"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:115
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:119
 msgid "_Name"
 msgstr "_Namn"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:120
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:124
 msgid "_Language"
 msgstr "S_pråk"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:125
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:129
 msgid "_Country"
 msgstr "_Land"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:130
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:134
 msgid "S_tate"
 msgstr "Lä_n"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:135
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:139
 msgid "_Votes"
 msgstr "_Röster"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:140
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:144
 msgid "_Bitrate"
 msgstr "_Bithastighet"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:147
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:151
 msgid "_Ascending"
 msgstr "S_tigande"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:152
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:156
 msgid "_Descending"
 msgstr "_Fallande"
 
@@ -316,7 +317,7 @@ msgstr ""
 msgid "Information"
 msgstr "Information"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:179
+#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Språk"
 
@@ -328,11 +329,11 @@ msgstr "Taggar"
 msgid "Location"
 msgstr "Plats"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Land"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Län"
 
@@ -340,7 +341,7 @@ msgstr "Län"
 msgid "Audio"
 msgstr "Ljud"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:183
+#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Bithastighet"
 
@@ -381,45 +382,45 @@ msgstr "Sökningen är färdig"
 msgid "Searching for Devices…"
 msgstr "Söker efter enheter…"
 
-#: data/gtk/window.ui:108 data/gtk/window.ui:189
+#: data/gtk/window.ui:108 data/gtk/window.ui:197
 msgid "_Enable Mini Player"
 msgstr "_Aktivera minispelare"
 
-#: data/gtk/window.ui:112
+#: data/gtk/window.ui:112 data/gtk/window.ui:193
+msgid "_Refresh Station Data"
+msgstr "_Uppdatera stationsdata"
+
+#: data/gtk/window.ui:116
 msgid "_Sorting"
 msgstr "_Sortering"
 
-#: data/gtk/window.ui:161 data/gtk/window.ui:195
+#: data/gtk/window.ui:165 data/gtk/window.ui:203
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "Ö_ppna radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:166 data/gtk/window.ui:200
+#: data/gtk/window.ui:170 data/gtk/window.ui:208
 msgid "_Create New Station"
 msgstr "S_kapa ny station"
 
-#: data/gtk/window.ui:173 data/gtk/window.ui:207
+#: data/gtk/window.ui:177 data/gtk/window.ui:215
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: data/gtk/window.ui:177 data/gtk/window.ui:211
+#: data/gtk/window.ui:181 data/gtk/window.ui:219
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: data/gtk/window.ui:181 data/gtk/window.ui:215
+#: data/gtk/window.ui:185 data/gtk/window.ui:223
 msgid "_About Shortwave"
 msgstr "_Om Shortwave"
 
-#: src/audio/player.rs:198
-msgid "Station cannot be streamed."
-msgstr "Stationen kan inte strömmas."
+#: src/audio/player.rs:196
+msgid "Station cannot be streamed. URL is not valid."
+msgstr "Stationen kan inte strömmas. Ogiltig URL."
 
-#: src/audio/player.rs:199
-msgid "URL is not valid."
-msgstr "URL är inte giltig."
-
-#: src/database/library.rs:314
-msgid "An invalid station was removed from the library."
-msgstr "En ogiltig station togs bort från biblioteket."
+#: src/audio/player.rs:252
+msgid "Cannot save song."
+msgstr "Det går inte att spara låt."
 
 #: src/ui/about_dialog.rs:34
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
@@ -440,31 +441,31 @@ msgid "Select station image"
 msgstr "Välj bild för station"
 
 #. TODO: Implement show-server-stats action
-#: src/ui/pages/discover_page.rs:89
+#: src/ui/pages/discover_page.rs:118
 msgid "Show statistics"
 msgstr "Visa statistik"
 
-#: src/ui/pages/discover_page.rs:91
+#: src/ui/pages/discover_page.rs:120
 msgid "Browse over 30,000 stations"
 msgstr "Bläddra bland över 30 000 stationer"
 
-#: src/ui/pages/discover_page.rs:93
+#: src/ui/pages/discover_page.rs:122
 msgid "Add new station"
 msgstr "Lägg till ny station"
 
-#: src/ui/pages/discover_page.rs:95
+#: src/ui/pages/discover_page.rs:124
 msgid "Your favorite station is missing?"
 msgstr "Saknas din favoritstation?"
 
-#: src/ui/pages/discover_page.rs:100
+#: src/ui/pages/discover_page.rs:129
 msgid "Open website"
 msgstr "Öppna webbplats"
 
-#: src/ui/pages/discover_page.rs:102
+#: src/ui/pages/discover_page.rs:131
 msgid "Powered by radio-browser.info"
 msgstr "Driftas av radio-browser.info"
 
-#: src/ui/pages/discover_page.rs:145 src/ui/pages/search_page.rs:269
+#: src/ui/pages/discover_page.rs:150 src/ui/pages/search_page.rs:287
 msgid "Station data could not be received."
 msgstr "Kunde inte erhålla stationsdata."
 
@@ -542,6 +543,15 @@ msgstr "Sömlös integration med skrivbordsmiljön GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Ström;Stream;Wave;"
+
+#~ msgid "Error details"
+#~ msgstr "Feldetaljer"
+
+#~ msgid "URL is not valid."
+#~ msgstr "URL är inte giltig."
+
+#~ msgid "An invalid station was removed from the library."
+#~ msgstr "En ogiltig station togs bort från biblioteket."
 
 #~ msgid "Connected with"
 #~ msgstr "Ansluten till"
