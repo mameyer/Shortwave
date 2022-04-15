@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-10 11:10+0000\n"
-"PO-Revision-Date: 2022-04-10 23:04+0300\n"
+"POT-Creation-Date: 2022-04-15 16:16+0000\n"
+"PO-Revision-Date: 2022-04-15 21:48+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -51,7 +51,7 @@ msgstr "Створити локальну станцію"
 msgid "Change station image"
 msgstr "Змінити зображення для станції"
 
-#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:179
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:178
 msgid "Name"
 msgstr "Назва"
 
@@ -91,10 +91,6 @@ msgstr "КОРОТКОХВИЛЬОВЕ ІНТЕРНЕТ-РАДІО"
 #: data/gtk/toolbar_controller.ui:38
 msgid "No Playback"
 msgstr "Немає відтворення"
-
-#: data/gtk/notification.ui:58
-msgid "Error details"
-msgstr "Подробиці щодо помилки"
 
 #: data/gtk/settings_window.ui:7 data/gtk/help_overlay.ui:11
 msgid "General"
@@ -179,7 +175,7 @@ msgid "Toggle playback"
 msgstr "Перемкнути відтворення"
 
 #: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
-#: src/ui/pages/search_page.rs:183
+#: src/ui/pages/search_page.rs:182
 msgid "Votes"
 msgstr "Голоси"
 
@@ -302,26 +298,22 @@ msgstr ""
 "загальнодоступної бази даних станцій в інтернеті."
 
 #: data/gtk/station_dialog.ui:149
-#| msgid "Create Station"
 msgid "Orphaned Station"
 msgstr "Осиротіла станція"
 
 #: data/gtk/station_dialog.ui:150
-#| msgid ""
-#| "This station exists only in your library, and is not part of the public "
-#| "online station database."
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
 msgstr ""
-"Не вдалося оновити відомості. Ймовірно, станцію було вилучено з бази даних"
-" загальнодоступних інтернет-станцій."
+"Не вдалося оновити відомості. Ймовірно, станцію було вилучено з бази даних "
+"загальнодоступних інтернет-станцій."
 
 #: data/gtk/station_dialog.ui:161
 msgid "Information"
 msgstr "Відомості"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:179
 msgid "Language"
 msgstr "Мова"
 
@@ -333,11 +325,11 @@ msgstr "Мітки"
 msgid "Location"
 msgstr "Місце"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:180
 msgid "Country"
 msgstr "Країна"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:181
 msgid "State"
 msgstr "Штат"
 
@@ -345,7 +337,7 @@ msgstr "Штат"
 msgid "Audio"
 msgstr "Звук"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:183
 msgid "Bitrate"
 msgstr "Бітова швидкість"
 
@@ -367,16 +359,14 @@ msgid ""
 "Audio playback can be streamed to a network device (requires Google Cast "
 "support)."
 msgstr ""
-"Відтворені звукові дані може бути переспрямовано на мережевий пристрій"
-" (потребує підтримки Google Cast)"
+"Відтворені звукові дані може бути переспрямовано на мережевий пристрій "
+"(потребує підтримки Google Cast)"
 
 #: data/gtk/streaming_dialog.ui:41
-#| msgid "No devices found"
 msgid "No Devices Found"
 msgstr "Пристроїв не виявлено"
 
 #: data/gtk/streaming_dialog.ui:47 data/gtk/streaming_dialog.ui:70
-#| msgid "Search"
 msgid "Search again"
 msgstr "Шукати ще"
 
@@ -416,42 +406,38 @@ msgstr "_Клавіатурні скорочення"
 msgid "_About Shortwave"
 msgstr "П_ро «Shortwave»"
 
-#: src/audio/player.rs:188
-msgid "Station cannot be streamed."
-msgstr "Станцію не можна транслювати."
+#: src/audio/player.rs:196
+#| msgid "Station cannot be streamed."
+msgid "Station cannot be streamed. URL is not valid."
+msgstr "Станцію не можна транслювати. Адреса є некоректною."
 
-#: src/audio/player.rs:188
-msgid "URL is not valid."
-msgstr "Некоректна адреса."
+#: src/audio/player.rs:252
+msgid "Cannot save song."
+msgstr "Не вдалося зберегти композицію."
 
-#: src/database/library.rs:273
-msgid "An invalid station was removed from the library."
-msgstr "З бібліотеки вилучено некоректний запис станції."
-
-#: src/ui/about_dialog.rs:32
+#: src/ui/about_dialog.rs:34
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "Прослуховування інтернет-радіо"
 
-#: src/ui/about_dialog.rs:35
+#: src/ui/about_dialog.rs:37
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2020"
 
-#: src/ui/create_station_dialog.rs:105
-#| msgid "Change station image"
+#: src/ui/create_station_dialog.rs:104
 msgid "Select station image"
 msgstr "Виберіть зображення для станції"
 
 #. TODO: Implement show-server-stats action
-#: src/ui/pages/discover_page.rs:91
+#: src/ui/pages/discover_page.rs:89
 msgid "Show statistics"
 msgstr "Показати статистику"
 
-#: src/ui/pages/discover_page.rs:92
+#: src/ui/pages/discover_page.rs:91
 msgid "Browse over 30,000 stations"
 msgstr "Навігація списком із понад 30000 станцій"
 
-#: src/ui/pages/discover_page.rs:94
+#: src/ui/pages/discover_page.rs:93
 msgid "Add new station"
 msgstr "Додати нову станцію"
 
@@ -459,24 +445,23 @@ msgstr "Додати нову станцію"
 msgid "Your favorite station is missing?"
 msgstr "Немає вашої улюбленої радіостанції?"
 
-#: src/ui/pages/discover_page.rs:97
+#: src/ui/pages/discover_page.rs:100
 msgid "Open website"
 msgstr "Відкрити сайт"
 
-#: src/ui/pages/discover_page.rs:98
+#: src/ui/pages/discover_page.rs:102
 msgid "Powered by radio-browser.info"
 msgstr "На основі radio-browser.info"
 
-#: src/ui/pages/discover_page.rs:137 src/ui/pages/search_page.rs:269
+#: src/ui/pages/discover_page.rs:146 src/ui/pages/search_page.rs:271
 msgid "Station data could not be received."
 msgstr "Не вдалося отримати дані станції."
 
-#. Welcome text which gets displayed when the library is empty. "{}" is the application name.
 #: src/ui/pages/library_page.rs:117
 msgid "Welcome to {}"
 msgstr "Вітаємо у {}"
 
-#: src/ui/pages/search_page.rs:106
+#: src/ui/pages/search_page.rs:103
 msgid ""
 "The number of results is limited to {} item. Try using a more specific "
 "search term."
@@ -496,7 +481,7 @@ msgstr[3] ""
 "Кількість результатів обмежено {} записом. Спробуйте точніше визначити "
 "критерії пошуку."
 
-#: src/ui/station_dialog.rs:288
+#: src/ui/station_dialog.rs:289
 msgid "{} kbit/s"
 msgstr "{} кбіт/с"
 
@@ -555,6 +540,15 @@ msgstr "Безшовна інтеграція до стільничного се
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;градіо;жрадіо;радіо;потік;трансляція;хвиля;"
+
+#~ msgid "Error details"
+#~ msgstr "Подробиці щодо помилки"
+
+#~ msgid "URL is not valid."
+#~ msgstr "Некоректна адреса."
+
+#~ msgid "An invalid station was removed from the library."
+#~ msgstr "З бібліотеки вилучено некоректний запис станції."
 
 #~ msgid "Connected with"
 #~ msgstr "З'єднано з"
