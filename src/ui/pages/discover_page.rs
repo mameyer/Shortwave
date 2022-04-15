@@ -21,11 +21,11 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
+use url::Url;
 
 use crate::api::{Client, StationRequest};
 use crate::app;
 use crate::i18n::*;
-use crate::settings::{settings_manager, Key};
 use crate::ui::featured_carousel::Action;
 use crate::ui::{SwFeaturedCarousel, SwStationFlowBox};
 
@@ -82,6 +82,35 @@ impl SwDiscoverPage {
         self.setup_widgets();
     }
 
+    pub fn refresh_data(&self, server: &Url) {
+        let imp = self.imp();
+
+        // Most voted stations (stations with the most votes)
+        let votes_request = StationRequest {
+            order: Some("votes".to_string()),
+            limit: Some(12),
+            reverse: Some(true),
+            ..Default::default()
+        };
+        self.fill_flowbox(server, &imp.votes_flowbox, votes_request);
+
+        // Trending (stations with the highest clicktrend)
+        let trending_request = StationRequest {
+            order: Some("clicktrend".to_string()),
+            limit: Some(12),
+            ..Default::default()
+        };
+        self.fill_flowbox(server, &imp.trending_flowbox, trending_request);
+
+        // Other users are listening to... (stations which got recently clicked)
+        let clicked_request = StationRequest {
+            order: Some("clicktimestamp".to_string()),
+            limit: Some(12),
+            ..Default::default()
+        };
+        self.fill_flowbox(server, &imp.clicked_flowbox, clicked_request);
+    }
+
     fn setup_widgets(&self) {
         let imp = self.imp();
 
@@ -103,37 +132,12 @@ impl SwDiscoverPage {
             "#26a269",
             Some(action),
         );
-
-        // Most voted stations (stations with the most votes)
-        let votes_request = StationRequest {
-            order: Some("votes".to_string()),
-            limit: Some(12),
-            reverse: Some(true),
-            ..Default::default()
-        };
-        self.fill_flowbox(&imp.votes_flowbox, votes_request);
-
-        // Trending (stations with the highest clicktrend)
-        let trending_request = StationRequest {
-            order: Some("clicktrend".to_string()),
-            limit: Some(12),
-            ..Default::default()
-        };
-        self.fill_flowbox(&imp.trending_flowbox, trending_request);
-
-        // Other users are listening to... (stations which got recently clicked)
-        let clicked_request = StationRequest {
-            order: Some("clicktimestamp".to_string()),
-            limit: Some(12),
-            ..Default::default()
-        };
-        self.fill_flowbox(&imp.clicked_flowbox, clicked_request);
     }
 
-    fn fill_flowbox(&self, flowbox: &SwStationFlowBox, request: StationRequest) {
+    fn fill_flowbox(&self, server: &Url, flowbox: &SwStationFlowBox, request: StationRequest) {
         let imp = self.imp();
 
-        let client = Client::new(settings_manager::string(Key::ApiLookupDomain));
+        let client = Client::new(server.clone());
         let sender = imp.sender.get().unwrap().clone();
 
         let model = &*client.model;

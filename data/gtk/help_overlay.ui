@@ -62,6 +62,12 @@
                 <property name="title" translatable="yes" context="shortcut window">Go back</property>
               </object>
             </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;primary&gt;r</property>
+                <property name="title" translatable="yes" context="shortcut window">Refresh station data</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>

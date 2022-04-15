@@ -108,6 +108,10 @@
         <attribute name="label" translatable="yes">_Enable Mini Player</attribute>
         <attribute name="action">win.enable-mini-player</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Refresh Station Data</attribute>
+        <attribute name="action">win.refresh-data</attribute>
+      </item>
       <submenu>
         <attribute name="label" translatable="yes">_Sorting</attribute>
         <section>
@@ -185,6 +189,10 @@
   </menu>
   <menu id="default_menu">
     <section>
+      <item>
+        <attribute name="label" translatable="yes">_Refresh Station Data</attribute>
+        <attribute name="action">win.refresh-data</attribute>
+      </item>
       <item>
         <attribute name="label" translatable="yes">_Enable Mini Player</attribute>
         <attribute name="action">win.enable-mini-player</attribute>

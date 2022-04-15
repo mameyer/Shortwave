@@ -24,6 +24,7 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib, CompositeTemplate};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
+use url::Url;
 
 use crate::app::{Action, SwApplication};
 use crate::audio::Player;
@@ -374,12 +375,25 @@ impl SwApplicationWindow {
             })
         );
 
+        // win.refresh-data
+        action!(self, "refresh-data", |_, _| {
+            SwApplication::default().refresh_data();
+        });
+        app.set_accels_for_action("win.refresh-data", &["<primary>r"]);
+
         // Sort / Order menu
         let sorting_action = settings_manager::create_action(Key::ViewSorting);
         self.add_action(&sorting_action);
 
         let order_action = settings_manager::create_action(Key::ViewOrder);
         self.add_action(&order_action);
+    }
+
+    pub fn refresh_data(&self, server: &Url) {
+        let imp = self.imp();
+
+        imp.discover_page.refresh_data(server);
+        imp.search_page.refresh_data(server);
     }
 
     pub fn show_player_widget(&self) {

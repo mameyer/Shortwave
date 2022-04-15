@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::cell::RefCell;
 use std::net::IpAddr;
 use std::rc::Rc;
 use std::time::Duration;
@@ -22,7 +23,6 @@ use async_std_resolver::{config as rconfig, resolver, resolver_from_system_conf}
 use isahc::config::RedirectPolicy;
 use isahc::prelude::*;
 use once_cell::sync::Lazy;
-use once_cell::unsync::OnceCell;
 use rand::prelude::SliceRandom;
 use rand::thread_rng;
 use url::Url;
@@ -30,6 +30,7 @@ use url::Url;
 use crate::api::*;
 use crate::config;
 use crate::model::SwStationModel;
+use crate::settings::{settings_manager, Key};
 
 pub static USER_AGENT: Lazy<String> = Lazy::new(|| {
     format!(
@@ -57,18 +58,19 @@ pub static HTTP_CLIENT: Lazy<isahc::HttpClient> = Lazy::new(|| {
 #[derive(Clone, Debug)]
 pub struct Client {
     pub model: Rc<SwStationModel>,
-
-    lookup_domain: String,
-    server: OnceCell<Url>,
+    server: RefCell<Url>,
 }
 
 impl Client {
-    pub fn new(lookup_domain: String) -> Self {
+    pub fn new(server: Url) -> Self {
         Client {
             model: Rc::new(SwStationModel::new()),
-            lookup_domain,
-            server: OnceCell::default(),
+            server: RefCell::new(server),
         }
+    }
+
+    pub fn set_server(&self, server: Url) {
+        *self.server.borrow_mut() = server;
     }
 
     pub async fn send_station_request(self, request: StationRequest) -> Result<(), Error> {
@@ -113,14 +115,7 @@ impl Client {
     }
 
     async fn build_url(&self, param: &str, options: Option<&str>) -> Result<Url, Error> {
-        if self.server.get().is_none() {
-            let server_ip = Self::api_server(self.lookup_domain.clone())
-                .await
-                .ok_or(Error::NoServerReachable)?;
-            self.server.set(server_ip).unwrap();
-        }
-
-        let mut url = self.server.get().unwrap().join(param)?;
+        let mut url = self.server.borrow().join(param)?;
         if let Some(options) = options {
             url.set_query(Some(options))
         }
@@ -129,7 +124,8 @@ impl Client {
         Ok(url)
     }
 
-    async fn api_server(lookup_domain: String) -> Option<Url> {
+    pub async fn api_server() -> Option<Url> {
+        let lookup_domain = settings_manager::string(Key::ApiLookupDomain);
         let resolver = if let Ok(resolver) = resolver_from_system_conf().await {
             resolver
         } else {

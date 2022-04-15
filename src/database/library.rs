@@ -25,14 +25,13 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk_pixbuf, glib};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
+use url::Url;
 
 use super::models::StationEntry;
-use crate::api::{Client, Error, StationMetadata, SwStation};
+use crate::api::{Client, Error, SwStation};
 use crate::app::Action;
 use crate::database::{connection, queries};
-use crate::i18n::*;
 use crate::model::SwStationModel;
-use crate::settings::{settings_manager, Key};
 
 #[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
 #[repr(u32)]
@@ -58,7 +57,7 @@ mod imp {
         pub model: SwStationModel,
         pub status: RefCell<SwLibraryStatus>,
 
-        pub client: Client,
+        pub client: OnceCell<Client>,
         pub sender: OnceCell<Sender<Action>>,
     }
 
@@ -71,7 +70,7 @@ mod imp {
         fn new() -> Self {
             let model = SwStationModel::new();
             let status = RefCell::default();
-            let client = Client::new(settings_manager::string(Key::ApiLookupDomain));
+            let client = OnceCell::default();
             let sender = OnceCell::default();
 
             Self {
@@ -127,7 +126,6 @@ impl SwLibrary {
         let library = glib::Object::new::<Self>(&[]).unwrap();
         library.imp().sender.set(sender).unwrap();
 
-        library.load_stations();
         library
     }
 
@@ -137,6 +135,19 @@ impl SwLibrary {
 
     pub fn status(&self) -> SwLibraryStatus {
         self.imp().status.borrow().clone()
+    }
+
+    pub fn refresh_data(&self, server: &Url) {
+        let imp = self.imp();
+
+        if let Some(client) = imp.client.get() {
+            client.set_server(server.clone())
+        } else {
+            let client = Client::new(server.clone());
+            imp.client.set(client).unwrap();
+        }
+
+        self.load_stations();
     }
 
     pub fn add_stations(&self, stations: Vec<SwStation>) {
@@ -244,7 +255,13 @@ impl SwLibrary {
 
         // Try to update metadata from radio-browser.info, if it isn't possible
         // for some reason, trying falling back to cached metainfo from database.
-        match client.station_metadata_by_uuid(&uuid).await {
+        match client
+            .get()
+            .unwrap()
+            .clone()
+            .station_metadata_by_uuid(&uuid)
+            .await
+        {
             Ok(metadata) => {
                 let station = SwStation::new(uuid, false, false, metadata, favicon);
 

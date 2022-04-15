@@ -24,11 +24,11 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
+use url::Url;
 
 use crate::api::{Client, StationRequest};
 use crate::app::Action;
 use crate::i18n::*;
-use crate::settings::{settings_manager, Key};
 use crate::ui::SwStationFlowBox;
 
 mod imp {
@@ -53,7 +53,7 @@ mod imp {
         pub search_action_group: gio::SimpleActionGroup,
 
         pub station_request: Rc<RefCell<StationRequest>>,
-        pub client: Client,
+        pub client: OnceCell<Client>,
         pub timeout_id: Rc<RefCell<Option<glib::source::SourceId>>>,
         pub sender: OnceCell<Sender<Action>>,
     }
@@ -67,7 +67,7 @@ mod imp {
         fn new() -> Self {
             let search_action_group = gio::SimpleActionGroup::new();
             let station_request = Rc::new(RefCell::new(StationRequest::search_for_name(None, 250)));
-            let client = Client::new(settings_manager::string(Key::ApiLookupDomain));
+            let client = OnceCell::default();
             let timeout_id = Rc::new(RefCell::new(None));
 
             Self {
@@ -122,13 +122,28 @@ glib::wrapper! {
 impl SwSearchPage {
     pub fn init(&self, sender: Sender<Action>) {
         let imp = self.imp();
-
-        let model = &*imp.client.model.clone();
-        imp.flowbox.init(model.clone(), sender.clone());
         imp.sender.set(sender).unwrap();
 
         self.setup_signals();
         self.setup_gactions();
+    }
+
+    pub fn refresh_data(&self, server: &Url) {
+        let imp = self.imp();
+
+        if let Some(client) = imp.client.get() {
+            client.set_server(server.clone())
+        } else {
+            let client = Client::new(server.clone());
+
+            let sender = imp.sender.get().unwrap();
+            let model = &*client.model.clone();
+            imp.flowbox.init(model.clone(), sender.clone());
+
+            imp.client.set(client).unwrap();
+        }
+
+        self.update_search();
     }
 
     fn setup_signals(&self) {
@@ -248,18 +263,19 @@ impl SwSearchPage {
             clone!(@weak self as this => @default-return glib::Continue(false), move || {
                 let imp = this.imp();
                 *imp.timeout_id.borrow_mut() = None;
+                let client = imp.client.get().unwrap().clone();
 
                 let request = imp.station_request.borrow().clone();
                 debug!("Search for: {:?}", request);
 
-                let fut = imp.client.clone().send_station_request(request).map(clone!(@weak this => move |result| {
+                let fut = client.clone().send_station_request(request).map(clone!(@weak this => move |result| {
                     let imp = this.imp();
 
                     let max_results = imp.station_request.borrow().limit.unwrap();
-                    let over_max_results = imp.client.model.n_items() >= max_results;
+                    let over_max_results = client.model.n_items() >= max_results;
                     imp.results_limit_box.set_visible(over_max_results);
 
-                    if imp.client.model.n_items() == 0{
+                    if client.model.n_items() == 0{
                         imp.stack.set_visible_child_name("no-results");
                     }else{
                         imp.stack.set_visible_child_name("results");

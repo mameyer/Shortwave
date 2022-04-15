@@ -27,7 +27,7 @@ use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 use once_cell::sync::OnceCell;
 
-use crate::api::SwStation;
+use crate::api::{Client, SwStation};
 use crate::audio::{GCastDevice, PlaybackState, Player, Song};
 use crate::config;
 use crate::database::SwLibrary;
@@ -139,6 +139,9 @@ mod imp {
                 clone!(@strong app => move |action| app.process_action(action)),
             );
 
+            // Retrieve station data
+            app.refresh_data();
+
             // Setup settings signal (we get notified when a key gets changed)
             self.settings.connect_changed(
                 None,
@@ -150,9 +153,6 @@ mod imp {
 
             // Needs to be called after settings.connect_changed for it to trigger.
             app.update_color_scheme();
-
-            // List all setting keys
-            settings_manager::list_keys();
 
             // Small workaround to update every view to the correct sorting/order.
             send!(self.sender, Action::SettingsKeyChanged(Key::ViewSorting));
@@ -306,6 +306,21 @@ impl SwApplication {
             };
             manager.set_color_scheme(color_scheme);
         }
+    }
+
+    pub fn refresh_data(&self) {
+        let fut = clone!(@weak self as this => async move {
+            let imp = this.imp();
+            let window = SwApplicationWindow::default();
+
+            if let Some(server) = Client::api_server().await{
+                imp.library.refresh_data(&server);
+                window.refresh_data(&server);
+            }else{
+                // TODO: Add notification / error handling
+            }
+        });
+        spawn!(fut);
     }
 }
 

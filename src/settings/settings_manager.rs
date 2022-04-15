@@ -1,5 +1,5 @@
 // Shortwave - settings_manager.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,19 +19,6 @@ use gtk::{gio, glib};
 
 use crate::config;
 use crate::settings::Key;
-
-#[allow(deprecated)]
-pub fn list_keys() {
-    debug!("Settings values:");
-    let settings = settings();
-    let keys = settings.list_children();
-
-    for key in keys {
-        let name = key.to_string();
-        let value = settings.value(&name);
-        debug!("  \"{}\" -> {}", &name, &value);
-    }
-}
 
 pub fn create_action(key: Key) -> gio::Action {
     let settings = settings();
