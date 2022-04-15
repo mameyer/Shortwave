@@ -75,9 +75,10 @@ impl Client {
         let url = self
             .build_url(STATION_SEARCH, Some(&request.url_encode()))
             .await?;
-        debug!("Station request URL: {}", url);
+
         let stations_md: Vec<StationMetadata> =
             HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
+
         let stations: Vec<SwStation> = stations_md
             .into_iter()
             .map(|metadata| {
@@ -98,10 +99,10 @@ impl Client {
         let url = self
             .build_url(&format!("{}{}", STATION_BY_UUID, uuid), None)
             .await?;
-        debug!("Request station by UUID URL: {}", url);
 
         let mut metadata: Vec<StationMetadata> =
             HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
+
         match metadata.pop() {
             Some(data) => Ok(data),
             None => {
@@ -123,6 +124,8 @@ impl Client {
         if let Some(options) = options {
             url.set_query(Some(options))
         }
+
+        debug!("Retrieve data: {}", url);
         Ok(url)
     }
 
@@ -131,6 +134,7 @@ impl Client {
             resolver
         } else {
             warn!("Unable to use dns resolver from system conf");
+
             let config = rconfig::ResolverConfig::default();
             let opts = rconfig::ResolverOpts::default();
             resolver(config, opts)

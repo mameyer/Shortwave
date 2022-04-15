@@ -202,118 +202,86 @@ impl SwLibrary {
     /// Try to add a station to the database.
     async fn load_station(&self, entry: StationEntry) {
         let imp = self.imp();
+        let client = imp.client.clone();
+        let uuid = entry.uuid.clone();
 
-        let favicon = if let Some(data) = entry.favicon {
+        // Load custom favicon from database entry if available
+        let mut favicon = None;
+        if let Some(data) = entry.favicon {
             let loader = gdk_pixbuf::PixbufLoader::new();
-
             if loader.write(&data).is_ok() && loader.close().is_ok() {
-                loader.pixbuf()
-            } else {
-                None
+                favicon = loader.pixbuf()
             }
-        } else {
-            None
-        };
+        }
 
+        // If it's a local entry, load the metadata just from the database
+        // and don't try to retrieve data from radio-browser.info
         if entry.is_local {
             if let Some(data) = &entry.data {
-                match self.load_station_metadata(&entry.uuid, data) {
-                    Ok(metadata) => imp.model.add_station(&SwStation::new(
-                        entry.uuid.clone(),
-                        true,
-                        false,
-                        metadata,
-                        favicon,
-                    )),
-                    Err(_) => self.delete_unknown_station(&entry.uuid),
-                }
-            } else {
-                self.delete_unknown_station(&entry.uuid);
-            }
-        } else {
-            match imp
-                .client
-                .clone()
-                .station_metadata_by_uuid(&entry.uuid)
-                .await
-            {
-                Ok(metadata) => {
-                    let station =
-                        SwStation::new(entry.uuid.clone(), false, false, metadata, favicon);
-
-                    // Cache data for future use
-                    let entry = StationEntry::for_station(&station);
-                    queries::update_station(entry).unwrap();
-
-                    // Add station to the library
-                    imp.model.add_station(&station)
-                }
-                Err(err) => {
-                    warn!(
-                        "Trying to use cached data for station {}, failed to retrieve data: {}",
-                        entry.uuid, err
-                    );
-                    let removed_online = matches!(err, Error::InvalidStationError(_));
-
-                    if let Some(data) = &entry.data {
-                        match self.load_station_metadata(&entry.uuid, data) {
-                            Ok(metadata) => {
-                                let station = SwStation::new(
-                                    entry.uuid.clone(),
-                                    false,
-                                    true,
-                                    metadata,
-                                    favicon,
-                                );
-                                imp.model.add_station(&station);
-                            }
-                            Err(_) => {
-                                if removed_online {
-                                    self.delete_unknown_station(&entry.uuid);
-                                } else {
-                                    warn!("Ignoring station to try again next time");
-                                }
-                            }
-                        }
-                    } else if removed_online {
-                        self.delete_unknown_station(&entry.uuid);
-                    } else {
-                        warn!("Ignoring station to try again next time");
+                match serde_json::from_str(data) {
+                    Ok(metadata) => {
+                        let station = SwStation::new(uuid, true, false, metadata, favicon.clone());
+                        imp.model.add_station(&station);
+                    }
+                    Err(err) => {
+                        warn!(
+                            "Unable to deserialize metadata for local station {}: {}",
+                            uuid,
+                            err.to_string()
+                        );
+                        // TODO: send notification
                     }
                 }
+            } else {
+                warn!(
+                    "No data for local station {}, removing empty entry from database.",
+                    uuid
+                );
+                queries::delete_station(&uuid).unwrap();
             }
+            return;
         }
-    }
 
-    /// Deserialize the provided data as a station.
-    fn load_station_metadata(
-        &self,
-        uuid: &str,
-        data: &str,
-    ) -> Result<StationMetadata, serde_json::Error> {
-        match serde_json::from_str(data) {
-            Ok(metadata) => Ok(metadata),
+        // Try to update metadata from radio-browser.info, if it isn't possible
+        // for some reason, trying falling back to cached metainfo from database.
+        match client.station_metadata_by_uuid(&uuid).await {
+            Ok(metadata) => {
+                let station = SwStation::new(uuid, false, false, metadata, favicon);
+
+                // Cache data for future use
+                let entry = StationEntry::for_station(&station);
+                queries::update_station(entry).unwrap();
+
+                // Add station to the library
+                imp.model.add_station(&station)
+            }
             Err(err) => {
-                warn!("Failed to deserialize station: {}", uuid);
-                warn!("Data from database: '{}'", data);
-                warn!("Error while deserializing: {}", err);
-                Err(err)
+                warn!(
+                    "Unable to receive data for station {}, trying to use cached data: {}",
+                    uuid,
+                    err.to_string()
+                );
+
+                if let Some(data) = &entry.data {
+                    match serde_json::from_str(data) {
+                        Ok(metadata) => {
+                            let is_orphaned = matches!(err, Error::InvalidStationError(_));
+                            let station =
+                                SwStation::new(uuid, false, is_orphaned, metadata, favicon);
+                            imp.model.add_station(&station);
+                        }
+                        Err(err) => {
+                            warn!(
+                                "Unable to deserialize metadata for cached station {}: {}",
+                                uuid,
+                                err.to_string()
+                            )
+                        }
+                    }
+                } else {
+                    warn!("Unable to load station {}, no cached data available.", uuid);
+                }
             }
         }
-    }
-
-    /// Delete an unknown or malformed station entry notifying the user.
-    fn delete_unknown_station(&self, uuid: &str) {
-        let imp = self.imp();
-
-        warn!("Removing unknown station: {}", uuid);
-        queries::delete_station(&uuid).unwrap();
-
-        let text = i18n("An invalid station was removed from the library.");
-        let notification = adw::Toast::new(&text);
-        send!(
-            imp.sender.get().unwrap(),
-            Action::ViewShowNotification(notification)
-        );
     }
 }
