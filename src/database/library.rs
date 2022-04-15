@@ -191,6 +191,9 @@ impl SwLibrary {
     fn load_stations(&self) {
         // Load database async
         let future = clone!(@strong self as this => async move {
+            // Clear previously loaded stations first
+            this.imp().model.clear();
+
             let entries = queries::stations().unwrap();
 
             // Print database info
