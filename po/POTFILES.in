@@ -5,7 +5,6 @@ data/gtk/create_station_dialog.ui
 data/gtk/discover_page.ui
 data/gtk/library_page.ui
 data/gtk/mini_controller.ui
-data/gtk/notification.ui
 data/gtk/player.ui
 data/gtk/settings_window.ui
 data/gtk/help_overlay.ui
