@@ -11,8 +11,8 @@
             <property name="title" translatable="yes">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;question</property>
                 <property name="title" translatable="yes" context="shortcut window">Open shortcut window</property>
+                <property name="action_name">win.show-help-overlay</property>
               </object>
             </child>
             <child>
@@ -23,14 +23,14 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;comma</property>
                 <property name="title" translatable="yes" context="shortcut window">Open preferences</property>
+                <property name="action_name">app.show-preferences</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;q</property>
                 <property name="title" translatable="yes" context="shortcut window">Quit the application</property>
+                <property name="action_name">app.quit</property>
               </object>
             </child>
           </object>
@@ -40,32 +40,32 @@
             <property name="title" translatable="yes">Window</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;l</property>
                 <property name="title" translatable="yes" context="shortcut window">Open library view</property>
+                <property name="action_name">win.show-library</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;d</property>
                 <property name="title" translatable="yes" context="shortcut window">Open discover view</property>
+                <property name="action_name">win.show-discover</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;f</property>
                 <property name="title" translatable="yes" context="shortcut window">Open search view</property>
+                <property name="action_name">win.show-search</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">Escape</property>
                 <property name="title" translatable="yes" context="shortcut window">Go back</property>
+                <property name="action_name">win.go-back</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;r</property>
                 <property name="title" translatable="yes" context="shortcut window">Refresh station data</property>
+                <property name="action_name">win.refresh-data</property>
               </object>
             </child>
           </object>
@@ -75,8 +75,8 @@
             <property name="title" translatable="yes">Playback</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;primary&gt;space</property>
                 <property name="title" translatable="yes" context="shortcut window">Toggle playback</property>
+                <property name="action_name">win.toggle-playback</property>
               </object>
             </child>
           </object>
