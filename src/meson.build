@@ -29,7 +29,7 @@ endif
 
 cargo = find_program('cargo')
 cargo_options = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
-cargo_options += [ '--target-dir', meson.project_build_root() / 'src' ]
+cargo_options += [ '--target-dir', meson.project_build_root() / 'target' ]
 
 if get_option('profile') == 'default'
   cargo_options += [ '--release' ]
@@ -56,6 +56,6 @@ cargo_release = custom_target(
     cargo, 'build',
     cargo_options,
     '&&',
-    'cp', 'src' / rust_target / meson.project_name(), '@OUTPUT@',
+    'cp', 'target' / rust_target / meson.project_name(), '@OUTPUT@',
   ]
 )
