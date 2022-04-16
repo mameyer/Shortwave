@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-10 11:10+0000\n"
-"PO-Revision-Date: 2022-04-10 16:30+0100\n"
+"POT-Creation-Date: 2022-04-16 13:31+0000\n"
+"PO-Revision-Date: 2022-04-16 17:34+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (https://l10n.gnome.org/teams/pt/)\n"
 "Language: pt\n"
@@ -56,7 +56,7 @@ msgstr "Criar estação local"
 msgid "Change station image"
 msgstr "Alterar imagem da estação"
 
-#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:179
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:193
 msgid "Name"
 msgstr "Nome"
 
@@ -97,10 +97,6 @@ msgstr "SHORTWAVE INTERNET RADIO"
 msgid "No Playback"
 msgstr "Sem reprodução"
 
-#: data/gtk/notification.ui:58
-msgid "Error details"
-msgstr "Detalhes do erro"
-
 #: data/gtk/settings_window.ui:7 data/gtk/help_overlay.ui:11
 msgid "General"
 msgstr "Geral"
@@ -130,7 +126,7 @@ msgid "Show desktop notifications when a new song gets played"
 msgstr ""
 "Mostrar notificações no ambiente de trabalho quando reproduzir nova música"
 
-#: data/gtk/help_overlay.ui:15
+#: data/gtk/help_overlay.ui:14
 msgctxt "shortcut window"
 msgid "Open shortcut window"
 msgstr "Abrir janela de atalhos"
@@ -140,12 +136,12 @@ msgctxt "shortcut window"
 msgid "Open application menu"
 msgstr "Abrir menu da aplicação"
 
-#: data/gtk/help_overlay.ui:27
+#: data/gtk/help_overlay.ui:26
 msgctxt "shortcut window"
 msgid "Open preferences"
 msgstr "Abrir preferências"
 
-#: data/gtk/help_overlay.ui:33
+#: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Sair da aplicação"
@@ -154,37 +150,42 @@ msgstr "Sair da aplicação"
 msgid "Window"
 msgstr "Janela"
 
-#: data/gtk/help_overlay.ui:44
+#: data/gtk/help_overlay.ui:43
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Abrir a vista da biblioteca"
 
-#: data/gtk/help_overlay.ui:50
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Abrir a vista da descoberta"
 
-#: data/gtk/help_overlay.ui:56
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Abrir a vista da busca"
 
-#: data/gtk/help_overlay.ui:62
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Recuar"
 
-#: data/gtk/help_overlay.ui:69
+#: data/gtk/help_overlay.ui:67
+msgctxt "shortcut window"
+msgid "Refresh station data"
+msgstr "Atualizar dados da estação"
+
+#: data/gtk/help_overlay.ui:75
 msgid "Playback"
 msgstr "Reproduzir"
 
-#: data/gtk/help_overlay.ui:73
+#: data/gtk/help_overlay.ui:78
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Reproduzir/Pausa"
 
 #: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
-#: src/ui/pages/search_page.rs:183
+#: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Votos"
 
@@ -200,35 +201,35 @@ msgstr "Sem resultados"
 msgid "Try using a different search term"
 msgstr "Tente usar um termo de pesquisa diferente"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:115
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:166
 msgid "_Name"
 msgstr "_Nome"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:120
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:171
 msgid "_Language"
 msgstr "_Idioma"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:125
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:176
 msgid "_Country"
 msgstr "_País"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:130
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:181
 msgid "S_tate"
 msgstr "_Distrito"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:135
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:186
 msgid "_Votes"
 msgstr "_Votos"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:140
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:191
 msgid "_Bitrate"
 msgstr "Taxa de _bits"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:147
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:198
 msgid "_Ascending"
 msgstr "_Ascendente"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:152
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:203
 msgid "_Descending"
 msgstr "Des_cendente"
 
@@ -322,7 +323,7 @@ msgstr ""
 msgid "Information"
 msgstr "Informação"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:180
+#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Idioma"
 
@@ -334,11 +335,11 @@ msgstr "Etiquetas"
 msgid "Location"
 msgstr "Localização"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:181
+#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "País"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:182
+#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Estado"
 
@@ -346,7 +347,7 @@ msgstr "Estado"
 msgid "Audio"
 msgstr "Áudio"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:184
+#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Taxa de bits"
 
@@ -387,96 +388,111 @@ msgstr "Pesquisa concluída"
 msgid "Searching for Devices…"
 msgstr "A procurar por dispositivos…"
 
-#: data/gtk/window.ui:108 data/gtk/window.ui:189
+#: data/gtk/window.ui:70
+msgid "Unable to connect to radio-browser.info"
+msgstr "Incapaz de se ligar ao radio-browser.info"
+
+#: data/gtk/window.ui:80
+msgid ""
+"Access to the public online station database is not available. Ensure that "
+"you are connected to the internet."
+msgstr ""
+"O acesso à base de dados pública das estações online não está disponível. "
+"Certifique-se de que está ligado à Internet."
+
+#: data/gtk/window.ui:89
+msgid "Try again"
+msgstr "Tentar novamente"
+
+#: data/gtk/window.ui:155 data/gtk/window.ui:244
 msgid "_Enable Mini Player"
 msgstr "Ativar mini r_eprodutor"
 
-#: data/gtk/window.ui:112
+#: data/gtk/window.ui:159 data/gtk/window.ui:240
+msgid "_Refresh Station Data"
+msgstr "Atualizar dados da estação"
+
+#: data/gtk/window.ui:163
 msgid "_Sorting"
 msgstr "_Ordenação"
 
-#: data/gtk/window.ui:161 data/gtk/window.ui:195
+#: data/gtk/window.ui:212 data/gtk/window.ui:250
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "A_brir radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:166 data/gtk/window.ui:200
+#: data/gtk/window.ui:217 data/gtk/window.ui:255
 msgid "_Create New Station"
 msgstr "_Criar nova estação"
 
-#: data/gtk/window.ui:173 data/gtk/window.ui:207
+#: data/gtk/window.ui:224 data/gtk/window.ui:262
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: data/gtk/window.ui:177 data/gtk/window.ui:211
+#: data/gtk/window.ui:228 data/gtk/window.ui:266
 msgid "_Keyboard Shortcuts"
 msgstr "_Teclas de atalho"
 
-#: data/gtk/window.ui:181 data/gtk/window.ui:215
+#: data/gtk/window.ui:232 data/gtk/window.ui:270
 msgid "_About Shortwave"
 msgstr "Acerca do _Shortwave"
 
-#: src/audio/player.rs:188
-msgid "Station cannot be streamed."
-msgstr "A estação não pode ser transmitida."
+#: src/audio/player.rs:196
+msgid "Station cannot be streamed. URL is not valid."
+msgstr "A estação não pode ser transmitida. O URL não é válido."
 
-#: src/audio/player.rs:188
-msgid "URL is not valid."
-msgstr "URL inválido."
+#: src/audio/player.rs:252
+msgid "Cannot save song."
+msgstr "Não foi possível guardar a canção."
 
-#: src/database/library.rs:273
-msgid "An invalid station was removed from the library."
-msgstr "Uma estação inválida foi removida da coleção."
-
-#: src/ui/about_dialog.rs:32
+#: src/ui/about_dialog.rs:34
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "Ouça rádio na Internet"
 
-#: src/ui/about_dialog.rs:35
+#: src/ui/about_dialog.rs:37
 msgid "translator-credits"
 msgstr ""
 "Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
-#: src/ui/create_station_dialog.rs:105
+#: src/ui/create_station_dialog.rs:104
 msgid "Select station image"
 msgstr "Selecionar imagem da estação"
 
 #. TODO: Implement show-server-stats action
-#: src/ui/pages/discover_page.rs:91
+#: src/ui/pages/discover_page.rs:118
 msgid "Show statistics"
 msgstr "Mostrar estatísticas"
 
-#: src/ui/pages/discover_page.rs:92
+#: src/ui/pages/discover_page.rs:120
 msgid "Browse over 30,000 stations"
 msgstr "Navegue por mais de 30.000 estações"
 
-#: src/ui/pages/discover_page.rs:94
+#: src/ui/pages/discover_page.rs:122
 msgid "Add new station"
 msgstr "Adicionar uma nova estação"
 
-#: src/ui/pages/discover_page.rs:95
+#: src/ui/pages/discover_page.rs:124
 msgid "Your favorite station is missing?"
 msgstr "A sua estação favorita está em falta?"
 
-#: src/ui/pages/discover_page.rs:97
+#: src/ui/pages/discover_page.rs:129
 msgid "Open website"
 msgstr "Abrir sítio web"
 
-#: src/ui/pages/discover_page.rs:98
+#: src/ui/pages/discover_page.rs:131
 msgid "Powered by radio-browser.info"
 msgstr "Baseado no radio-browser.info"
 
-#: src/ui/pages/discover_page.rs:137 src/ui/pages/search_page.rs:269
+#: src/ui/pages/discover_page.rs:150 src/ui/pages/search_page.rs:287
 msgid "Station data could not be received."
 msgstr "Os dados da estação não puderam ser recebidos."
 
-#. Welcome text which gets displayed when the library is empty. "{}" is the application name.
 #: src/ui/pages/library_page.rs:117
 msgid "Welcome to {}"
 msgstr "Bem-vindo ao {}"
 
-#: src/ui/pages/search_page.rs:106
+#: src/ui/pages/search_page.rs:103
 msgid ""
 "The number of results is limited to {} item. Try using a more specific "
 "search term."
@@ -490,7 +506,7 @@ msgstr[1] ""
 "O número de resultados está limitado a {} itens. Tente usar um termo de "
 "pesquisa mais específico."
 
-#: src/ui/station_dialog.rs:288
+#: src/ui/station_dialog.rs:289
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
@@ -549,6 +565,15 @@ msgstr "Integração transparente com o ambiente de trabalho GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Rádio;Emissão;Transmissão;"
+
+#~ msgid "Error details"
+#~ msgstr "Detalhes do erro"
+
+#~ msgid "URL is not valid."
+#~ msgstr "URL inválido."
+
+#~ msgid "An invalid station was removed from the library."
+#~ msgstr "Uma estação inválida foi removida da coleção."
 
 #~ msgid "Connected with"
 #~ msgstr "Ligado a"
