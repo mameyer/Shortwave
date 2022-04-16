@@ -64,6 +64,8 @@ mod imp {
         pub search_page: TemplateChild<SwSearchPage>,
 
         #[template_child]
+        pub connection_infobar: TemplateChild<gtk::InfoBar>,
+        #[template_child]
         pub mini_controller_box: TemplateChild<gtk::Box>,
         #[template_child]
         pub toolbar_controller_box: TemplateChild<gtk::Box>,
@@ -431,6 +433,29 @@ impl SwApplicationWindow {
                 this.update_view(); glib::Continue(false)
             }),
         );
+    }
+
+    pub fn enable_offline_mode(&self, enable: bool) {
+        self.imp().connection_infobar.set_revealed(enable);
+
+        if enable {
+            self.set_view(SwView::Library);
+        }
+
+        // Disable discover/search since those are useless
+        // if there's no connectivity to radio-browser.info
+        let action: gio::SimpleAction = self
+            .lookup_action("show-discover")
+            .unwrap()
+            .downcast()
+            .unwrap();
+        action.set_enabled(!enable);
+        let action: gio::SimpleAction = self
+            .lookup_action("show-search")
+            .unwrap()
+            .downcast()
+            .unwrap();
+        action.set_enabled(!enable);
     }
 
     pub fn enable_mini_player(&self, enable: bool) {

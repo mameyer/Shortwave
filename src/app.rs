@@ -314,10 +314,12 @@ impl SwApplication {
             let window = SwApplicationWindow::default();
 
             if let Some(server) = Client::api_server().await{
-                imp.library.refresh_data(&server);
+                imp.library.refresh_data(Some(&server));
                 window.refresh_data(&server);
+                window.enable_offline_mode(false);
             }else{
-                // TODO: Add notification / error handling
+                imp.library.refresh_data(None);
+                window.enable_offline_mode(true);
             }
         });
         spawn!(fut);

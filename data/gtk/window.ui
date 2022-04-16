@@ -53,28 +53,75 @@
             <child>
               <object class="AdwToastOverlay" id="toast_overlay">
                 <child>
-                  <object class="AdwFlap" id="window_flap">
-                    <property name="reveal-flap">False</property>
-                    <property name="locked">True</property>
-                    <property name="flap-position">end</property>
-                    <property name="swipe-to-open">False</property>
-                    <property name="swipe-to-close">False</property>
-                    <property name="vexpand">True</property>
-                    <property name="separator">
-                      <object class="GtkSeparator"/>
-                    </property>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="AdwLeaflet" id="window_leaflet">
-                        <property name="can_unfold">False</property>
-                        <property name="hexpand">True</property>
+                      <object class="GtkInfoBar" id="connection_infobar">
+                        <property name="message_type">warning</property>
+                        <property name="revealed">False</property>
                         <child>
-                          <object class="SwLibraryPage" id="library_page"/>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="hexpand">True</property>
+                            <property name="spacing">6</property>
+                            <property name="margin_end">12</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Unable to connect to radio-browser.info</property>
+                                <property name="xalign">0</property>
+                                <property name="wrap">True</property>
+                                <style>
+                                  <class name="heading"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Access to the public online station database is not available. Ensure that you are connected to the internet.</property>
+                                <property name="xalign">0</property>
+                                <property name="wrap">True</property>
+                              </object>
+                            </child>
+                          </object>
                         </child>
                         <child>
-                          <object class="SwDiscoverPage" id="discover_page"/>
+                          <object class="GtkButton" id="refresh_data_button">
+                            <property name="tooltip-text" translatable="yes">Try again</property>
+                            <property name="icon_name">view-refresh-symbolic</property>
+                            <property name="action_name">win.refresh-data</property>
+                            <property name="valign">center</property>
+                          </object>
                         </child>
+                        <action-widgets>
+                          <action-widget response="0">refresh_data_button</action-widget>
+                        </action-widgets>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwFlap" id="window_flap">
+                        <property name="reveal-flap">False</property>
+                        <property name="locked">True</property>
+                        <property name="flap-position">end</property>
+                        <property name="swipe-to-open">False</property>
+                        <property name="swipe-to-close">False</property>
+                        <property name="vexpand">True</property>
+                        <property name="separator">
+                          <object class="GtkSeparator"/>
+                        </property>
                         <child>
-                          <object class="SwSearchPage" id="search_page"/>
+                          <object class="AdwLeaflet" id="window_leaflet">
+                            <property name="can_unfold">False</property>
+                            <property name="hexpand">True</property>
+                            <child>
+                              <object class="SwLibraryPage" id="library_page"/>
+                            </child>
+                            <child>
+                              <object class="SwDiscoverPage" id="discover_page"/>
+                            </child>
+                            <child>
+                              <object class="SwSearchPage" id="search_page"/>
+                            </child>
+                          </object>
                         </child>
                       </object>
                     </child>

@@ -137,14 +137,16 @@ impl SwLibrary {
         self.imp().status.borrow().clone()
     }
 
-    pub fn refresh_data(&self, server: &Url) {
+    pub fn refresh_data(&self, server: Option<&Url>) {
         let imp = self.imp();
 
-        if let Some(client) = imp.client.get() {
-            client.set_server(server.clone())
-        } else {
-            let client = Client::new(server.clone());
-            imp.client.set(client).unwrap();
+        if let Some(server) = server {
+            if let Some(client) = imp.client.get() {
+                client.set_server(server.clone())
+            } else {
+                let client = Client::new(server.clone());
+                imp.client.set(client).unwrap();
+            }
         }
 
         self.load_stations();
@@ -256,52 +258,50 @@ impl SwLibrary {
             return;
         }
 
-        // Try to update metadata from radio-browser.info, if it isn't possible
-        // for some reason, trying falling back to cached metainfo from database.
-        match client
-            .get()
-            .unwrap()
-            .clone()
-            .station_metadata_by_uuid(&uuid)
-            .await
-        {
-            Ok(metadata) => {
-                let station = SwStation::new(uuid, false, false, metadata, favicon);
+        // Try to update station metadata from radio-browser.info
+        let mut is_orphaned = false;
+        if let Some(client) = client.get() {
+            match client.clone().station_metadata_by_uuid(&uuid).await {
+                Ok(metadata) => {
+                    let station = SwStation::new(uuid, false, false, metadata, favicon);
 
-                // Cache data for future use
-                let entry = StationEntry::for_station(&station);
-                queries::update_station(entry).unwrap();
+                    // Cache data for future use
+                    let entry = StationEntry::for_station(&station);
+                    queries::update_station(entry).unwrap();
 
-                // Add station to the library
-                imp.model.add_station(&station)
-            }
-            Err(err) => {
-                warn!(
-                    "Unable to receive data for station {}, trying to use cached data: {}",
-                    uuid,
-                    err.to_string()
-                );
+                    // Add station to the library
+                    imp.model.add_station(&station);
 
-                if let Some(data) = &entry.data {
-                    match serde_json::from_str(data) {
-                        Ok(metadata) => {
-                            let is_orphaned = matches!(err, Error::InvalidStationError(_));
-                            let station =
-                                SwStation::new(uuid, false, is_orphaned, metadata, favicon);
-                            imp.model.add_station(&station);
-                        }
-                        Err(err) => {
-                            warn!(
-                                "Unable to deserialize metadata for cached station {}: {}",
-                                uuid,
-                                err.to_string()
-                            )
-                        }
-                    }
-                } else {
-                    warn!("Unable to load station {}, no cached data available.", uuid);
+                    return;
+                }
+                Err(err) => {
+                    is_orphaned = matches!(err, Error::InvalidStationError(_));
+                    warn!(
+                        "Unable to receive data for station {}, trying to use cached data: {}",
+                        uuid,
+                        err.to_string()
+                    );
                 }
             }
+        }
+
+        // Try using cached metadata from database as fallback
+        if let Some(data) = &entry.data {
+            match serde_json::from_str(data) {
+                Ok(metadata) => {
+                    let s = SwStation::new(uuid, false, is_orphaned, metadata, favicon);
+                    imp.model.add_station(&s);
+                }
+                Err(err) => {
+                    warn!(
+                        "Unable to deserialize metadata for cached station {}: {}",
+                        uuid,
+                        err.to_string()
+                    )
+                }
+            }
+        } else {
+            warn!("Unable to load station {}, no cached data available.", uuid);
         }
     }
 }
