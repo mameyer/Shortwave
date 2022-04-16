@@ -274,12 +274,6 @@ impl SwApplicationWindow {
         let imp = self.imp();
         let app = self.application().unwrap();
 
-        // win.show-help-overlay
-        let builder = gtk::Builder::from_resource("/de/haeckerfelix/Shortwave/gtk/help_overlay.ui");
-        get_widget!(builder, gtk::ShortcutsWindow, help_overlay);
-        self.set_help_overlay(Some(&help_overlay));
-        app.set_accels_for_action("win.show-help-overlay", &["<primary>question"]);
-
         // win.open-radio-browser-info
         action!(self, "open-radio-browser-info", |_, _| {
             gtk::show_uri(
