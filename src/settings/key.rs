@@ -17,10 +17,10 @@
 #[derive(Display, Debug, Clone, EnumString)]
 #[strum(serialize_all = "kebab_case")]
 pub enum Key {
-    /* Client Backend */
+    // Client Backend
     ApiLookupDomain,
 
-    /* User Interface */
+    // User Interface
     DarkMode,
     Notifications,
     WindowWidth,
@@ -30,7 +30,7 @@ pub enum Key {
     ViewSorting,
     ViewOrder,
 
-    /* Audio */
+    // Audio
     RecorderSaveCount,
     RecorderSongDurationThreshold,
     RecorderSongSavePath,

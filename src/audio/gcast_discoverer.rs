@@ -116,7 +116,8 @@ impl GCastDiscoverer {
             return None;
         }
 
-        // To get the values, we need to iterate the additional records and check the TXT kind
+        // To get the values, we need to iterate the additional records and check the
+        // TXT kind
         for record in response.additional {
             // Check if record kind is TXT
             if let mdns::RecordKind::TXT(v) = record.kind {

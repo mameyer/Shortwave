@@ -40,6 +40,7 @@ use crate::i18n::*;
 use crate::settings::{settings_manager, Key};
 use crate::{config, path};
 
+#[rustfmt::skip]
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                             //
 //  A small overview of the player/gstreamer program structure  :)                                             //
@@ -333,7 +334,8 @@ impl Player {
                 }
 
                 // Start recording new song
-                // We don't start recording the "first" detected song, since it is going to be incomplete
+                // We don't start recording the "first" detected song, since it is going to be
+                // incomplete
                 if !self.song_title.borrow().is_first_song() {
                     backend.gstreamer.start_recording(
                         self.song_title
@@ -372,19 +374,19 @@ impl Player {
         let notification =
             gio::Notification::new(&self.song_title.borrow().current_title().unwrap());
         notification.set_body(Some(&current_station.metadata().name));
-        //notification.add_button("Record and save this song", "app.record-and-save-song");
+        // notification.add_button("Record and save this song",
+        // "app.record-and-save-song");
 
-        /* Icons won't work at the moment, no idea
-        current_station.favicon.map(|favicon| {
-            FaviconDownloader::get_file(&favicon).map(|file| {
-                let path = file.get_path().unwrap().to_str().unwrap().to_owned();
-                dbg!(&path);
-                let file = gio::File::new_for_path(&path);
-                let icon = gio::FileIcon::new(&file);
-                notification.set_icon(&icon);
-            })
-        });
-        */
+        // Icons won't work at the moment, no idea
+        // current_station.favicon.map(|favicon| {
+        // FaviconDownloader::get_file(&favicon).map(|file| {
+        // let path = file.get_path().unwrap().to_str().unwrap().to_owned();
+        // dbg!(&path);
+        // let file = gio::File::new_for_path(&path);
+        // let icon = gio::FileIcon::new(&file);
+        // notification.set_icon(&icon);
+        // })
+        // });
 
         let app = gio::Application::default().unwrap();
         let id = format!("{}.SongNotification", config::APP_ID);

@@ -1,5 +1,5 @@
 // Shortwave - gcast_controller.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -46,8 +46,8 @@ pub struct GCastController {
 }
 
 // TODO: Re-structure this mess. Code cleanup is necessary.
-// Even clippy starts to complain: "warning: the function has a cognitive complexity of (36/25)"
-// Oops.
+// Even clippy starts to complain: "warning: the function has a cognitive
+// complexity of (36/25)" Oops.
 impl GCastController {
     pub fn new(app_sender: glib::Sender<Action>) -> Rc<Self> {
         let station_metadata = Arc::new(Mutex::new(None));
@@ -146,7 +146,9 @@ impl GCastController {
                                             ),
                                         },
                                     )
-                                    .expect("Could not transer media information to gcast device.");
+                                    .expect(
+                                        "Could not transfer media information to gcast device.",
+                                    );
                                 send!(gcast_sender, GCastAction::HeartBeat);
                             };
                         }

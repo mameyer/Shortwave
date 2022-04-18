@@ -37,14 +37,14 @@ use crate::ui::{about_dialog, SwApplicationWindow, SwView};
 
 #[derive(Debug, Clone)]
 pub enum Action {
-    /* User Interface */
+    // User Interface
     ViewGoBack,
     ViewSet(SwView),
     ViewSetMiniPlayer(bool),
     ViewRaise,
     ViewShowNotification(adw::Toast),
 
-    /* Audio Playback */
+    // Audio Playback
     PlaybackConnectGCastDevice(GCastDevice),
     PlaybackDisconnectGCastDevice,
     PlaybackSetStation(Box<SwStation>),
@@ -53,7 +53,7 @@ pub enum Action {
     PlaybackSetVolume(f64),
     PlaybackSaveSong(Song),
 
-    /* Library */
+    // Library
     LibraryAddStations(Vec<SwStation>),
     LibraryRemoveStations(Vec<SwStation>),
 
@@ -101,7 +101,7 @@ mod imp {
         }
     }
 
-    // Implement GLib.OBject for SwApplication
+    // Implement GLib.Object for SwApplication
     impl ObjectImpl for SwApplication {}
 
     // Implement Gtk.Application for SwApplication

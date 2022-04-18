@@ -27,6 +27,7 @@ use gtk::glib::Sender;
 use crate::app::Action;
 use crate::audio::PlaybackState;
 
+#[rustfmt::skip]
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                //
 //  # Gstreamer Pipeline                                                                          //
@@ -127,8 +128,9 @@ impl GstreamerBackend {
             // The user is able to control the volume from g-c-c.
             let (volume_sender, volume_receiver) = glib::MainContext::channel(glib::PRIORITY_LOW);
 
-            // We need to do message passing (sender/receiver) here, because gstreamer messages are
-            // coming from a other thread (and app::Action enum is not thread safe).
+            // We need to do message passing (sender/receiver) here, because gstreamer
+            // messages are coming from a other thread (and app::Action enum is
+            // not thread safe).
             volume_receiver.attach(
                 None,
                 clone!(@strong app_sender => move |volume| {
@@ -145,7 +147,7 @@ impl GstreamerBackend {
                     let new_volume = StreamVolume::convert_volume(StreamVolumeFormat::Linear, StreamVolumeFormat::Cubic, pa_volume);
 
                     // We have to check if the values are the same. For some reason gstreamer sends us
-                    // slightly differents floats, so we round up here (only the the first two digits are
+                    // slightly different floats, so we round up here (only the the first two digits are
                     // important for use here).
                     let mut old_volume_locked = old_volume.lock().unwrap();
                     let new_val = format!("{:.2}", new_volume);
@@ -158,8 +160,8 @@ impl GstreamerBackend {
                 }),
             ));
 
-            // It's possible to mute the audio (!= 0.0) from pulseaudio side, so we should handle
-            // this too by setting the volume to 0.0
+            // It's possible to mute the audio (!= 0.0) from pulseaudio side, so we should
+            // handle this too by setting the volume to 0.0
             pulsesink.connect_notify(
                 Some("mute"),
                 clone!(@weak self.volume as old_volume, @strong volume_sender => move |element, _| {
@@ -323,8 +325,8 @@ impl GstreamerBackend {
             .expect("Unable to create recorderbin");
         recorderbin.set_property("message-forward", &true);
 
-        // We need to set an offset, otherwise the length of the recorded song would be wrong.
-        // Get current clock time and calculate offset
+        // We need to set an offset, otherwise the length of the recorded song would be
+        // wrong. Get current clock time and calculate offset
         let offset = Self::calculate_pipeline_offset(&self.pipeline);
         let queue_srcpad = recorderbin
             .by_name("queue")
@@ -337,8 +339,8 @@ impl GstreamerBackend {
         let filesink = recorderbin.by_name("filesink").unwrap();
         filesink.set_property("location", &(path.to_str().unwrap()));
 
-        // First try setting the recording bin to playing: if this fails we know this before it
-        // potentially interferred with the other part of the pipeline
+        // First try setting the recording bin to playing: if this fails we know this
+        // before it potentially interfered with the other part of the pipeline
         recorderbin
             .set_state(gstreamer::State::Playing)
             .expect("Failed to start recording");
@@ -348,8 +350,8 @@ impl GstreamerBackend {
             .add(&recorderbin)
             .expect("Unable to add recorderbin to pipeline");
 
-        // Get our tee element by name, request a new source pad from it and then link that to our
-        // recording bin to actually start receiving data
+        // Get our tee element by name, request a new source pad from it and then link
+        // that to our recording bin to actually start receiving data
         let tee = self.pipeline.by_name("tee").unwrap();
         let tee_srcpad = tee
             .request_pad_simple("src_%u")
@@ -390,13 +392,13 @@ impl GstreamerBackend {
             None => return,
         };
 
-        // Once the tee source pad is idle and we wouldn't interfere with any data flow, unlink the
-        // tee and the recording bin and finalize the recording bin by sending it an end-of-stream
-        // event
+        // Once the tee source pad is idle and we wouldn't interfere with any data flow,
+        // unlink the tee and the recording bin and finalize the recording bin
+        // by sending it an end-of-stream event
         //
         // Once the end-of-stream event is handled by the whole recording bin, we get an
-        // end-of-stream message from it in the message handler and the shut down the recording bin
-        // and remove it from the pipeline
+        // end-of-stream message from it in the message handler and the shut down the
+        // recording bin and remove it from the pipeline
         tee_srcpad.add_probe(
             PadProbeType::IDLE,
             clone!(@weak self.pipeline as pipeline => @default-panic, move |tee_srcpad, _| {

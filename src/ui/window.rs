@@ -539,9 +539,11 @@ impl SwApplicationWindow {
         let view = *imp.view.borrow();
         debug!("Set view to {:?}", view);
 
-        // Not enough place to display player sidebar and content side by side (eg. mobile phones)
+        // Not enough place to display player sidebar and content side by side (eg.
+        // mobile phones)
         let slim_mode = imp.window_flap.is_folded();
-        // Wether the player widgets (sidebar / bottom toolbar) should get display or not.
+        // Whether the player widgets (sidebar / bottom toolbar) should get display or
+        // not.
         let player_activated = !imp.window_flap.is_locked();
 
         if player_activated {
