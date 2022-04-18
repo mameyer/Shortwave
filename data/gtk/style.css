@@ -46,7 +46,7 @@ scrolledwindow.flat-headerbar scrollbar.vertical {
 }
 
 .mini-controller {
-  background-image: url('resource://de/haeckerfelix/Shortwave/images/wood.png');
+  background-image: url('resource://de/haeckerfelix/Shortwave/assets/images/wood.png');
   background-size: cover;
   color: black;
 }
@@ -66,7 +66,7 @@ scrolledwindow.flat-headerbar scrollbar.vertical {
 
 .mini-controller-button,
 .mini-controller-volume-button > button {
-  background-image: url('resource://de/haeckerfelix/Shortwave/images/metal.png');
+  background-image: url('resource://de/haeckerfelix/Shortwave/assets/images/metal.png');
   background-size: cover;
   color: black;
   border: 1px solid alpha(black, 1);
