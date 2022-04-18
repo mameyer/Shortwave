@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-15 19:04+0000\n"
-"PO-Revision-Date: 2022-04-15 21:43+0200\n"
+"POT-Creation-Date: 2022-04-16 13:31+0000\n"
+"PO-Revision-Date: 2022-04-17 16:21+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -120,7 +120,7 @@ msgstr "_Aviseringar"
 msgid "Show desktop notifications when a new song gets played"
 msgstr "Visa skrivbordsaviseringar när en ny låt spelas"
 
-#: data/gtk/help_overlay.ui:15
+#: data/gtk/help_overlay.ui:14
 msgctxt "shortcut window"
 msgid "Open shortcut window"
 msgstr "Öppna kortkommandofönster"
@@ -130,12 +130,12 @@ msgctxt "shortcut window"
 msgid "Open application menu"
 msgstr "Öppna programmeny"
 
-#: data/gtk/help_overlay.ui:27
+#: data/gtk/help_overlay.ui:26
 msgctxt "shortcut window"
 msgid "Open preferences"
 msgstr "Öppna inställningar"
 
-#: data/gtk/help_overlay.ui:33
+#: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Avsluta programmet"
@@ -144,27 +144,27 @@ msgstr "Avsluta programmet"
 msgid "Window"
 msgstr "Fönster"
 
-#: data/gtk/help_overlay.ui:44
+#: data/gtk/help_overlay.ui:43
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Öppna biblioteksvy"
 
-#: data/gtk/help_overlay.ui:50
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Öppna upptäcktsvy"
 
-#: data/gtk/help_overlay.ui:56
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Öppna sökvy"
 
-#: data/gtk/help_overlay.ui:62
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Gå bakåt"
 
-#: data/gtk/help_overlay.ui:68
+#: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "Uppdatera stationsdata"
@@ -173,7 +173,7 @@ msgstr "Uppdatera stationsdata"
 msgid "Playback"
 msgstr "Uppspelning"
 
-#: data/gtk/help_overlay.ui:79
+#: data/gtk/help_overlay.ui:78
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Starta/stoppa uppspelning"
@@ -195,35 +195,35 @@ msgstr "Inga resultat"
 msgid "Try using a different search term"
 msgstr "Försök använda en annan sökterm"
 
-#: data/gtk/search_page.ui:148 data/gtk/window.ui:119
+#: data/gtk/search_page.ui:148 data/gtk/window.ui:166
 msgid "_Name"
 msgstr "_Namn"
 
-#: data/gtk/search_page.ui:153 data/gtk/window.ui:124
+#: data/gtk/search_page.ui:153 data/gtk/window.ui:171
 msgid "_Language"
 msgstr "S_pråk"
 
-#: data/gtk/search_page.ui:158 data/gtk/window.ui:129
+#: data/gtk/search_page.ui:158 data/gtk/window.ui:176
 msgid "_Country"
 msgstr "_Land"
 
-#: data/gtk/search_page.ui:163 data/gtk/window.ui:134
+#: data/gtk/search_page.ui:163 data/gtk/window.ui:181
 msgid "S_tate"
 msgstr "Lä_n"
 
-#: data/gtk/search_page.ui:168 data/gtk/window.ui:139
+#: data/gtk/search_page.ui:168 data/gtk/window.ui:186
 msgid "_Votes"
 msgstr "_Röster"
 
-#: data/gtk/search_page.ui:173 data/gtk/window.ui:144
+#: data/gtk/search_page.ui:173 data/gtk/window.ui:191
 msgid "_Bitrate"
 msgstr "_Bithastighet"
 
-#: data/gtk/search_page.ui:180 data/gtk/window.ui:151
+#: data/gtk/search_page.ui:180 data/gtk/window.ui:198
 msgid "_Ascending"
 msgstr "S_tigande"
 
-#: data/gtk/search_page.ui:185 data/gtk/window.ui:156
+#: data/gtk/search_page.ui:185 data/gtk/window.ui:203
 msgid "_Descending"
 msgstr "_Fallande"
 
@@ -382,35 +382,51 @@ msgstr "Sökningen är färdig"
 msgid "Searching for Devices…"
 msgstr "Söker efter enheter…"
 
-#: data/gtk/window.ui:108 data/gtk/window.ui:197
+#: data/gtk/window.ui:70
+msgid "Unable to connect to radio-browser.info"
+msgstr "Kunde inte ansluta till radio-browser.info"
+
+#: data/gtk/window.ui:80
+msgid ""
+"Access to the public online station database is not available. Ensure that "
+"you are connected to the internet."
+msgstr ""
+"Ingen åtkomst till den offentliga stationsdatabasen på internet. Säkerställ "
+"att du är ansluten till internet."
+
+#: data/gtk/window.ui:89
+msgid "Try again"
+msgstr "Försök igen"
+
+#: data/gtk/window.ui:155 data/gtk/window.ui:244
 msgid "_Enable Mini Player"
 msgstr "_Aktivera minispelare"
 
-#: data/gtk/window.ui:112 data/gtk/window.ui:193
+#: data/gtk/window.ui:159 data/gtk/window.ui:240
 msgid "_Refresh Station Data"
 msgstr "_Uppdatera stationsdata"
 
-#: data/gtk/window.ui:116
+#: data/gtk/window.ui:163
 msgid "_Sorting"
 msgstr "_Sortering"
 
-#: data/gtk/window.ui:165 data/gtk/window.ui:203
+#: data/gtk/window.ui:212 data/gtk/window.ui:250
 msgid "_Open radio-browser.info <sup>↗</sup>"
 msgstr "Ö_ppna radio-browser.info <sup>↗</sup>"
 
-#: data/gtk/window.ui:170 data/gtk/window.ui:208
+#: data/gtk/window.ui:217 data/gtk/window.ui:255
 msgid "_Create New Station"
 msgstr "S_kapa ny station"
 
-#: data/gtk/window.ui:177 data/gtk/window.ui:215
+#: data/gtk/window.ui:224 data/gtk/window.ui:262
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: data/gtk/window.ui:181 data/gtk/window.ui:219
+#: data/gtk/window.ui:228 data/gtk/window.ui:266
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: data/gtk/window.ui:185 data/gtk/window.ui:223
+#: data/gtk/window.ui:232 data/gtk/window.ui:270
 msgid "_About Shortwave"
 msgstr "_Om Shortwave"
 
