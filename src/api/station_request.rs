@@ -1,5 +1,5 @@
 // Shortwave - station_request.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ pub struct StationRequest {
     pub name: Option<String>,
     pub name_exact: Option<bool>,
     pub country: Option<String>,
-    pub country_excat: Option<bool>,
+    pub country_exact: Option<bool>,
     pub state: Option<String>,
     pub state_exact: Option<bool>,
     pub language: Option<String>,

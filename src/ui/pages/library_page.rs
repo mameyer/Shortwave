@@ -112,7 +112,8 @@ impl SwLibraryPage {
         // Setup empty state page
         imp.status_page.set_icon_name(Some(&config::APP_ID));
 
-        // Welcome text which gets displayed when the library is empty. "{}" is the application name.
+        // Welcome text which gets displayed when the library is empty. "{}" is the
+        // application name.
         imp.status_page
             .set_title(&i18n_f("Welcome to {}", &[config::NAME]));
 
@@ -120,7 +121,7 @@ impl SwLibraryPage {
         imp.flowbox
             .init(imp.library.model(), imp.sender.get().unwrap().clone());
 
-        // Set intial stack page
+        // Set initial stack page
         self.update_stack_page();
     }
 
