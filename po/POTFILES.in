@@ -5,7 +5,6 @@ data/gtk/create_station_dialog.ui
 data/gtk/discover_page.ui
 data/gtk/library_page.ui
 data/gtk/mini_controller.ui
-data/gtk/player.ui
 data/gtk/settings_window.ui
 data/gtk/help_overlay.ui
 data/gtk/search_page.ui
@@ -18,15 +17,11 @@ data/gtk/toolbar_controller.ui
 data/gtk/window.ui
 
 src/audio/player.rs
-src/database/library.rs
 src/ui/about_dialog.rs
-src/ui/create_station_dialog.rs
 src/ui/pages/discover_page.rs
 src/ui/pages/library_page.rs
 src/ui/pages/search_page.rs
 src/ui/station_dialog.rs
-src/ui/station_row.rs
-src/ui/window.rs
 
 data/de.haeckerfelix.Shortwave.metainfo.xml.in.in
 data/de.haeckerfelix.Shortwave.desktop.in.in
