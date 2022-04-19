@@ -78,8 +78,17 @@ impl Client {
             .build_url(STATION_SEARCH, Some(&request.url_encode()))
             .await?;
 
-        let stations_md: Vec<StationMetadata> =
-            HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
+        let response = HTTP_CLIENT.get_async(url.as_ref()).await?.text().await?;
+        let deserialized: Result<Vec<StationMetadata>, _> = serde_json::from_str(&response);
+
+        let stations_md = match deserialized {
+            Ok(deserialized) => deserialized,
+            Err(err) => {
+                error!("Unable to deserialize data: {}", err.to_string());
+                error!("Raw unserialized data: {}", response);
+                return Err(Error::SerdeError(err));
+            }
+        };
 
         let stations: Vec<SwStation> = stations_md
             .into_iter()
@@ -102,8 +111,17 @@ impl Client {
             .build_url(&format!("{}{}", STATION_BY_UUID, uuid), None)
             .await?;
 
-        let mut metadata: Vec<StationMetadata> =
-            HTTP_CLIENT.get_async(url.as_ref()).await?.json().await?;
+        let response = HTTP_CLIENT.get_async(url.as_ref()).await?.text().await?;
+        let deserialized: Result<Vec<StationMetadata>, _> = serde_json::from_str(&response);
+
+        let mut metadata = match deserialized {
+            Ok(deserialized) => deserialized,
+            Err(err) => {
+                error!("Unable to deserialize data: {}", err.to_string());
+                error!("Raw unserialized data: {}", response);
+                return Err(Error::SerdeError(err));
+            }
+        };
 
         match metadata.pop() {
             Some(data) => Ok(data),
