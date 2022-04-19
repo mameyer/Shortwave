@@ -357,8 +357,8 @@ impl SwApplicationWindow {
         action!(
             self,
             "disable-mini-player",
-            clone!(@strong sender => move |_, _| {
-                send!(sender, Action::ViewSetMiniPlayer(false));
+            clone!(@weak self as this => move |_, _| {
+                this.enable_mini_player(false);
             })
         );
 
@@ -366,8 +366,8 @@ impl SwApplicationWindow {
         action!(
             self,
             "enable-mini-player",
-            clone!(@strong sender => move |_, _| {
-                send!(sender, Action::ViewSetMiniPlayer(true));
+            clone!(@weak self as this => move |_, _| {
+                this.enable_mini_player(true);
             })
         );
 
