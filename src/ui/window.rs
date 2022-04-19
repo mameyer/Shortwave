@@ -307,8 +307,8 @@ impl SwApplicationWindow {
         action!(
             self,
             "show-discover",
-            clone!(@strong sender => move |_, _| {
-                send!(sender, Action::ViewSet(SwView::Discover));
+            clone!(@weak self as this => move |_, _| {
+                this.set_view(SwView::Discover);
             })
         );
         app.set_accels_for_action("win.show-discover", &["<primary>d"]);
@@ -317,8 +317,8 @@ impl SwApplicationWindow {
         action!(
             self,
             "show-search",
-            clone!(@strong sender => move |_, _| {
-                send!(sender, Action::ViewSet(SwView::Search));
+            clone!(@weak self as this => move |_, _| {
+                this.set_view(SwView::Search);
             })
         );
         app.set_accels_for_action("win.show-search", &["<primary>f"]);
@@ -327,8 +327,8 @@ impl SwApplicationWindow {
         action!(
             self,
             "show-library",
-            clone!(@strong sender => move |_, _| {
-                send!(sender, Action::ViewSet(SwView::Library));
+            clone!(@weak self as this => move |_, _| {
+                this.set_view(SwView::Library);
             })
         );
         app.set_accels_for_action("win.show-library", &["<primary>l"]);

@@ -39,7 +39,6 @@ use crate::ui::{about_dialog, SwApplicationWindow, SwView};
 pub enum Action {
     // User Interface
     ViewGoBack,
-    ViewSet(SwView),
     ViewSetMiniPlayer(bool),
     ViewRaise,
 
@@ -249,7 +248,6 @@ impl SwApplication {
 
         match action {
             Action::ViewGoBack => window.go_back(),
-            Action::ViewSet(view) => window.set_view(view),
             Action::ViewRaise => window.present_with_time((glib::monotonic_time() / 1000) as u32),
             Action::ViewSetMiniPlayer(enable) => window.enable_mini_player(enable),
             Action::PlaybackConnectGCastDevice(device) => {
