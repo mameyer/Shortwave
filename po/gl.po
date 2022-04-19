@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
 "POT-Creation-Date: 2022-04-18 19:35+0000\n"
-"PO-Revision-Date: 2022-04-19 07:58+0200\n"
+"PO-Revision-Date: 2022-04-19 07:59+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <Proxecto Trasno <proxecto@trasno.gal>>\n"
 "Language: gl\n"
@@ -477,7 +477,7 @@ msgstr "Escoitar radio por internet"
 
 #: src/ui/about_dialog.rs:37
 msgid "translator-credits"
-msgstr "Fran Diéguez <frandiguez@gnome.org>, 2021."
+msgstr "Fran Diéguez <frandiguez@gnome.org>, 2021-2022"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:118
