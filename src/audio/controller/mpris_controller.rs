@@ -19,8 +19,8 @@ use std::rc::Rc;
 use std::sync::Arc;
 
 use glib::{clone, Sender};
+use gtk::glib;
 use gtk::prelude::*;
-use gtk::{gio, glib};
 use mpris_player::{Metadata, MprisPlayer, OrgMprisMediaPlayer2Player, PlaybackStatus};
 
 use crate::api::{FaviconDownloader, SwStation};

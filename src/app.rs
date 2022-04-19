@@ -37,9 +37,6 @@ use crate::ui::{about_dialog, SwApplicationWindow, SwView};
 
 #[derive(Debug, Clone)]
 pub enum Action {
-    // User Interface
-    ViewGoBack,
-
     // Audio Playback
     PlaybackConnectGCastDevice(GCastDevice),
     PlaybackDisconnectGCastDevice,
@@ -245,7 +242,6 @@ impl SwApplication {
         let window = SwApplicationWindow::default();
 
         match action {
-            Action::ViewGoBack => window.go_back(),
             Action::PlaybackConnectGCastDevice(device) => {
                 imp.player.connect_to_gcast_device(device)
             }

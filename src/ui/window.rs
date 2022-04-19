@@ -297,8 +297,8 @@ impl SwApplicationWindow {
         action!(
             self,
             "go-back",
-            clone!(@strong sender => move |_, _| {
-                send!(sender, Action::ViewGoBack);
+            clone!(@weak self as this => move |_, _| {
+                this.go_back();
             })
         );
         app.set_accels_for_action("win.go-back", &["Escape"]);
