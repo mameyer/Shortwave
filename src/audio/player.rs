@@ -38,6 +38,7 @@ use crate::audio::controller::{
 use crate::audio::{GCastDevice, Song};
 use crate::i18n::*;
 use crate::settings::{settings_manager, Key};
+use crate::ui::SwApplicationWindow;
 use crate::{config, path};
 
 #[rustfmt::skip]
@@ -195,8 +196,7 @@ impl Player {
                 .new_source_uri(&url.to_string());
         } else {
             let text = i18n("Station cannot be streamed. URL is not valid.");
-            let notification = adw::Toast::new(&text);
-            send!(self.sender, Action::ViewShowNotification(notification));
+            SwApplicationWindow::default().show_notification(&text);
         }
     }
 
@@ -251,8 +251,7 @@ impl Player {
             warn!("Cannot save song: {}", err.to_string());
 
             let text = i18n("Cannot save song.");
-            let notification = adw::Toast::new(&text);
-            send!(self.sender, Action::ViewShowNotification(notification))
+            SwApplicationWindow::default().show_notification(&text);
         }
     }
 

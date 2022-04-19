@@ -42,7 +42,6 @@ pub enum Action {
     ViewSet(SwView),
     ViewSetMiniPlayer(bool),
     ViewRaise,
-    ViewShowNotification(adw::Toast),
 
     // Audio Playback
     PlaybackConnectGCastDevice(GCastDevice),
@@ -253,7 +252,6 @@ impl SwApplication {
             Action::ViewSet(view) => window.set_view(view),
             Action::ViewRaise => window.present_with_time((glib::monotonic_time() / 1000) as u32),
             Action::ViewSetMiniPlayer(enable) => window.enable_mini_player(enable),
-            Action::ViewShowNotification(notification) => window.show_notification(notification),
             Action::PlaybackConnectGCastDevice(device) => {
                 imp.player.connect_to_gcast_device(device)
             }

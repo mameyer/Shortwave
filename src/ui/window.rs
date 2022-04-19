@@ -401,9 +401,9 @@ impl SwApplicationWindow {
         self.update_visible_view();
     }
 
-    pub fn show_notification(&self, notification: adw::Toast) {
-        let imp = self.imp();
-        imp.toast_overlay.add_toast(&notification);
+    pub fn show_notification(&self, text: &str) {
+        let toast = adw::Toast::new(text);
+        self.imp().toast_overlay.add_toast(&toast);
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {
