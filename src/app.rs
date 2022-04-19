@@ -39,7 +39,6 @@ use crate::ui::{about_dialog, SwApplicationWindow, SwView};
 pub enum Action {
     // User Interface
     ViewGoBack,
-    ViewRaise,
 
     // Audio Playback
     PlaybackConnectGCastDevice(GCastDevice),
@@ -247,7 +246,6 @@ impl SwApplication {
 
         match action {
             Action::ViewGoBack => window.go_back(),
-            Action::ViewRaise => window.present_with_time((glib::monotonic_time() / 1000) as u32),
             Action::PlaybackConnectGCastDevice(device) => {
                 imp.player.connect_to_gcast_device(device)
             }

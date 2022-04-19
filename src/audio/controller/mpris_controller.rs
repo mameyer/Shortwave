@@ -1,5 +1,5 @@
 // Shortwave - mpris_controller.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@ use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 use std::sync::Arc;
 
-use gio::prelude::*;
 use glib::{clone, Sender};
+use gtk::prelude::*;
 use gtk::{gio, glib};
 use mpris_player::{Metadata, MprisPlayer, OrgMprisMediaPlayer2Player, PlaybackStatus};
 
@@ -27,6 +27,7 @@ use crate::api::{FaviconDownloader, SwStation};
 use crate::app::Action;
 use crate::audio::{Controller, PlaybackState};
 use crate::config;
+use crate::ui::SwApplicationWindow;
 
 pub struct MprisController {
     sender: Sender<Action>,
@@ -94,10 +95,10 @@ impl MprisController {
 
     fn setup_signals(&self) {
         // mpris raise
-        self.mpris
-            .connect_raise(clone!(@strong self.sender as sender => move || {
-                send!(sender, Action::ViewRaise);
-            }));
+        self.mpris.connect_raise(move || {
+            let window = SwApplicationWindow::default();
+            window.present_with_time((glib::monotonic_time() / 1000) as u32);
+        });
 
         // mpris play / pause
         self.mpris.connect_play_pause(
