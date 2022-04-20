@@ -20,12 +20,12 @@ use std::str::FromStr;
 
 use adw::subclass::prelude::*;
 use gio::subclass::prelude::ApplicationImpl;
-use glib::{clone, Receiver, Sender};
+use glib::{clone, ObjectExt, ParamSpec, ParamSpecObject, Receiver, Sender, ToValue};
 use gtk::glib::WeakRef;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
-use once_cell::sync::OnceCell;
+use once_cell::sync::{Lazy, OnceCell};
 
 use crate::api::{Client, SwStation};
 use crate::audio::{GCastDevice, PlaybackState, Player, Song};
@@ -45,10 +45,6 @@ pub enum Action {
     PlaybackToggle,
     PlaybackSetVolume(f64),
     PlaybackSaveSong(Song),
-
-    // Library
-    LibraryAddStations(Vec<SwStation>),
-    LibraryRemoveStations(Vec<SwStation>),
 
     SettingsKeyChanged(Key),
 }
@@ -95,7 +91,28 @@ mod imp {
     }
 
     // Implement GLib.Object for SwApplication
-    impl ObjectImpl for SwApplication {}
+    impl ObjectImpl for SwApplication {
+        fn properties() -> &'static [ParamSpec] {
+            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
+                vec![ParamSpecObject::new(
+                    "library",
+                    "Library",
+                    "Library",
+                    SwLibrary::static_type(),
+                    glib::ParamFlags::READABLE,
+                )]
+            });
+
+            PROPERTIES.as_ref()
+        }
+
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+            match pspec.name() {
+                "library" => obj.library().to_value(),
+                _ => unimplemented!(),
+            }
+        }
+    }
 
     // Implement Gtk.Application for SwApplication
     impl GtkApplicationImpl for SwApplication {}
@@ -255,8 +272,6 @@ impl SwApplication {
             Action::PlaybackToggle => imp.player.toggle_playback(),
             Action::PlaybackSetVolume(volume) => imp.player.set_volume(volume),
             Action::PlaybackSaveSong(song) => imp.player.save_song(song),
-            Action::LibraryAddStations(stations) => imp.library.add_stations(stations),
-            Action::LibraryRemoveStations(stations) => imp.library.remove_stations(stations),
             Action::SettingsKeyChanged(key) => self.apply_settings_changes(key),
         }
         glib::Continue(true)

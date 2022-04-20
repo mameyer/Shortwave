@@ -25,7 +25,7 @@ use once_cell::unsync::OnceCell;
 use shumate::prelude::*;
 
 use crate::api::{FaviconDownloader, SwStation};
-use crate::app::Action;
+use crate::app::{Action, SwApplication};
 use crate::database::SwLibrary;
 use crate::i18n;
 use crate::ui::{FaviconSize, StationFavicon, SwApplicationWindow};
@@ -319,8 +319,8 @@ impl SwStationDialog {
             .connect_clicked(clone!(@weak self as this => move|_|
                 let imp = this.imp();
                 let station = imp.station.get().unwrap().clone();
+                SwApplication::default().library().add_stations(vec![station]);
 
-                send!(imp.sender.get().unwrap(), Action::LibraryAddStations(vec![station]));
                 this.hide();
                 this.close();
             ));
@@ -329,8 +329,8 @@ impl SwStationDialog {
             .connect_clicked(clone!(@weak self as this => move|_|
                 let imp = this.imp();
                 let station = imp.station.get().unwrap().clone();
+                SwApplication::default().library().remove_stations(vec![station]);
 
-                send!(imp.sender.get().unwrap(), Action::LibraryRemoveStations(vec![station]));
                 this.hide();
                 this.close();
             ));

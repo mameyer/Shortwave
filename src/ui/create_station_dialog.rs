@@ -27,7 +27,7 @@ use url::Url;
 use uuid::Uuid;
 
 use crate::api::{StationMetadata, SwStation};
-use crate::app::Action;
+use crate::app::{Action, SwApplication};
 use crate::ui::{FaviconSize, StationFavicon, SwApplicationWindow};
 
 mod imp {
@@ -165,10 +165,9 @@ impl SwCreateStationDialog {
         let favicon = imp.favicon.borrow().clone();
 
         let station = SwStation::new(uuid, true, false, StationMetadata::new(name, url), favicon);
-        send!(
-            imp.sender.get().unwrap(),
-            Action::LibraryAddStations(vec![station])
-        );
+        SwApplication::default()
+            .library()
+            .add_stations(vec![station]);
         self.close();
     }
 
