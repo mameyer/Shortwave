@@ -52,7 +52,7 @@ impl Default for SwLibraryStatus {
 mod imp {
     use super::*;
 
-    #[derive(Debug)]
+    #[derive(Debug, Default)]
     pub struct SwLibrary {
         pub model: SwStationModel,
         pub status: RefCell<SwLibraryStatus>,
@@ -64,22 +64,7 @@ mod imp {
     #[glib::object_subclass]
     impl ObjectSubclass for SwLibrary {
         const NAME: &'static str = "SwLibrary";
-        type ParentType = glib::Object;
         type Type = super::SwLibrary;
-
-        fn new() -> Self {
-            let model = SwStationModel::new();
-            let status = RefCell::default();
-            let client = OnceCell::default();
-            let sender = OnceCell::default();
-
-            Self {
-                model,
-                status,
-                client,
-                sender,
-            }
-        }
     }
 
     impl ObjectImpl for SwLibrary {

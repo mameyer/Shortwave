@@ -35,7 +35,6 @@ mod imp {
     #[glib::object_subclass]
     impl ObjectSubclass for SwStationModel {
         const NAME: &'static str = "SwStationModel";
-        type ParentType = glib::Object;
         type Type = super::SwStationModel;
         type Interfaces = (gio::ListModel,);
     }
@@ -65,7 +64,6 @@ glib::wrapper! {
 }
 
 impl SwStationModel {
-    #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new(&[]).unwrap()
     }
@@ -104,5 +102,11 @@ impl SwStationModel {
         let len = self.n_items();
         self.imp().map.borrow_mut().clear();
         self.items_changed(0, len, 0);
+    }
+}
+
+impl Default for SwStationModel {
+    fn default() -> Self {
+        Self::new()
     }
 }

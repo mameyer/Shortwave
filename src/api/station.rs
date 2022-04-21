@@ -41,7 +41,6 @@ mod imp {
     #[glib::object_subclass]
     impl ObjectSubclass for SwStation {
         const NAME: &'static str = "SwStation";
-        type ParentType = glib::Object;
         type Type = super::SwStation;
     }
 
