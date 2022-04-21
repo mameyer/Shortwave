@@ -230,8 +230,8 @@ impl SwApplication {
         action!(
             self,
             "quit",
-            clone!(@weak self as this => move |_, _| {
-                this.quit();
+            clone!(@weak window => move |_, _| {
+                window.close();
             })
         );
         self.set_accels_for_action("app.quit", &["<primary>q"]);
