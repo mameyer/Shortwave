@@ -86,7 +86,7 @@ impl Client {
             Err(err) => {
                 error!("Unable to deserialize data: {}", err.to_string());
                 error!("Raw unserialized data: {}", response);
-                return Err(Error::SerdeError(err));
+                return Err(Error::Deserializer(err));
             }
         };
 
@@ -119,7 +119,7 @@ impl Client {
             Err(err) => {
                 error!("Unable to deserialize data: {}", err.to_string());
                 error!("Raw unserialized data: {}", response);
-                return Err(Error::SerdeError(err));
+                return Err(Error::Deserializer(err));
             }
         };
 
@@ -127,13 +127,17 @@ impl Client {
             Some(data) => Ok(data),
             None => {
                 warn!("API: No station for identifier \"{}\" found", uuid);
-                Err(Error::InvalidStationError(uuid.to_owned()))
+                Err(Error::InvalidStation(uuid.to_owned()))
             }
         }
     }
 
     async fn build_url(&self, param: &str, options: Option<&str>) -> Result<Url, Error> {
-        let mut url = self.server.borrow().join(param)?;
+        let mut url = self
+            .server
+            .borrow()
+            .join(param)
+            .expect("Unable to join url");
         if let Some(options) = options {
             url.set_query(Some(options))
         }

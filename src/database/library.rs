@@ -275,7 +275,7 @@ impl SwLibrary {
                     return;
                 }
                 Err(err) => {
-                    is_orphaned = matches!(err, Error::InvalidStationError(_));
+                    is_orphaned = matches!(err, Error::InvalidStation(_));
                     warn!(
                         "Unable to receive data for station {}, trying to use cached data: {}",
                         uuid,

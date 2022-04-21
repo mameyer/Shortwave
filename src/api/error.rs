@@ -1,5 +1,5 @@
 // Shortwave - error.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,30 +19,21 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {
-    #[error("Serde error: {0}")]
-    SerdeError(#[from] serde_json::error::Error),
-
-    #[error("URL parser error: {0}")]
-    UrlParseError(#[from] url::ParseError),
+    #[error("Serde deserializer error: {0}")]
+    Deserializer(#[from] serde_json::error::Error),
 
     #[error("GLib Error: {0}")]
-    GLibError(#[from] glib::error::Error),
+    GLib(#[from] glib::error::Error),
 
     #[error("Input/Output error: {0}")]
-    IoError(#[from] std::io::Error),
+    Io(#[from] std::io::Error),
 
     #[error("Network error: {0}")]
-    NetworkError(#[from] isahc::Error),
-
-    #[error("Database error: {0}")]
-    DieselError(#[from] diesel::result::Error),
+    Network(#[from] isahc::Error),
 
     #[error("Invalid station UUID: {0}")]
-    InvalidStationError(String),
+    InvalidStation(String),
 
-    #[error("Cache error")]
-    CacheError,
-
-    #[error("No radio-browser.info api server reachable")]
-    NoServerReachable,
+    #[error("Unsupported url scheme")]
+    UnsupportedUrlScheme,
 }

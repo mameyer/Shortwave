@@ -32,15 +32,16 @@ pub struct FaviconDownloader {}
 
 impl FaviconDownloader {
     pub async fn download(url: Url, size: i32) -> Result<Pixbuf, Error> {
-        match Self::cached_pixbuf(&url, size).await {
-            Ok(pixbuf) => return Ok(pixbuf),
-            Err(_) => debug!("No cached favicon available for {:?}", url),
+        if let Some(pixbuf) = Self::cached_pixbuf(&url, size).await {
+            return Ok(pixbuf);
+        } else {
+            debug!("No cached favicon available for {:?}", url);
         }
 
         // We currently don't support "data:image/png" urls
         if url.scheme() == "data" {
             debug!("Unsupported favicon type for {:?}", url);
-            return Err(Error::CacheError);
+            return Err(Error::UnsupportedUrlScheme);
         }
 
         // Download favicon
@@ -64,8 +65,8 @@ impl FaviconDownloader {
         Ok(pixbuf)
     }
 
-    async fn cached_pixbuf(url: &Url, size: i32) -> Result<Pixbuf, Error> {
-        let file = Self::file(url)?;
+    async fn cached_pixbuf(url: &Url, size: i32) -> Option<Pixbuf> {
+        let file = Self::file(url).ok()?;
         if Self::exists(&file) {
             let ios = file
                 .open_readwrite_future(glib::PRIORITY_DEFAULT)
@@ -73,10 +74,12 @@ impl FaviconDownloader {
                 .expect("Could not open file");
             let data_input_stream = DataInputStream::new(&ios.input_stream());
 
-            Ok(Pixbuf::from_stream_at_scale_future(&data_input_stream, size, size, true).await?)
-        } else {
-            Err(Error::CacheError)
+            return Pixbuf::from_stream_at_scale_future(&data_input_stream, size, size, true)
+                .await
+                .ok();
         }
+
+        None
     }
 
     pub fn file(url: &Url) -> Result<gio::File, Error> {
