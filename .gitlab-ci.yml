@@ -18,7 +18,6 @@ variables:
     - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${RUNTIME_REPO} ${APP_ID} ${BRANCH}
     - mkdir logs
     - mv .flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/meson-log.txt logs/
-    - mv .flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.txt logs/
     - tar cf repo.tar repo/
   artifacts:
     name: 'Flatpak artifacts'

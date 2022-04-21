@@ -113,7 +113,7 @@ glib::wrapper! {
 
 impl SwStationSorter {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create SwStationSorter")
+        glib::Object::new(&[]).unwrap()
     }
 
     pub fn descending(&self) -> bool {
