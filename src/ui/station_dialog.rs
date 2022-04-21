@@ -213,7 +213,7 @@ impl SwStationDialog {
         imp.dialog_title.set_title(&metadata.name);
 
         if let Some(ref homepage) = metadata.homepage {
-            let url = homepage.to_string().replace("&", "&amp;");
+            let url = homepage.to_string().replace('&', "&amp;");
             let domain = homepage.domain().unwrap();
 
             imp.homepage_label.set_visible(true);
@@ -223,7 +223,7 @@ impl SwStationDialog {
         }
 
         // Action pill buttons
-        if SwLibrary::contains_station(&imp.station.get().unwrap()) {
+        if SwLibrary::contains_station(imp.station.get().unwrap()) {
             imp.library_remove_child.set_visible(true);
         } else {
             imp.library_add_child.set_visible(true);
@@ -291,9 +291,9 @@ impl SwStationDialog {
         let url = if let Some(url_resolved) = metadata.url_resolved {
             url_resolved.to_string()
         } else {
-            metadata.url.map(|x| x.to_string()).unwrap_or(String::new())
+            metadata.url.map(|x| x.to_string()).unwrap_or_default()
         };
-        let url = url.to_string().replace("&", "&amp;");
+        let url = url.replace('&', "&amp;");
         imp.stream_label
             .set_markup(&format!("<a href=\"{}\">{}</a>", &url, &url));
         imp.stream_label.set_tooltip_text(Some(&url));

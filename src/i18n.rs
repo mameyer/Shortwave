@@ -1,5 +1,5 @@
 // Shortwave - i18n.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ fn freplace(input: String, args: &[&str]) -> String {
     let mut parts = input.split("{}");
     let mut output = parts.next().unwrap_or_default().to_string();
     for (p, a) in parts.zip(args.iter()) {
-        output += &((*a).to_string() + &p.to_string());
+        output += &((*a).to_string() + p);
     }
     output
 }

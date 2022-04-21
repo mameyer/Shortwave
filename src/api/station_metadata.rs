@@ -69,7 +69,7 @@ pub struct StationMetadata {
 
 impl StationMetadata {
     pub fn formatted_tags(&self) -> String {
-        let tags = self.tags.split(",");
+        let tags = self.tags.split(',');
         let mut formatted = String::new();
         for tag in tags {
             formatted += &format!(", {}", tag.to_title_case());

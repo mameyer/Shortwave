@@ -414,7 +414,7 @@ impl SwApplicationWindow {
     }
 
     pub fn view(&self) -> SwView {
-        self.imp().view.borrow().clone()
+        *self.imp().view.borrow()
     }
 
     pub fn set_view(&self, view: SwView) {

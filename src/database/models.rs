@@ -41,7 +41,7 @@ impl StationEntry {
         let metadata = station.metadata();
 
         let favicon = if let Some(pixbuf) = station.favicon() {
-            if let Ok(data) = pixbuf.save_to_bufferv("png", &vec![]) {
+            if let Ok(data) = pixbuf.save_to_bufferv("png", &[]) {
                 Some(data)
             } else {
                 None

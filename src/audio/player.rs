@@ -425,7 +425,7 @@ impl SongTitle {
             let path = self
                 .current_path()
                 .expect("Unable to get path for current song");
-            return Some(Song::new(&title, path, duration));
+            return Some(Song::new(title, path, duration));
         }
         None
     }

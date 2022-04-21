@@ -186,7 +186,7 @@ impl SwSearchPage {
         sorting_action.connect_change_state(clone!(@weak self as this => move |action, state|{
             let imp = this.imp();
             if let Some(state) = state{
-                action.set_state(&state);
+                action.set_state(state);
                 let order = state.str().unwrap();
 
                 let label = match order{
@@ -218,7 +218,7 @@ impl SwSearchPage {
         order_action.connect_change_state(clone!(@weak self as this => move |action, state|{
             let imp = this.imp();
             if let Some(state) = state{
-                action.set_state(&state);
+                action.set_state(state);
 
                 let reverse = if state.str().unwrap() == "Ascending" {
                     imp.sorting_button_content.set_icon_name("view-sort-ascending-symbolic");

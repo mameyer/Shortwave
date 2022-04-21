@@ -54,13 +54,11 @@ impl Controller for InhibitController {
 
                 debug!("Install inhibitor")
             }
-        } else {
-            if self.cookie.get() != 0 {
-                app.uninhibit(self.cookie.get());
-                self.cookie.set(0);
+        } else if self.cookie.get() != 0 {
+            app.uninhibit(self.cookie.get());
+            self.cookie.set(0);
 
-                debug!("Remove inhibitor");
-            }
+            debug!("Remove inhibitor");
         }
     }
 

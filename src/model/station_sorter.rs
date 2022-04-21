@@ -126,7 +126,7 @@ impl SwStationSorter {
     }
 
     pub fn sorting(&self) -> SwSorting {
-        self.imp().sorting.borrow().clone()
+        *self.imp().sorting.borrow()
     }
 
     pub fn set_sorting(&self, sorting: SwSorting) {
@@ -166,6 +166,12 @@ impl SwStationSorter {
                 .bitrate
                 .cmp(&station_b.metadata().bitrate),
         }
+    }
+}
+
+impl Default for SwStationSorter {
+    fn default() -> Self {
+        Self::new()
     }
 }
 

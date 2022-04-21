@@ -47,20 +47,11 @@ pub enum GstreamerMessage {
     PlaybackStateChanged(PlaybackState),
 }
 
+#[derive(Default)]
 struct BufferingState {
     buffering: bool,
     buffering_probe: Option<(gstreamer::Pad, gstreamer::PadProbeId)>,
     is_live: Option<bool>,
-}
-
-impl Default for BufferingState {
-    fn default() -> Self {
-        Self {
-            buffering: false,
-            buffering_probe: None,
-            is_live: None,
-        }
-    }
 }
 
 pub struct GstreamerBackend {
@@ -198,7 +189,7 @@ impl GstreamerBackend {
         let bus = self.pipeline.bus().expect("Unable to get pipeline bus");
         bus.add_watch_local(
             clone!(@weak self.pipeline as pipeline, @strong self.sender as gst_sender, @strong self.buffering_state as buffering_state, @weak self.current_title as current_title => @default-panic, move |_, message|{
-                Self::parse_bus_message(pipeline, &message, gst_sender.clone(), &buffering_state, current_title);
+                Self::parse_bus_message(pipeline, message, gst_sender.clone(), &buffering_state, current_title);
                 Continue(true)
             }),
         )
@@ -253,10 +244,7 @@ impl GstreamerBackend {
     pub fn set_volume(&self, volume: f64) {
         if let Some(pulsesink) = self.pipeline.by_name("pulsesink") {
             // We need to block the signal, otherwise we risk creating a endless loop
-            glib::signal::signal_handler_block(
-                &pulsesink,
-                &self.volume_signal_id.as_ref().unwrap(),
-            );
+            glib::signal::signal_handler_block(&pulsesink, self.volume_signal_id.as_ref().unwrap());
 
             if volume != 0.0 {
                 pulsesink.set_property("mute", &false);
@@ -274,7 +262,7 @@ impl GstreamerBackend {
             // Unblock the signal again
             glib::signal::signal_handler_unblock(
                 &pulsesink,
-                &self.volume_signal_id.as_ref().unwrap(),
+                self.volume_signal_id.as_ref().unwrap(),
             );
         } else {
             warn!("PulseAudio is required for changing the volume.")
@@ -459,7 +447,7 @@ impl GstreamerBackend {
             // Workaround to avoid crash as described in issue #540
             // https://gitlab.gnome.org/World/Shortwave/-/issues/540
             // TODO: Find out actual root cause for this nonsense
-            if result > 86_400 || result < 0 {
+            if !(0..=86_400).contains(&result) {
                 error!(
                     "Unable to determine correct recording value: {} seconds",
                     result

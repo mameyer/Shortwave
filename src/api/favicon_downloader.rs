@@ -1,5 +1,5 @@
 // Shortwave - favicon_downloader.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@ impl FaviconDownloader {
     }
 
     async fn cached_pixbuf(url: &Url, size: i32) -> Result<Pixbuf, Error> {
-        let file = Self::file(&url)?;
+        let file = Self::file(url)?;
         if Self::exists(&file) {
             let ios = file
                 .open_readwrite_future(glib::PRIORITY_DEFAULT)

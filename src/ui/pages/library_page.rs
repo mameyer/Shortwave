@@ -110,7 +110,7 @@ impl SwLibraryPage {
         let imp = self.imp();
 
         // Setup empty state page
-        imp.status_page.set_icon_name(Some(&config::APP_ID));
+        imp.status_page.set_icon_name(Some(config::APP_ID));
 
         // Welcome text which gets displayed when the library is empty. "{}" is the
         // application name.

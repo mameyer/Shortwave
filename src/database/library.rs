@@ -134,7 +134,7 @@ impl SwLibrary {
     }
 
     pub fn status(&self) -> SwLibraryStatus {
-        self.imp().status.borrow().clone()
+        *self.imp().status.borrow()
     }
 
     pub fn refresh_data(&self, server: Option<&Url>) {

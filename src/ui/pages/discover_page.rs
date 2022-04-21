@@ -141,7 +141,7 @@ impl SwDiscoverPage {
         let sender = imp.sender.get().unwrap().clone();
 
         let model = &*client.model;
-        flowbox.init(model.clone(), sender.clone());
+        flowbox.init(model.clone(), sender);
 
         let fut = client.send_station_request(request).map(move |result| {
             if let Err(err) = result {
