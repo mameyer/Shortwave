@@ -9,7 +9,7 @@ Find and listen to internet radio stations
 
 ## Getting in Touch
 If you have any questions regarding the use or development of Shortwave,
-want to discuss design or simply hang out, please join us on our [#shortwave:gnome.org](https://matrix.to/#/#shortwave:matrix.org) channel.
+want to discuss design or simply hang out, please join us on our [#shortwave:gnome.org](https://matrix.to/#/#shortwave:gnome.org) channel.
 
 ## FAQ
 - **Why its called 'Shortwave'?**
@@ -55,22 +55,12 @@ You can install stable builds of Shortwave from Flathub by using this command:
 
 <a href="https://flathub.org/apps/details/de.haeckerfelix.Shortwave"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" width="200"/></a>
 
-
-#### Nightly builds
-Nightly builds are currently not available.
-
-~~You can install nightly builds of Shortwave by using this command:~~
-
-~~`flatpak install https://haeckerfelix.de/~repo/shortwave.flatpakref`~~
-
-~~More information are [here available](https://haeckerfelix.de/~repo/shortwave)! The repository is automatically updated every day. You can update to the latest nightly by running `flatpak update`!~~
-
 ## Building
 ### Building with Flatpak + GNOME Builder
-Shortwave can be built and run with [GNOME Builder](https://wiki.gnome.org/Apps/Builder) >= 3.28.
+Shortwave can be built and run with [GNOME Builder](https://wiki.gnome.org/Apps/Builder).
 Just clone the repo and hit the run button!
 
-You can get Builder from [here](https://wiki.gnome.org/Apps/Builder/Downloads), and the Rust Nightly Flatpak SDK (if necessary) from [here](https://haeckerfelix.de/~repo/)
+You can get Builder from [here](https://wiki.gnome.org/Apps/Builder/Downloads).
 
 ### Building it manually
 1. `git clone https://gitlab.gnome.org/World/Shortwave.git`
@@ -85,6 +75,7 @@ You need following dependencies to build Shortwave:
 - Gstreamer 1.16 or later
 - Sqlite3
 - OpenSSL
+- [libshumate](https://gitlab.gnome.org/GNOME/libshumate)
 - [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita)
 - [Meson Buildsystem](https://mesonbuild.com/)
 
