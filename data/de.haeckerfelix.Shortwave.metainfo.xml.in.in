@@ -60,6 +60,31 @@
   </requires>
 
   <releases>
+    <release version="3.0.0" date="2022-04-23">
+      <description>
+        <p>
+          Version 3.0.0 is a stable release, with the following major
+          improvements since 2.0.1:
+        </p>
+        <ul>
+          <li>Updated user interface that uses the new Adwaita design, with many improvements.</li>
+          <li>Support for the new GNOME 42 dark mode.</li>
+          <li>New option to add private stations to the library, which should not (or cannot) be available on radio-browser.info (e.g. local network or paid streams).</li>
+          <li>Display station bitrate information, which can also be used as a sorting option.</li>
+          <li>Save station data to disk so that it is still available when a station gets removed from the online database.</li>
+          <li>New button on the search page that allows to sort the search results.</li>
+          <li>Overhauled station dialog, with more clearly displayed information.</li>
+          <li>Update desktop notification on song change instead of generating a new separate notification for each song.</li>
+          <li>Shortwave can now be used normally, even if radio-browser.info is offline / unavailable.</li>
+        </ul>
+        <p>
+          Besides these improvements, this version also includes many changes
+          under the hood changes, so many crashes and other bugs have been
+          fixed. It also contains updated translations for 31 different
+          languages.
+        </p>
+      </description>
+    </release>
     <release version="2.0.1" date="2021-04-23">
       <description>
         <p>
