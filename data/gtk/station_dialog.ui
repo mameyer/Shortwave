@@ -138,6 +138,7 @@
                         </child>
                         <style>
                           <class name="notice-row"/>
+                          <class name="card"/>
                         </style>
                       </object>
                     </child>
@@ -153,6 +154,7 @@
                         </child>
                         <style>
                           <class name="error-row"/>
+                          <class name="card"/>
                         </style>
                       </object>
                     </child>
