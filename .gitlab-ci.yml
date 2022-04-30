@@ -41,7 +41,7 @@ checks:
   image: "rustlang/rust:nightly-slim"
   stage: check
   script:
-    - apt-get install -y perl
+    - apt-get install -y perl-base
     - build-aux/checks.sh --verbose --force-install
 
 # Lint the code
