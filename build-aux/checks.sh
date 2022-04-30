@@ -216,6 +216,64 @@ run_rustfmt() {
     fi
 }
 
+# Install cargo-fmt with cargo.
+install_cargo_deny() {
+    echo -e "$Installing cargo-deny…"
+    cargo install cargo-deny
+    if ! cargo-deny --version >/dev/null 2>&1; then
+        echo -e "$Failed to install cargo-deny"
+        exit 2
+    fi
+}
+
+# Run cargo-fmt to lint dependencies.
+run_cargo_deny() {
+    if ! cargo-deny --version >/dev/null 2>&1; then
+        if [[ $force_install -eq 1 ]]; then
+            install_cargo_deny
+        elif [ ! -t 1 ]; then
+            echo "Unable to lint dependencies, because cargo-deny could not be run"
+            exit 2
+        else
+            echo "Cargo-deny is needed to lint dependencies, but it isn’t available"
+            echo ""
+            echo "y: Install cargo-deny via cargo"
+            echo "N: Don't install cargo-deny and abort checks"
+            echo ""
+            while true; do
+                echo -n "Install cargo-deny? [y/N]: "; read yn < /dev/tty
+                case $yn in
+                    [Yy]* )
+                        install_cargo_deny
+                        break
+                        ;;
+                    [Nn]* | "" )
+                        exit 2
+                        ;;
+                    * )
+                        echo $invalid
+                        ;;
+                esac
+            done
+        fi
+    fi
+
+    echo -e "$Checking dependencies…"
+
+    if [[ $verbose -eq 1 ]]; then
+        echo ""
+        cargo-deny --version
+        echo ""
+    fi
+
+    echo -n "  "
+
+    if ! cargo-deny --log-level error check; then
+        echo -e "  Checking dependencies: $fail"
+        echo "Please fix the above issues"
+        exit 1
+    fi
+}
 
 # Install typos with cargo.
 install_typos() {
@@ -470,6 +528,8 @@ esac; shift; done
 check_cargo
 echo ""
 run_rustfmt
+echo ""
+run_cargo_deny
 echo ""
 run_typos
 echo ""
