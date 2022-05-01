@@ -26,8 +26,7 @@ pub fn create_action(key: Key) -> gio::Action {
 }
 
 pub fn settings() -> gio::Settings {
-    let app_id = config::APP_ID.trim_end_matches(".Devel");
-    gio::Settings::new(app_id)
+    gio::Settings::new(config::APP_ID)
 }
 
 pub fn bind_property<P: IsA<glib::Object>>(key: Key, object: &P, property: &str) {

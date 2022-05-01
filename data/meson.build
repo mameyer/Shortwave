@@ -1,16 +1,16 @@
-gnome = import('gnome')
-
 # Icons #
 subdir('icons')
 
-# Desktop file #
-desktop_conf = configuration_data()
-desktop_conf.set('icon', app_id)
+# Desktop file
+conf = configuration_data()
+conf.set('APP_ID', app_id)
+conf.set('PKGNAME', meson.project_name())
+conf.set('NAME', name)
 desktop_file = i18n.merge_file(
   input: configure_file(
-    input: files('de.haeckerfelix.Shortwave.desktop.in.in'),
-    output: 'de.haeckerfelix.Shortwave.desktop.in',
-    configuration: desktop_conf
+    input: '@0@.desktop.in.in'.format(base_id),
+    output: '@0@.desktop.in'.format(base_id),
+    configuration: conf
   ),
   output: '@0@.desktop'.format(app_id),
   type: 'desktop',
@@ -19,7 +19,7 @@ desktop_file = i18n.merge_file(
   install_dir: join_paths(datadir, 'applications')
 )
 
-# Validate desktop file #
+# Validate desktop file
 desktop_utils = find_program('desktop-file-validate', required: false)
 if desktop_utils.found()
   test('Validate desktop file', desktop_utils,
@@ -27,15 +27,16 @@ if desktop_utils.found()
   )
 endif
 
-
-# Appstream metadata #
-appdata_conf = configuration_data()
-appdata_conf.set('appid', app_id)
-appstream_file = i18n.merge_file(
+# Appdata
+conf = configuration_data()
+conf.set('APP_ID', app_id)
+conf.set('PKGNAME', meson.project_name())
+conf.set('NAME', name)
+appdata_file = i18n.merge_file(
   input: configure_file(
-    input: files('de.haeckerfelix.Shortwave.metainfo.xml.in.in'),
-    output: 'de.haeckerfelix.Shortwave.metainfo.xml.in',
-    configuration: appdata_conf
+    input: '@0@.metainfo.xml.in.in'.format(base_id),
+    output: '@0@.metainfo.xml.in'.format(base_id),
+    configuration: conf
   ),
   output: '@0@.metainfo.xml'.format(app_id),
   po_dir: '../po',
@@ -43,40 +44,65 @@ appstream_file = i18n.merge_file(
   install_dir: join_paths(datadir, 'metainfo')
 )
 
-
-# Gschema file #
-install_data('de.haeckerfelix.Shortwave.gschema.xml',
-  install_dir: join_paths(datadir, 'glib-2.0/schemas')
-)
-
-# Validate gschema file #
-compile_schemas = find_program('glib-compile-schemas', required: false)
-if compile_schemas.found()
-  test('Validate schema file', compile_schemas,
-    args: ['--strict', '--dry-run', meson.current_source_dir()]
+# Validate Appdata
+appstream_util = find_program('appstream-util', required: false)
+if appstream_util.found()
+  test(
+    'Validate appdata', appstream_util,
+    args: [
+      'validate', '--nonet', appdata_file.full_path()
+    ]
   )
 endif
 
-
-# DBUS service
-service_conf = configuration_data()
-service_conf.set('appid', app_id)
-service_conf.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
+# GSchema
+conf = configuration_data()
+conf.set('APP_ID', app_id)
+conf.set('PKGNAME', meson.project_name())
 configure_file(
-  input: 'de.haeckerfelix.Shortwave.service.in',
-  output: '@0@.service'.format(app_id),
-  configuration: service_conf,
-  install_dir: join_paths(datadir,'dbus-1', 'services')
+  input: '@0@.gschema.xml.in'.format(base_id),
+  output: '@0@.gschema.xml'.format(app_id),
+  configuration: conf,
+  install: true,
+  install_dir: datadir / 'glib-2.0' / 'schemas'
 )
 
+# Validata GSchema
+glib_compile_schemas = find_program('glib-compile-schemas', required: false)
+if glib_compile_schemas.found()
+  test(
+    'Validate gschema', glib_compile_schemas,
+    args: [
+      '--strict', '--dry-run', meson.current_build_dir()
+    ]
+  )
+endif
+
+# DBus service
+conf = configuration_data()
+conf.set('APP_ID', app_id)
+conf.set('PKGNAME', meson.project_name())
+conf.set('BINDIR', bindir)
+configure_file(
+  input: '@0@.service.in'.format(base_id),
+  output: '@0@.service'.format(app_id),
+  configuration: conf,
+  install_dir: join_paths(datadir,'dbus-1', 'services')
+)
 
 # Resources
 gnome.compile_resources(
   app_id,
-  'de.haeckerfelix.Shortwave.gresource.xml',
+  '@0@.gresource.xml'.format(base_id),
   gresource_bundle: true,
   source_dir: meson.current_build_dir(),
   install: true,
   install_dir: join_paths(datadir, meson.project_name())
 )
 
+# Run required post-install steps
+gnome.post_install(
+  gtk_update_icon_cache: true,
+  glib_compile_schemas: true,
+  update_desktop_database: true,
+)

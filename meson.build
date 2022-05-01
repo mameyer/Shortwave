@@ -4,6 +4,9 @@ project('shortwave', 'rust',
           license: 'GPL-3.0-or-later',
 )
 
+gnome = import('gnome')
+i18n = import('i18n')
+
 # Dependencies
 dependency('sqlite3', version: '>= 3.20')
 dependency('openssl', version: '>= 1.0')
@@ -25,39 +28,33 @@ dependency('gstreamer-bad-audio-1.0', version: '>= 1.16')
 
 # Initialize project variables
 name       = 'Shortwave'
+base_id    = 'de.haeckerfelix.Shortwave'
 app_id     = 'de.haeckerfelix.Shortwave'
-profile    = get_option('profile')
 vcs_tag    = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+profile    = get_option('profile')
+datadir    = join_paths(get_option('prefix'), get_option('datadir'))
 localedir  = join_paths(get_option('prefix'), get_option('localedir'))
-datadir    = get_option('datadir')
-pkgdatadir = join_paths(get_option('prefix'), datadir, meson.project_name())
+bindir     = join_paths(get_option('prefix'), get_option('bindir'))
 
 # Change app id for development builds
 if profile == 'development'
   app_id = '@0@.Devel'.format(app_id)
 endif
 
-# Setup pre-commit hook for ensuring coding style is always consistent
+# Setup pre-commit hook to run checks before changes are getting committed
 if profile == 'development'
-    message('Setting up git pre-commit hook..')
-    run_command('mkdir', '.git/hooks/')
-    run_command('cp', '-f', 'build-aux/pre-commit.hook', '.git/hooks/pre-commit')
+  message('Setting up git pre-commit hook..')
+  run_command('mkdir', '.git/hooks/')
+  run_command('cp', '-f', 'build-aux/pre-commit.hook', '.git/hooks/pre-commit')
 endif
 
-i18n = import('i18n')
-
-subdir('data')
-subdir('src')
-subdir('po')
-
+# Vendor all Rust dependencies for release tarballs
 meson.add_dist_script(
   'build-aux/dist-vendor.sh',
   meson.project_source_root(),
   join_paths(meson.project_build_root(), 'meson-dist', meson.project_name() + '-' + meson.project_version())
 )
 
-gnome.post_install(
-  gtk_update_icon_cache: true,
-  glib_compile_schemas: true,
-  update_desktop_database: true,
-)
+subdir('data')
+subdir('src')
+subdir('po')

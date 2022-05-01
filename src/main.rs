@@ -73,10 +73,13 @@ fn main() {
     textdomain(config::PKGNAME).unwrap();
 
     // Load app resources
-    let res = gio::Resource::load(
-        config::PKGDATADIR.to_owned() + &format!("/{}.gresource", config::APP_ID),
-    )
-    .expect("Could not load resources");
+    let path = &format!(
+        "{}/{}/{}.gresource",
+        config::DATADIR,
+        config::PKGNAME,
+        config::APP_ID
+    );
+    let res = gio::Resource::load(path).expect("Could not load resources");
     gio::resources_register(&res);
 
     let ctx = glib::MainContext::default();

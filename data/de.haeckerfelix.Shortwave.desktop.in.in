@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Shortwave
+Name=@NAME@
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-Icon=@icon@
-Exec=shortwave
+Icon=@APP_ID@
+Exec=@PKGNAME@
 Terminal=false
 Type=Application
 StartupNotify=true
