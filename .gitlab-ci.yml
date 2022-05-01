@@ -41,9 +41,7 @@ checks:
   image: "rustlang/rust:nightly-slim"
   stage: check
   script:
-    - apt-get update && apt-get install --no-install-recommends software-properties-common -y
-    - add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu jammy universe"
-    - apt-get install -y perl-base libfindbin-libs-perl
+    - apt update && apt install --no-install-recommends perl perl-modules-5.28 make -y
     - build-aux/checks.sh --verbose --force-install
 
 # Lint the code
