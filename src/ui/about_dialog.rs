@@ -24,7 +24,6 @@ pub fn show_about_dialog(window: &SwApplicationWindow) {
     let vcs_tag = config::VCS_TAG;
     let version: String = match config::PROFILE {
         "development" => format!("{} \n(Development Commit {})", config::VERSION, vcs_tag),
-        "beta" => format!("Beta {}", config::VERSION.split_at(4).1),
         _ => format!("{}-stable", config::VERSION),
     };
 
