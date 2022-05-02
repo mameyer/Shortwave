@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-16 13:31+0000\n"
-"PO-Revision-Date: 2022-04-17 16:21+0200\n"
+"POT-Creation-Date: 2022-05-02 11:31+0000\n"
+"PO-Revision-Date: 2022-05-02 20:59+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -178,7 +178,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Starta/stoppa uppspelning"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Röster"
@@ -301,11 +301,11 @@ msgstr ""
 "Denna station finns endast i ditt bibliotek och är inte del av den "
 "offentliga stationsdatabasen på internet."
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "Övergiven station"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -313,44 +313,44 @@ msgstr ""
 "Informationen kunde inte uppdateras, troligen har denna station tagits bort "
 "från den offentliga stationsdatabasen på internet."
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "Information"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Språk"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "Taggar"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "Plats"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Land"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Län"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "Ljud"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Bithastighet"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "Ström"
 
@@ -430,20 +430,20 @@ msgstr "_Tangentbordsgenvägar"
 msgid "_About Shortwave"
 msgstr "_Om Shortwave"
 
-#: src/audio/player.rs:196
+#: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
 msgstr "Stationen kan inte strömmas. Ogiltig URL."
 
-#: src/audio/player.rs:252
+#: src/audio/player.rs:253
 msgid "Cannot save song."
 msgstr "Det går inte att spara låt."
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "Lyssna på internetradio"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -451,10 +451,6 @@ msgstr ""
 "\n"
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>"
-
-#: src/ui/create_station_dialog.rs:104
-msgid "Select station image"
-msgstr "Välj bild för station"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:118
@@ -485,7 +481,7 @@ msgstr "Driftas av radio-browser.info"
 msgid "Station data could not be received."
 msgstr "Kunde inte erhålla stationsdata."
 
-#: src/ui/pages/library_page.rs:117
+#: src/ui/pages/library_page.rs:118
 msgid "Welcome to {}"
 msgstr "Välkommen till {}"
 
@@ -503,14 +499,14 @@ msgstr[1] ""
 "Antalet resultat är begränsat till {} objekt. Försök använda en mer specifik "
 "sökterm."
 
-#: src/ui/station_dialog.rs:289
+#: src/ui/station_dialog.rs:287
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "Shortwave"
+msgid "@NAME@"
+msgstr "@NAME@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
@@ -559,6 +555,12 @@ msgstr "Sömlös integration med skrivbordsmiljön GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Ström;Stream;Wave;"
+
+#~ msgid "Select station image"
+#~ msgstr "Välj bild för station"
+
+#~ msgid "Shortwave"
+#~ msgstr "Shortwave"
 
 #~ msgid "Error details"
 #~ msgstr "Feldetaljer"
