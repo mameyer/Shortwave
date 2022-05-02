@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-16 13:31+0000\n"
-"PO-Revision-Date: 2022-04-16 19:02+0300\n"
+"POT-Creation-Date: 2022-05-02 11:31+0000\n"
+"PO-Revision-Date: 2022-05-02 17:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -166,7 +166,6 @@ msgid "Go back"
 msgstr "Назад"
 
 #: data/gtk/help_overlay.ui:67
-#| msgid "Receiving Station Data…"
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "Освіжити дані станцій"
@@ -180,7 +179,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Перемкнути відтворення"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Голоси"
@@ -303,11 +302,11 @@ msgstr ""
 "Запис станції є лише у вашій бібліотеці — він не є частиною "
 "загальнодоступної бази даних станцій в інтернеті."
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "Осиротіла станція"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -315,44 +314,44 @@ msgstr ""
 "Не вдалося оновити відомості. Ймовірно, станцію було вилучено з бази даних "
 "загальнодоступних інтернет-станцій."
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "Відомості"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Мова"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "Мітки"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "Місце"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Країна"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Штат"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "Звук"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Бітова швидкість"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "Кодек"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "Трансляція"
 
@@ -385,7 +384,6 @@ msgid "Searching for Devices…"
 msgstr "Пошук пристроїв…"
 
 #: data/gtk/window.ui:70
-#| msgid "Powered by radio-browser.info"
 msgid "Unable to connect to radio-browser.info"
 msgstr "Не вдалося встановити з'єднання із radio-browser.info"
 
@@ -394,11 +392,10 @@ msgid ""
 "Access to the public online station database is not available. Ensure that "
 "you are connected to the internet."
 msgstr ""
-"Немає доступу до відкритої бази даних інтернет-радіостанцій. Переконайтеся,"
-" що користуєтеся працездатним інтернет-з'єднанням."
+"Немає доступу до відкритої бази даних інтернет-радіостанцій. Переконайтеся, "
+"що користуєтеся працездатним інтернет-з'єднанням."
 
 #: data/gtk/window.ui:89
-#| msgid "Search again"
 msgid "Try again"
 msgstr "Повторити спробу"
 
@@ -407,7 +404,6 @@ msgid "_Enable Mini Player"
 msgstr "Увімкнути _мініпрогравач"
 
 #: data/gtk/window.ui:159 data/gtk/window.ui:240
-#| msgid "Receiving Station Data…"
 msgid "_Refresh Station Data"
 msgstr "_Освіжити дані станцій"
 
@@ -435,26 +431,22 @@ msgstr "_Клавіатурні скорочення"
 msgid "_About Shortwave"
 msgstr "П_ро «Shortwave»"
 
-#: src/audio/player.rs:196
+#: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
 msgstr "Станцію не можна транслювати. Адреса є некоректною."
 
-#: src/audio/player.rs:252
+#: src/audio/player.rs:253
 msgid "Cannot save song."
 msgstr "Не вдалося зберегти композицію."
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "Прослуховування інтернет-радіо"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2020"
-
-#: src/ui/create_station_dialog.rs:104
-msgid "Select station image"
-msgstr "Виберіть зображення для станції"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:118
@@ -485,7 +477,7 @@ msgstr "На основі radio-browser.info"
 msgid "Station data could not be received."
 msgstr "Не вдалося отримати дані станції."
 
-#: src/ui/pages/library_page.rs:117
+#: src/ui/pages/library_page.rs:118
 msgid "Welcome to {}"
 msgstr "Вітаємо у {}"
 
@@ -509,14 +501,14 @@ msgstr[3] ""
 "Кількість результатів обмежено {} записом. Спробуйте точніше визначити "
 "критерії пошуку."
 
-#: src/ui/station_dialog.rs:289
+#: src/ui/station_dialog.rs:287
 msgid "{} kbit/s"
 msgstr "{} кбіт/с"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "Коротка хвиля"
+msgid "@NAME@"
+msgstr "@NAME@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
@@ -568,6 +560,12 @@ msgstr "Безшовна інтеграція до стільничного се
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;градіо;жрадіо;радіо;потік;трансляція;хвиля;"
+
+#~ msgid "Select station image"
+#~ msgstr "Виберіть зображення для станції"
+
+#~ msgid "Shortwave"
+#~ msgstr "Коротка хвиля"
 
 #~ msgid "Error details"
 #~ msgstr "Подробиці щодо помилки"
