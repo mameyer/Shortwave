@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-16 13:31+0000\n"
-"PO-Revision-Date: 2022-04-17 10:56+0300\n"
+"POT-Creation-Date: 2022-05-02 11:31+0000\n"
+"PO-Revision-Date: 2022-05-04 14:28+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -165,7 +165,6 @@ msgid "Go back"
 msgstr "חזרה"
 
 #: data/gtk/help_overlay.ui:67
-#| msgid "Receiving Station Data…"
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "רענון מידע על התחנה"
@@ -179,7 +178,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "שינוי מצב הניגון"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "הצבעות"
@@ -300,11 +299,11 @@ msgid ""
 "online station database."
 msgstr "תחנה זו קיימת רק בספרייה שלך, ואינה חלק ממסד הנתונים הציבורי של תחנות."
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "תחנה יתומה"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -312,44 +311,44 @@ msgstr ""
 "אי אפשר לעדכן את המידע, כנראה כיוון שהתחנה הזאת הוסרה ממסד הנתונים הציבורי "
 "המקוון על תחנות."
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "מידע"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "שפה"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "תגיות"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "מיקום"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "ארץ"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "מדינה"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "שמע"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "קצב סיביות"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "מקודד"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "הזרמה"
 
@@ -380,7 +379,6 @@ msgid "Searching for Devices…"
 msgstr "מחפש אחר התקנים…"
 
 #: data/gtk/window.ui:70
-#| msgid "Powered by radio-browser.info"
 msgid "Unable to connect to radio-browser.info"
 msgstr "לא נִתן להתחבר ל־radio-browser.info"
 
@@ -391,7 +389,6 @@ msgid ""
 msgstr "אין גישה למסד הנתונים הציבורי המקוון. יש לוודא שישנו חיבור לרשת."
 
 #: data/gtk/window.ui:89
-#| msgid "Search again"
 msgid "Try again"
 msgstr "לנסות שוב"
 
@@ -400,7 +397,6 @@ msgid "_Enable Mini Player"
 msgstr "_אפשור נגן מוקטן"
 
 #: data/gtk/window.ui:159 data/gtk/window.ui:240
-#| msgid "Receiving Station Data…"
 msgid "_Refresh Station Data"
 msgstr "_רענון מידע על התחנה"
 
@@ -428,30 +424,25 @@ msgstr "_צירופי מקשים"
 msgid "_About Shortwave"
 msgstr "_על אודות Shortwave"
 
-#: src/audio/player.rs:196
-#| msgid "Station cannot be streamed."
+#: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
 msgstr "תחנה לא ניתנת לניגון. כתובת URL לא תקפה."
 
-#: src/audio/player.rs:252
+#: src/audio/player.rs:253
 msgid "Cannot save song."
 msgstr "לא נִתן לשמור את השיר."
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "האזנה לתחנת רדיו"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "\n"
 "<a href=\"https://l10n.gnome.org/teams/he/\">מיזם תרגום GNOME לעברית</a>"
-
-#: src/ui/create_station_dialog.rs:104
-msgid "Select station image"
-msgstr "בחירת תמונת תחנה"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:118
@@ -482,7 +473,7 @@ msgstr "מופעל על ידי radio-browser.info"
 msgid "Station data could not be received."
 msgstr "לא ניתן לקבל מידע על התחנה."
 
-#: src/ui/pages/library_page.rs:117
+#: src/ui/pages/library_page.rs:118
 msgid "Welcome to {}"
 msgstr "ברוך בואך אל ‏{}‏"
 
@@ -498,14 +489,14 @@ msgstr[1] "מספר התוצאות מוגבל ל־{} פריטים. יש לנסו
 msgstr[2] "מספר התוצאות מוגבל לשני פריטים. יש לנסות מינוח מסוים יותר."
 msgstr[3] "מספר התוצאות מוגבל ל־{} פריטים. יש לנסות מינוח מסוים יותר."
 
-#: src/ui/station_dialog.rs:289
+#: src/ui/station_dialog.rs:287
 msgid "{} kbit/s"
 msgstr "{} ק״ב/שנייה"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "Shortwave"
+msgid "@NAME@"
+msgstr "@NAME@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
@@ -553,6 +544,12 @@ msgstr "שילוב חלק בסביבת שולחן העבודה GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "רדיו;תחנות;תחנה;מוזיקה;הזרמה;גל;תדר;חדשות;"
+
+#~ msgid "Select station image"
+#~ msgstr "בחירת תמונת תחנה"
+
+#~ msgid "Shortwave"
+#~ msgstr "Shortwave"
 
 #~ msgid "Error details"
 #~ msgstr "פרטי שגיאה"
