@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-16 13:31+0000\n"
-"PO-Revision-Date: 2022-04-16 20:16+0300\n"
+"POT-Creation-Date: 2022-05-02 11:31+0000\n"
+"PO-Revision-Date: 2022-05-03 18:52+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -85,7 +85,7 @@ msgstr "Откройте для себя _новые станции"
 
 #: data/gtk/mini_controller.ui:87
 msgid "SHORTWAVE INTERNET RADIO"
-msgstr "КОРОТКОВОЛНОВОЕ ИНТЕРНЕТ-РАДИО"
+msgstr "SHORTWAVE ИНТЕРНЕТ-РАДИО"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
@@ -179,7 +179,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Переключение воспроизведения"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Голоса"
@@ -302,11 +302,11 @@ msgstr ""
 "Эта станция существует только в вашей библиотеке и не является частью "
 "общедоступной онлайновой базы данных станций."
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "Осиротевшая станция"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -314,44 +314,44 @@ msgstr ""
 "Информация не может быть обновлена, вероятно, эта станция была удалена из "
 "общедоступной онлайновой базы данных станций."
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "Информация"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Язык"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "Теги"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "Местоположение"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Страна"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Штат"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "Аудио"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Битрейт"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "Кодек"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "Поток"
 
@@ -429,28 +429,24 @@ msgstr "_Горячие клавиши"
 
 #: data/gtk/window.ui:232 data/gtk/window.ui:270
 msgid "_About Shortwave"
-msgstr "О Коротковолновом Интернет-Радио"
+msgstr "О Shortwave"
 
-#: src/audio/player.rs:196
+#: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
 msgstr "Станция не может транслироваться. URL-адрес недействителен."
 
-#: src/audio/player.rs:252
+#: src/audio/player.rs:253
 msgid "Cannot save song."
 msgstr "Невозможно сохранить песню."
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "Слушайте интернет-радио"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr "Aleksey Kabanov <https://launchpad.net/~ak099>"
-
-#: src/ui/create_station_dialog.rs:104
-msgid "Select station image"
-msgstr "Выбрать изображение станции"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:118
@@ -481,7 +477,7 @@ msgstr "Работает на сайте radio-browser.info"
 msgid "Station data could not be received."
 msgstr "Данные станции не могут быть получены."
 
-#: src/ui/pages/library_page.rs:117
+#: src/ui/pages/library_page.rs:118
 msgid "Welcome to {}"
 msgstr "Добро пожаловать на {}"
 
@@ -496,25 +492,25 @@ msgstr[0] "Количество результатов ограничено до
 msgstr[1] "Количество результатов ограничено до {}. Попробуйте уточнить поиск."
 msgstr[2] "Количество результатов ограничено до {}. Попробуйте уточнить поиск."
 
-#: src/ui/station_dialog.rs:289
+#: src/ui/station_dialog.rs:287
 msgid "{} kbit/s"
 msgstr "{} кБит/с"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "Коротковолновое Интернет-Радио"
+msgid "@NAME@"
+msgstr "@ИМЯ@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
-msgstr "Феликс Хеккер (Felix Häcker)"
+msgstr "Felix Häcker"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
 "database with over 25,000 stations."
 msgstr ""
-"Коротковолновое Интернет-Радио - это интернет-радиоплеер, который "
+"Shortwave - это интернет-радиоплеер, который "
 "предоставляет доступ к базе данных станций, насчитывающей более 25 000 "
 "станций."
 
@@ -558,3 +554,6 @@ msgstr "Бесшовная интеграция в среду рабочего �
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Радио;Стриминг;Волна;"
+
+#~ msgid "Select station image"
+#~ msgstr "Выбрать изображение станции"
