@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-16 13:31+0000\n"
-"PO-Revision-Date: 2022-04-17 11:31-0400\n"
+"POT-Creation-Date: 2022-05-05 12:58+0000\n"
+"PO-Revision-Date: 2022-05-10 19:01+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.4.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 42.0\n"
 "X-DL-Team: zh_CN\n"
 "X-DL-Module: shortwave\n"
 "X-DL-Branch: master\n"
@@ -184,7 +184,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "开关回放"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "票数"
@@ -305,54 +305,54 @@ msgid ""
 "online station database."
 msgstr "该电台仅存在于您的库中，且不是公共在线电台数据库的一部分。"
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "孤立电台"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
 msgstr "信息无法更新，可能是因为该电台已从公共在线电台数据库移除。"
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "信息"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "语言"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "标签"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "位置"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "国家"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "州省"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "音频"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "位速率"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "编解码器"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "流"
 
@@ -428,29 +428,25 @@ msgstr "键盘快捷键(_K)"
 msgid "_About Shortwave"
 msgstr "关于短波(_A)"
 
-#: src/audio/player.rs:196
+#: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
 msgstr "电台无法串流。网址无效。"
 
-#: src/audio/player.rs:252
+#: src/audio/player.rs:253
 msgid "Cannot save song."
 msgstr "无法保存歌曲。"
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "收听互联网广播"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr ""
 "Damned <damnedlies@163.com>, 2020.\n"
 "Dingzhong Chen <wsxy162@gmail.com>, 2020.\n"
 "lumingzh <lumingzh@qq.com>, 2022."
-
-#: src/ui/create_station_dialog.rs:104
-msgid "Select station image"
-msgstr "选择电台图像"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:118
@@ -481,7 +477,7 @@ msgstr "由 radio-browser.info 提供支持"
 msgid "Station data could not be received."
 msgstr "无法接收电台数据。"
 
-#: src/ui/pages/library_page.rs:117
+#: src/ui/pages/library_page.rs:118
 msgid "Welcome to {}"
 msgstr "欢迎使用 {}"
 
@@ -494,14 +490,14 @@ msgid_plural ""
 "search term."
 msgstr[0] "结果数量已限制为 {} 项。请尝试使用更明确的搜索词语。"
 
-#: src/ui/station_dialog.rs:289
+#: src/ui/station_dialog.rs:287
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "短波"
+msgid "@NAME@"
+msgstr "@NAME@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
@@ -547,6 +543,12 @@ msgstr "与 GNOME 桌面环境无缝集成"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;收音机;流;波;"
+
+#~ msgid "Select station image"
+#~ msgstr "选择电台图像"
+
+#~ msgid "Shortwave"
+#~ msgstr "短波"
 
 #~ msgid "Error details"
 #~ msgstr "错误详细信息"
