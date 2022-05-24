@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-19 16:04+0000\n"
-"PO-Revision-Date: 2022-04-20 13:05+0300\n"
+"POT-Creation-Date: 2022-05-05 12:58+0000\n"
+"PO-Revision-Date: 2022-05-24 10:24+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnometurk@gnome.org>\n"
 "Language: tr\n"
@@ -180,7 +180,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Kayıttan yürütmeyi aç/kapat"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Oylar"
@@ -303,11 +303,11 @@ msgstr ""
 "Bu istasyon yalnızca kitaplığınızda bulunur ve halka açık çevrim içi "
 "istasyon veri tabanının parçası değildir."
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "Yetim İstasyonlar"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -315,44 +315,44 @@ msgstr ""
 "Bilgiler güncellenemedi, büyük olasılıkla bu istasyon halka açık çevrim içi "
 "istasyon veri tabanından kaldırıldı."
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "Bilgi"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Dil"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "Etiketler"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "Konum"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Ülke"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Eyalet"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "Ses"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Bit oranı"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "Kodlayıcı"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "Akış"
 
@@ -440,12 +440,12 @@ msgstr "İstasyon yayını bulunamadı. Bağlantı geçersiz."
 msgid "Cannot save song."
 msgstr "Şarkı kaydedilemedi."
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "İnternet radyolarını dinle"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>, 2022\n"
@@ -501,8 +501,8 @@ msgstr "{} kbit/s"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "Kısa Dalga"
+msgid "@NAME@"
+msgstr "@NAME@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
@@ -550,6 +550,9 @@ msgstr "GNOME masaüstü ortamı ile kusursuz tümleşim"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radyo;Yayın;Akış;Dalga;Kısa Dalga;İstasyon;Shortwave;"
+
+#~ msgid "Shortwave"
+#~ msgstr "Kısa Dalga"
 
 #~ msgid "Select station image"
 #~ msgstr "İstasyon görseli seç"
