@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-05-02 11:31+0000\n"
-"PO-Revision-Date: 2022-05-03 18:52+0300\n"
+"POT-Creation-Date: 2022-05-05 12:58+0000\n"
+"PO-Revision-Date: 2022-06-26 16:29+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #: data/gtk/create_station_dialog.ui:8
@@ -57,7 +57,7 @@ msgstr "Название"
 
 #: data/gtk/create_station_dialog.ui:151
 msgid "Stream URL"
-msgstr "URL-адрес потока"
+msgstr "URL трансляции"
 
 #: data/gtk/create_station_dialog.ui:165
 msgid "Create Station"
@@ -81,7 +81,7 @@ msgstr "Получение данных о станции…"
 
 #: data/gtk/library_page.ui:87
 msgid "_Discover New Stations"
-msgstr "Откройте для себя _новые станции"
+msgstr "_Откройте для себя новые станции"
 
 #: data/gtk/mini_controller.ui:87
 msgid "SHORTWAVE INTERNET RADIO"
@@ -102,7 +102,7 @@ msgstr "Вид"
 
 #: data/gtk/settings_window.ui:14
 msgid "_Dark Mode"
-msgstr "Темный режим"
+msgstr "_Темный режим"
 
 #: data/gtk/settings_window.ui:16
 msgid "Whether the application should use a dark theme"
@@ -114,7 +114,7 @@ msgstr "Возможности"
 
 #: data/gtk/settings_window.ui:32
 msgid "_Notifications"
-msgstr "Включить _уведомления"
+msgstr "_Уведомления"
 
 #: data/gtk/settings_window.ui:34
 msgid "Show desktop notifications when a new song gets played"
@@ -206,11 +206,11 @@ msgstr "_Язык"
 
 #: data/gtk/search_page.ui:158 data/gtk/window.ui:176
 msgid "_Country"
-msgstr "С_трана"
+msgstr "_Страна"
 
 #: data/gtk/search_page.ui:163 data/gtk/window.ui:181
 msgid "S_tate"
-msgstr "_Штат"
+msgstr "Ш_тат"
 
 #: data/gtk/search_page.ui:168 data/gtk/window.ui:186
 msgid "_Votes"
@@ -226,7 +226,7 @@ msgstr "_По возрастанию"
 
 #: data/gtk/search_page.ui:185 data/gtk/window.ui:203
 msgid "_Descending"
-msgstr "По _убыванию"
+msgstr "_По убыванию"
 
 #: data/gtk/sidebar_controller.ui:22
 msgid "An error occurred"
@@ -238,7 +238,7 @@ msgstr "_Показать информацию о станции"
 
 #: data/gtk/sidebar_controller.ui:192
 msgid "Stream to a _Device"
-msgstr "Вывести на _устройство"
+msgstr "Трансляция на _устройство"
 
 #: data/gtk/song_listbox.ui:23
 msgid ""
@@ -246,7 +246,7 @@ msgid ""
 "\n"
 "If the station does not send any metadata, no songs can be recognized."
 msgstr ""
-"Песни автоматически распознаются с помощью метаданных потока.\n"
+"Песни автоматически распознаются с помощью метаданных трансляции.\n"
 "\n"
 "Если станция не отправляет метаданные, песни не распознаются."
 
@@ -300,7 +300,7 @@ msgid ""
 "online station database."
 msgstr ""
 "Эта станция существует только в вашей библиотеке и не является частью "
-"общедоступной онлайновой базы данных станций."
+"общедоступной онлайн-базы данных станций."
 
 #: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
@@ -312,7 +312,7 @@ msgid ""
 "the public online station database."
 msgstr ""
 "Информация не может быть обновлена, вероятно, эта станция была удалена из "
-"общедоступной онлайновой базы данных станций."
+"общедоступной онлайн-базы данных станций."
 
 #: data/gtk/station_dialog.ui:163
 msgid "Information"
@@ -353,11 +353,11 @@ msgstr "Кодек"
 #. This is a noun/label for the station stream url
 #: data/gtk/station_dialog.ui:320
 msgid "Stream"
-msgstr "Поток"
+msgstr "Трансляция"
 
 #: data/gtk/streaming_dialog.ui:10
 msgid "Stream to a Device"
-msgstr "Потоковая передача на устройство"
+msgstr "Трансляция на устройство"
 
 #: data/gtk/streaming_dialog.ui:26
 msgid ""
@@ -425,15 +425,15 @@ msgstr "_Параметры"
 
 #: data/gtk/window.ui:228 data/gtk/window.ui:266
 msgid "_Keyboard Shortcuts"
-msgstr "_Горячие клавиши"
+msgstr "_Комбинации клавиш"
 
 #: data/gtk/window.ui:232 data/gtk/window.ui:270
 msgid "_About Shortwave"
-msgstr "О Shortwave"
+msgstr "_О Shortwave"
 
 #: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
-msgstr "Станция не может транслироваться. URL-адрес недействителен."
+msgstr "Станция не может транслироваться. URL недействителен."
 
 #: src/audio/player.rs:253
 msgid "Cannot save song."
@@ -510,9 +510,8 @@ msgid ""
 "Shortwave is an internet radio player that provides access to a station "
 "database with over 25,000 stations."
 msgstr ""
-"Shortwave - это интернет-радиоплеер, который "
-"предоставляет доступ к базе данных станций, насчитывающей более 25 000 "
-"станций."
+"Shortwave - это интернет-радиоплеер, который предоставляет доступ к базе "
+"данных станций, насчитывающей более 25 000 станций."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
@@ -553,7 +552,7 @@ msgstr "Бесшовная интеграция в среду рабочего �
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
-msgstr "Gradio;Радио;Стриминг;Волна;"
+msgstr "Gradio;Радио;Трансляция;Волна;"
 
 #~ msgid "Select station image"
 #~ msgstr "Выбрать изображение станции"
