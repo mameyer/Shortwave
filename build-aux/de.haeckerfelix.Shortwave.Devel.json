@@ -5,7 +5,7 @@
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm13"
+        "org.freedesktop.Sdk.Extension.llvm14"
     ],
     "command" : "shortwave",
     "tags" : [
@@ -23,7 +23,7 @@
     	"--env=RUST_BACKTRACE=1"
     ],
     "build-options" : {
-        "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm13/bin",
+        "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm14/bin",
         "env": {
             "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
             "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
@@ -40,8 +40,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.18.5.tar.xz",
-                    "sha256": "822e008a910e9dd13aedbdd8dc63fedef4040c0ee2e927bab3112e9de693a548"
+                    "url": "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.20.3.tar.xz",
+                    "sha256": "3fedd10560fcdfaa1b6462cbf79a38c4e7b57d7f390359393fc0cef6dbf27dfe"
                 }
             ]
         },
