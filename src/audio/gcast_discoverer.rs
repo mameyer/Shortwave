@@ -26,7 +26,7 @@ use glib::{Receiver, Sender};
 use gtk::glib;
 use mdns::{Record, RecordKind};
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct GCastDevice {
     pub id: String,
     pub ip: IpAddr,
@@ -96,7 +96,8 @@ impl GCastDiscoverer {
     }
 
     pub fn device_by_ip_addr(&self, ip: IpAddr) -> Option<GCastDevice> {
-        for device in self.known_devices.lock().unwrap().iter() {
+        let devices = self.known_devices.lock().unwrap().to_vec();
+        for device in devices.iter() {
             if device.ip == ip {
                 return Some(device.clone());
             }

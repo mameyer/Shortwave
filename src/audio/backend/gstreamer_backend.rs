@@ -358,7 +358,8 @@ impl GstreamerBackend {
     }
 
     pub fn stop_recording(&mut self, discard_data: bool) {
-        let recorderbin = match self.recorderbin.lock().unwrap().take() {
+        let recorderbin = self.recorderbin.lock().unwrap().take();
+        let recorderbin = match recorderbin {
             None => {
                 warn!("Unable to stop recording: No recording running");
                 return;
@@ -425,7 +426,7 @@ impl GstreamerBackend {
     }
 
     pub fn current_recording_duration(&self) -> i64 {
-        let recorderbin: &Option<Bin> = &*self.recorderbin.lock().unwrap();
+        let recorderbin: &Option<Bin> = &self.recorderbin.lock().unwrap();
         if let Some(recorderbin) = recorderbin {
             let queue_srcpad = recorderbin
                 .by_name("queue")

@@ -1,5 +1,5 @@
 // Shortwave - connection.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -58,7 +58,7 @@ fn init_connection_pool(db_path: &str) -> Pool {
         .expect("Failed to create pool.");
 
     let db = pool.get().expect("Failed to initialize pool.");
-    run_migrations(&*db).expect("Failed to run migrations during init.");
+    run_migrations(&db).expect("Failed to run migrations during init.");
 
     info!("Initialized database connection pool.");
     pool

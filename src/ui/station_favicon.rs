@@ -1,5 +1,5 @@
 // Shortwave - station_favicon.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ use gdk_pixbuf::Pixbuf;
 use gtk::gdk_pixbuf;
 use gtk::prelude::*;
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, Eq, PartialEq)]
 pub enum FaviconSize {
     Mini = 48,
     Small = 64,

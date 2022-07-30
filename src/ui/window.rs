@@ -34,7 +34,7 @@ use crate::settings::{settings_manager, Key};
 use crate::ui::pages::*;
 use crate::ui::SwCreateStationDialog;
 
-#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
+#[derive(Display, Copy, Debug, Clone, EnumString, Eq, PartialEq, Enum)]
 #[repr(u32)]
 #[enum_type(name = "SwView")]
 pub enum SwView {

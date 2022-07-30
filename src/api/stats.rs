@@ -1,5 +1,5 @@
 // Shortwave - stats.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#[derive(Default, Debug, Clone, PartialEq, serde_derive::Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Eq, serde_derive::Deserialize)]
 pub struct Stats {
     pub supported_version: i64,
     pub software_version: String,

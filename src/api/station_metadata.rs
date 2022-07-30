@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::fmt::Write;
 use std::str::FromStr;
 
 use gtk::glib;
@@ -72,7 +73,7 @@ impl StationMetadata {
         let tags = self.tags.split(',');
         let mut formatted = String::new();
         for tag in tags {
-            formatted += &format!(", {}", tag.to_title_case());
+            write!(formatted, ", {}", tag.to_title_case()).unwrap();
         }
         formatted.split_at(2).1.to_string()
     }

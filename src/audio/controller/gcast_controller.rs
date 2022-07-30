@@ -73,6 +73,7 @@ impl GCastController {
 
         thread::spawn(move || {
             let mut device: Option<CastDevice> = None;
+            let device_ip = device_ip.lock().unwrap().to_string();
             let mut app: Option<Application> = None;
             let mut connected = false;
 
@@ -82,10 +83,10 @@ impl GCastController {
                         GCastAction::Connect => {
                             debug!(
                                 "Connect to gcast device with IP \"{}\"...",
-                                *device_ip.lock().unwrap()
+                                device_ip.clone()
                             );
                             match CastDevice::connect_without_host_verification(
-                                device_ip.lock().unwrap().to_string(),
+                                device_ip.clone(),
                                 8009,
                             ) {
                                 Ok(d) => {

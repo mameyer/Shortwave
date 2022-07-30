@@ -175,7 +175,7 @@ impl Default for SwStationSorter {
     }
 }
 
-#[derive(Display, Copy, Debug, Clone, EnumString, PartialEq, Enum)]
+#[derive(Display, Copy, Debug, Clone, EnumString, Eq, PartialEq, Enum)]
 #[repr(u32)]
 #[enum_type(name = "SwSorting")]
 pub enum SwSorting {

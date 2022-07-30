@@ -68,7 +68,7 @@ use crate::{config, path};
 //                                                                                                             //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#[derive(Clone, PartialEq, Debug)]
+#[derive(Clone, Eq, PartialEq, Debug)]
 pub enum PlaybackState {
     Playing,
     Stopped,
@@ -186,14 +186,14 @@ impl Player {
                 .lock()
                 .unwrap()
                 .gstreamer
-                .new_source_uri(&url.to_string());
+                .new_source_uri(url.as_ref());
         } else if let Some(url) = metadata.url {
             debug!("Start playing new URI: {}", url.to_string());
             self.backend
                 .lock()
                 .unwrap()
                 .gstreamer
-                .new_source_uri(&url.to_string());
+                .new_source_uri(url.as_ref());
         } else {
             let text = i18n("Station cannot be streamed. URL is not valid.");
             SwApplicationWindow::default().show_notification(&text);

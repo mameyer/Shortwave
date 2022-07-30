@@ -352,7 +352,7 @@ impl SwStationDialog {
                 if let Some(url_resolved) = metadata.url_resolved {
                     let display = gdk::Display::default().unwrap();
                     let clipboard = display.clipboard();
-                    clipboard.set_text(&url_resolved.to_string());
+                    clipboard.set_text(url_resolved.as_ref());
                 }
             ));
     }
