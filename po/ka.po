@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: shortwave\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
 "POT-Creation-Date: 2022-06-25 06:45+0000\n"
-"PO-Revision-Date: 2022-06-25 11:38+0200\n"
+"PO-Revision-Date: 2022-07-31 08:33+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/gtk/create_station_dialog.ui:8
 msgid "Create new station"
@@ -469,7 +469,7 @@ msgstr "ვებგვერდის გახსნა"
 
 #: src/ui/pages/discover_page.rs:131
 msgid "Powered by radio-browser.info"
-msgstr ""
+msgstr "Radio-browser.info-სგან"
 
 #: src/ui/pages/discover_page.rs:150 src/ui/pages/search_page.rs:287
 msgid "Station data could not be received."
@@ -507,6 +507,8 @@ msgid ""
 "Shortwave is an internet radio player that provides access to a station "
 "database with over 25,000 stations."
 msgstr ""
+"Shortwave ინტერნეტ-რადიოს დამკვრელია, რომელიც საშუალებას გაძლევთ 25000-ზე "
+"მეტ სადგურს მოუსმინოთ."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
@@ -515,30 +517,34 @@ msgstr "თვისებები:"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:21
 msgid "Create your own library where you can add your favorite stations"
 msgstr ""
+"შექმენით თქვენი საკუთარი ბიბლიოთეკა, სადაც შეგიძლიათ თქვენი საყვარელი "
+"სადგურები დაამატოთ"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:22
 msgid "Easily search and discover new radio stations"
-msgstr ""
+msgstr "მარტივად მოძებნეთ და აღმოაჩინეთ ახალი რადიოსადგურები"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:23
 msgid ""
 "Automatic recognition of songs, with the possibility to save them "
 "individually"
 msgstr ""
+"სიმღერების ავტომატური ამოცნობა, მათი ინდივიდუალურად შენახვის შესაძლებლობით"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:24
 msgid "Responsive application layout, compatible for small and large screens"
-msgstr ""
+msgstr "აპლიკაციის მოხერხებული განლაგება, თავსებადი მცირე და დიდ ეკრანებთან"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:25
 msgid "Play audio on supported network devices (e.g. Google Chromecasts)"
 msgstr ""
+"აუდიოს დაკვრა მხარდაჭერილ ქსელურ მოწყობილობებზე (მაგ. Google Chromecast)"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:26
 msgid "Seamless integration into the GNOME desktop environment"
-msgstr ""
+msgstr "შეუმჩნეველი ინტეგრაცია GNOME-ს გარემოში"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
-msgstr ""
+msgstr "Gradio;Radio;Stream;Wave;"
