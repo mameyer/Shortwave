@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-07-29 17:54+0000\n"
-"PO-Revision-Date: 2022-08-11 17:58+0200\n"
+"POT-Creation-Date: 2022-08-11 15:59+0000\n"
+"PO-Revision-Date: 2022-08-17 15:16+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -539,7 +539,7 @@ msgstr ""
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:22
 msgid "Easily search and discover new radio stations"
-msgstr "Jednostavno pretražite i otkrijte nove radio stanice"
+msgstr "Jednostavno pretražujte i otkrijte nove radio stanice"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:23
 msgid ""
@@ -555,7 +555,7 @@ msgstr "Odgovarajući izgled aplikacije, kompatibilan za male i velike zaslone"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:25
 msgid "Play audio on supported network devices (e.g. Google Chromecasts)"
 msgstr ""
-"Reproduciraj zvuk na podržanim mrežnim uređajima (npr. Google Chromecast)"
+"Reprodukcija zvuka na podržanim mrežnim uređajima (npr. Google Chromecast)"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:26
 msgid "Seamless integration into the GNOME desktop environment"
