@@ -3,26 +3,27 @@
 # This file is distributed under the same license as the shortwave package.
 # Translators:
 # Марко М. Костић <marko.m.kostic@gmail.com>, 2020.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2021.
+# Мирослав Николић <miroslavnikolić@rocketmail.com>, 2021–2022.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-18 19:35+0000\n"
-"PO-Revision-Date: 2022-04-26 06:33+0200\n"
-"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
-"Language-Team: Serbian <(nothing)>\n"
+"POT-Creation-Date: 2022-07-29 17:54+0000\n"
+"PO-Revision-Date: 2022-08-09 15:43+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolić@rocketmail.com>\n"
+"Language-Team: Serbian <српски <gnome-sr@googlegroups.org>>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Poedit 3.0.1\n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 #: data/gtk/create_station_dialog.ui:8
 msgid "Create new station"
-msgstr "Направи нову станицу"
+msgstr "Направите нову станицу"
 
 #: data/gtk/create_station_dialog.ui:32
 msgid "Create New Station"
@@ -86,7 +87,7 @@ msgstr "_Откриј нове станице"
 
 #: data/gtk/mini_controller.ui:87
 msgid "SHORTWAVE INTERNET RADIO"
-msgstr "КРАТКИ ТАЛАС ИНТЕРНЕТ РАДИО"
+msgstr "ИНТЕРНЕТ РАДИО КРАТКИ ТАЛАС"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
@@ -179,7 +180,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Започиње/паузира пуштање"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Гласова"
@@ -302,11 +303,11 @@ msgstr ""
 "Ова станица постоји само у вашој библиотеци и није део јавне базе станица на "
 "интернету."
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "Напуштена станица"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -314,44 +315,44 @@ msgstr ""
 "Подаци о станици не могу бити ажурирани, ова станица је вероватно уклоњена "
 "из јавне базе станица на интернету."
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "Информације"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Језик"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "Ознаке"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "Место"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Држава"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Покрајина"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "Звук"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Битски проток"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "Кодек"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "Ток"
 
@@ -430,7 +431,7 @@ msgstr "Пречице _тастатуре"
 msgid "_About Shortwave"
 msgstr "О _Кратком таласу"
 
-#: src/audio/player.rs:197
+#: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
 msgstr "Станица се не може слушати. Адреса није исправна."
 
@@ -438,12 +439,12 @@ msgstr "Станица се не може слушати. Адреса није 
 msgid "Cannot save song."
 msgstr "Не могу сачувати песму."
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "Слушајте радио преко Интернета"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr ""
 "  Марко М. Костић <marko.m.kostic@gmail.com>\n"
@@ -510,8 +511,8 @@ msgstr "{} kbit/s"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "Кратки талас"
+msgid "@NAME@"
+msgstr "@НАЗИВ@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
@@ -565,6 +566,9 @@ msgid "Gradio;Radio;Stream;Wave;"
 msgstr ""
 "г-радио;градио;радио;стрим;ток;вејв;вал;талас;кратак;Gradio;Radio;Stream;"
 "Wave;G-radio;strim;tok;vejv;val;talas;kratak;"
+
+#~ msgid "Shortwave"
+#~ msgstr "Кратки талас"
 
 #~ msgid "Error details"
 #~ msgstr "Појединости грешке"
