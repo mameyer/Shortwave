@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-04-18 19:35+0000\n"
-"PO-Revision-Date: 2022-04-19 19:00+0200\n"
+"POT-Creation-Date: 2022-07-29 17:54+0000\n"
+"PO-Revision-Date: 2022-09-06 19:13+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/gtk/create_station_dialog.ui:8
 msgid "Create new station"
@@ -184,7 +184,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Start/stop afspilning"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:199
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
 #: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Stemmer"
@@ -199,7 +199,7 @@ msgstr "Ingen resultater"
 
 #: data/gtk/search_page.ui:64
 msgid "Try using a different search term"
-msgstr "Prøv en anden søgeterm."
+msgstr "Prøv en anden søgeterm"
 
 #: data/gtk/search_page.ui:148 data/gtk/window.ui:166
 msgid "_Name"
@@ -308,11 +308,11 @@ msgstr ""
 "Denne station findes kun i dit bibliotek og er ikke del af den offentlige "
 "online stationsdatabase."
 
-#: data/gtk/station_dialog.ui:149
+#: data/gtk/station_dialog.ui:150
 msgid "Orphaned Station"
 msgstr "Forældreløs station"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:151
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -320,44 +320,44 @@ msgstr ""
 "Informationen kunne ikke opdateres. Sandsynligvis er stationen blevet "
 "fjernet fra den offentlige online stationsdatabase."
 
-#: data/gtk/station_dialog.ui:161
+#: data/gtk/station_dialog.ui:163
 msgid "Information"
 msgstr "Information"
 
-#: data/gtk/station_dialog.ui:164 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Sprog"
 
-#: data/gtk/station_dialog.ui:179
+#: data/gtk/station_dialog.ui:181
 msgid "Tags"
 msgstr "Mærkater"
 
-#: data/gtk/station_dialog.ui:215
+#: data/gtk/station_dialog.ui:217
 msgid "Location"
 msgstr "Lokalitet"
 
-#: data/gtk/station_dialog.ui:220 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Land"
 
-#: data/gtk/station_dialog.ui:240 src/ui/pages/search_page.rs:196
+#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Delstat"
 
-#: data/gtk/station_dialog.ui:284
+#: data/gtk/station_dialog.ui:286
 msgid "Audio"
 msgstr "Lyd"
 
-#: data/gtk/station_dialog.ui:288 src/ui/pages/search_page.rs:198
+#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Bithastighed"
 
-#: data/gtk/station_dialog.ui:303
+#: data/gtk/station_dialog.ui:305
 msgid "Codec"
 msgstr "Codec"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:318
+#: data/gtk/station_dialog.ui:320
 msgid "Stream"
 msgstr "Stream"
 
@@ -436,7 +436,7 @@ msgstr "_Tastaturgenveje"
 msgid "_About Shortwave"
 msgstr "_Om Shortwave"
 
-#: src/audio/player.rs:197
+#: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
 msgstr "Kan ikke streame stationen. URL'en er ugyldig."
 
@@ -444,12 +444,12 @@ msgstr "Kan ikke streame stationen. URL'en er ugyldig."
 msgid "Cannot save song."
 msgstr "Kan ikke gemme sang."
 
-#: src/ui/about_dialog.rs:34
+#: src/ui/about_dialog.rs:33
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:6
 msgid "Listen to internet radio"
 msgstr "Lyt til internetradio"
 
-#: src/ui/about_dialog.rs:37
+#: src/ui/about_dialog.rs:36
 msgid "translator-credits"
 msgstr "scootergrisen"
 
@@ -506,8 +506,8 @@ msgstr "{} kbit/s"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
-msgid "Shortwave"
-msgstr "Shortwave"
+msgid "@NAME@"
+msgstr "@NAVN@"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:8
 msgid "Felix Häcker"
@@ -557,6 +557,9 @@ msgstr "Perfekt integration i GNOME-skrivebordsmiljøet"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Strøm;Wave;Bølge;"
+
+#~ msgid "Shortwave"
+#~ msgstr "Shortwave"
 
 #~ msgid "Error details"
 #~ msgstr "Detaljer om fejlen"
