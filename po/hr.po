@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
 "POT-Creation-Date: 2022-08-17 13:17+0000\n"
-"PO-Revision-Date: 2022-09-09 09:40+0200\n"
+"PO-Revision-Date: 2022-09-22 00:45+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -85,7 +85,7 @@ msgstr "_Otkrijte nove stanice"
 
 #: data/gtk/mini_controller.ui:87
 msgid "SHORTWAVE INTERNET RADIO"
-msgstr "KRATKI VAL INTERNETSKI RADIO"
+msgstr "SHORTWAVE INTERNETSKI RADIO"
 
 #: data/gtk/mini_controller.ui:109 data/gtk/sidebar_controller.ui:63
 #: data/gtk/toolbar_controller.ui:38
@@ -428,7 +428,7 @@ msgstr "_Prečaci tipkovnice"
 
 #: data/gtk/window.ui:232 data/gtk/window.ui:270
 msgid "_About Shortwave"
-msgstr "_O Kratkom valu"
+msgstr "_O Shortwave"
 
 #: src/audio/player.rs:198
 msgid "Station cannot be streamed. URL is not valid."
