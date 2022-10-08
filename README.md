@@ -1,18 +1,25 @@
 # Shortwave
-Find and listen to internet radio stations
 
-<p align="center">
-  <img src="data/screenshots/1.png"/>
-  <img src="data/screenshots/4.png"/>
-</p>
+![screenshot](data/screenshots/1.png)
+![screenshot](data/screenshots/4.png)
 
+Shortwave is an internet radio player that provides access to a station database with over 25,000 stations.
 
 ## Getting in Touch
 If you have any questions regarding the use or development of Shortwave,
-want to discuss design or simply hang out, please join us on our [#shortwave:gnome.org](https://matrix.to/#/#shortwave:gnome.org) channel.
+want to discuss design or simply hang out, please join us on our [#shortwave:gnome.org](https://matrix.to/#/#shortwave:gnome.org) matrix room.
+
+## Installation
+The recommended way of installing Shortwave is using the Flatpak package. If you don't have Flatpak installed yet, you can get it from [here](https://flatpak.org/setup/). You can install stable builds of Shortwave from Flathub by using this command:
+
+`flatpak install https://flathub.org/repo/appstream/de.haeckerfelix.Shortwave.flatpakref`
+
+Or by clicking this button:
+
+<a href="https://flathub.org/apps/details/de.haeckerfelix.Shortwave"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" width="200"/></a>
 
 ## FAQ
-- **Why its called 'Shortwave'?**
+- **Why is it called 'Shortwave'?**
 
     Shortwave signals have a very long range because of their very good reflection properties. 
 Due to their long range, they can be received almost anywhere in the world. 
@@ -45,16 +52,6 @@ Translation of this project takes place on the GNOME translation platform,
 information on how to join a language team, or even to create one, please see
 [GNOME Translation Project wiki page](https://wiki.gnome.org/TranslationProject).
 
-## Flatpak builds
-The recommended way of installing Shortwave is using the Flatpak package. If you don't have Flatpak installed yet, you can get it from [here](https://flatpak.org/setup/).
-
-#### Stable builds
-You can install stable builds of Shortwave from Flathub by using this command:
-
-`flatpak install https://flathub.org/repo/appstream/de.haeckerfelix.Shortwave.flatpakref`
-
-<a href="https://flathub.org/apps/details/de.haeckerfelix.Shortwave"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" width="200"/></a>
-
 ## Building
 ### Building with Flatpak + GNOME Builder
 Shortwave can be built and run with [GNOME Builder](https://wiki.gnome.org/Apps/Builder).
@@ -69,17 +66,7 @@ You can get Builder from [here](https://wiki.gnome.org/Apps/Builder/Downloads).
 4. `ninja -C build`
 5. `sudo ninja -C build install`
 
-You need following dependencies to build Shortwave:
-- Rust 1.48 or later
-- GTK 4
-- Gstreamer 1.16 or later
-- Sqlite3
-- OpenSSL
-- [libshumate](https://gitlab.gnome.org/GNOME/libshumate)
-- [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita)
-- [Meson Buildsystem](https://mesonbuild.com/)
-
-If you need help to build Shortwave, please don't hesitate to ask [here](https://matrix.to/#/#shortwave:matrix.org)!
+To learn more about the required dependencies, please check the [Flatpak manifest](build-aux/de.haeckerfelix.Shortwave.Devel.json).
 
 ## Code Of Conduct
 We follow the [GNOME Code of Conduct](/CODE_OF_CONDUCT.md).
