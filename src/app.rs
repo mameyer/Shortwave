@@ -180,13 +180,14 @@ glib::wrapper! {
 // SwApplication implementation itself
 impl SwApplication {
     pub fn run() {
-        info!(
-            "{} ({}) ({})",
+        debug!(
+            "{} ({}) ({}) - Version {} ({})",
             config::NAME,
             config::APP_ID,
-            config::VCS_TAG
+            config::VCS_TAG,
+            config::VERSION,
+            config::PROFILE
         );
-        info!("Version: {} ({})", config::VERSION, config::PROFILE);
         info!("Isahc version: {}", isahc::version());
 
         // Create new GObject and downcast it into SwApplication
