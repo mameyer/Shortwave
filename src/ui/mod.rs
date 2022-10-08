@@ -16,7 +16,7 @@
 
 pub mod pages;
 
-pub mod about_dialog;
+pub mod about_window;
 mod create_station_dialog;
 pub mod featured_carousel;
 mod song_listbox;

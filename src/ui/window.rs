@@ -204,20 +204,18 @@ impl SwApplicationWindow {
         imp.window_flap.set_flap(Some(&player.widget));
 
         // Animations for smooth mini player transitions
-        let x_callback = adw::CallbackAnimationTarget::new(Some(Box::new(
-            clone!(@weak self as this => move |val|{
+        let x_callback =
+            adw::CallbackAnimationTarget::new(clone!(@weak self as this => move |val|{
                 this.set_default_width(val as i32);
-            }),
-        )));
+            }));
         let x_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &x_callback);
         x_animation.set_easing(adw::Easing::EaseOutCubic);
         imp.window_animation_x.set(x_animation).unwrap();
 
-        let y_callback = adw::CallbackAnimationTarget::new(Some(Box::new(
-            clone!(@weak self as this => move |val|{
+        let y_callback =
+            adw::CallbackAnimationTarget::new(clone!(@weak self as this => move |val|{
                 this.set_default_height(val as i32);
-            }),
-        )));
+            }));
         let y_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &y_callback);
         y_animation.set_easing(adw::Easing::EaseOutCubic);
         imp.window_animation_y.set(y_animation).unwrap();

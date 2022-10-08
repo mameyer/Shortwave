@@ -39,7 +39,7 @@ gstreamer-audio = { version = "0.18", features = ["v1_10"]}
 gstreamer = { version = "0.18"}
 shumate = { version = "0.1.0-alpha.4", package = "libshumate"}
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-adw = { version = "0.1.0-alpha", package = "libadwaita" }
+adw = { version = "0.2.0-alpha.3", package = "libadwaita", features = ["v1_2"] }
 gtk = { version = "0.4", package = "gtk4" }
 gtk-macros = "0.3"
 

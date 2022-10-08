@@ -33,7 +33,7 @@ use crate::config;
 use crate::database::SwLibrary;
 use crate::model::SwSorting;
 use crate::settings::{settings_manager, Key, SettingsWindow};
-use crate::ui::{about_dialog, SwApplicationWindow, SwView};
+use crate::ui::{about_window, SwApplicationWindow, SwView};
 
 #[derive(Debug, Clone)]
 pub enum Action {
@@ -242,7 +242,7 @@ impl SwApplication {
             self,
             "about",
             clone!(@weak window => move |_, _| {
-                about_dialog::show_about_dialog(&window);
+                about_window::show(&window);
             })
         );
     }

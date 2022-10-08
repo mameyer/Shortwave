@@ -17,7 +17,7 @@ data/gtk/toolbar_controller.ui
 data/gtk/window.ui
 
 src/audio/player.rs
-src/ui/about_dialog.rs
+src/ui/about_window.rs
 src/ui/pages/discover_page.rs
 src/ui/pages/library_page.rs
 src/ui/pages/search_page.rs
