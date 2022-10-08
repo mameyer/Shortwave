@@ -12,15 +12,15 @@
         "nightly"
     ],
     "finish-args" : [
-    	"--share=network",
-    	"--share=ipc",
-    	"--socket=fallback-x11",
-    	"--socket=wayland",
-    	"--device=dri",
-    	"--socket=pulseaudio",
-    	"--filesystem=xdg-music",
-    	"--env=RUST_LOG=shortwave=debug",
-    	"--env=RUST_BACKTRACE=1"
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--socket=pulseaudio",
+        "--filesystem=xdg-music",
+        "--env=RUST_LOG=shortwave=debug",
+        "--env=RUST_BACKTRACE=1"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm14/bin",
