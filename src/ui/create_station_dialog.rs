@@ -50,9 +50,9 @@ mod imp {
         #[template_child]
         pub favicon_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub name_entry: TemplateChild<gtk::Entry>,
+        pub name_row: TemplateChild<adw::EntryRow>,
         #[template_child]
-        pub url_entry: TemplateChild<gtk::Entry>,
+        pub url_row: TemplateChild<adw::EntryRow>,
 
         pub favicon: RefCell<Option<gdk_pixbuf::Pixbuf>>,
         pub favicon_widget: OnceCell<StationFavicon>,
@@ -159,8 +159,8 @@ impl SwCreateStationDialog {
     fn create_station(&self) {
         let imp = self.imp();
         let uuid = Uuid::new_v4().to_string();
-        let name = imp.name_entry.text().to_string();
-        let url = Url::parse(&imp.url_entry.text()).unwrap();
+        let name = imp.name_row.text().to_string();
+        let url = Url::parse(&imp.url_row.text()).unwrap();
         let favicon = imp.favicon.borrow().clone();
 
         let station = SwStation::new(uuid, true, false, StationMetadata::new(name, url), favicon);
@@ -174,16 +174,16 @@ impl SwCreateStationDialog {
     fn validate_input(&self) {
         let imp = self.imp();
 
-        let have_name = !imp.name_entry.text().is_empty();
-        let url = imp.url_entry.text().to_string();
+        let has_name = !imp.name_row.text().is_empty();
+        let url = imp.url_row.text().to_string();
 
         match Url::parse(&url) {
             Ok(_) => {
-                imp.url_entry.remove_css_class("error");
-                imp.create_button.set_sensitive(have_name);
+                imp.url_row.remove_css_class("error");
+                imp.create_button.set_sensitive(has_name);
             }
             Err(_) => {
-                imp.url_entry.add_css_class("error");
+                imp.url_row.add_css_class("error");
                 imp.create_button.set_sensitive(false);
             }
         }
