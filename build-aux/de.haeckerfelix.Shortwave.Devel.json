@@ -58,7 +58,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libshumate/",
-                    "branch": "1.0.0.alpha.1"
+                    "branch": "1.0.1"
                 }
             ]
         },
