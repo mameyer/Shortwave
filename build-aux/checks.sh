@@ -2,7 +2,7 @@
 # Source: https://gitlab.gnome.org/GNOME/fractal/-/blob/ee6791518094c9c72a0a9630e334f73264f2aff9/scripts/checks.sh
 # Slightly customized to make it easier to reuse for other projects.
 
-resources="data/de.haeckerfelix.Shortwave.gresource.xml"
+resources="data/de.haeckerfelix.Shortwave.gresource.xml.in"
 ui_files="data/gtk"
 
 export LC_ALL=C
