@@ -114,12 +114,6 @@ mod imp {
         }
     }
 
-    // Implement Gtk.Application for SwApplication
-    impl GtkApplicationImpl for SwApplication {}
-
-    // Implement Adw.Application for SwApplication
-    impl AdwApplicationImpl for SwApplication {}
-
     // Implement Gio.Application for SwApplication
     impl ApplicationImpl for SwApplication {
         fn activate(&self, app: &Self::Type) {
@@ -168,6 +162,12 @@ mod imp {
             send!(self.sender, Action::SettingsKeyChanged(Key::ViewSorting));
         }
     }
+
+    // Implement Gtk.Application for SwApplication
+    impl GtkApplicationImpl for SwApplication {}
+
+    // Implement Adw.Application for SwApplication
+    impl AdwApplicationImpl for SwApplication {}
 }
 
 // Wrap SwApplication into a usable gtk-rs object
