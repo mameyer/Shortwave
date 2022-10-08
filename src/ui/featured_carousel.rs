@@ -21,7 +21,6 @@ use adw::subclass::prelude::*;
 use adw::Carousel;
 use glib::{clone, subclass};
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::{gdk, glib, CompositeTemplate};
 
 #[derive(Debug)]

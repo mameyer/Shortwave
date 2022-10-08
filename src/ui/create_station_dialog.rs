@@ -20,7 +20,6 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use glib::{clone, subclass, Sender};
-use gtk::subclass::prelude::*;
 use gtk::{gdk, gdk_pixbuf, gio, glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 use url::Url;

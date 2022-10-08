@@ -18,7 +18,6 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use chrono::NaiveTime;
 use glib::{clone, subclass, Sender};
-use gtk::subclass::prelude::*;
 use gtk::{gdk, glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 

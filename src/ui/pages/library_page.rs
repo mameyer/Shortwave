@@ -17,7 +17,6 @@
 use adw::subclass::prelude::*;
 use glib::{clone, subclass, Sender};
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::{gio, glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 

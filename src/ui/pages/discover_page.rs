@@ -18,7 +18,6 @@ use adw::subclass::prelude::*;
 use futures_util::FutureExt;
 use glib::{subclass, Sender};
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::{glib, CompositeTemplate};
 use once_cell::unsync::OnceCell;
 use url::Url;

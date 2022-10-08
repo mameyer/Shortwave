@@ -18,7 +18,6 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use futures_util::future::FutureExt;
 use glib::{clone, subclass, Sender};
-use gtk::subclass::prelude::*;
 use gtk::{gdk, glib, CompositeTemplate};
 use inflector::Inflector;
 use once_cell::unsync::OnceCell;

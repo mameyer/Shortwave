@@ -17,7 +17,6 @@
 use adw::subclass::prelude::*;
 use glib::{clone, subclass, ParamFlags, ParamSpec, ParamSpecObject, Sender, ToValue};
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::{glib, CompositeTemplate};
 use once_cell::sync::Lazy;
 
