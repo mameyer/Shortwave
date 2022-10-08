@@ -194,7 +194,7 @@ impl SwApplication {
         let app = glib::Object::new::<SwApplication>(&[
             ("application-id", &Some(config::APP_ID)),
             ("flags", &gio::ApplicationFlags::empty()),
-            ("resource-base-path", &Some("/de/haeckerfelix/Shortwave/")),
+            ("resource-base-path", &Some(config::PATH_ID)),
         ])
         .unwrap();
 

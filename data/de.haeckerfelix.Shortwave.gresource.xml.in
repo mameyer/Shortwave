@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/de/haeckerfelix/Shortwave">
+  <gresource prefix="@PATH_ID@">
     <file compressed="true" preprocess="xml-stripblanks">gtk/create_station_dialog.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/discover_page.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/featured_carousel.ui</file>
@@ -23,11 +23,11 @@
     <file compressed="true" preprocess="xml-stripblanks">gtk/toolbar_controller.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/window.ui</file>
   </gresource>
-  <gresource prefix="/de/haeckerfelix/Shortwave/icons/16x16/status/">
+  <gresource prefix="@PATH_ID@/icons/16x16/status/">
     <file preprocess="xml-stripblanks" alias="cloud-disabled-symbolic.svg">icons/hicolor/scalable/status/cloud-disabled-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="restore-window-symbolic.svg">icons/hicolor/scalable/status/restore-window-symbolic.svg</file>
   </gresource>
-  <gresource prefix="/de/haeckerfelix/Shortwave/assets/">
+  <gresource prefix="@PATH_ID@/assets/">
     <file compressed="true">images/metal.png</file>
     <file compressed="true">images/wood.png</file>
   </gresource>

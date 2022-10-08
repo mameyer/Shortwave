@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
-  <schema path="/de/haeckerfelix/Shortwave/" id="@APP_ID@" gettext-domain="@PKGNAME@">
+  <schema path="@PATH_ID@/" id="@APP_ID@" gettext-domain="@PKGNAME@">
     <key name="api-lookup-domain" type="s">
       <default>"all.api.radio-browser.info"</default>
     </key>

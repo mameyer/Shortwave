@@ -29,7 +29,8 @@ dependency('gstreamer-bad-audio-1.0', version: '>= 1.16')
 # Initialize project variables
 name       = 'Shortwave'
 base_id    = 'de.haeckerfelix.Shortwave'
-app_id     = 'de.haeckerfelix.Shortwave'
+path_id    = '/de/haeckerfelix/Shortwave'
+app_id     = base_id
 vcs_tag    = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
 profile    = get_option('profile')
 datadir    = join_paths(get_option('prefix'), get_option('datadir'))
