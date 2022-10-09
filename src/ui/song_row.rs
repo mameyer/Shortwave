@@ -106,9 +106,6 @@ impl SwSongRow {
                 // Display play button instead of save button
                 imp.button_stack.set_visible_child_name("open");
                 this.set_activatable_widget(Some(&imp.open_button.get()));
-
-                // Dim row
-                this.add_css_class("dim-label");
             }));
 
         imp.open_button
