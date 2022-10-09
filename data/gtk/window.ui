@@ -24,18 +24,21 @@
                   <object class="GtkButton" id="add_button">
                     <property name="action_name">win.show-discover</property>
                     <property name="icon_name">list-add-symbolic</property>
+                    <property name="tooltip_text" translatable="true">Add Stations</property>
                   </object>
                 </child>
                 <child>
                   <object class="GtkButton" id="back_button">
                     <property name="action_name">win.go-back</property>
                     <property name="icon_name">go-previous-symbolic</property>
+                    <property name="tooltip_text" translatable="true">Go Back</property>
                   </object>
                 </child>
                 <child type="end">
                   <object class="GtkMenuButton" id="appmenu_button">
                     <property name="icon_name">open-menu-symbolic</property>
                     <property name="menu_model">library_menu</property>
+                    <property name="tooltip_text" translatable="true">Open Application Menu</property>
                   </object>
                 </child>
                 <child type="end">
@@ -44,6 +47,7 @@
                     <child>
                       <object class="GtkToggleButton" id="search_button">
                         <property name="icon_name">system-search-symbolic</property>
+                        <property name="tooltip_text" translatable="true">Open Search</property>
                       </object>
                     </child>
                   </object>
