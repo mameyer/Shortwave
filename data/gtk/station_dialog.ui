@@ -59,10 +59,9 @@
                             <property name="label">label</property>
                             <property name="justify">center</property>
                             <property name="wrap">True</property>
-                            <attributes>
-                              <attribute name="weight" value="bold"/>
-                              <attribute name="scale" value="1.2"/>
-                            </attributes>
+                            <style>
+                              <class name="title-2"/>
+                            </style>
                           </object>
                         </child>
                         <child>
