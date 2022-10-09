@@ -88,7 +88,7 @@ impl SongBackend {
 
         // For some unknown reasons some users don't have a xdg-music dir?
         // See: https://gitlab.gnome.org/World/Shortwave/-/issues/676
-        let music_dir = None; // glib::user_special_dir(glib::UserDirectory::Music);
+        let music_dir = glib::user_special_dir(glib::UserDirectory::Music);
         let mut dest_path = if let Some(path) = music_dir {
             path
         } else {
