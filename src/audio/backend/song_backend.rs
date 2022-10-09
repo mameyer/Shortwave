@@ -1,5 +1,5 @@
 // Shortwave - song_backend.rs
-// Copyright (C) 2021  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,9 +23,10 @@ use indexmap::IndexMap;
 use crate::api::Error;
 use crate::app::Action;
 use crate::audio::Song;
+use crate::i18n::i18n;
 use crate::path;
 use crate::settings::{settings_manager, Key};
-use crate::ui::SongListBox;
+use crate::ui::{SongListBox, SwApplicationWindow};
 
 pub struct SongBackend {
     pub listbox: SongListBox,
@@ -85,7 +86,19 @@ impl SongBackend {
     pub fn save_song(&self, song: Song) -> Result<(), Error> {
         debug!("Save song \"{}\"", &song.title);
 
-        let mut dest_path = glib::user_special_dir(glib::UserDirectory::Music).unwrap();
+        // For some unknown reasons some users don't have a xdg-music dir?
+        // See: https://gitlab.gnome.org/World/Shortwave/-/issues/676
+        let music_dir = None; // glib::user_special_dir(glib::UserDirectory::Music);
+        let mut dest_path = if let Some(path) = music_dir {
+            path
+        } else {
+            // Fallback to xdg-home when xdg-music is not available
+            let msg = i18n("Unable to access music directory. Saving song in home directory.");
+            SwApplicationWindow::default().show_notification(&msg);
+
+            warn!("Unable to access xdg-music directory, falling back to xdg-home");
+            glib::home_dir()
+        };
         dest_path.push(song.path.file_name().unwrap());
 
         let custom_path = settings_manager::string(Key::RecorderSongSavePath);
