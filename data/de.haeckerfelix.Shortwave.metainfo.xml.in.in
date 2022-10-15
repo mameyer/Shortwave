@@ -66,6 +66,19 @@
   </recommends>
 
   <releases>
+    <release version="3.1.0" date="2022-10-15">
+      <description>
+        <p>
+          This version includes minor improvements and bug fixes.
+        </p>
+        <ul>
+          <li>Small user interface improvements</li>
+          <li>Use new Adwaita about dialog</li>
+          <li>Fixed a crash when the "Music" directory is not available</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.0.0" date="2022-04-23">
       <description>
         <p>
