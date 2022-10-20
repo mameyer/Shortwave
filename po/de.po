@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-09 10:11+0000\n"
-"PO-Revision-Date: 2022-10-09 13:47+0200\n"
+"POT-Creation-Date: 2022-10-20 19:07+0000\n"
+"PO-Revision-Date: 2022-10-20 21:36+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -183,7 +183,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Wiedergabe umschalten"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
 #: src/ui/pages/search_page.rs:196
 msgid "Votes"
 msgstr "Stimmen"
@@ -236,15 +236,19 @@ msgstr "A_bsteigend"
 msgid "An error occurred"
 msgstr "Es ist ein Fehler aufgetreten"
 
-#: data/gtk/sidebar_controller.ui:188
+#: data/gtk/sidebar_controller.ui:187
 msgid "_Show Station Details"
 msgstr "Details zum Sender an_zeigen"
 
-#: data/gtk/sidebar_controller.ui:192
+#: data/gtk/sidebar_controller.ui:191
 msgid "Stream to a _Device"
 msgstr "Auf ein _Gerät streamen"
 
-#: data/gtk/song_listbox.ui:23
+#: data/gtk/song_listbox.ui:28
+msgid "No Songs Detected"
+msgstr "Keine Titel erkannt"
+
+#: data/gtk/song_listbox.ui:39
 msgid ""
 "Songs are automatically recognized using the stream metadata.\n"
 "\n"
@@ -254,27 +258,15 @@ msgstr ""
 "\n"
 "Wenn der Sender keine Metadaten sendet, können keine Titel erkannt werden."
 
-#: data/gtk/song_listbox.ui:66
-msgid "No Songs Detected"
-msgstr "Keine Titel erkannt"
-
-#: data/gtk/song_listbox.ui:76
-msgid "Detected songs will appear here."
-msgstr "Erkannte Titel erscheinen hier."
-
-#: data/gtk/song_listbox.ui:85
-msgid "_How does this work?"
-msgstr "_Wie funktioniert das?"
-
-#: data/gtk/song_listbox.ui:124
+#: data/gtk/song_listbox.ui:75
 msgid "Saved songs are located in your Music folder."
 msgstr "Gespeicherte Titel befinden sich in Ihrem Musik-Ordner."
 
-#: data/gtk/song_listbox.ui:137
+#: data/gtk/song_listbox.ui:85
 msgid "_Open"
 msgstr "_Öffnen"
 
-#: data/gtk/song_row.ui:15
+#: data/gtk/song_row.ui:16
 msgid "Save recorded song"
 msgstr "Aufgenommenen Titel speichern"
 
@@ -282,23 +274,23 @@ msgstr "Aufgenommenen Titel speichern"
 msgid "Station details"
 msgstr "Senderdetails"
 
-#: data/gtk/station_dialog.ui:88
+#: data/gtk/station_dialog.ui:87
 msgid "_Play Station"
 msgstr "Sender _abspielen"
 
-#: data/gtk/station_dialog.ui:102
+#: data/gtk/station_dialog.ui:101
 msgid "_Add to Library"
 msgstr "Zur Bibliothek _hinzufügen"
 
-#: data/gtk/station_dialog.ui:117
+#: data/gtk/station_dialog.ui:116
 msgid "_Remove From Library"
 msgstr "Aus der Bibliothek _entfernen"
 
-#: data/gtk/station_dialog.ui:134
+#: data/gtk/station_dialog.ui:133
 msgid "Local Station"
 msgstr "Lokaler Sender"
 
-#: data/gtk/station_dialog.ui:135
+#: data/gtk/station_dialog.ui:134
 msgid ""
 "This station exists only in your library, and is not part of the public "
 "online station database."
@@ -306,11 +298,11 @@ msgstr ""
 "Dieser Sender existiert nur in Ihrer Bibliothek und ist nicht Teil der "
 "öffentlichen Online-Senderdatenbank."
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:149
 msgid "Orphaned Station"
 msgstr "Verlassener Sender"
 
-#: data/gtk/station_dialog.ui:151
+#: data/gtk/station_dialog.ui:150
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -318,44 +310,44 @@ msgstr ""
 "Die Informationen konnten nicht aktualisiert werden, wahrscheinlich wurde "
 "der Sender aus der öffentlichen Online-Senderdatenbank entfernt."
 
-#: data/gtk/station_dialog.ui:163
+#: data/gtk/station_dialog.ui:162
 msgid "Information"
 msgstr "Information"
 
-#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
 msgid "Language"
 msgstr "Sprache"
 
-#: data/gtk/station_dialog.ui:181
+#: data/gtk/station_dialog.ui:180
 msgid "Tags"
 msgstr "Stichworte"
 
-#: data/gtk/station_dialog.ui:217
+#: data/gtk/station_dialog.ui:216
 msgid "Location"
 msgstr "Ort"
 
-#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
 msgid "Country"
 msgstr "Land"
 
-#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
 msgid "State"
 msgstr "Bundesstaat"
 
-#: data/gtk/station_dialog.ui:286
+#: data/gtk/station_dialog.ui:285
 msgid "Audio"
 msgstr "Ton"
 
-#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: data/gtk/station_dialog.ui:305
+#: data/gtk/station_dialog.ui:304
 msgid "Codec"
 msgstr "Codec"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:320
+#: data/gtk/station_dialog.ui:319
 msgid "Stream"
 msgstr "Stream"
 
@@ -543,10 +535,10 @@ msgstr "Felix Häcker"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
-"database with over 25,000 stations."
+"database with over 30,000 stations."
 msgstr ""
 "Shortwave ist eine Internet-Radiowiedergabe, die Zugang zu einer "
-"Senderdatenbank mit über 25.000 Sendern bietet."
+"Senderdatenbank mit über 30.000 Sendern bietet."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
@@ -588,6 +580,12 @@ msgstr "Nahtlose Integration in die GNOME-Arbeitsumgebung"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Welle;"
+
+#~ msgid "Detected songs will appear here."
+#~ msgstr "Erkannte Titel erscheinen hier."
+
+#~ msgid "_How does this work?"
+#~ msgstr "_Wie funktioniert das?"
 
 #~ msgid "Shortwave"
 #~ msgstr "Shortwave"
