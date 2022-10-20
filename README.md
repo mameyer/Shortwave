@@ -3,7 +3,7 @@
 ![screenshot](data/screenshots/1.png)
 ![screenshot](data/screenshots/4.png)
 
-Shortwave is an internet radio player that provides access to a station database with over 25,000 stations.
+Shortwave is an internet radio player that provides access to a station database with over 30,000 stations.
 
 ## Getting in Touch
 If you have any questions regarding the use or development of Shortwave,
