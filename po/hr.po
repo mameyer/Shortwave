@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-09 11:25+0000\n"
-"PO-Revision-Date: 2022-10-10 16:30+0200\n"
+"POT-Creation-Date: 2022-10-20 19:07+0000\n"
+"PO-Revision-Date: 2022-10-21 17:44+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -179,7 +179,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Uklj/Isklj reprodukciju"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
 #: src/ui/pages/search_page.rs:196
 msgid "Votes"
 msgstr "Glasova"
@@ -232,11 +232,11 @@ msgstr "_Padajući"
 msgid "An error occurred"
 msgstr "Greška se dogodila"
 
-#: data/gtk/sidebar_controller.ui:188
+#: data/gtk/sidebar_controller.ui:187
 msgid "_Show Station Details"
 msgstr "_Prikaži pojedinosti stanice"
 
-#: data/gtk/sidebar_controller.ui:192
+#: data/gtk/sidebar_controller.ui:191
 msgid "Stream to a _Device"
 msgstr "Emitiraj na _uređaj"
 
@@ -262,7 +262,7 @@ msgstr "Spremljene pjesme se nalaze u vašoj Glazba mapi."
 msgid "_Open"
 msgstr "_Otvori"
 
-#: data/gtk/song_row.ui:15
+#: data/gtk/song_row.ui:16
 msgid "Save recorded song"
 msgstr "Spremi snimljenu pjesmu"
 
@@ -270,23 +270,23 @@ msgstr "Spremi snimljenu pjesmu"
 msgid "Station details"
 msgstr "Pojedinosti stanice"
 
-#: data/gtk/station_dialog.ui:88
+#: data/gtk/station_dialog.ui:87
 msgid "_Play Station"
 msgstr "_Slušaj ovu stanicu"
 
-#: data/gtk/station_dialog.ui:102
+#: data/gtk/station_dialog.ui:101
 msgid "_Add to Library"
 msgstr "_Dodaj u radioteku"
 
-#: data/gtk/station_dialog.ui:117
+#: data/gtk/station_dialog.ui:116
 msgid "_Remove From Library"
 msgstr "_Ukloni iz radioteke"
 
-#: data/gtk/station_dialog.ui:134
+#: data/gtk/station_dialog.ui:133
 msgid "Local Station"
 msgstr "Lokalna stanica"
 
-#: data/gtk/station_dialog.ui:135
+#: data/gtk/station_dialog.ui:134
 msgid ""
 "This station exists only in your library, and is not part of the public "
 "online station database."
@@ -294,11 +294,11 @@ msgstr ""
 "Stanica postoji samo u vašoj radioteci i nije dio javne internetske baze "
 "podataka radio stanica."
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:149
 msgid "Orphaned Station"
 msgstr "Zastarjela stanica"
 
-#: data/gtk/station_dialog.ui:151
+#: data/gtk/station_dialog.ui:150
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -306,44 +306,44 @@ msgstr ""
 "Informacije se ne mogu nadopuniti, najvjerojatnije je ova stanica uklonjena "
 "iz javne internetske baze podataka radio stanica."
 
-#: data/gtk/station_dialog.ui:163
+#: data/gtk/station_dialog.ui:162
 msgid "Information"
 msgstr "Informacije"
 
-#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
 msgid "Language"
 msgstr "Jezik"
 
-#: data/gtk/station_dialog.ui:181
+#: data/gtk/station_dialog.ui:180
 msgid "Tags"
 msgstr "Oznake"
 
-#: data/gtk/station_dialog.ui:217
+#: data/gtk/station_dialog.ui:216
 msgid "Location"
 msgstr "Lokacija"
 
-#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
 msgid "Country"
 msgstr "Zemlja"
 
-#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
 msgid "State"
 msgstr "Država"
 
-#: data/gtk/station_dialog.ui:286
+#: data/gtk/station_dialog.ui:285
 msgid "Audio"
 msgstr "Zvuk"
 
-#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
 msgid "Bitrate"
 msgstr "Brzina prijenosa"
 
-#: data/gtk/station_dialog.ui:305
+#: data/gtk/station_dialog.ui:304
 msgid "Codec"
 msgstr "Kôdek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:320
+#: data/gtk/station_dialog.ui:319
 msgid "Stream"
 msgstr "Strujanje"
 
@@ -460,14 +460,6 @@ msgstr "Slušajte internetski radio"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Denis Štogl https://launchpad.net/~destogl\n"
-"  Krzysztof Klimonda https://launchpad.net/~kklimonda\n"
-"  Miroslav Matejaš https://launchpad.net/~silverspace+amd64\n"
-"  Saša Mofardin - Mofa https://launchpad.net/~sasa-mofardin\n"
-"  Saša Teković https://launchpad.net/~hseagle2015\n"
-"  antisa https://launchpad.net/~antisa\n"
-"  damir https://launchpad.net/~markovi-damir\n"
-"  freedomrun https://launchpad.net/~freedomrun\n"
 "  gogo https://launchpad.net/~trebelnik-stefina"
 
 #. TODO: Implement show-server-stats action
@@ -536,10 +528,10 @@ msgstr "Felix Häcker"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
-"database with over 25,000 stations."
+"database with over 30,000 stations."
 msgstr ""
-"Kratki val je internetski radio reproduktor koji omogućuje pristup bazi "
-"podataka stanica s preko 25,000 stanica."
+"Shortwave je internetski radio reproduktor koji omogućuje pristup bazi "
+"podataka stanica s preko 30,000 stanica."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
