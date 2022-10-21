@@ -1,15 +1,15 @@
 # Portuguese translation for shortwave.
 # Copyright (C) 2020 shortwave's COPYRIGHT HOLDER
 # This file is distributed under the same license as the shortwave package.
-# Juliano de Souza Camargo <julianosc@protonmail.com>, 2020-2021.
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021, 2022.
+# Juliano de Souza Camargo <julianosc@protonmail.com>, 2020, 2021.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-09 11:25+0000\n"
-"PO-Revision-Date: 2022-10-10 14:40+0100\n"
+"POT-Creation-Date: 2022-10-20 19:07+0000\n"
+"PO-Revision-Date: 2022-10-21 12:35+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (https://l10n.gnome.org/teams/pt/)\n"
 "Language: pt\n"
@@ -184,7 +184,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Reproduzir/Pausa"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
 #: src/ui/pages/search_page.rs:196
 msgid "Votes"
 msgstr "Votos"
@@ -237,11 +237,11 @@ msgstr "Des_cendente"
 msgid "An error occurred"
 msgstr "Ocorreu um erro"
 
-#: data/gtk/sidebar_controller.ui:188
+#: data/gtk/sidebar_controller.ui:187
 msgid "_Show Station Details"
 msgstr "Mostrar detalhe_s da estação"
 
-#: data/gtk/sidebar_controller.ui:192
+#: data/gtk/sidebar_controller.ui:191
 msgid "Stream to a _Device"
 msgstr "Emitir a um _dispositivo"
 
@@ -267,7 +267,7 @@ msgstr "Faixas guardadas são gravadas em sua pasta Música."
 msgid "_Open"
 msgstr "_Abrir"
 
-#: data/gtk/song_row.ui:15
+#: data/gtk/song_row.ui:16
 msgid "Save recorded song"
 msgstr "Guardar música gravada"
 
@@ -275,23 +275,23 @@ msgstr "Guardar música gravada"
 msgid "Station details"
 msgstr "Detalhes da estação"
 
-#: data/gtk/station_dialog.ui:88
+#: data/gtk/station_dialog.ui:87
 msgid "_Play Station"
 msgstr "Re_produzir estação"
 
-#: data/gtk/station_dialog.ui:102
+#: data/gtk/station_dialog.ui:101
 msgid "_Add to Library"
 msgstr "_Adicionar à biblioteca"
 
-#: data/gtk/station_dialog.ui:117
+#: data/gtk/station_dialog.ui:116
 msgid "_Remove From Library"
 msgstr "_Remover da biblioteca"
 
-#: data/gtk/station_dialog.ui:134
+#: data/gtk/station_dialog.ui:133
 msgid "Local Station"
 msgstr "Estação local"
 
-#: data/gtk/station_dialog.ui:135
+#: data/gtk/station_dialog.ui:134
 msgid ""
 "This station exists only in your library, and is not part of the public "
 "online station database."
@@ -299,11 +299,11 @@ msgstr ""
 "Esta estação existe apenas na sua biblioteca e não faz parte da base de "
 "dados pública de estações online."
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:149
 msgid "Orphaned Station"
 msgstr "Estação órfã"
 
-#: data/gtk/station_dialog.ui:151
+#: data/gtk/station_dialog.ui:150
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -311,44 +311,44 @@ msgstr ""
 "Não foi possível atualizar a informação, provavelmente esta estação foi "
 "removida da base de dados pública das estações online."
 
-#: data/gtk/station_dialog.ui:163
+#: data/gtk/station_dialog.ui:162
 msgid "Information"
 msgstr "Informação"
 
-#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
 msgid "Language"
 msgstr "Idioma"
 
-#: data/gtk/station_dialog.ui:181
+#: data/gtk/station_dialog.ui:180
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: data/gtk/station_dialog.ui:217
+#: data/gtk/station_dialog.ui:216
 msgid "Location"
 msgstr "Localização"
 
-#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
 msgid "Country"
 msgstr "País"
 
-#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
 msgid "State"
 msgstr "Estado"
 
-#: data/gtk/station_dialog.ui:286
+#: data/gtk/station_dialog.ui:285
 msgid "Audio"
 msgstr "Áudio"
 
-#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
 msgid "Bitrate"
 msgstr "Taxa de bits"
 
-#: data/gtk/station_dialog.ui:305
+#: data/gtk/station_dialog.ui:304
 msgid "Codec"
 msgstr "Codificação"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:320
+#: data/gtk/station_dialog.ui:319
 msgid "Stream"
 msgstr "Emissão"
 
@@ -532,10 +532,10 @@ msgstr "Felix Häcker"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
-"database with over 25,000 stations."
+"database with over 30,000 stations."
 msgstr ""
-"O Shortwave é um reprodutor de rádio por Internet que fornece acesso a uma "
-"base de dados de mais de 25 000 estações."
+"O Shortwave é um leitor de rádio via Internet que dá acesso a uma base de "
+"dados com mais de 30 000 estações."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
