@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-09 11:25+0000\n"
+"POT-Creation-Date: 2022-10-20 19:07+0000\n"
 "PO-Revision-Date: 2022-10-09 14:05+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -178,7 +178,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Przełączenie odtwarzania"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
 #: src/ui/pages/search_page.rs:196
 msgid "Votes"
 msgstr "Głosy"
@@ -231,11 +231,11 @@ msgstr "_Malejąco"
 msgid "An error occurred"
 msgstr "Wystąpił błąd"
 
-#: data/gtk/sidebar_controller.ui:188
+#: data/gtk/sidebar_controller.ui:187
 msgid "_Show Station Details"
 msgstr "_Informacje o stacji"
 
-#: data/gtk/sidebar_controller.ui:192
+#: data/gtk/sidebar_controller.ui:191
 msgid "Stream to a _Device"
 msgstr "_Wyślij na urządzenie"
 
@@ -262,7 +262,7 @@ msgstr "Zapisane utwory znajdują się w katalogu Muzyka."
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: data/gtk/song_row.ui:15
+#: data/gtk/song_row.ui:16
 msgid "Save recorded song"
 msgstr "Zapisuje nagrany utwór"
 
@@ -270,23 +270,23 @@ msgstr "Zapisuje nagrany utwór"
 msgid "Station details"
 msgstr "Informacje o stacji"
 
-#: data/gtk/station_dialog.ui:88
+#: data/gtk/station_dialog.ui:87
 msgid "_Play Station"
 msgstr "_Odtwórz stację"
 
-#: data/gtk/station_dialog.ui:102
+#: data/gtk/station_dialog.ui:101
 msgid "_Add to Library"
 msgstr "_Dodaj do kolekcji"
 
-#: data/gtk/station_dialog.ui:117
+#: data/gtk/station_dialog.ui:116
 msgid "_Remove From Library"
 msgstr "_Usuń z kolekcji"
 
-#: data/gtk/station_dialog.ui:134
+#: data/gtk/station_dialog.ui:133
 msgid "Local Station"
 msgstr "Lokalna stacja"
 
-#: data/gtk/station_dialog.ui:135
+#: data/gtk/station_dialog.ui:134
 msgid ""
 "This station exists only in your library, and is not part of the public "
 "online station database."
@@ -294,11 +294,11 @@ msgstr ""
 "Ta stacja istnieje tylko w kolekcji użytkownika i nie jest częścią "
 "publicznej bazy stacji online."
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:149
 msgid "Orphaned Station"
 msgstr "Osierocona stacja"
 
-#: data/gtk/station_dialog.ui:151
+#: data/gtk/station_dialog.ui:150
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
@@ -306,44 +306,44 @@ msgstr ""
 "Nie można zaktualizować informacji. Prawdopodobnie ta stacja została "
 "usunięta z publicznej bazy stacji online."
 
-#: data/gtk/station_dialog.ui:163
+#: data/gtk/station_dialog.ui:162
 msgid "Information"
 msgstr "Informacje"
 
-#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
 msgid "Language"
 msgstr "Język"
 
-#: data/gtk/station_dialog.ui:181
+#: data/gtk/station_dialog.ui:180
 msgid "Tags"
 msgstr "Etykiety"
 
-#: data/gtk/station_dialog.ui:217
+#: data/gtk/station_dialog.ui:216
 msgid "Location"
 msgstr "Położenie"
 
-#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
 msgid "Country"
 msgstr "Kraj"
 
-#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
 msgid "State"
 msgstr "Stan"
 
-#: data/gtk/station_dialog.ui:286
+#: data/gtk/station_dialog.ui:285
 msgid "Audio"
 msgstr "Dźwięk"
 
-#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
 msgid "Bitrate"
 msgstr "Gęstość bitowa"
 
-#: data/gtk/station_dialog.ui:305
+#: data/gtk/station_dialog.ui:304
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:320
+#: data/gtk/station_dialog.ui:319
 msgid "Stream"
 msgstr "Strumień"
 
@@ -531,10 +531,10 @@ msgstr "Felix Häcker"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
-"database with over 25,000 stations."
+"database with over 30,000 stations."
 msgstr ""
 "Shortwave to odtwarzacz radia internetowego zapewniający dostęp do bazy "
-"ponad 25 000 stacji."
+"ponad 30 000 stacji."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
