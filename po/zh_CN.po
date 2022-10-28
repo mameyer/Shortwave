@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-09 11:25+0000\n"
-"PO-Revision-Date: 2022-10-12 10:32+0800\n"
+"POT-Creation-Date: 2022-10-20 19:07+0000\n"
+"PO-Revision-Date: 2022-10-22 13:21+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -184,7 +184,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "开关回放"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
 #: src/ui/pages/search_page.rs:196
 msgid "Votes"
 msgstr "票数"
@@ -237,11 +237,11 @@ msgstr "降序(_D)"
 msgid "An error occurred"
 msgstr "发生了错误"
 
-#: data/gtk/sidebar_controller.ui:188
+#: data/gtk/sidebar_controller.ui:187
 msgid "_Show Station Details"
 msgstr "显示电台详情(_S)"
 
-#: data/gtk/sidebar_controller.ui:192
+#: data/gtk/sidebar_controller.ui:191
 msgid "Stream to a _Device"
 msgstr "串流到设备(_D)"
 
@@ -267,7 +267,7 @@ msgstr "已保存的歌曲位于您的音乐文件夹中。"
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: data/gtk/song_row.ui:15
+#: data/gtk/song_row.ui:16
 msgid "Save recorded song"
 msgstr "保存录制的歌曲"
 
@@ -275,76 +275,76 @@ msgstr "保存录制的歌曲"
 msgid "Station details"
 msgstr "电台详细信息"
 
-#: data/gtk/station_dialog.ui:88
+#: data/gtk/station_dialog.ui:87
 msgid "_Play Station"
 msgstr "播放电台(_P)"
 
-#: data/gtk/station_dialog.ui:102
+#: data/gtk/station_dialog.ui:101
 msgid "_Add to Library"
 msgstr "添加到库(_A)"
 
-#: data/gtk/station_dialog.ui:117
+#: data/gtk/station_dialog.ui:116
 msgid "_Remove From Library"
 msgstr "从库移除(_R)"
 
-#: data/gtk/station_dialog.ui:134
+#: data/gtk/station_dialog.ui:133
 msgid "Local Station"
 msgstr "本地电台"
 
-#: data/gtk/station_dialog.ui:135
+#: data/gtk/station_dialog.ui:134
 msgid ""
 "This station exists only in your library, and is not part of the public "
 "online station database."
 msgstr "该电台仅存在于您的库中，且不是公共在线电台数据库的一部分。"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:149
 msgid "Orphaned Station"
 msgstr "孤立电台"
 
-#: data/gtk/station_dialog.ui:151
+#: data/gtk/station_dialog.ui:150
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
 msgstr "信息无法更新，可能是因为该电台已从公共在线电台数据库移除。"
 
-#: data/gtk/station_dialog.ui:163
+#: data/gtk/station_dialog.ui:162
 msgid "Information"
 msgstr "信息"
 
-#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
 msgid "Language"
 msgstr "语言"
 
-#: data/gtk/station_dialog.ui:181
+#: data/gtk/station_dialog.ui:180
 msgid "Tags"
 msgstr "标签"
 
-#: data/gtk/station_dialog.ui:217
+#: data/gtk/station_dialog.ui:216
 msgid "Location"
 msgstr "位置"
 
-#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
 msgid "Country"
 msgstr "国家"
 
-#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
 msgid "State"
 msgstr "州省"
 
-#: data/gtk/station_dialog.ui:286
+#: data/gtk/station_dialog.ui:285
 msgid "Audio"
 msgstr "音频"
 
-#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
 msgid "Bitrate"
 msgstr "位速率"
 
-#: data/gtk/station_dialog.ui:305
+#: data/gtk/station_dialog.ui:304
 msgid "Codec"
 msgstr "编解码器"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:320
+#: data/gtk/station_dialog.ui:319
 msgid "Stream"
 msgstr "流"
 
@@ -519,8 +519,9 @@ msgstr "Felix Häcker"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
-"database with over 25,000 stations."
-msgstr "短波是个互联网广播播放器，提供具有 25,000 多个电台的电台数据库。"
+"database with over 30,000 stations."
+msgstr ""
+"短波是个提供对具有超过 30000 个电台的电台数据库访问的互联网广播播放器。"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
