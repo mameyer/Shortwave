@@ -244,6 +244,8 @@ impl SwApplication {
                 about_window::show(&window);
             })
         );
+
+        self.set_accels_for_action("window.close", &["<primary>w"]);
     }
 
     pub fn library(&self) -> SwLibrary {
