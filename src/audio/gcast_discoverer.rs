@@ -112,7 +112,7 @@ impl GCastDiscoverer {
             .records()
             .filter_map(Self::record_to_ip_addr)
             .next();
-        if addr == None {
+        if addr.is_none() {
             debug!("Cast device does not advertise address.");
             return None;
         }
