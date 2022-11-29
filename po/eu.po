@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-09 11:25+0000\n"
-"PO-Revision-Date: 2022-10-16 10:00+0000\n"
+"POT-Creation-Date: 2022-10-20 19:07+0000\n"
+"PO-Revision-Date: 2022-11-29 10:00+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -28,7 +28,7 @@ msgstr "Sortu irrati-estazio berria"
 msgid ""
 "You can decide if you want the new station to be visible for all users "
 "worldwide or if you want to create a local station."
-msgstr "Irrati-estazio berria muduko erabiltzaile guztientzat ikusgai egongo den aukeratu dezakezu, estazio lokal bat sortu nahi baduzu."
+msgstr "Irrati-estazio berria munduko erabiltzaile guztientzat ikusgai egongo den ala estazio lokal bat sortu nahi duzun aukeratu dezakezu."
 
 #: data/gtk/create_station_dialog.ui:43
 msgid "Create _Public Station"
@@ -173,7 +173,7 @@ msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Txandakatu erreprodukzioa"
 
-#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:201
+#: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
 #: src/ui/pages/search_page.rs:196
 msgid "Votes"
 msgstr "Botoak"
@@ -226,11 +226,11 @@ msgstr "Beheran_tz"
 msgid "An error occurred"
 msgstr "Errorea gertatu da"
 
-#: data/gtk/sidebar_controller.ui:188
+#: data/gtk/sidebar_controller.ui:187
 msgid "_Show Station Details"
 msgstr "_Erakutsi estazioaren xehetasunak"
 
-#: data/gtk/sidebar_controller.ui:192
+#: data/gtk/sidebar_controller.ui:191
 msgid "Stream to a _Device"
 msgstr "Bidali korrontea _gailu bati"
 
@@ -255,7 +255,7 @@ msgstr "Gordetako abestiak zure 'Musika' karpetan egongo dira."
 msgid "_Open"
 msgstr "_Ireki"
 
-#: data/gtk/song_row.ui:15
+#: data/gtk/song_row.ui:16
 msgid "Save recorded song"
 msgstr "Gorde grabatutako abestia"
 
@@ -263,76 +263,76 @@ msgstr "Gorde grabatutako abestia"
 msgid "Station details"
 msgstr "Irrati-estazioaren xehetasunak"
 
-#: data/gtk/station_dialog.ui:88
+#: data/gtk/station_dialog.ui:87
 msgid "_Play Station"
 msgstr "_Erreproduzitu estazioa"
 
-#: data/gtk/station_dialog.ui:102
+#: data/gtk/station_dialog.ui:101
 msgid "_Add to Library"
 msgstr "_Gehitu liburutegiari"
 
-#: data/gtk/station_dialog.ui:117
+#: data/gtk/station_dialog.ui:116
 msgid "_Remove From Library"
 msgstr "_Kendu liburutegitik"
 
-#: data/gtk/station_dialog.ui:134
+#: data/gtk/station_dialog.ui:133
 msgid "Local Station"
 msgstr "Irrati-estazio lokala"
 
-#: data/gtk/station_dialog.ui:135
+#: data/gtk/station_dialog.ui:134
 msgid ""
 "This station exists only in your library, and is not part of the public "
 "online station database."
 msgstr "Estazio hau zure liburutegian soilik dago, eta ez dago lineako estazio publikoen datu-basean"
 
-#: data/gtk/station_dialog.ui:150
+#: data/gtk/station_dialog.ui:149
 msgid "Orphaned Station"
 msgstr "Estazio umezurtza"
 
-#: data/gtk/station_dialog.ui:151
+#: data/gtk/station_dialog.ui:150
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public online station database."
 msgstr "Informazioa ezin da eguneratu, beharbada estazio hau kendu egin da lineako estazioen datu-base publikotik."
 
-#: data/gtk/station_dialog.ui:163
+#: data/gtk/station_dialog.ui:162
 msgid "Information"
 msgstr "Informazioa"
 
-#: data/gtk/station_dialog.ui:166 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
 msgid "Language"
 msgstr "Hizkuntza"
 
-#: data/gtk/station_dialog.ui:181
+#: data/gtk/station_dialog.ui:180
 msgid "Tags"
 msgstr "Etiketak"
 
-#: data/gtk/station_dialog.ui:217
+#: data/gtk/station_dialog.ui:216
 msgid "Location"
 msgstr "Kokalekua"
 
-#: data/gtk/station_dialog.ui:222 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
 msgid "Country"
 msgstr "Herrialdea"
 
-#: data/gtk/station_dialog.ui:242 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
 msgid "State"
 msgstr "Estatua"
 
-#: data/gtk/station_dialog.ui:286
+#: data/gtk/station_dialog.ui:285
 msgid "Audio"
 msgstr "Audioa"
 
-#: data/gtk/station_dialog.ui:290 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
 msgid "Bitrate"
 msgstr "Bit-emaria"
 
-#: data/gtk/station_dialog.ui:305
+#: data/gtk/station_dialog.ui:304
 msgid "Codec"
 msgstr "Kodeka"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:320
+#: data/gtk/station_dialog.ui:319
 msgid "Stream"
 msgstr "Korrontea"
 
@@ -422,7 +422,7 @@ msgstr "Las_ter-teklak"
 
 #: data/gtk/window.ui:236 data/gtk/window.ui:274
 msgid "_About Shortwave"
-msgstr "Shortware aplikazioari _buruz"
+msgstr "Shortwave aplikazioari _buruz"
 
 #. Fallback to xdg-home when xdg-music is not available
 #: src/audio/backend/song_backend.rs:96
@@ -505,8 +505,8 @@ msgstr "Felix Häcker"
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
-"database with over 25,000 stations."
-msgstr "Shortwave interneteko irrati-estazioen erreproduzigailua ba, 25.000 estazio baino gehiago dituen datu-base baterako sarbidea ematen duena."
+"database with over 30,000 stations."
+msgstr "Shortwave interneteko irrati-estazioen erreproduzigailua da, 30.000 estazio baino gehiago dituen datu-base baterako sarbidea ematen duena."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:19
 msgid "Features:"
