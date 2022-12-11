@@ -5,7 +5,7 @@
     <child>
       <object class="GtkShortcutsSection">
         <property name="section-name">shortcuts</property>
-        <property name="max-height">12</property>
+        <property name="max-height">10</property>
         <child>
           <object class="GtkShortcutsGroup">
             <property name="title" translatable="yes">General</property>
@@ -25,6 +25,12 @@
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Open preferences</property>
                 <property name="action_name">app.show-preferences</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Close the window</property>
+                <property name="action_name">window.close</property>
               </object>
             </child>
             <child>
