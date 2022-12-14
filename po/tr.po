@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-20 19:07+0000\n"
-"PO-Revision-Date: 2022-10-24 01:37+0300\n"
+"POT-Creation-Date: 2022-10-30 20:15+0000\n"
+"PO-Revision-Date: 2022-12-09 01:36+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnometurk@gnome.org>\n"
 "Language: tr\n"
@@ -79,7 +79,7 @@ msgstr "Diğer Kullanıcılar Dinliyor…"
 
 #: data/gtk/library_page.ui:60
 msgid "Receiving Station Data…"
-msgstr "İstasyon Bilgisi Alınıyor…"
+msgstr "İstasyon Verisi Alınıyor…"
 
 #: data/gtk/library_page.ui:87
 msgid "_Discover New Stations"
@@ -169,7 +169,7 @@ msgstr "Geri git"
 #: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Refresh station data"
-msgstr "İstasyon bilgisini tazele"
+msgstr "İstasyon verisini tazele"
 
 #: data/gtk/help_overlay.ui:75
 msgid "Playback"
@@ -414,7 +414,7 @@ msgstr "Küçük Çalıcıyı _Etkinleştir"
 
 #: data/gtk/window.ui:163 data/gtk/window.ui:244
 msgid "_Refresh Station Data"
-msgstr "İstasyon Bilgisini _Tazele"
+msgstr "İstasyon Verisini _Tazele"
 
 #: data/gtk/window.ui:167
 msgid "_Sorting"
@@ -491,7 +491,7 @@ msgstr "radio-browser.info ile güçlendirildi"
 
 #: src/ui/pages/discover_page.rs:149 src/ui/pages/search_page.rs:286
 msgid "Station data could not be received."
-msgstr "İstasyon bilgisi alınamadı."
+msgstr "İstasyon verisi alınamadı."
 
 #: src/ui/pages/library_page.rs:117
 msgid "Welcome to {}"
