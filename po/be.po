@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-11-13 12:47+0000\n"
-"PO-Revision-Date: 2022-12-19 18:35+0300\n"
+"POT-Creation-Date: 2022-12-19 15:41+0000\n"
+"PO-Revision-Date: 2022-12-19 18:49+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -139,43 +139,48 @@ msgstr "Адкрыць параметры"
 
 #: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
+msgid "Close the window"
+msgstr "Закрыць акно"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Выйсці з праграмы"
 
-#: data/gtk/help_overlay.ui:40
+#: data/gtk/help_overlay.ui:46
 msgid "Window"
 msgstr "Акно"
 
-#: data/gtk/help_overlay.ui:43
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Бібліятэка"
 
-#: data/gtk/help_overlay.ui:49
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Агляд"
 
-#: data/gtk/help_overlay.ui:55
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Пошук"
 
-#: data/gtk/help_overlay.ui:61
+#: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Назад"
 
-#: data/gtk/help_overlay.ui:67
+#: data/gtk/help_overlay.ui:73
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "Абнавіць даныя станцыі"
 
-#: data/gtk/help_overlay.ui:75
+#: data/gtk/help_overlay.ui:81
 msgid "Playback"
 msgstr "Прайграванне"
 
-#: data/gtk/help_overlay.ui:78
+#: data/gtk/help_overlay.ui:84
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Пачаць або спыніць прайграванне"
