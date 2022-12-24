@@ -191,7 +191,7 @@ impl SwCreateStationDialog {
 
     fn set_favicon(&self, file: gio::File) {
         if let Some(path) = file.path() {
-            if let Ok(pixbuf) = gdk_pixbuf::Pixbuf::from_file(&path) {
+            if let Ok(pixbuf) = gdk_pixbuf::Pixbuf::from_file(path) {
                 self.imp().favicon_widget.get().unwrap().set_pixbuf(&pixbuf);
                 self.imp().favicon.replace(Some(pixbuf));
             }

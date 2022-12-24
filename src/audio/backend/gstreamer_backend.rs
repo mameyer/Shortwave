@@ -77,8 +77,7 @@ impl GstreamerBackend {
 
         // create gstreamer pipeline
         let pipeline_launch = format!(
-            "uridecodebin name=uridecodebin use-buffering=true buffer-duration=6000000000 ! audioconvert name=audioconvert ! tee name=tee ! queue ! {} name={}",
-            audiosink, audiosink
+            "uridecodebin name=uridecodebin use-buffering=true buffer-duration=6000000000 ! audioconvert name=audioconvert ! tee name=tee ! queue ! {audiosink} name={audiosink}"
         );
         let pipeline = gstreamer::parse_launch(&pipeline_launch).unwrap();
         let pipeline = pipeline.downcast::<gstreamer::Pipeline>().unwrap();
@@ -141,8 +140,8 @@ impl GstreamerBackend {
                     // slightly different floats, so we round up here (only the the first two digits are
                     // important for use here).
                     let mut old_volume_locked = old_volume.lock().unwrap();
-                    let new_val = format!("{:.2}", new_volume);
-                    let old_val = format!("{:.2}", old_volume_locked);
+                    let new_val = format!("{new_volume:.2}");
+                    let old_val = format!("{old_volume_locked:.2}");
 
                     if new_val != old_val {
                         send!(volume_sender, new_volume);

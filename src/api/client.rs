@@ -108,7 +108,7 @@ impl Client {
 
     pub async fn station_metadata_by_uuid(self, uuid: &str) -> Result<StationMetadata, Error> {
         let url = self
-            .build_url(&format!("{}{}", STATION_BY_UUID, uuid), None)
+            .build_url(&format!("{STATION_BY_UUID}{uuid}"), None)
             .await?;
 
         let response = HTTP_CLIENT.get_async(url.as_ref()).await?.text().await?;
@@ -194,7 +194,7 @@ impl Client {
                         hostname.to_string(),
                         ip.to_string()
                     );
-                    return Some(Url::parse(&format!("https://{}/", hostname)).unwrap());
+                    return Some(Url::parse(&format!("https://{hostname}/")).unwrap());
                 }
                 Err(err) => {
                     warn!("Unable to connect {}: {}", ip.to_string(), err.to_string());
@@ -207,7 +207,7 @@ impl Client {
 
     async fn test_api_server(ip: String) -> Result<(), Error> {
         let _stats: Option<Stats> = HTTP_CLIENT
-            .get_async(format!("https://{}/{}", ip, STATS))
+            .get_async(format!("https://{ip}/{STATS}"))
             .await?
             .json()
             .await?;
