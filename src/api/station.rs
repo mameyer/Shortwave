@@ -49,31 +49,19 @@ mod imp {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
                     ParamSpecString::new("uuid", "UUID", "UUID", None, ParamFlags::READABLE),
-                    ParamSpecBoolean::new(
-                        "is-local",
-                        "Is a local station",
-                        "Is a local station",
-                        false,
-                        ParamFlags::READABLE,
-                    ),
-                    ParamSpecBoolean::new(
-                        "is-orphaned",
-                        "Is a orphaned station",
-                        "Is a orphaned station",
-                        false,
-                        ParamFlags::READABLE,
-                    ),
+                    ParamSpecBoolean::new("is-local", "", "", false, ParamFlags::READABLE),
+                    ParamSpecBoolean::new("is-orphaned", "", "", false, ParamFlags::READABLE),
                     ParamSpecBoxed::new(
                         "metadata",
-                        "Metadata",
-                        "Metadata",
+                        "",
+                        "",
                         StationMetadata::static_type(),
                         ParamFlags::READABLE,
                     ),
                     ParamSpecObject::new(
                         "favicon",
-                        "Favicon",
-                        "Favicon",
+                        "",
+                        "",
                         gdk_pixbuf::Pixbuf::static_type(),
                         glib::ParamFlags::READABLE,
                     ),

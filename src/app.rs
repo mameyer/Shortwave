@@ -95,8 +95,8 @@ mod imp {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![ParamSpecObject::new(
                     "library",
-                    "Library",
-                    "Library",
+                    "",
+                    "",
                     SwLibrary::static_type(),
                     glib::ParamFlags::READABLE,
                 )]

@@ -73,15 +73,15 @@ mod imp {
                 vec![
                     ParamSpecObject::new(
                         "model",
-                        "Model",
-                        "Model",
+                        "",
+                        "",
                         SwStationModel::static_type(),
                         glib::ParamFlags::READABLE,
                     ),
                     ParamSpecEnum::new(
                         "status",
-                        "Status",
-                        "Status",
+                        "",
+                        "",
                         SwLibraryStatus::static_type(),
                         SwLibraryStatus::default() as i32,
                         ParamFlags::READABLE,

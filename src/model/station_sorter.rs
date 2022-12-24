@@ -44,17 +44,11 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpecBoolean::new(
-                        "descending",
-                        "Descending",
-                        "Descending",
-                        false,
-                        ParamFlags::READWRITE,
-                    ),
+                    ParamSpecBoolean::new("descending", "", "", false, ParamFlags::READWRITE),
                     ParamSpecEnum::new(
                         "sorting",
-                        "Sorting",
-                        "Sorting",
+                        "",
+                        "",
                         SwSorting::static_type(),
                         SwSorting::default() as i32,
                         ParamFlags::READWRITE,
