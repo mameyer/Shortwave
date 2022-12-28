@@ -1,25 +1,25 @@
 # Brazilian Portuguese translation for shortwave.
 # Copyright (C) 2022 shortwave's COPYRIGHT HOLDER
 # This file is distributed under the same license as the shortwave package.
-# Enrico Nicoletto <liverig@gmail.com>, 2021.
 # Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2020-2022.
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022.
+# Enrico Nicoletto <liverig@gmail.com>, 2021-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-20 19:07+0000\n"
-"PO-Revision-Date: 2022-11-22 07:48-0300\n"
-"Last-Translator: Leônidas Araújo <leorusvellt@hotmail.com>\n"
+"POT-Creation-Date: 2022-12-19 15:41+0000\n"
+"PO-Revision-Date: 2022-12-28 18:32-0300\n"
+"Last-Translator: Enrico Nicoletto <hiko@duck.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 40.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: shortwave\n"
 "X-DL-Branch: main\n"
@@ -144,43 +144,48 @@ msgstr "Abre preferências"
 
 #: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
+msgid "Close the window"
+msgstr "Fecha a janela"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Sai do aplicativo"
 
-#: data/gtk/help_overlay.ui:40
+#: data/gtk/help_overlay.ui:46
 msgid "Window"
 msgstr "Janela"
 
-#: data/gtk/help_overlay.ui:43
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Abre visão de biblioteca"
 
-#: data/gtk/help_overlay.ui:49
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Abre visão de descobertas"
 
-#: data/gtk/help_overlay.ui:55
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Abre visão de pesquisa"
 
-#: data/gtk/help_overlay.ui:61
+#: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Retorna"
 
-#: data/gtk/help_overlay.ui:67
+#: data/gtk/help_overlay.ui:73
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "Atualiza os dados da estação"
 
-#: data/gtk/help_overlay.ui:75
+#: data/gtk/help_overlay.ui:81
 msgid "Playback"
 msgstr "Reprodução"
 
-#: data/gtk/help_overlay.ui:78
+#: data/gtk/help_overlay.ui:84
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Alterna a reprodução"
@@ -382,7 +387,6 @@ msgid "Searching for Devices…"
 msgstr "Pesquisando dispositivos…"
 
 #: data/gtk/window.ui:27
-#| msgid "Add new station"
 msgid "Add Stations"
 msgstr "Adicionar estações"
 
@@ -391,14 +395,10 @@ msgid "Go Back"
 msgstr "Voltar"
 
 #: data/gtk/window.ui:41
-#| msgctxt "shortcut window"
-#| msgid "Open application menu"
 msgid "Open Application Menu"
 msgstr "Abrir menu do aplicativo"
 
 #: data/gtk/window.ui:50
-#| msgctxt "shortcut window"
-#| msgid "Open search view"
 msgid "Open Search"
 msgstr "Abrir pesquisa"
 
@@ -537,9 +537,6 @@ msgid "Felix Häcker"
 msgstr "Felix Häcker"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
-#| msgid ""
-#| "Shortwave is an internet radio player that provides access to a station "
-#| "database with over 25,000 stations."
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
 "database with over 30,000 stations."
@@ -588,60 +585,3 @@ msgstr "Integração perfeita no ambiente GNOME"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Rádio;Radio;Stream;Reprodução;Reproduzir;Wave;Onda;Sintonia;"
-
-#~ msgid "Detected songs will appear here."
-#~ msgstr "Músicas detectadas vão aparecer aqui."
-
-#~ msgid "_How does this work?"
-#~ msgstr "C_omo isso funciona?"
-
-#~ msgid "Shortwave"
-#~ msgstr "Shortwave"
-
-#~ msgid "Error details"
-#~ msgstr "Detalhes do erro"
-
-#~ msgid "Connected with"
-#~ msgstr "Conectado com"
-
-#~ msgid "_Cancel"
-#~ msgstr "_Cancelar"
-
-#~ msgid "_Connect"
-#~ msgstr "_Conectar"
-
-#~ msgid "Devices which implement the Google Cast protocol are supported."
-#~ msgstr "Há suporte a dispositivos que implementam o protocolo Google Cast."
-
-#~ msgid "_Retry search"
-#~ msgstr "_Repetir pesquisar"
-
-#~ msgid "URL is not valid."
-#~ msgstr "A URL não é válida."
-
-#~ msgid "An invalid station was removed from the library."
-#~ msgstr "Um estação inválida foi removida da biblioteca."
-
-#~ msgid "This station cannot be played because the stream is offline."
-#~ msgstr ""
-#~ "Esta estação não pode ser reproduzida porque o stream está desconectado."
-
-#~ msgid "This is a local private station."
-#~ msgstr "Esta é uma estação privada local"
-
-#~ msgid ""
-#~ "This station is visible only to you. If you remove this station from your "
-#~ "library, you have to create it again."
-#~ msgstr ""
-#~ "Esta estação está visível apenas para você. Se você remover esta estação "
-#~ "de sua biblioteca, você terá que cria-la novamente."
-
-#~ msgid "{} Vote"
-#~ msgid_plural "{} Votes"
-#~ msgstr[0] "{} voto"
-#~ msgstr[1] "{} votos"
-
-#~ msgid "{} · {} Vote"
-#~ msgid_plural "{} · {} Votes"
-#~ msgstr[0] "{} · {} voto"
-#~ msgstr[1] "{} · {} votos"
