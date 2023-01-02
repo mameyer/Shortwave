@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-30 20:15+0000\n"
-"PO-Revision-Date: 2022-12-09 01:36+0300\n"
+"POT-Creation-Date: 2022-12-19 15:41+0000\n"
+"PO-Revision-Date: 2022-12-19 19:31+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnometurk@gnome.org>\n"
 "Language: tr\n"
@@ -139,43 +139,48 @@ msgstr "Tercihleri aç"
 
 #: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
+msgid "Close the window"
+msgstr "Pencereyi kapat"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Uygulamadan çık"
 
-#: data/gtk/help_overlay.ui:40
+#: data/gtk/help_overlay.ui:46
 msgid "Window"
 msgstr "Pencere"
 
-#: data/gtk/help_overlay.ui:43
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Kitaplık görünümünü aç"
 
-#: data/gtk/help_overlay.ui:49
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Keşif görünümünü aç"
 
-#: data/gtk/help_overlay.ui:55
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Arama görünümünü aç"
 
-#: data/gtk/help_overlay.ui:61
+#: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Geri git"
 
-#: data/gtk/help_overlay.ui:67
+#: data/gtk/help_overlay.ui:73
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "İstasyon verisini tazele"
 
-#: data/gtk/help_overlay.ui:75
+#: data/gtk/help_overlay.ui:81
 msgid "Playback"
 msgstr "Kayıttan Yürüt"
 
-#: data/gtk/help_overlay.ui:78
+#: data/gtk/help_overlay.ui:84
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Kayıttan yürütmeyi aç/kapat"
