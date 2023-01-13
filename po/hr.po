@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-20 19:07+0000\n"
-"PO-Revision-Date: 2022-10-21 17:44+0200\n"
+"POT-Creation-Date: 2022-12-19 15:41+0000\n"
+"PO-Revision-Date: 2023-01-13 11:50+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/gtk/create_station_dialog.ui:8
 msgid "Create new station"
@@ -138,43 +138,48 @@ msgstr "Otvori osobitosti"
 
 #: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
+msgid "Close the window"
+msgstr "Zatvori prozor"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Zatvori aplikaciju"
 
-#: data/gtk/help_overlay.ui:40
+#: data/gtk/help_overlay.ui:46
 msgid "Window"
 msgstr "Prozor"
 
-#: data/gtk/help_overlay.ui:43
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Otvori prikaz radioteke"
 
-#: data/gtk/help_overlay.ui:49
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Otvori prikaz otkrivanja stanica"
 
-#: data/gtk/help_overlay.ui:55
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Otvori prikaz pretrage"
 
-#: data/gtk/help_overlay.ui:61
+#: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Idi natrag"
 
-#: data/gtk/help_overlay.ui:67
+#: data/gtk/help_overlay.ui:73
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "Osvježi podatke stanice"
 
-#: data/gtk/help_overlay.ui:75
+#: data/gtk/help_overlay.ui:81
 msgid "Playback"
 msgstr "Reprodukcija"
 
-#: data/gtk/help_overlay.ui:78
+#: data/gtk/help_overlay.ui:84
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Uklj/Isklj reprodukciju"
