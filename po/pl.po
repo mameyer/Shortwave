@@ -1,15 +1,15 @@
 # Polish translation for shortwave.
-# Copyright © 2020-2022 the shortwave authors.
+# Copyright © 2020-2023 the shortwave authors.
 # This file is distributed under the same license as the shortwave package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2020-2022.
-# Aviary.pl <community-poland@mozilla.org>, 2020-2022.
+# Piotr Drąg <piotrdrag@gmail.com>, 2020-2023.
+# Aviary.pl <community-poland@mozilla.org>, 2020-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-20 19:07+0000\n"
-"PO-Revision-Date: 2022-10-09 14:05+0200\n"
+"POT-Creation-Date: 2022-12-19 15:41+0000\n"
+"PO-Revision-Date: 2023-02-05 13:49+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -137,43 +137,48 @@ msgstr "Otwarcie preferencji"
 
 #: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
+msgid "Close the window"
+msgstr "Zamknięcie okna"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Zakończenie działania programu"
 
-#: data/gtk/help_overlay.ui:40
+#: data/gtk/help_overlay.ui:46
 msgid "Window"
 msgstr "Okno"
 
-#: data/gtk/help_overlay.ui:43
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Otwarcie widoku kolekcji"
 
-#: data/gtk/help_overlay.ui:49
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Otwarcie widoku odkrywania"
 
-#: data/gtk/help_overlay.ui:55
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Otwarcie widoku wyszukiwania"
 
-#: data/gtk/help_overlay.ui:61
+#: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Przejście wstecz"
 
-#: data/gtk/help_overlay.ui:67
+#: data/gtk/help_overlay.ui:73
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "Odświeżenie danych stacji"
 
-#: data/gtk/help_overlay.ui:75
+#: data/gtk/help_overlay.ui:81
 msgid "Playback"
 msgstr "Odtwarzanie"
 
-#: data/gtk/help_overlay.ui:78
+#: data/gtk/help_overlay.ui:84
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Przełączenie odtwarzania"
@@ -462,8 +467,8 @@ msgstr "Słuchanie radia internetowego"
 #: src/ui/about_window.rs:46
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2020-2022\n"
-"Aviary.pl <community-poland@mozilla.org>, 2020-2022"
+"Piotr Drąg <piotrdrag@gmail.com>, 2020-2023\n"
+"Aviary.pl <community-poland@mozilla.org>, 2020-2023"
 
 #. TODO: Implement show-server-stats action
 #: src/ui/pages/discover_page.rs:117
