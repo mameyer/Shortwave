@@ -1,5 +1,5 @@
 // Shortwave - about_window.rs
-// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2023  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ pub fn show(parent: &SwApplicationWindow) {
     window.set_application_name(config::NAME);
     window.set_designers(&["Tobias Bernard"]);
     window.set_comments(&i18n("Listen to internet radio"));
-    window.set_copyright("© 2019-2022 Felix Häcker");
+    window.set_copyright("© 2019-2023 Felix Häcker");
     window.set_debug_info(&vcs_tag);
     window.set_developer_name("Felix Häcker");
     window.set_developers(&[
