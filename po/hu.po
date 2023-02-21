@@ -1,15 +1,15 @@
 # Hungarian translation for shortwave.
-# Copyright (C) 2020, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2020, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the shortwave package.
 #
-# Balázs Úr <ur.balazs at fsf dot hu>, 2020, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2020, 2022, 2023.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-10-20 19:07+0000\n"
-"PO-Revision-Date: 2022-11-05 19:40+0100\n"
+"POT-Creation-Date: 2022-12-19 15:41+0000\n"
+"PO-Revision-Date: 2023-02-21 01:40+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -137,43 +137,48 @@ msgstr "Beállítások megnyitása"
 
 #: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
+msgid "Close the window"
+msgstr "Az ablak bezárása"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Kilépés az alkalmazásból"
 
-#: data/gtk/help_overlay.ui:40
+#: data/gtk/help_overlay.ui:46
 msgid "Window"
 msgstr "Ablak"
 
-#: data/gtk/help_overlay.ui:43
+#: data/gtk/help_overlay.ui:49
 msgctxt "shortcut window"
 msgid "Open library view"
 msgstr "Könyvtár nézet megnyitása"
 
-#: data/gtk/help_overlay.ui:49
+#: data/gtk/help_overlay.ui:55
 msgctxt "shortcut window"
 msgid "Open discover view"
 msgstr "Felfedezés nézet megnyitása"
 
-#: data/gtk/help_overlay.ui:55
+#: data/gtk/help_overlay.ui:61
 msgctxt "shortcut window"
 msgid "Open search view"
 msgstr "Keresés nézet megnyitása"
 
-#: data/gtk/help_overlay.ui:61
+#: data/gtk/help_overlay.ui:67
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Vissza"
 
-#: data/gtk/help_overlay.ui:67
+#: data/gtk/help_overlay.ui:73
 msgctxt "shortcut window"
 msgid "Refresh station data"
 msgstr "Állomásadatok frissítése"
 
-#: data/gtk/help_overlay.ui:75
+#: data/gtk/help_overlay.ui:81
 msgid "Playback"
 msgstr "Lejátszás"
 
-#: data/gtk/help_overlay.ui:78
+#: data/gtk/help_overlay.ui:84
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Lejátszás be/ki"
@@ -376,7 +381,6 @@ msgid "Searching for Devices…"
 msgstr "Eszközök keresése…"
 
 #: data/gtk/window.ui:27
-#| msgid "Add new station"
 msgid "Add Stations"
 msgstr "Állomások hozzáadása"
 
@@ -385,14 +389,10 @@ msgid "Go Back"
 msgstr "Vissza"
 
 #: data/gtk/window.ui:41
-#| msgctxt "shortcut window"
-#| msgid "Open application menu"
 msgid "Open Application Menu"
 msgstr "Alkalmazásmenü megnyitása"
 
 #: data/gtk/window.ui:50
-#| msgctxt "shortcut window"
-#| msgid "Open search view"
 msgid "Open Search"
 msgstr "Keresés megnyitása"
 
@@ -530,9 +530,6 @@ msgid "Felix Häcker"
 msgstr "Felix Häcker"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:16
-#| msgid ""
-#| "Shortwave is an internet radio player that provides access to a station "
-#| "database with over 25,000 stations."
 msgid ""
 "Shortwave is an internet radio player that provides access to a station "
 "database with over 30,000 stations."
