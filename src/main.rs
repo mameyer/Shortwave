@@ -48,7 +48,7 @@ use gtk::{gio, glib};
 
 use crate::app::SwApplication;
 
-fn main() {
+fn main() -> glib::ExitCode {
     // Initialize logger
     pretty_env_logger::init();
 
@@ -86,5 +86,5 @@ fn main() {
     let _guard = ctx.acquire().unwrap();
 
     // Run app itself
-    SwApplication::run();
+    SwApplication::run()
 }

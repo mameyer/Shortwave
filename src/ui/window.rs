@@ -19,7 +19,7 @@ use std::rc::Rc;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::{clone, subclass, Enum, ParamFlags, ParamSpec, ParamSpecEnum, Sender, ToValue};
+use glib::{clone, subclass, Enum, ParamSpec, ParamSpecEnum, Sender, ToValue};
 use gtk::{gdk, gio, glib, CompositeTemplate};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
@@ -114,36 +114,22 @@ mod imp {
 
     impl ObjectImpl for SwApplicationWindow {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![ParamSpecEnum::new(
-                    "view",
-                    "View",
-                    "View",
-                    SwView::static_type(),
-                    SwView::default() as i32,
-                    ParamFlags::READWRITE,
-                )]
-            });
+            static PROPERTIES: Lazy<Vec<ParamSpec>> =
+                Lazy::new(|| vec![ParamSpecEnum::builder::<SwView>("view").build()]);
 
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "view" => obj.view().to_value(),
+                "view" => self.obj().view().to_value(),
                 _ => unimplemented!(),
             }
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
             match pspec.name() {
-                "view" => obj.set_view(value.get().unwrap()),
+                "view" => self.obj().set_view(value.get().unwrap()),
                 _ => unimplemented!(),
             }
         }
@@ -174,7 +160,7 @@ glib::wrapper! {
 impl SwApplicationWindow {
     pub fn new(sender: Sender<Action>, app: SwApplication, player: Rc<Player>) -> Self {
         // Create new GObject and downcast it into SwApplicationWindow
-        let window = glib::Object::new::<Self>(&[]).unwrap();
+        let window = glib::Object::new::<Self>();
         app.add_window(&window);
 
         window.setup_widgets(sender.clone(), player);
@@ -207,7 +193,7 @@ impl SwApplicationWindow {
             adw::CallbackAnimationTarget::new(clone!(@weak self as this => move |val|{
                 this.set_default_width(val as i32);
             }));
-        let x_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &x_callback);
+        let x_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, x_callback);
         x_animation.set_easing(adw::Easing::EaseOutCubic);
         imp.window_animation_x.set(x_animation).unwrap();
 
@@ -215,7 +201,7 @@ impl SwApplicationWindow {
             adw::CallbackAnimationTarget::new(clone!(@weak self as this => move |val|{
                 this.set_default_height(val as i32);
             }));
-        let y_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, &y_callback);
+        let y_animation = adw::TimedAnimation::new(self, 0.0, 0.0, 500, y_callback);
         y_animation.set_easing(adw::Easing::EaseOutCubic);
         imp.window_animation_y.set(y_animation).unwrap();
 
@@ -271,107 +257,87 @@ impl SwApplicationWindow {
         let imp = self.imp();
         let app = self.application().unwrap();
 
-        // win.open-radio-browser-info
-        action!(self, "open-radio-browser-info", |_, _| {
-            gtk::show_uri(
-                Some(&SwApplicationWindow::default()),
-                "https://www.radio-browser.info/",
-                gdk::CURRENT_TIME,
-            );
-        });
-
-        // win.create-new-station
-        action!(
-            self,
-            "create-new-station",
-            clone!(@strong sender => move |_, _| {
-                let dialog = SwCreateStationDialog::new(sender.clone());
-                dialog.show();
-            })
-        );
-
-        // win.go-back
-        action!(
-            self,
-            "go-back",
-            clone!(@weak self as this => move |_, _| {
-                this.go_back();
-            })
-        );
+        self.add_action_entries([
+            // win.open-radio-browser-info
+            gio::ActionEntry::builder("open-radio-browser-info")
+                .activate(|_, _, _| {
+                    gtk::show_uri(
+                        Some(&SwApplicationWindow::default()),
+                        "https://www.radio-browser.info/",
+                        gdk::CURRENT_TIME,
+                    );
+                })
+                .build(),
+            // win.create-new-station
+            gio::ActionEntry::builder("create-new-station")
+                .activate(clone!(@strong sender => move |_, _, _| {
+                    let dialog = SwCreateStationDialog::new(sender.clone());
+                    dialog.show();
+                }))
+                .build(),
+            // win.go-back
+            gio::ActionEntry::builder("go-back")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.go_back();
+                }))
+                .build(),
+            // win.show-discover
+            gio::ActionEntry::builder("show-discover")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.set_view(SwView::Discover);
+                }))
+                .build(),
+            // win.show-search
+            gio::ActionEntry::builder("show-search")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.set_view(SwView::Search);
+                }))
+                .build(),
+            // win.show-library
+            gio::ActionEntry::builder("show-library")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.set_view(SwView::Library);
+                }))
+                .build(),
+            // win.show-appmenu
+            gio::ActionEntry::builder("show-appmenu")
+                .activate(
+                    clone!(@strong imp.appmenu_button as appmenu_button => move |_, _, _| {
+                        appmenu_button.popup();
+                    }),
+                )
+                .build(),
+            // win.toggle-playback
+            gio::ActionEntry::builder("toggle-playback")
+                .activate(clone!(@strong sender => move |_, _, _| {
+                    send!(sender, Action::PlaybackToggle);
+                }))
+                .build(),
+            // win.disable-mini-player
+            gio::ActionEntry::builder("disable-mini-player")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.enable_mini_player(false);
+                }))
+                .build(),
+            // win.enable-mini-player
+            gio::ActionEntry::builder("enable-mini-player")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.enable_mini_player(true);
+                }))
+                .build(),
+            // win.refresh-data
+            gio::ActionEntry::builder("refresh-data")
+                .activate(|_, _, _| {
+                    SwApplication::default().refresh_data();
+                })
+                .build(),
+        ]);
         app.set_accels_for_action("win.go-back", &["Escape"]);
-
-        // win.show-discover
-        action!(
-            self,
-            "show-discover",
-            clone!(@weak self as this => move |_, _| {
-                this.set_view(SwView::Discover);
-            })
-        );
         app.set_accels_for_action("win.show-discover", &["<primary>d"]);
-
-        // win.show-search
-        action!(
-            self,
-            "show-search",
-            clone!(@weak self as this => move |_, _| {
-                this.set_view(SwView::Search);
-            })
-        );
         app.set_accels_for_action("win.show-search", &["<primary>f"]);
-
-        // win.show-library
-        action!(
-            self,
-            "show-library",
-            clone!(@weak self as this => move |_, _| {
-                this.set_view(SwView::Library);
-            })
-        );
         app.set_accels_for_action("win.show-library", &["<primary>l"]);
-
-        // win.show-appmenu
-        action!(
-            self,
-            "show-appmenu",
-            clone!(@strong imp.appmenu_button as appmenu_button => move |_, _| {
-                appmenu_button.popup();
-            })
-        );
         app.set_accels_for_action("win.show-appmenu", &["F10"]);
-
-        // win.toggle-playback
-        action!(
-            self,
-            "toggle-playback",
-            clone!(@strong sender => move |_, _| {
-                send!(sender, Action::PlaybackToggle);
-            })
-        );
         app.set_accels_for_action("win.toggle-playback", &["<primary>space"]);
-
-        // win.disable-mini-player
-        action!(
-            self,
-            "disable-mini-player",
-            clone!(@weak self as this => move |_, _| {
-                this.enable_mini_player(false);
-            })
-        );
-
-        // win.enable-mini-player
-        action!(
-            self,
-            "enable-mini-player",
-            clone!(@weak self as this => move |_, _| {
-                this.enable_mini_player(true);
-            })
-        );
-
-        // win.refresh-data
-        action!(self, "refresh-data", |_, _| {
-            SwApplication::default().refresh_data();
-        });
         app.set_accels_for_action("win.refresh-data", &["<primary>r"]);
 
         // Sort / Order menu
@@ -400,7 +366,7 @@ impl SwApplicationWindow {
 
     pub fn show_notification(&self, text: &str) {
         let toast = adw::Toast::new(text);
-        self.imp().toast_overlay.add_toast(&toast);
+        self.imp().toast_overlay.add_toast(toast);
     }
 
     pub fn set_sorting(&self, sorting: SwSorting, descending: bool) {

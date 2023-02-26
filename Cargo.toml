@@ -35,12 +35,12 @@ rand = "0.8"
 sanitize-filename = "0.3"
 Inflector = "0.11"
 
-gstreamer-audio = { version = "0.18", features = ["v1_10"]}
-gstreamer = { version = "0.18"}
-shumate = { version = "0.1.0", package = "libshumate"}
+gstreamer-audio = { version = "0.20" }
+gstreamer = { version = "0.20"}
+shumate = { version = "0.3.0", package = "libshumate"}
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-adw = { version = "0.2.0-alpha.3", package = "libadwaita", features = ["v1_2"] }
-gtk = { version = "0.4", package = "gtk4" }
+adw = { version = "0.3", package = "libadwaita", features = ["v1_2"] }
+gtk = { version = "0.6", package = "gtk4" }
 gtk-macros = "0.3"
 
 [target.'cfg(unix)'.dependencies]

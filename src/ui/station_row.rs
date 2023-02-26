@@ -80,7 +80,7 @@ glib::wrapper! {
 
 impl SwStationRow {
     pub fn new(sender: Sender<Action>, station: SwStation) -> Self {
-        let row = glib::Object::new::<Self>(&[]).unwrap();
+        let row = glib::Object::new::<Self>();
 
         let imp = row.imp();
         imp.sender.set(sender).unwrap();

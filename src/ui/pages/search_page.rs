@@ -94,8 +94,9 @@ mod imp {
     }
 
     impl ObjectImpl for SwSearchPage {
-        fn constructed(&self, obj: &Self::Type) {
-            obj.insert_action_group("search", Some(&self.search_action_group));
+        fn constructed(&self) {
+            self.obj()
+                .insert_action_group("search", Some(&self.search_action_group));
 
             let max = self.station_request.borrow().limit.unwrap();
             let text = ni18n_f(
@@ -180,12 +181,12 @@ impl SwSearchPage {
         let variant_ty = Some(glib::VariantTy::new("s").unwrap());
 
         let sorting_action =
-            gio::SimpleAction::new_stateful("sorting", variant_ty, &"Votes".to_variant());
+            gio::SimpleAction::new_stateful("sorting", variant_ty, "Votes".to_variant());
         imp.search_action_group.add_action(&sorting_action);
         sorting_action.connect_change_state(clone!(@weak self as this => move |action, state|{
             let imp = this.imp();
-            if let Some(state) = state{
-                action.set_state(state);
+            if let Some(state) = state {
+                action.set_state(state.clone());
                 let order = state.str().unwrap();
 
                 let label = match order{
@@ -212,12 +213,12 @@ impl SwSearchPage {
         }));
 
         let order_action =
-            gio::SimpleAction::new_stateful("order", variant_ty, &"Descending".to_variant());
+            gio::SimpleAction::new_stateful("order", variant_ty, "Descending".to_variant());
         imp.search_action_group.add_action(&order_action);
         order_action.connect_change_state(clone!(@weak self as this => move |action, state|{
             let imp = this.imp();
-            if let Some(state) = state{
-                action.set_state(state);
+            if let Some(state) = state {
+                action.set_state(state.clone());
 
                 let reverse = if state.str().unwrap() == "Ascending" {
                     imp.sorting_button_content.set_icon_name("view-sort-ascending-symbolic");

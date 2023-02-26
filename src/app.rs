@@ -93,21 +93,17 @@ mod imp {
     impl ObjectImpl for SwApplication {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![ParamSpecObject::new(
-                    "library",
-                    "",
-                    "",
-                    SwLibrary::static_type(),
-                    glib::ParamFlags::READABLE,
-                )]
+                vec![ParamSpecObject::builder::<SwLibrary>("library")
+                    .read_only()
+                    .build()]
             });
 
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "library" => obj.library().to_value(),
+                "library" => self.obj().library().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -115,9 +111,9 @@ mod imp {
 
     // Implement Gio.Application for SwApplication
     impl ApplicationImpl for SwApplication {
-        fn activate(&self, app: &Self::Type) {
+        fn activate(&self) {
             debug!("gio::Application -> activate()");
-            let app = app.downcast_ref::<super::SwApplication>().unwrap();
+            let app = self.obj();
 
             // If the window already exists,
             // present it instead creating a new one again.
@@ -178,7 +174,7 @@ glib::wrapper! {
 
 // SwApplication implementation itself
 impl SwApplication {
-    pub fn run() {
+    pub fn run() -> glib::ExitCode {
         debug!(
             "{} ({}) ({}) - Version {} ({})",
             config::NAME,
@@ -190,15 +186,14 @@ impl SwApplication {
         info!("Isahc version: {}", isahc::version());
 
         // Create new GObject and downcast it into SwApplication
-        let app = glib::Object::new::<SwApplication>(&[
-            ("application-id", &Some(config::APP_ID)),
-            ("flags", &gio::ApplicationFlags::empty()),
-            ("resource-base-path", &Some(config::PATH_ID)),
-        ])
-        .unwrap();
+        let app = glib::Object::builder::<SwApplication>()
+            .property("application-id", Some(config::APP_ID))
+            .property("flags", gio::ApplicationFlags::empty())
+            .property("resource-base-path", Some(config::PATH_ID))
+            .build();
 
         // Start running gtk::Application
-        app.run();
+        app.run()
     }
 
     fn create_window(&self) -> SwApplicationWindow {
@@ -215,36 +210,29 @@ impl SwApplication {
     fn setup_gactions(&self) {
         let window = SwApplicationWindow::default();
 
-        // app.show-preferences
-        action!(
-            self,
-            "show-preferences",
-            clone!(@weak window => move |_, _| {
-                let settings_window = SettingsWindow::new(&window.upcast());
-                settings_window.show();
-            })
-        );
+        window.add_action_entries([
+            // app.show-preferences
+            gio::ActionEntry::builder("show-preferences")
+                .activate(clone!(@weak window => move |_, _, _| {
+                    let settings_window = SettingsWindow::new(&window.upcast());
+                    settings_window.show();
+                }))
+                .build(),
+            // app.quit
+            gio::ActionEntry::builder("quit")
+                .activate(clone!(@weak window => move |_, _, _| {
+                    window.close();
+                }))
+                .build(),
+            // app.about
+            gio::ActionEntry::builder("about")
+                .activate(clone!(@weak window => move |_, _, _| {
+                    about_window::show(&window);
+                }))
+                .build(),
+        ]);
         self.set_accels_for_action("app.show-preferences", &["<primary>comma"]);
-
-        // app.quit
-        action!(
-            self,
-            "quit",
-            clone!(@weak window => move |_, _| {
-                window.close();
-            })
-        );
         self.set_accels_for_action("app.quit", &["<primary>q"]);
-
-        // app.about
-        action!(
-            self,
-            "about",
-            clone!(@weak window => move |_, _| {
-                about_window::show(&window);
-            })
-        );
-
         self.set_accels_for_action("window.close", &["<primary>w"]);
     }
 
