@@ -489,7 +489,7 @@ impl GstreamerBackend {
     }
 
     fn check_pulse_support() -> bool {
-        let pulsesink = gstreamer::ElementFactory::make("pulsesink", Some("pulsesink"));
+        let pulsesink = gstreamer::ElementFactory::make("pulsesink").build();
         pulsesink.is_ok()
     }
 
@@ -517,7 +517,7 @@ impl GstreamerBackend {
                 // Only report the state change once the pipeline itself changed a state,
                 // not whenever any of the internal elements does that.
                 // https://gitlab.gnome.org/World/Shortwave/-/issues/528
-                if message.src().as_ref() == Some(pipeline.upcast_ref::<gstreamer::Object>()) {
+                if message.src() == Some(pipeline.upcast_ref::<gstreamer::Object>()) {
                     let playback_state = match sc.current() {
                         gstreamer::State::Playing => PlaybackState::Playing,
                         gstreamer::State::Paused => PlaybackState::Playing,
@@ -588,11 +588,13 @@ impl GstreamerBackend {
                     let message: gstreamer::message::Message = structure.get("message").unwrap();
                     if let MessageView::Eos(_) = &message.view() {
                         // Get recorderbin from message
-                        let recorderbin =
-                            match message.src().and_then(|src| src.downcast::<Bin>().ok()) {
-                                Some(src) => src,
-                                None => return,
-                            };
+                        let recorderbin = match message
+                            .src()
+                            .and_then(|src| src.clone().downcast::<Bin>().ok())
+                        {
+                            Some(src) => src,
+                            None => return,
+                        };
 
                         // And then asynchronously remove it and set its state to Null
                         pipeline.call_async(move |pipeline| {

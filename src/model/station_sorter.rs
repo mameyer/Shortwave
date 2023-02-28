@@ -16,7 +16,7 @@
 
 use std::cell::{Cell, RefCell};
 
-use glib::{Enum, ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecEnum, ToValue};
+use glib::{Enum, ParamSpec, ParamSpecBoolean, ParamSpecEnum, ToValue};
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -44,55 +44,37 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpecBoolean::new("descending", "", "", false, ParamFlags::READWRITE),
-                    ParamSpecEnum::new(
-                        "sorting",
-                        "",
-                        "",
-                        SwSorting::static_type(),
-                        SwSorting::default() as i32,
-                        ParamFlags::READWRITE,
-                    ),
+                    ParamSpecBoolean::builder("descending").build(),
+                    ParamSpecEnum::builder::<SwSorting>("sorting").build(),
                 ]
             });
 
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "descending" => obj.descending().to_value(),
-                "sorting" => obj.sorting().to_value(),
+                "descending" => self.obj().descending().to_value(),
+                "sorting" => self.obj().sorting().to_value(),
                 _ => unimplemented!(),
             }
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
             match pspec.name() {
-                "descending" => obj.set_descending(value.get().unwrap()),
-                "sorting" => obj.set_descending(value.get().unwrap()),
+                "descending" => self.obj().set_descending(value.get().unwrap()),
+                "sorting" => self.obj().set_descending(value.get().unwrap()),
                 _ => unimplemented!(),
             }
         }
     }
 
     impl SorterImpl for SwStationSorter {
-        fn order(&self, _sorter: &Self::Type) -> gtk::SorterOrder {
+        fn order(&self) -> gtk::SorterOrder {
             gtk::SorterOrder::Total
         }
 
-        fn compare(
-            &self,
-            _sorter: &Self::Type,
-            item1: &glib::Object,
-            item2: &glib::Object,
-        ) -> gtk::Ordering {
+        fn compare(&self, item1: &glib::Object, item2: &glib::Object) -> gtk::Ordering {
             let a = &item1.clone().downcast::<SwStation>().unwrap();
             let b = &item2.clone().downcast::<SwStation>().unwrap();
             super::SwStationSorter::station_cmp(a, b, *self.sorting.borrow(), self.descending.get())
@@ -107,7 +89,7 @@ glib::wrapper! {
 
 impl SwStationSorter {
     pub fn new() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new()
     }
 
     pub fn descending(&self) -> bool {

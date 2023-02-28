@@ -130,24 +130,19 @@ impl SidebarController {
             }));
 
         // details button
-        action!(
-            self.action_group,
-            "show-details",
-            clone!(@strong self.sender as sender, @strong self.station as station => move |_, _| {
-                let s = station.borrow().clone().unwrap();
-                let station_dialog = SwStationDialog::new(sender.clone(), s);
-                station_dialog.show();
-            })
-        );
-
-        // stream button
-        action!(
-            self.action_group,
-            "stream-audio",
-            clone!(@weak self.streaming_dialog as streaming_dialog => move |_, _| {
-                streaming_dialog.show();
-            })
-        );
+        self.action_group.add_action_entries([
+            gio::ActionEntry::builder("show-details")
+                .activate(clone!(@strong self.sender as sender, @strong self.station as station => move |_, _, _| {
+                    let s = station.borrow().clone().unwrap();
+                    let station_dialog = SwStationDialog::new(sender.clone(), s);
+                    station_dialog.show();
+                })).build(),
+            // stream button
+            gio::ActionEntry::builder("stream-audio")
+                .activate(clone!(@weak self.streaming_dialog as streaming_dialog => move |_, _, _| {
+                    streaming_dialog.show();
+                })).build(),
+        ]);
     }
 }
 

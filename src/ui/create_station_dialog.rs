@@ -93,14 +93,14 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl SwCreateStationDialog {
     pub fn new(sender: Sender<Action>) -> Self {
-        let dialog: Self = glib::Object::new(&[]).unwrap();
+        let dialog: Self = glib::Object::new();
 
         let imp = dialog.imp();
         let favicon_widget = StationFavicon::new(FaviconSize::Big);
         let file_chooser = gtk::FileChooserNative::builder()
             .transient_for(&dialog)
             .modal(true)
-            .title(&gettext("Select station image"))
+            .title(gettext("Select station image"))
             .build();
 
         imp.favicon_widget.set(favicon_widget).unwrap();

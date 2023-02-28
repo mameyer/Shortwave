@@ -127,13 +127,13 @@ mod imp {
     }
 
     impl ObjectImpl for SwStationDialog {
-        fn constructed(&self, obj: &Self::Type) {
+        fn constructed(&self) {
             // Setup the libshumate map widget
             // Based on ashpd-demo
             // https://github.com/bilelmoussaoui/ashpd/blob/66d4dc0020181a7174451150ecc711344082b5ce/ashpd-demo/src/portals/desktop/location.rs
             let registry = shumate::MapSourceRegistry::with_defaults();
 
-            let source = registry.by_id(&shumate::MAP_SOURCE_OSM_MAPNIK).unwrap();
+            let source = registry.by_id(shumate::MAP_SOURCE_OSM_MAPNIK).unwrap();
             self.map.set_map_source(&source);
 
             let viewport = self.map.viewport().unwrap();
@@ -153,7 +153,7 @@ mod imp {
             self.marker.set_child(Some(&marker_img));
 
             self.map_license.append_map_source(&source);
-            self.parent_constructed(obj);
+            self.parent_constructed();
         }
     }
 
@@ -171,7 +171,7 @@ glib::wrapper! {
 
 impl SwStationDialog {
     pub fn new(sender: Sender<Action>, station: SwStation) -> Self {
-        let dialog: Self = glib::Object::new(&[]).unwrap();
+        let dialog: Self = glib::Object::new();
 
         let imp = dialog.imp();
         imp.station.set(station).unwrap();

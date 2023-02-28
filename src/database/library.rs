@@ -17,9 +17,7 @@
 use std::cell::RefCell;
 
 use futures::future::join_all;
-use glib::{
-    clone, Enum, ObjectExt, ParamFlags, ParamSpec, ParamSpecEnum, ParamSpecObject, Sender, ToValue,
-};
+use glib::{clone, Enum, ObjectExt, ParamSpec, ParamSpecEnum, ParamSpecObject, Sender, ToValue};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk_pixbuf, glib};
@@ -71,31 +69,22 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpecObject::new(
-                        "model",
-                        "",
-                        "",
-                        SwStationModel::static_type(),
-                        glib::ParamFlags::READABLE,
-                    ),
-                    ParamSpecEnum::new(
-                        "status",
-                        "",
-                        "",
-                        SwLibraryStatus::static_type(),
-                        SwLibraryStatus::default() as i32,
-                        ParamFlags::READABLE,
-                    ),
+                    ParamSpecObject::builder::<SwStationModel>("model")
+                        .read_only()
+                        .build(),
+                    ParamSpecEnum::builder::<SwLibraryStatus>("status")
+                        .read_only()
+                        .build(),
                 ]
             });
 
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "model" => obj.model().to_value(),
-                "status" => obj.status().to_value(),
+                "model" => self.obj().model().to_value(),
+                "status" => self.obj().status().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -108,7 +97,7 @@ glib::wrapper! {
 
 impl SwLibrary {
     pub fn new(sender: Sender<Action>) -> Self {
-        let library = glib::Object::new::<Self>(&[]).unwrap();
+        let library = glib::Object::new::<Self>();
         library.imp().sender.set(sender).unwrap();
 
         library

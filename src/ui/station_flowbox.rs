@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use adw::subclass::prelude::*;
-use glib::{clone, subclass, ParamFlags, ParamSpec, ParamSpecObject, Sender, ToValue};
+use glib::{clone, subclass, ParamSpec, ParamSpecObject, Sender, ToValue};
 use gtk::prelude::*;
 use gtk::{glib, CompositeTemplate};
 use once_cell::sync::Lazy;
@@ -45,7 +45,7 @@ mod imp {
 
         fn new() -> Self {
             let sorter = SwStationSorter::new();
-            let model = gtk::SortListModel::new(None::<&SwStationModel>, Some(&sorter));
+            let model = gtk::SortListModel::new(None::<SwStationModel>, Some(sorter.clone()));
 
             Self {
                 flowbox: TemplateChild::default(),
@@ -66,21 +66,17 @@ mod imp {
     impl ObjectImpl for SwStationFlowBox {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![ParamSpecObject::new(
-                    "model",
-                    "Model",
-                    "Model",
-                    gtk::SortListModel::static_type(),
-                    ParamFlags::READABLE,
-                )]
+                vec![ParamSpecObject::builder::<gtk::SortListModel>("model")
+                    .read_only()
+                    .build()]
             });
 
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "model" => obj.model().to_value(),
+                "model" => self.obj().model().to_value(),
                 _ => unimplemented!(),
             }
         }

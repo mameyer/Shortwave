@@ -76,7 +76,9 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl SwStreamingDialog {
     pub fn new(sender: Sender<Action>) -> Self {
-        let dialog: Self = glib::Object::new(&[("use-header-bar", &1)]).unwrap();
+        let dialog = glib::Object::builder::<Self>()
+            .property("use-header-bar", 1)
+            .build();
 
         // Setup Google Cast discoverer
         let gcd_t = GCastDiscoverer::new();

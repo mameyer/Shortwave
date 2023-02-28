@@ -15,8 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use glib::{
-    ParamFlags, ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString,
-    ToValue,
+    ParamSpec, ParamSpecBoolean, ParamSpecBoxed, ParamSpecObject, ParamSpecString, ToValue,
 };
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -48,35 +47,27 @@ mod imp {
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![
-                    ParamSpecString::new("uuid", "UUID", "UUID", None, ParamFlags::READABLE),
-                    ParamSpecBoolean::new("is-local", "", "", false, ParamFlags::READABLE),
-                    ParamSpecBoolean::new("is-orphaned", "", "", false, ParamFlags::READABLE),
-                    ParamSpecBoxed::new(
-                        "metadata",
-                        "",
-                        "",
-                        StationMetadata::static_type(),
-                        ParamFlags::READABLE,
-                    ),
-                    ParamSpecObject::new(
-                        "favicon",
-                        "",
-                        "",
-                        gdk_pixbuf::Pixbuf::static_type(),
-                        glib::ParamFlags::READABLE,
-                    ),
+                    ParamSpecString::builder("uuid").read_only().build(),
+                    ParamSpecBoolean::builder("is-local").read_only().build(),
+                    ParamSpecBoolean::builder("is-orphaned").read_only().build(),
+                    ParamSpecBoxed::builder::<StationMetadata>("metadata")
+                        .read_only()
+                        .build(),
+                    ParamSpecObject::builder::<gdk_pixbuf::Pixbuf>("favicon")
+                        .read_only()
+                        .build(),
                 ]
             });
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "uuid" => obj.uuid().to_value(),
-                "is-local" => obj.is_local().to_value(),
-                "is-orphaned" => obj.is_local().to_value(),
-                "metadata" => obj.metadata().to_value(),
-                "favicon" => obj.favicon().to_value(),
+                "uuid" => self.obj().uuid().to_value(),
+                "is-local" => self.obj().is_local().to_value(),
+                "is-orphaned" => self.obj().is_local().to_value(),
+                "metadata" => self.obj().metadata().to_value(),
+                "favicon" => self.obj().favicon().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -95,7 +86,7 @@ impl SwStation {
         metadata: StationMetadata,
         favicon: Option<gdk_pixbuf::Pixbuf>,
     ) -> Self {
-        let station = glib::Object::new::<Self>(&[]).unwrap();
+        let station = glib::Object::new::<Self>();
 
         let imp = station.imp();
         imp.uuid.set(uuid).unwrap();
