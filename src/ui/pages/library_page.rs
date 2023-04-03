@@ -39,6 +39,8 @@ mod imp {
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub flowbox: TemplateChild<SwStationFlowBox>,
+        #[template_child]
+        pub spinner: TemplateChild<gtk::Spinner>,
 
         pub library: SwLibrary,
         pub sender: OnceCell<Sender<Action>>,
@@ -54,6 +56,7 @@ mod imp {
             let status_page = TemplateChild::default();
             let stack = TemplateChild::default();
             let flowbox = TemplateChild::default();
+            let spinner = TemplateChild::default();
 
             let app = gio::Application::default()
                 .unwrap()
@@ -66,6 +69,7 @@ mod imp {
             Self {
                 status_page,
                 stack,
+                spinner,
                 flowbox,
                 library,
                 sender,
@@ -133,12 +137,16 @@ impl SwLibraryPage {
 
     fn update_stack_page(&self) {
         let imp = self.imp();
+        let status = imp.library.status();
 
-        match imp.library.status() {
+        match status {
             SwLibraryStatus::Loading => imp.stack.set_visible_child_name("loading"),
             SwLibraryStatus::Empty => imp.stack.set_visible_child_name("empty"),
             SwLibraryStatus::Content => imp.stack.set_visible_child_name("content"),
             _ => (),
         }
+
+        imp.spinner
+            .set_spinning(matches!(status, SwLibraryStatus::Loading));
     }
 }

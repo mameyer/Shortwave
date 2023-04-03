@@ -48,6 +48,8 @@ mod imp {
         pub results_limit_box: TemplateChild<gtk::Box>,
         #[template_child]
         pub results_limit_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub spinner: TemplateChild<gtk::Spinner>,
 
         pub search_action_group: gio::SimpleActionGroup,
 
@@ -76,6 +78,7 @@ mod imp {
                 sorting_button_content: TemplateChild::default(),
                 results_limit_box: TemplateChild::default(),
                 results_limit_label: TemplateChild::default(),
+                spinner: TemplateChild::default(),
                 search_action_group,
                 station_request,
                 client,
@@ -252,10 +255,12 @@ impl SwSearchPage {
         // Don't search if search entry is empty
         if imp.station_request.borrow().name.is_none() {
             imp.stack.set_visible_child_name("empty");
+            imp.spinner.set_spinning(false);
             return;
         }
 
         imp.stack.set_visible_child_name("spinner");
+        imp.spinner.set_spinning(true);
 
         // Start new timeout
         let id = glib::source::timeout_add_seconds_local(
@@ -277,8 +282,10 @@ impl SwSearchPage {
 
                     if client.model.n_items() == 0{
                         imp.stack.set_visible_child_name("no-results");
+                        imp.spinner.set_spinning(false);
                     }else{
                         imp.stack.set_visible_child_name("results");
+                        imp.spinner.set_spinning(false);
                     }
 
                     if let Err(err) = result {
