@@ -36,17 +36,13 @@ use crate::ui::SwCreateStationDialog;
 #[derive(Display, Copy, Debug, Clone, EnumString, Eq, PartialEq, Enum)]
 #[repr(u32)]
 #[enum_type(name = "SwView")]
+#[derive(Default)]
 pub enum SwView {
+    #[default]
     Library,
     Discover,
     Search,
     Player,
-}
-
-impl Default for SwView {
-    fn default() -> Self {
-        SwView::Library
-    }
 }
 
 mod imp {

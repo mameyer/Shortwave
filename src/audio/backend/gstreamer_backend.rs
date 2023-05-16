@@ -246,7 +246,7 @@ impl GstreamerBackend {
             glib::signal::signal_handler_block(&pulsesink, self.volume_signal_id.as_ref().unwrap());
 
             if volume != 0.0 {
-                pulsesink.set_property("mute", &false);
+                pulsesink.set_property("mute", false);
             }
 
             let pa_volume = StreamVolume::convert_volume(
@@ -254,7 +254,7 @@ impl GstreamerBackend {
                 StreamVolumeFormat::Linear,
                 volume,
             );
-            pulsesink.set_property("volume", &pa_volume);
+            pulsesink.set_property("volume", pa_volume);
 
             *self.volume.lock().unwrap() = volume;
 
@@ -274,7 +274,7 @@ impl GstreamerBackend {
 
         debug!("Set new source URI...");
         let uridecodebin = self.pipeline.by_name("uridecodebin").unwrap();
-        uridecodebin.set_property("uri", &source);
+        uridecodebin.set_property("uri", source);
 
         debug!("Start pipeline...");
         let mut buffering_state = self.buffering_state.lock().unwrap();
@@ -310,7 +310,7 @@ impl GstreamerBackend {
             "queue name=queue ! vorbisenc ! oggmux  ! filesink name=filesink async=false";
         let recorderbin = gstreamer::parse_bin_from_description(description, true)
             .expect("Unable to create recorderbin");
-        recorderbin.set_property("message-forward", &true);
+        recorderbin.set_property("message-forward", true);
 
         // We need to set an offset, otherwise the length of the recorded song would be
         // wrong. Get current clock time and calculate offset
@@ -324,7 +324,7 @@ impl GstreamerBackend {
 
         // Set recording path
         let filesink = recorderbin.by_name("filesink").unwrap();
-        filesink.set_property("location", &(path.to_str().unwrap()));
+        filesink.set_property("location", path.to_str().unwrap());
 
         // First try setting the recording bin to playing: if this fails we know this
         // before it potentially interfered with the other part of the pipeline

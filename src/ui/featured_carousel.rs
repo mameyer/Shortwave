@@ -161,7 +161,7 @@ impl SwFeaturedCarousel {
             if position < imp.pages.borrow().len() - 1 {
                 imp.carousel.scroll_to(&imp.pages.borrow()[position + 1].page, true);
             }else{
-                imp.carousel.scroll_to(&imp.pages.borrow()[(imp.pages.borrow().len() - 1)].page, true);
+                imp.carousel.scroll_to(&imp.pages.borrow()[imp.pages.borrow().len() - 1].page, true);
             }
         }));
 

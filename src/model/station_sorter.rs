@@ -154,7 +154,9 @@ impl Default for SwStationSorter {
 #[derive(Display, Copy, Debug, Clone, EnumString, Eq, PartialEq, Enum)]
 #[repr(u32)]
 #[enum_type(name = "SwSorting")]
+#[derive(Default)]
 pub enum SwSorting {
+    #[default]
     Default,
     Name,
     Language,
@@ -163,10 +165,4 @@ pub enum SwSorting {
     Codec,
     Votes,
     Bitrate,
-}
-
-impl Default for SwSorting {
-    fn default() -> Self {
-        SwSorting::Default
-    }
 }

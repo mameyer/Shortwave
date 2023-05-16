@@ -34,17 +34,13 @@ use crate::model::SwStationModel;
 #[derive(Display, Copy, Debug, Clone, EnumString, Eq, PartialEq, Enum)]
 #[repr(u32)]
 #[enum_type(name = "SwLibraryStatus")]
+#[derive(Default)]
 pub enum SwLibraryStatus {
+    #[default]
     Loading,
     Content,
     Empty,
     Offline,
-}
-
-impl Default for SwLibraryStatus {
-    fn default() -> Self {
-        SwLibraryStatus::Loading
-    }
 }
 
 mod imp {
