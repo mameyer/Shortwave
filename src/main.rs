@@ -1,5 +1,5 @@
 // Shortwave - main.rs
-// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2023  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,8 +21,6 @@ extern crate pretty_env_logger;
 extern crate serde_derive;
 #[macro_use]
 extern crate diesel;
-#[macro_use]
-extern crate diesel_migrations;
 #[macro_use]
 extern crate strum_macros;
 #[macro_use]
