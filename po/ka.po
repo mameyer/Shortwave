@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-12-19 15:41+0000\n"
-"PO-Revision-Date: 2023-03-22 03:29+0100\n"
+"POT-Creation-Date: 2023-05-16 12:59+0000\n"
+"PO-Revision-Date: 2023-05-17 05:49+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: data/gtk/create_station_dialog.ui:8
 msgid "Create new station"
@@ -50,7 +50,7 @@ msgstr "ლოკალური სადგურის შექმნა"
 msgid "Change station image"
 msgstr "სადგურის გამოსახულების შექმნა"
 
-#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:192
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:193
 msgid "Name"
 msgstr "სახელი"
 
@@ -183,7 +183,7 @@ msgid "Toggle playback"
 msgstr "დაკვრის გადართვა"
 
 #: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
-#: src/ui/pages/search_page.rs:196
+#: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "ხმები"
 
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Information"
 msgstr "ინფორმაცია"
 
-#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "ენა"
 
@@ -325,11 +325,11 @@ msgstr "ჭდეები"
 msgid "Location"
 msgstr "მდებარეობა"
 
-#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "ქვეყანა"
 
-#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "State"
 
@@ -337,7 +337,7 @@ msgstr "State"
 msgid "Audio"
 msgstr "აუდიო"
 
-#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "სიჩქარე"
 
@@ -383,16 +383,16 @@ msgid "Add Stations"
 msgstr "სადგურების დამატება"
 
 #: data/gtk/window.ui:34
-msgid "Go Back"
-msgstr "უკან დაბრუნება"
+msgid "Back"
+msgstr "უკან"
 
 #: data/gtk/window.ui:41
-msgid "Open Application Menu"
-msgstr "აპლიკაციის მენიუს გახსნა"
+msgid "Main Menu"
+msgstr "მთავარი მენიუ"
 
 #: data/gtk/window.ui:50
-msgid "Open Search"
-msgstr "ძებნის გახსნა"
+msgid "Search"
+msgstr "ძებნა"
 
 #: data/gtk/window.ui:74
 msgid "Unable to connect to radio-browser.info"
@@ -467,31 +467,31 @@ msgid "translator-credits"
 msgstr "მთარგმნელის შესახებ"
 
 #. TODO: Implement show-server-stats action
-#: src/ui/pages/discover_page.rs:117
+#: src/ui/pages/discover_page.rs:116
 msgid "Show statistics"
 msgstr "სტატისტიკების ჩვენება"
 
-#: src/ui/pages/discover_page.rs:119
+#: src/ui/pages/discover_page.rs:118
 msgid "Browse over 30,000 stations"
 msgstr "30000-ზე მეტი სადგური"
 
-#: src/ui/pages/discover_page.rs:121
+#: src/ui/pages/discover_page.rs:120
 msgid "Add new station"
 msgstr "ახალი სადგურის დამატება"
 
-#: src/ui/pages/discover_page.rs:123
+#: src/ui/pages/discover_page.rs:122
 msgid "Your favorite station is missing?"
 msgstr "აკლია თქვენი რჩეული სადგური?"
 
-#: src/ui/pages/discover_page.rs:128
+#: src/ui/pages/discover_page.rs:127
 msgid "Open website"
 msgstr "ვებგვერდის გახსნა"
 
-#: src/ui/pages/discover_page.rs:130
+#: src/ui/pages/discover_page.rs:129
 msgid "Powered by radio-browser.info"
 msgstr "Radio-browser.info-სგან"
 
-#: src/ui/pages/discover_page.rs:149 src/ui/pages/search_page.rs:286
+#: src/ui/pages/discover_page.rs:148 src/ui/pages/search_page.rs:287
 msgid "Station data could not be received."
 msgstr "სადგურის მონაცემების მიღება შეუძლებელია."
 
@@ -499,7 +499,7 @@ msgstr "სადგურის მონაცემების მიღე�
 msgid "Welcome to {}"
 msgstr "მოგესალმებით {}-ში"
 
-#: src/ui/pages/search_page.rs:102
+#: src/ui/pages/search_page.rs:103
 msgid ""
 "The number of results is limited to {} item. Try using a more specific "
 "search term."
@@ -568,6 +568,9 @@ msgstr "შეუმჩნეველი ინტეგრაცია GNOME-�
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;"
+
+#~ msgid "Open Application Menu"
+#~ msgstr "აპლიკაციის მენიუს გახსნა"
 
 #~ msgid "Detected songs will appear here."
 #~ msgstr "ნაპოვნი სიმღერები აქ გამოჩნდება."
