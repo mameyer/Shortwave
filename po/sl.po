@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-12-19 15:41+0000\n"
-"PO-Revision-Date: 2022-12-20 19:28+0100\n"
+"POT-Creation-Date: 2023-05-16 12:59+0000\n"
+"PO-Revision-Date: 2023-05-17 08:56+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3\n"
 
 #: data/gtk/create_station_dialog.ui:8
 msgid "Create new station"
@@ -54,7 +54,7 @@ msgstr "Ustvari krajevno postajo"
 msgid "Change station image"
 msgstr "Spremeni sliko postaje"
 
-#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:192
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:193
 msgid "Name"
 msgstr "Naziv"
 
@@ -187,7 +187,7 @@ msgid "Toggle playback"
 msgstr "Preklopi predvajanje"
 
 #: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
-#: src/ui/pages/search_page.rs:196
+#: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Glasovi"
 
@@ -316,7 +316,7 @@ msgstr ""
 msgid "Information"
 msgstr "Podrobnosti"
 
-#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Jezik"
 
@@ -328,11 +328,11 @@ msgstr "Oznake"
 msgid "Location"
 msgstr "Mesto"
 
-#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Država"
 
-#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Okraj"
 
@@ -340,7 +340,7 @@ msgstr "Okraj"
 msgid "Audio"
 msgstr "Zvok"
 
-#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Bitna hitrost"
 
@@ -386,16 +386,16 @@ msgid "Add Stations"
 msgstr "Dodaj postaje"
 
 #: data/gtk/window.ui:34
-msgid "Go Back"
-msgstr "Pojdi nazaj "
+msgid "Back"
+msgstr "Nazaj"
 
 #: data/gtk/window.ui:41
-msgid "Open Application Menu"
-msgstr "Odpri meni programa"
+msgid "Main Menu"
+msgstr "Glavni meni"
 
 #: data/gtk/window.ui:50
-msgid "Open Search"
-msgstr "Odpri iskanje"
+msgid "Search"
+msgstr "Išči"
 
 #: data/gtk/window.ui:74
 msgid "Unable to connect to radio-browser.info"
@@ -468,31 +468,31 @@ msgid "translator-credits"
 msgstr "Matej Urbančič <mateju@src.gnome.org>"
 
 #. TODO: Implement show-server-stats action
-#: src/ui/pages/discover_page.rs:117
+#: src/ui/pages/discover_page.rs:116
 msgid "Show statistics"
 msgstr "Pokaži statistiko"
 
-#: src/ui/pages/discover_page.rs:119
+#: src/ui/pages/discover_page.rs:118
 msgid "Browse over 30,000 stations"
 msgstr "Brskanje med 30.000 postajami"
 
-#: src/ui/pages/discover_page.rs:121
+#: src/ui/pages/discover_page.rs:120
 msgid "Add new station"
 msgstr "Dodaj novo radijsko postajo"
 
-#: src/ui/pages/discover_page.rs:123
+#: src/ui/pages/discover_page.rs:122
 msgid "Your favorite station is missing?"
 msgstr "Ali vaše priljubljene postaje ni na seznamu?"
 
-#: src/ui/pages/discover_page.rs:128
+#: src/ui/pages/discover_page.rs:127
 msgid "Open website"
 msgstr "Odpri spletišče"
 
-#: src/ui/pages/discover_page.rs:130
+#: src/ui/pages/discover_page.rs:129
 msgid "Powered by radio-browser.info"
 msgstr "Storitev omogoča radio-browser.info"
 
-#: src/ui/pages/discover_page.rs:149 src/ui/pages/search_page.rs:286
+#: src/ui/pages/discover_page.rs:148 src/ui/pages/search_page.rs:287
 msgid "Station data could not be received."
 msgstr "Podatkov postaje ni mogoče prejeti."
 
@@ -500,7 +500,7 @@ msgstr "Podatkov postaje ni mogoče prejeti."
 msgid "Welcome to {}"
 msgstr "Dobrodošli v {}"
 
-#: src/ui/pages/search_page.rs:102
+#: src/ui/pages/search_page.rs:103
 msgid ""
 "The number of results is limited to {} item. Try using a more specific "
 "search term."
