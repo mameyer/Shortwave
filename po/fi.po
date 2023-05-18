@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2022-12-19 15:41+0000\n"
-"PO-Revision-Date: 2023-03-02 20:01+0200\n"
+"POT-Creation-Date: 2023-05-16 12:59+0000\n"
+"PO-Revision-Date: 2023-05-18 12:53+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -50,7 +50,7 @@ msgstr "Luo paikallinen asema"
 msgid "Change station image"
 msgstr "Vaihda aseman kuva"
 
-#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:192
+#: data/gtk/create_station_dialog.ui:137 src/ui/pages/search_page.rs:193
 msgid "Name"
 msgstr "Nimi"
 
@@ -183,7 +183,7 @@ msgid "Toggle playback"
 msgstr "Toisto päällä/pois"
 
 #: data/gtk/search_page.ui:31 data/gtk/station_dialog.ui:200
-#: src/ui/pages/search_page.rs:196
+#: src/ui/pages/search_page.rs:197
 msgid "Votes"
 msgstr "Äänet"
 
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Information"
 msgstr "Tiedot"
 
-#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:193
+#: data/gtk/station_dialog.ui:165 src/ui/pages/search_page.rs:194
 msgid "Language"
 msgstr "Kieli"
 
@@ -325,11 +325,11 @@ msgstr "Tunnisteet"
 msgid "Location"
 msgstr "Sijainti"
 
-#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:194
+#: data/gtk/station_dialog.ui:221 src/ui/pages/search_page.rs:195
 msgid "Country"
 msgstr "Maa"
 
-#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:195
+#: data/gtk/station_dialog.ui:241 src/ui/pages/search_page.rs:196
 msgid "State"
 msgstr "Tila"
 
@@ -337,7 +337,7 @@ msgstr "Tila"
 msgid "Audio"
 msgstr "Ääni"
 
-#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:197
+#: data/gtk/station_dialog.ui:289 src/ui/pages/search_page.rs:198
 msgid "Bitrate"
 msgstr "Bittinopeus"
 
@@ -383,16 +383,16 @@ msgid "Add Stations"
 msgstr "Lisää asemia"
 
 #: data/gtk/window.ui:34
-msgid "Go Back"
-msgstr "Siirry takaisin"
+msgid "Back"
+msgstr "Takaisin"
 
 #: data/gtk/window.ui:41
-msgid "Open Application Menu"
-msgstr "Avaa sovellusvalikko"
+msgid "Main Menu"
+msgstr "Päävalikko"
 
 #: data/gtk/window.ui:50
-msgid "Open Search"
-msgstr "Avaa haku"
+msgid "Search"
+msgstr "Etsi"
 
 #: data/gtk/window.ui:74
 msgid "Unable to connect to radio-browser.info"
@@ -465,31 +465,31 @@ msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
 #. TODO: Implement show-server-stats action
-#: src/ui/pages/discover_page.rs:117
+#: src/ui/pages/discover_page.rs:116
 msgid "Show statistics"
 msgstr "Näytä tilastot"
 
-#: src/ui/pages/discover_page.rs:119
+#: src/ui/pages/discover_page.rs:118
 msgid "Browse over 30,000 stations"
 msgstr "Selaa yli 30 000 asemaa"
 
-#: src/ui/pages/discover_page.rs:121
+#: src/ui/pages/discover_page.rs:120
 msgid "Add new station"
 msgstr "Lisää uusi asema"
 
-#: src/ui/pages/discover_page.rs:123
+#: src/ui/pages/discover_page.rs:122
 msgid "Your favorite station is missing?"
 msgstr "Puuttuuko suosikkiasemasi?"
 
-#: src/ui/pages/discover_page.rs:128
+#: src/ui/pages/discover_page.rs:127
 msgid "Open website"
 msgstr "Avaa verkkosivu"
 
-#: src/ui/pages/discover_page.rs:130
+#: src/ui/pages/discover_page.rs:129
 msgid "Powered by radio-browser.info"
 msgstr "Taustavoimana radio-browser.info"
 
-#: src/ui/pages/discover_page.rs:149 src/ui/pages/search_page.rs:286
+#: src/ui/pages/discover_page.rs:148 src/ui/pages/search_page.rs:287
 msgid "Station data could not be received."
 msgstr "Aseman tietoja ei voitu vastaanottaa."
 
@@ -497,7 +497,7 @@ msgstr "Aseman tietoja ei voitu vastaanottaa."
 msgid "Welcome to {}"
 msgstr "Tervetuloa, käytössäsi on {}"
 
-#: src/ui/pages/search_page.rs:102
+#: src/ui/pages/search_page.rs:103
 msgid ""
 "The number of results is limited to {} item. Try using a more specific "
 "search term."
@@ -568,6 +568,9 @@ msgstr "Saumaton integraatio Gnome-työpöytäympäristöön"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:12
 msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;suoratoisto;nettiradio;"
+
+#~ msgid "Open Application Menu"
+#~ msgstr "Avaa sovellusvalikko"
 
 #~ msgid "Detected songs will appear here."
 #~ msgstr "Havaitut kappaleet näkyvät tässä."
