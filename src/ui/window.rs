@@ -1,5 +1,5 @@
 // Shortwave - window.rs
-// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2023  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -332,7 +332,6 @@ impl SwApplicationWindow {
         app.set_accels_for_action("win.show-discover", &["<primary>d"]);
         app.set_accels_for_action("win.show-search", &["<primary>f"]);
         app.set_accels_for_action("win.show-library", &["<primary>l"]);
-        app.set_accels_for_action("win.show-appmenu", &["F10"]);
         app.set_accels_for_action("win.toggle-playback", &["<primary>space"]);
         app.set_accels_for_action("win.refresh-data", &["<primary>r"]);
 

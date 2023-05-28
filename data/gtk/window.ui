@@ -39,6 +39,7 @@
                     <property name="icon_name">open-menu-symbolic</property>
                     <property name="menu_model">library_menu</property>
                     <property name="tooltip_text" translatable="true">Main Menu</property>
+                    <property name="primary">True</property>
                   </object>
                 </child>
                 <child type="end">
