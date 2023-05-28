@@ -210,7 +210,7 @@ impl SwApplication {
     fn setup_gactions(&self) {
         let window = SwApplicationWindow::default();
 
-        window.add_action_entries([
+        self.add_action_entries([
             // app.show-preferences
             gio::ActionEntry::builder("show-preferences")
                 .activate(clone!(@weak window => move |_, _, _| {
