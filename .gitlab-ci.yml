@@ -1,11 +1,8 @@
+include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
+
 stages:
   - check
   - test
-  - build
-
-include:
-  - project: "GNOME/citemplates"
-    file: "flatpak/flatpak_ci_initiative.yml"
 
 variables:
   BUNDLE: "de.haeckerfelix.Shortwave.Devel.flatpak"
@@ -17,6 +14,9 @@ variables:
 
 flatpak@x86_64:
   extends: ".flatpak@x86_64"
+
+flatpak@aarch64:
+  extends: ".flatpak@aarch64"
 
 # Configure and run code checks
 # Exits and fails if an error is encountered
