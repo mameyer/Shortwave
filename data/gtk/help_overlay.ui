@@ -58,6 +58,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Open map view</property>
+                <property name="action_name">win.show-search</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Open search view</property>
                 <property name="action_name">win.show-search</property>
               </object>

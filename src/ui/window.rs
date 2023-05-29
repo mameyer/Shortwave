@@ -42,6 +42,7 @@ pub enum SwView {
     Library,
     Discover,
     Search,
+    Map,
     Player,
 }
 
@@ -52,9 +53,11 @@ mod imp {
     #[template(resource = "/de/haeckerfelix/Shortwave/gtk/window.ui")]
     pub struct SwApplicationWindow {
         #[template_child]
+        pub discover_page: TemplateChild<SwDiscoverPage>,
+        #[template_child]
         pub library_page: TemplateChild<SwLibraryPage>,
         #[template_child]
-        pub discover_page: TemplateChild<SwDiscoverPage>,
+        pub map_page: TemplateChild<SwMapPage>,
         #[template_child]
         pub search_page: TemplateChild<SwSearchPage>,
 
@@ -283,16 +286,22 @@ impl SwApplicationWindow {
                     this.set_view(SwView::Discover);
                 }))
                 .build(),
-            // win.show-search
-            gio::ActionEntry::builder("show-search")
-                .activate(clone!(@weak self as this => move |_, _, _| {
-                    this.set_view(SwView::Search);
-                }))
-                .build(),
             // win.show-library
             gio::ActionEntry::builder("show-library")
                 .activate(clone!(@weak self as this => move |_, _, _| {
                     this.set_view(SwView::Library);
+                }))
+                .build(),
+            // win.show-map
+            gio::ActionEntry::builder("show-map")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.set_view(SwView::Map);
+                }))
+                .build(),
+            // win.show-search
+            gio::ActionEntry::builder("show-search")
+                .activate(clone!(@weak self as this => move |_, _, _| {
+                    this.set_view(SwView::Search);
                 }))
                 .build(),
             // win.show-appmenu
@@ -330,8 +339,9 @@ impl SwApplicationWindow {
         ]);
         app.set_accels_for_action("win.go-back", &["Escape"]);
         app.set_accels_for_action("win.show-discover", &["<primary>d"]);
-        app.set_accels_for_action("win.show-search", &["<primary>f"]);
         app.set_accels_for_action("win.show-library", &["<primary>l"]);
+        app.set_accels_for_action("win.show-map", &["<primary>m"]);
+        app.set_accels_for_action("win.show-search", &["<primary>f"]);
         app.set_accels_for_action("win.toggle-playback", &["<primary>space"]);
         app.set_accels_for_action("win.refresh-data", &["<primary>r"]);
 
@@ -519,6 +529,16 @@ impl SwApplicationWindow {
 
         // Show requested view / page
         match view {
+            SwView::Discover => {
+                imp.window_leaflet
+                    .set_visible_child(&imp.discover_page.get());
+                imp.appmenu_button
+                    .set_menu_model(Some(&imp.default_menu.get()));
+                imp.search_button.set_active(false);
+                imp.search_revealer.set_reveal_child(true);
+                imp.add_button.set_visible(false);
+                imp.back_button.set_visible(true);
+            }
             SwView::Library => {
                 imp.window_leaflet
                     .set_visible_child(&imp.library_page.get());
@@ -528,13 +548,12 @@ impl SwApplicationWindow {
                 imp.add_button.set_visible(true);
                 imp.back_button.set_visible(false);
             }
-            SwView::Discover => {
-                imp.window_leaflet
-                    .set_visible_child(&imp.discover_page.get());
+            SwView::Map => {
+                imp.window_leaflet.set_visible_child(&imp.map_page.get());
                 imp.appmenu_button
                     .set_menu_model(Some(&imp.default_menu.get()));
                 imp.search_button.set_active(false);
-                imp.search_revealer.set_reveal_child(true);
+                imp.search_revealer.set_reveal_child(false);
                 imp.add_button.set_visible(false);
                 imp.back_button.set_visible(true);
             }
