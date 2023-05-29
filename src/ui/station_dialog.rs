@@ -1,5 +1,5 @@
 // Shortwave - station_dialog.rs
-// Copyright (C) 2021-2022  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2023  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -264,16 +264,14 @@ impl SwStationDialog {
             imp.state_label.set_text(&metadata.state);
         }
 
-        // TODO: Re-enable map widget as soon as we have a formal OSM approval
-        // https://operations.osmfoundation.org/policies/tiles/
-        // let long: f64 = metadata.geo_long.unwrap_or(0.0).into();
-        // let lat: f64 = metadata.geo_lat.unwrap_or(0.0).into();
-        //
-        // if long != 0.0 || lat != 0.0 {
-        // imp.map_box.set_visible(true);
-        // imp.marker.set_location(lat, long);
-        // imp.map.center_on(lat, long);
-        // }
+        let long: f64 = metadata.geo_long.unwrap_or(0.0).into();
+        let lat: f64 = metadata.geo_lat.unwrap_or(0.0).into();
+
+        if long != 0.0 || lat != 0.0 {
+            imp.map_box.set_visible(true);
+            imp.marker.set_location(lat, long);
+            imp.map.center_on(lat, long);
+        }
 
         // Audio group
         if !metadata.codec.is_empty() {
