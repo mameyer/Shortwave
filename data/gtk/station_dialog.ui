@@ -165,14 +165,9 @@
                             <property name="title" translatable="yes">Language</property>
                             <property name="title_lines">1</property>
                             <property name="visible">False</property>
-                            <child>
-                              <object class="GtkLabel" id="language_label">
-                                <property name="ellipsize">end</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                         <child>
@@ -180,33 +175,18 @@
                             <property name="title" translatable="yes">Tags</property>
                             <property name="title_lines">1</property>
                             <property name="visible">False</property>
-                            <child>
-                              <object class="GtkLabel" id="tags_label">
-                                <property name="margin_top">6</property>
-                                <property name="margin_bottom">6</property>
-                                <property name="ellipsize">end</property>
-                                <property name="lines">5</property>
-                                <property name="justify">right</property>
-                                <property name="xalign">1</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                         <child>
                           <object class="AdwActionRow" id="votes_row">
                             <property name="title" translatable="yes">Votes</property>
                             <property name="title_lines">1</property>
-                            <child>
-                              <object class="GtkLabel" id="votes_label">
-                                <property name="ellipsize">end</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                       </object>
@@ -221,19 +201,9 @@
                             <property name="title" translatable="yes">Country</property>
                             <property name="title_lines">1</property>
                             <property name="visible">False</property>
-                            <child>
-                              <object class="GtkLabel" id="country_label">
-                                <property name="margin_top">6</property>
-                                <property name="margin_bottom">6</property>
-                                <property name="ellipsize">end</property>
-                                <property name="lines">5</property>
-                                <property name="justify">right</property>
-                                <property name="xalign">1</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                         <child>
@@ -241,19 +211,9 @@
                             <property name="title" translatable="yes">State</property>
                             <property name="title_lines">1</property>
                             <property name="visible">False</property>
-                            <child>
-                              <object class="GtkLabel" id="state_label">
-                                <property name="margin_top">6</property>
-                                <property name="margin_bottom">6</property>
-                                <property name="ellipsize">end</property>
-                                <property name="lines">5</property>
-                                <property name="justify">right</property>
-                                <property name="xalign">1</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                       </object>
@@ -289,14 +249,9 @@
                             <property name="title" translatable="yes">Bitrate</property>
                             <property name="title_lines">1</property>
                             <property name="visible">False</property>
-                            <child>
-                              <object class="GtkLabel" id="bitrate_label">
-                                <property name="ellipsize">end</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                         <child>
@@ -304,14 +259,9 @@
                             <property name="title" translatable="yes">Codec</property>
                             <property name="title_lines">1</property>
                             <property name="visible">False</property>
-                            <child>
-                              <object class="GtkLabel" id="codec_label">
-                                <property name="ellipsize">end</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                            </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                         <child>
@@ -321,11 +271,6 @@
                             <child>
                               <object class="GtkBox">
                                 <property name="spacing">6</property>
-                                <child>
-                                  <object class="GtkLabel" id="stream_label">
-                                    <property name="ellipsize">end</property>
-                                  </object>
-                                </child>
                                 <child>
                                   <object class="GtkButton" id="copy_stream_button">
                                     <property name="icon_name">edit-copy-symbolic</property>
@@ -337,6 +282,9 @@
                                 </child>
                               </object>
                             </child>
+                            <style>
+                              <class name="property"/>
+                            </style>
                           </object>
                         </child>
                       </object>

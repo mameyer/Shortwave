@@ -66,27 +66,15 @@ mod imp {
         #[template_child]
         pub language_row: TemplateChild<adw::ActionRow>,
         #[template_child]
-        pub language_label: TemplateChild<gtk::Label>,
-        #[template_child]
         pub tags_row: TemplateChild<adw::ActionRow>,
-        #[template_child]
-        pub tags_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub codec_row: TemplateChild<adw::ActionRow>,
         #[template_child]
-        pub codec_label: TemplateChild<gtk::Label>,
-        #[template_child]
         pub bitrate_row: TemplateChild<adw::ActionRow>,
-        #[template_child]
-        pub bitrate_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub votes_row: TemplateChild<adw::ActionRow>,
         #[template_child]
-        pub votes_label: TemplateChild<gtk::Label>,
-        #[template_child]
         pub stream_row: TemplateChild<adw::ActionRow>,
-        #[template_child]
-        pub stream_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub copy_stream_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -94,11 +82,7 @@ mod imp {
         #[template_child]
         pub country_row: TemplateChild<adw::ActionRow>,
         #[template_child]
-        pub country_label: TemplateChild<gtk::Label>,
-        #[template_child]
         pub state_row: TemplateChild<adw::ActionRow>,
-        #[template_child]
-        pub state_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub map_box: TemplateChild<gtk::Box>,
         #[template_child]
@@ -207,17 +191,18 @@ impl SwStationDialog {
             spawn!(fut);
         }
 
-        // Title + Homepage
+        // Title
         imp.title_label.set_text(&metadata.name);
         imp.dialog_title.set_title(&metadata.name);
 
+        // Homepage
         if let Some(ref homepage) = metadata.homepage {
             let url = homepage.to_string().replace('&', "&amp;");
             let domain = homepage.domain().unwrap();
+            let markup = format!("<a href=\"{}\">{}</a>", &url, &domain);
 
             imp.homepage_label.set_visible(true);
-            imp.homepage_label
-                .set_markup(&format!("<a href=\"{}\">{}</a>", &url, &domain));
+            imp.homepage_label.set_markup(&markup);
             imp.homepage_label.set_tooltip_text(Some(&url));
         }
 
@@ -228,72 +213,78 @@ impl SwStationDialog {
             imp.library_add_child.set_visible(true);
         }
 
-        // General information group
-        if !metadata.tags.is_empty() {
-            imp.tags_row.set_visible(true);
-            imp.tags_label.set_text(&metadata.formatted_tags());
-        }
-
-        if !metadata.language.is_empty() {
-            imp.language_row.set_visible(true);
-            imp.language_label
-                .set_text(&metadata.language.to_title_case());
-        }
-
-        imp.votes_label.set_text(&metadata.votes.to_string());
-
+        // Local station info row
         if imp.station.get().unwrap().is_local() {
             imp.local_station_group.set_visible(true);
             imp.information_group.set_visible(false);
         }
 
+        // Orphaned station info row
         if imp.station.get().unwrap().is_orphaned() {
             imp.orphaned_station_group.set_visible(true);
         }
 
-        // Location & Map
+        // Tags
+        if !metadata.tags.is_empty() {
+            imp.tags_row.set_visible(true);
+            imp.tags_row.set_subtitle(&metadata.formatted_tags());
+        }
+
+        // Language
+        if !metadata.language.is_empty() {
+            imp.language_row.set_visible(true);
+            imp.language_row
+                .set_subtitle(&metadata.language.to_title_case());
+        }
+
+        // Votes
+        imp.votes_row.set_subtitle(&metadata.votes.to_string());
+
+        // Location
         if !metadata.country.is_empty() {
             imp.location_group.set_visible(true);
             imp.country_row.set_visible(true);
-            imp.country_label.set_text(&metadata.country);
+            imp.country_row.set_subtitle(&metadata.country);
         }
-
         if !metadata.state.is_empty() {
             imp.location_group.set_visible(true);
             imp.state_row.set_visible(true);
-            imp.state_label.set_text(&metadata.state);
+            imp.state_row.set_subtitle(&metadata.state);
         }
 
+        // Map
         let long: f64 = metadata.geo_long.unwrap_or(0.0).into();
         let lat: f64 = metadata.geo_lat.unwrap_or(0.0).into();
-
         if long != 0.0 || lat != 0.0 {
             imp.map_box.set_visible(true);
             imp.marker.set_location(lat, long);
             imp.map.center_on(lat, long);
         }
 
-        // Audio group
+        // Codec
         if !metadata.codec.is_empty() {
             imp.codec_row.set_visible(true);
-            imp.codec_label.set_text(&metadata.codec);
+            imp.codec_row.set_subtitle(&metadata.codec);
         }
 
+        // Bitrate
         if metadata.bitrate != 0 {
             imp.bitrate_row.set_visible(true);
             let bitrate = i18n::i18n_f("{} kbit/s", &[&metadata.bitrate.to_string()]);
-            imp.bitrate_label.set_text(&bitrate);
+            imp.bitrate_row.set_subtitle(&bitrate);
         }
 
+        // Stream url
         let url = if let Some(url_resolved) = metadata.url_resolved {
             url_resolved.to_string()
         } else {
             metadata.url.map(|x| x.to_string()).unwrap_or_default()
         };
         let url = url.replace('&', "&amp;");
-        imp.stream_label
-            .set_markup(&format!("<a href=\"{}\">{}</a>", &url, &url));
-        imp.stream_label.set_tooltip_text(Some(&url));
+        let subtitle = format!("<a href=\"{}\">{}</a>", &url, &url);
+
+        imp.stream_row.set_subtitle(&subtitle);
+        imp.stream_row.set_tooltip_text(Some(&url));
     }
 
     fn setup_signals(&self) {
