@@ -150,9 +150,6 @@ mod imp {
                 }),
             );
 
-            // Needs to be called after settings.connect_changed for it to trigger.
-            app.update_color_scheme();
-
             // Small workaround to update every view to the correct sorting/order.
             send!(self.sender, Action::SettingsKeyChanged(Key::ViewSorting));
         }
@@ -284,20 +281,7 @@ impl SwApplication {
                     .unwrap()
                     .set_sorting(sorting, descending);
             }
-            Key::DarkMode => self.update_color_scheme(),
             _ => (),
-        }
-    }
-
-    fn update_color_scheme(&self) {
-        let manager = adw::StyleManager::default();
-        if !manager.system_supports_color_schemes() {
-            let color_scheme = if settings_manager::boolean(Key::DarkMode) {
-                adw::ColorScheme::PreferDark
-            } else {
-                adw::ColorScheme::PreferLight
-            };
-            manager.set_color_scheme(color_scheme);
         }
     }
 
