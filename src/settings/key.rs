@@ -21,7 +21,6 @@ pub enum Key {
     ApiLookupDomain,
 
     // User Interface
-    DarkMode,
     Notifications,
     WindowWidth,
     WindowHeight,
