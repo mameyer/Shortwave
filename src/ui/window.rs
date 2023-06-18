@@ -387,10 +387,10 @@ impl SwApplicationWindow {
                     this.enable_mini_player(true);
                 }))
                 .build(),
-            // win.refresh-data
-            gio::ActionEntry::builder("refresh-data")
+            // win.lookup-rb-server
+            gio::ActionEntry::builder("lookup-rb-server")
                 .activate(|_, _, _| {
-                    SwApplication::default().refresh_data();
+                    SwApplication::default().lookup_rb_server();
                 })
                 .build(),
         ]);
@@ -400,7 +400,6 @@ impl SwApplicationWindow {
         app.set_accels_for_action("win.show-map", &["<primary>m"]);
         app.set_accels_for_action("win.show-search", &["<primary>f"]);
         app.set_accels_for_action("win.toggle-playback", &["<primary>space"]);
-        app.set_accels_for_action("win.refresh-data", &["<primary>r"]);
 
         // Sort / Order menu
         let sorting_action = settings_manager::create_action(Key::ViewSorting);
@@ -408,14 +407,6 @@ impl SwApplicationWindow {
 
         let order_action = settings_manager::create_action(Key::ViewOrder);
         self.add_action(&order_action);
-    }
-
-    pub fn refresh_data(&self) {
-        let imp = self.imp();
-
-        imp.discover_page.refresh_data();
-        imp.map_page.refresh_data();
-        imp.search_page.refresh_data();
     }
 
     pub fn show_player_widget(&self) {
@@ -512,6 +503,8 @@ impl SwApplicationWindow {
                 SwView::Discover
             } else if leaflet_child == imp.search_page.get() {
                 SwView::Search
+            } else if leaflet_child == imp.map_page.get() {
+                SwView::Map
             } else {
                 panic!("Unknown leaflet child")
             }
@@ -557,6 +550,8 @@ impl SwApplicationWindow {
                 imp.search_revealer.set_reveal_child(true);
                 imp.add_button.set_visible(false);
                 imp.back_button.set_visible(true);
+
+                imp.discover_page.update_data();
             }
             SwView::Library => {
                 imp.window_leaflet
@@ -575,6 +570,8 @@ impl SwApplicationWindow {
                 imp.search_revealer.set_reveal_child(false);
                 imp.add_button.set_visible(false);
                 imp.back_button.set_visible(true);
+
+                imp.map_page.update_data();
             }
             SwView::Search => {
                 imp.window_leaflet.set_visible_child(&imp.search_page.get());

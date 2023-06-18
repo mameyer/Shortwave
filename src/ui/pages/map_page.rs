@@ -78,7 +78,7 @@ glib::wrapper! {
 }
 
 impl SwMapPage {
-    pub fn refresh_data(&self) {
+    pub fn update_data(&self) {
         let client = SwClient::new();
 
         let request = StationRequest {
