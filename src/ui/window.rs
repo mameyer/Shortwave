@@ -23,7 +23,6 @@ use glib::{clone, subclass, Enum, ParamSpec, ParamSpecEnum, Sender, ToValue};
 use gtk::{gdk, gio, glib, CompositeTemplate};
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
-use url::Url;
 
 use crate::app::{Action, SwApplication};
 use crate::audio::Player;
@@ -353,11 +352,12 @@ impl SwApplicationWindow {
         self.add_action(&order_action);
     }
 
-    pub fn refresh_data(&self, server: &Url) {
+    pub fn refresh_data(&self) {
         let imp = self.imp();
 
-        imp.discover_page.refresh_data(server);
-        imp.search_page.refresh_data(server);
+        imp.discover_page.refresh_data();
+        imp.map_page.refresh_data();
+        imp.search_page.refresh_data();
     }
 
     pub fn show_player_widget(&self) {

@@ -14,22 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use std::cell::RefCell;
-use std::rc::Rc;
-
 use adw::subclass::prelude::*;
-use futures_util::FutureExt;
-use glib::{clone, subclass, Sender};
-use gtk::prelude::*;
-use gtk::{gio, glib, CompositeTemplate};
-use once_cell::unsync::OnceCell;
+use glib::subclass;
+use gtk::{glib, CompositeTemplate};
 use shumate::{Map, MapLayer, MarkerLayer};
-use url::Url;
 
-use crate::api::{Client, StationRequest};
-use crate::app::Action;
-use crate::i18n::*;
-use crate::ui::{SwApplicationWindow, SwStationFlowBox};
+use crate::api::{StationRequest, SwClient};
 
 mod imp {
     use super::*;
@@ -39,6 +29,8 @@ mod imp {
     pub struct SwMapPage {
         #[template_child]
         pub map: TemplateChild<Map>,
+
+        client: SwClient,
     }
 
     #[glib::object_subclass]
@@ -85,4 +77,16 @@ glib::wrapper! {
         @extends gtk::Widget, adw::Bin;
 }
 
-impl SwMapPage {}
+impl SwMapPage {
+    pub fn refresh_data(&self) {
+        let client = SwClient::new();
+
+        let request = StationRequest {
+            has_geo_info: Some(true),
+            ..StationRequest::default()
+        };
+
+        // TODO: error handling
+        client.send_station_request(request);
+    }
+}
