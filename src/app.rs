@@ -20,11 +20,11 @@ use std::str::FromStr;
 
 use adw::subclass::prelude::*;
 use gio::subclass::prelude::ApplicationImpl;
-use glib::{clone, ObjectExt, ParamSpec, ParamSpecObject, Properties, Receiver, Sender, ToValue};
+use glib::{clone, ObjectExt, ParamSpec, Properties, Receiver, Sender};
 use gtk::glib::WeakRef;
 use gtk::prelude::*;
 use gtk::{gio, glib};
-use once_cell::sync::{Lazy, OnceCell};
+use once_cell::sync::OnceCell;
 
 use crate::api::{SwClient, SwStation};
 use crate::audio::{GCastDevice, PlaybackState, Player, Song};
@@ -306,11 +306,13 @@ impl SwApplication {
             *imp.rb_server.borrow_mut() = rb_server.clone();
             this.notify("rb-server");
 
-            window.enable_offline_mode(rb_server.is_none());
             imp.library.refresh_data();
 
-            if rb_server.is_some(){
+            if let Some(rb_server) = rb_server {
+                info!("Using radio-browser.info REST api: {rb_server}");
                 window.refresh_data();
+            }else{
+                warn!("Unable to find available radio-browser.info server.");
             }
         });
         spawn!(fut);
