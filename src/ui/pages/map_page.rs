@@ -15,11 +15,16 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use adw::subclass::prelude::*;
-use glib::subclass;
+use glib::{clone, subclass};
+use gtk::prelude::*;
 use gtk::{glib, CompositeTemplate};
-use shumate::{Map, MapLayer, MarkerLayer};
+use once_cell::unsync::OnceCell;
+use shumate::prelude::*;
+use shumate::{Map, MapLayer, Marker, MarkerLayer};
 
-use crate::api::{StationRequest, SwClient};
+use crate::api::{StationRequest, SwClient, SwStation};
+use crate::app::SwApplication;
+use crate::ui::SwStationDialog;
 
 mod imp {
     use super::*;
@@ -30,7 +35,9 @@ mod imp {
         #[template_child]
         pub map: TemplateChild<Map>,
 
-        client: SwClient,
+        map_layer: OnceCell<MapLayer>,
+        marker_layer: OnceCell<MarkerLayer>,
+        pub client: SwClient,
     }
 
     #[glib::object_subclass]
@@ -50,26 +57,74 @@ mod imp {
 
     impl ObjectImpl for SwMapPage {
         fn constructed(&self) {
-            let registry = shumate::MapSourceRegistry::with_defaults();
-            let source = registry.by_id(shumate::MAP_SOURCE_OSM_MAPNIK).unwrap();
-            self.map.set_map_source(&source);
-
             let viewport = self.map.viewport().unwrap();
-            viewport.set_reference_map_source(Some(&source));
-            viewport.set_zoom_level(6.0);
-
-            let layer = MapLayer::new(&source, &viewport);
-            self.map.add_layer(&layer);
 
             let marker_layer = MarkerLayer::new(&viewport);
-            // marker_layer.add_marker(&self.marker);
             self.map.add_layer(&marker_layer);
+            self.marker_layer.set(marker_layer).unwrap();
+
+            self.client.model().connect_items_changed(
+                clone!(@weak self as this => move|model, pos, removed, added|{
+                    for i in 0..added {
+                        let station: SwStation = model.item(pos + i).unwrap().downcast().unwrap();
+                        this.add_station_marker(&station);
+                    }
+
+                    for i in 0..removed {
+                        let _station: SwStation = model.item(pos + i).unwrap().downcast().unwrap();
+                        // TODO:: this.remove_station_marker(&station);
+                    }
+                }),
+            );
         }
     }
 
     impl WidgetImpl for SwMapPage {}
 
     impl BinImpl for SwMapPage {}
+
+    impl SwMapPage {
+        pub fn ensure_map_layer(&self) {
+            if self.map_layer.get().is_none() {
+                let registry = shumate::MapSourceRegistry::with_defaults();
+                let source = registry.by_id(shumate::MAP_SOURCE_OSM_MAPNIK).unwrap();
+                self.map.set_map_source(&source);
+
+                let viewport = self.map.viewport().unwrap();
+                viewport.set_reference_map_source(Some(&source));
+                viewport.set_zoom_level(3.0);
+
+                let layer = MapLayer::new(&source, &viewport);
+                self.map.insert_layer_above(&layer, None::<&MapLayer>);
+            }
+        }
+
+        fn add_station_marker(&self, station: &SwStation) {
+            let long: f64 = station.metadata().geo_long.unwrap_or(0.0).into();
+            let lat: f64 = station.metadata().geo_lat.unwrap_or(0.0).into();
+
+            if long != 0.0 || lat != 0.0 {
+                let marker = Marker::new();
+
+                let marker_button = gtk::Button::new();
+                marker_button.add_css_class("flat");
+                marker_button.add_css_class("map-pin");
+                marker_button.set_icon_name("mark-location-symbolic");
+                marker_button.connect_clicked(clone!(@weak station => move |_|{
+                    let app = SwApplication::default();
+                    let sender = app.sender();
+
+                    let station_dialog = SwStationDialog::new(sender, station);
+                    station_dialog.show();
+                }));
+
+                marker.set_child(Some(&marker_button));
+                marker.set_location(lat, long);
+
+                self.marker_layer.get().unwrap().add_marker(&marker);
+            }
+        }
+    }
 }
 
 glib::wrapper! {
@@ -79,14 +134,19 @@ glib::wrapper! {
 
 impl SwMapPage {
     pub fn update_data(&self) {
-        let client = SwClient::new();
+        let imp = self.imp();
+
+        imp.ensure_map_layer();
 
         let request = StationRequest {
             has_geo_info: Some(true),
+            limit: Some(50),
+            order: Some("votes".to_string()),
             ..StationRequest::default()
         };
 
         // TODO: error handling
-        client.send_station_request(request);
+        warn!("Send request");
+        imp.client.send_station_request(request);
     }
 }

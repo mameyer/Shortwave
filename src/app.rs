@@ -281,7 +281,7 @@ impl SwApplication {
         }
     }
 
-    pub fn refresh_data(&self) {
+    pub fn lookup_rb_server(&self) {
         let fut = clone!(@weak self as this => async move {
             let imp = this.imp();
 
@@ -301,6 +301,11 @@ impl SwApplication {
             imp.library.update_data();
         });
         spawn!(fut);
+    }
+
+    // TODO: Kill this, just a temporary workaround
+    pub fn sender(&self) -> Sender<Action> {
+        self.imp().sender.clone()
     }
 }
 
