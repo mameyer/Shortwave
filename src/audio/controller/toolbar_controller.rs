@@ -40,6 +40,7 @@ pub struct ToolbarController {
     playback_button_stack: gtk::Stack,
     start_playback_button: gtk::Button,
     stop_playback_button: gtk::Button,
+    loading_spinner: gtk::Spinner,
     loading_button: gtk::Button,
     toolbox_gesture: gtk::GestureClick,
 }
@@ -58,6 +59,7 @@ impl ToolbarController {
         get_widget!(builder, gtk::Button, stop_playback_button);
         get_widget!(builder, gtk::Button, loading_button);
         get_widget!(builder, gtk::GestureClick, toolbox_gesture);
+        get_widget!(builder, gtk::Spinner, loading_spinner);
 
         let station = Rc::new(RefCell::new(None));
 
@@ -79,6 +81,7 @@ impl ToolbarController {
             stop_playback_button,
             loading_button,
             toolbox_gesture,
+            loading_spinner,
         };
 
         controller.setup_signals();
@@ -152,7 +155,10 @@ impl Controller for ToolbarController {
             PlaybackState::Failure(_) => "start_playback",
         };
         self.playback_button_stack
-            .set_visible_child_name(child_name)
+            .set_visible_child_name(child_name);
+
+        self.loading_spinner
+            .set_spinning(matches!(playback_state, PlaybackState::Loading));
     }
 
     fn set_volume(&self, _volume: f64) {
